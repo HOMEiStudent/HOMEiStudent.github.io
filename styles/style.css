@@ -197,12 +197,16 @@ img.funding-image {
 }
 
 .socials {
-  padding: 1em 0 2em 2em;
+  padding-top: 1em;
   padding-bottom: 2em;
 }
 
 .socials .header {
   text-align: center;
+}
+
+.socials-links {
+  padding-left: 2em !important;
 }
 
 .socials-links>div>div {
