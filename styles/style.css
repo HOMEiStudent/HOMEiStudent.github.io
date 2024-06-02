@@ -49,8 +49,9 @@ img.rounded-corners {
 }
 
 .solid-background {
-  color: var(--white);
+  border-radius: 20px;
   background: var(--orange);
+  color: var(--white);
 }
 
 .subtitle {
@@ -89,36 +90,36 @@ img.rounded-corners {
   animation: glow-add 0.5s normal forwards;
 }
 
+.title-margin {
+  margin-bottom: 0;
+}
+
 .header-margin {
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .meet-homei {
-  padding: 0 0 1em 2em;
+  border-radius: 20px;
+  margin-top: 1em;
+  padding: 1em;
 }
 
-.meet-homei>.intro {
-  padding-top: 1em;
+.meet-homei>div>div.intro {
+  padding: 1em 2em;
 }
 
-.meet-homei>.intro>.subtitle {
+.meet-homei>div>div>.intro>.subtitle {
   font-size: 2rem;
 }
 
-.yellow-background>.body {
-  color: black;
-  display: inline-block;
-  padding: 0.5em;
-  width: 65%;
-}
-
-.meet-homei>.col-12.col-md-4>img {
+.meet-homei>div>div>img {
   max-height: 16em;
 }
 
 .what-is-homei {
   padding-top: 1em;
+  padding-bottom: 2em;
   text-align: center;
 }
 
@@ -138,6 +139,7 @@ img.rounded-corners {
 }
 
 .coming-soon>.col-12>.image-crop {
+  border-radius: 20px;
   height: 200px;
   overflow: hidden;
   position: relative;
@@ -158,7 +160,7 @@ img.rounded-corners {
 }
 
 .coming-soon>.col-12>.image-crop>.image>.body {
-  padding: 0.5em 2em 2em 2em;
+  padding: 0 2em 2em 2em;
   position: absolute;
   right: 0;
   top: 10;
@@ -171,7 +173,7 @@ img.rounded-corners {
   padding-bottom: 2em;
 }
 
-.funding>.col-md-6>a>img {
+img.funding-image {
   max-height: 10em;
 }
 
@@ -183,22 +185,27 @@ img.rounded-corners {
 
 .news img {
   max-height: 20em;
-  max-width: 100%;
+  max-width: 90%;
 }
 
 .socials {
-  padding-top: 0.5em;
+  padding-top: 1em;
+  padding-bottom: 2em;
 }
 
 .socials .header {
   text-align: center;
 }
 
-.socials-links {
+.socials-links>div>div {
   margin-bottom: 0.5em;
 }
 
-.socials-links>a {
+.socials-links>div:last-child {
+  margin-bottom: 1em;
+}
+
+.socials-links>div>div>a {
   text-decoration: none;
 }
 
@@ -212,6 +219,5 @@ img.rounded-corners {
 }
 
 .socials-image>img {
-  max-height: 20em;
   max-width: 100%;
 }
