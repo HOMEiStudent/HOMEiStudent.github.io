@@ -108,7 +108,7 @@ img.rounded-corners {
 }
 
 .meet-homei {
-  border-radius: 20px;
+  border-radius: 10px;
   margin-top: 1em;
   padding: 1em;
 }
@@ -147,7 +147,7 @@ img.rounded-corners {
 }
 
 .coming-soon>.col-12>.image-crop {
-  border-radius: 20px;
+  border-radius: 10px;
   height: 200px;
   overflow: hidden;
   position: relative;
