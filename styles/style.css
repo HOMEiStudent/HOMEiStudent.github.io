@@ -33,12 +33,20 @@ main {
 }
 
 img.rounded-corners {
-  border-radius: 0.5em;
+  border-radius: 10px;
 }
+
+/* .btn-secondary {
+  background: var(--yellow) !important;
+  border: solid 0 var(--yellow) !important;
+  color: var(--black) !important;
+  padding: 0.6em 1em 0.5em 1em !important;
+} */
 
 .launching {
   border: solid 2px var(--black);
   color: var(--black);
+  margin-top: 1em;
   padding: 0.5em;
   text-align: center;
 }
@@ -49,7 +57,7 @@ img.rounded-corners {
 }
 
 .solid-background {
-  border-radius: 20px;
+  border-radius: 10px;
   background: var(--orange);
   color: var(--white);
 }
@@ -189,7 +197,7 @@ img.funding-image {
 }
 
 .socials {
-  padding-top: 1em;
+  padding: 1em 0 2em 2em;
   padding-bottom: 2em;
 }
 
@@ -207,6 +215,11 @@ img.funding-image {
 
 .socials-links>div>div>a {
   text-decoration: none;
+}
+
+.socials-links>div>div>a>img {
+  max-height: 90%;
+  padding-bottom: 2px;
 }
 
 .socials-link {
