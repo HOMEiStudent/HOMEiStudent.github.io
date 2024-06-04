@@ -46,7 +46,7 @@ img.rounded-corners {
 .launching {
   border: solid 2px var(--black);
   color: var(--black);
-  margin-top: 1em;
+  margin-top: 0.8em;
   padding: 0.5em;
   text-align: center;
 }
