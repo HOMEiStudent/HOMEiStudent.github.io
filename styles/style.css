@@ -182,7 +182,7 @@ img.rounded-corners {
 }
 
 img.funding-image {
-  max-height: 10em;
+  max-height: 5em;
 }
 
 .news {
@@ -196,13 +196,22 @@ img.funding-image {
   max-width: 90%;
 }
 
+.eapps-instagram-feed-title {
+  font-size: 2rem;
+}
+
+.eapps-instagram-feed {
+  font-family: inherit !important;
+}
+
 .socials {
   padding-top: 1em;
   padding-bottom: 2em;
 }
 
-.socials .header {
+.socials .header .header-margin {
   text-align: center;
+  margin-bottom: 0em;
 }
 
 .socials-links {
