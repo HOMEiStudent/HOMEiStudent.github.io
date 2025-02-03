@@ -46,14 +46,17 @@ img.rounded-corners {
 .launching {
   border: solid 2px var(--black);
   color: var(--black);
-  margin-top: 0.8em;
-  padding: 0.5em;
+  margin-top: 1em;
   text-align: center;
 }
 
 .launching h2 {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+}
+
+.launching .google-play-badge {
+  padding: 0.5em;
 }
 
 .solid-background {
@@ -246,4 +249,14 @@ img.funding-image {
 
 .socials-image>img {
   max-width: 100%;
+}
+
+.docs.solid-background {
+  padding: 1em;
+  padding-bottom: 0.75em;
+}
+
+.docs.solid-background a {
+  color: var(--white);
+  padding: 1em;
 }
