@@ -1,472 +1,375 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <title>HOMEi</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="MEET HOMEi, your helpful housemate" />
-    <meta name="author" content="James Dudson, Drew Morgan" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="MEET HOMEi, your helpful housemate"/>
+    <meta name="author" content="James Dudson, Drew Morgan"/>
 
-    <link rel="icon" href="images/logo64.png" />
-    <link rel="apple-touch-icon" href="iamges/logo192.png" />
+    <link rel="icon" href="images/logo64.png"/>
+    <link rel="apple-touch-icon" href="images/logo192.png"/>
 
-    <link href="styles/style.css" rel="stylesheet" type="text/css" />
-    <link href="styles/mailchimp.css" rel="stylesheet" type="text/css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-  </head>
+    <link href="styles/mailchimp.css" rel="stylesheet" type="text/css"/>
+    <link href="styles/materialize.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link href="styles/style.css" rel="stylesheet" type="text/css"/>
 
-  <body>
+    <script src="scripts/mailchimp.js"></script>
+    <script src="scripts/materialize.min.js"></script>
+</head>
+<body class="orange white-text">
+<nav class="nav navbar white" style="height: 64px">
+    <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo left" style="left: 0.5rem !important;">
+            <img src="images/Logo478.png" alt="Company Logo" style="height: 64px">
+            <img src="images/CompanyText.png" alt="Company Name" style="height: 64px">
+        </a>
+        <a href="#" data-target="mobile-demo" class="right sidenav-trigger orange-text"><i
+                class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="about-us.html" class="orange-text">About Us</a></li>
+            <li><a href="features.html" class="orange-text">Features</a></li>
+            <li><a href="faq.html" class="orange-text">FAQs</a></li>
+        </ul>
+    </div>
+</nav>
+<ul class="right sidenav" id="mobile-demo">
+    <li><a href="about-us.html" class="orange-text">About Us</a></li>
+    <li><a href="features.html" class="orange-text">Features</a></li>
+    <li><a href="faq.html" class="orange-text">FAQs</a></li>
+</ul>
+
+<div class="main-body">
+    <div style="width: 100%; position: absolute; overflow: hidden; height: 1000px;">
+        <img src="images/happy_people.png" class="overlap-image">
+    </div>
+
+    <!--    Section 1    -->
+    <div id="top-text">
+        <div class="row">
+            <h3 class="col s10 offset-s1 center-align">
+                Optimise your University Experience with HOMEi
+            </h3>
+        </div>
+        <div class="row">
+            <h5 class="col s10 offset-s1 center-align">
+                The student household organisation app
+            </h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s4 offset-s2">
+            <img src="images/app-store-apple-logo.svg">
+        </div>
+        <div class="col s4 offset-s6">
+            <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app&pcampaignid=web_share"
+            style="height: 100%; display: grid; z-index: 10; position: relative;">
+                <img src="images/google-play-badge-logo.svg">
+            </a>
+        </div>
+    </div>
+
+    <!--    Section 2    -->
+    <div class="gradient-container" style="background: linear-gradient(transparent 15%, #ff6a00 17%)">
+        <div class="row pt-3">
+            <div class="col s3">
+                <img src="images/squares_yellow.svg" style="width: 300%; left: -200%; top: 5%; position: relative">
+            </div>
+            <img src="images/phone.svg" class="col s6 offset-s3 phone-svg" style="width: 100%; z-index: 3;">
+            <div class="col s3">
+                <img src="images/squares_circle.svg" style="width: 250%; top: 5%; position: relative">
+            </div>
+        </div>
+        <div class="row phone-video-container"
+             style="position: absolute; z-index: 2; max-width: none !important; width: 100% !important;">
+            <div class="col s6 offset-s3 phone-video" style="margin-left: 5%; margin-right: 5%;">
+                <video class="video" style="height: auto;
+                                            width: 100%;
+                                            transform: translateY(-103.1%);
+                                            border-radius: 20px;"
+                       autoplay muted loop>
+                    <source src="images/phone_video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <img style="position: absolute; transform: translateY(-50%); width: 80vw; left:10vw" src="images/dots_circle.svg">
+
+        <div class="row">
+            <h2 class="col s8 offset-s2 center-align" style="z-index: 2; text-shadow: 3px 3px 20px black">
+                Meet your new favourite housemate
+            </h2>
+        </div>
+        <div class="row">
+            <h5 class="col s8 offset-s2 center-align" style="z-index: 2; text-shadow: 3px 3px 20px black">
+                Students all over the country are levelling up their uni experience with HOMEi, the worlds first student
+                household organisation app.
+            </h5>
+        </div>
+        <div class="row">
+            <h5 class="col s8 offset-s2 center-align" style="z-index: 2; text-shadow: 3px 3px 20px black">
+                Hear their stories
+            </h5>
+        </div>
+        <div class="row">
+            <a href="#" class="white-text center-align col s8 offset-s2" style="z-index: 2;">
+                <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="row pt-3" style="position: absolute; z-index: 5; height: 0;">
+        <div class="col s2">
+            <img src="images/diagonal_squares_outline.svg" style="width: 250%; left: -150%; top: -70%; position: relative;">
+        </div>
+        <div class="col s2 offset-s10">
+            <img src="images/U_squares.svg" style="width: 160%; top: -50%; position: relative;">
+        </div>
+    </div>
+
+    <!--    Section 3    -->
+    <!--    Needs turning into a vertical carousel    -->
+    <div class="carousel carousel-slider center carousel-top" style="z-index: 4;">
+        <div class="carousel-item" href="#one!">
+            <div class="container" style="background-image: url('images/towel_tidy.png'); background-size: cover;
+             margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
+                <div style="backdrop-filter: blur(5px); height: 100%">
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <h2 class="col s10 offset-s1 center-align" style="font-size: xxx-large; text-shadow: 3px 3px 20px black">
+                            A tidier home
+                        </h2>
+                    </div>
+                    <div class="row" style="height: 50%; align-content: center;">
+                        <h5 class="col s10 offset-s1 center-align">
+                            Assign and manage household tasks with HOMEi's chore management feature
+                        </h5>
+                    </div>
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <a href="#" class="white-text center-align col s12">
+                            <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item" href="#two!">
+            <div class="container" style="background-image: url('images/Calendar.png'); background-size: cover;
+             margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
+                <div style="backdrop-filter: blur(5px); height: 100%">
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <h2 class="col s10 offset-s1 center-align" style="font-size: xxx-large; text-shadow: 3px 3px 20px black">
+                            Never Miss a Deadline
+                        </h2>
+                    </div>
+                    <div class="row" style="height: 50%; align-content: center;">
+                        <h5 class="col s10 offset-s1 center-align">
+                            Keep track of important dates and deadlines with HOMEi's built-in shared calendar
+                        </h5>
+                    </div>
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <a href="#" class="white-text center-align col s12">
+                            <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item" href="#three!">
+            <div class="container" style="background-image: url('images/Shopping.png'); background-size: cover;
+             margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
+                <div style="backdrop-filter: blur(5px); height: 100%">
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <h2 class="col s10 offset-s1 center-align" style="font-size: xxx-large; text-shadow: 3px 3px 20px black">
+                            Share Shopping Lists
+                        </h2>
+                    </div>
+                    <div class="row" style="height: 50%; align-content: center;">
+                        <h5 class="col s10 offset-s1 center-align">
+                            Simplify the weekly shop and share shopping lists with your housemates
+                        </h5>
+                    </div>
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <a href="#" class="white-text center-align col s12">
+                            <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="carousel-item" href="#four!">
+            <div class="container" style="background-image: url('images/Banking.png'); background-size: cover;
+             margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
+                <div style="backdrop-filter: blur(5px); height: 100%">
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <h2 class="col s10 offset-s1 center-align" style="font-size: xxx-large; text-shadow: 3px 3px 20px black">
+                            No More Late Payments
+                        </h2>
+                    </div>
+                    <div class="row" style="height: 50%; align-content: center;">
+                        <h5 class="col s10 offset-s1 center-align">
+                            HOMEi's bill split feature makes it easy to divide bills amongst housemates
+                        </h5>
+                    </div>
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <a href="#" class="white-text center-align col s12">
+                            <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pt-3" style="position: absolute; z-index: 5; height: 0;">
+        <div class="col s2">
+            <img src="images/U_squares.svg" style="width: 250%; left: -150%; top: -35%; position: relative;">
+        </div>
+        <div class="col s2 offset-s10">
+            <img src="images/blob.svg" style="width: 300%; top: -50%; left: -70%; position: relative;">
+        </div>
+    </div>
+
+    <!--    Section 5    -->
+    <div class="row">
+        <h2 class="col s8 offset-s2 center-align" style="text-shadow: 3px 3px 20px black">
+            How do <span style="-webkit-text-stroke: 2px white; text-shadow: 3px 3px 20px black" class="orange-text"> you </span> use HOMEi?
+        </h2>
+    </div>
+    <a class="white-text center-align carousel-left-bottom" style="z-index: 10; position: absolute;">
+        <i class="material-icons medium rotate-90">expand_circle_down</i>
+    </a>
+    <a class="white-text center-align carousel-right-bottom" style="z-index: 10; position: absolute; right: 0">
+        <i class="material-icons medium rotate-270">expand_circle_down</i>
+    </a>
+    <div class="row carousel-row">
+        <div class="carousel carousel-slider center col s12 carousel-bottom" style="z-index: 5;">
+            <div class="carousel-item" href="#one!">
+                <img src="images/Carousel1.png" style="width: 60%; position: absolute; left: 20%; top: 10%; z-index: 2;">
+                <img class="carousel-item-bottom" style="position: absolute; width: 80%; left: 10%;" src="images/dots_circle.svg">
+            </div>
+            <div class="carousel-item" href="#two!">
+                <img src="images/Carousel2.png" style="width: 60%; position: absolute; left: 20%; top: 10%; z-index: 2;">
+                <img style="position: absolute; width: 80%; left: 10%;" src="images/dots_circle.svg">
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div>
+    <img style="position: relative; top: 8px" src="images/waves.svg">
+</div>
+
+<footer class="yellow lighten-1">
     <div class="container">
-      <main>
-        <div class="launching">
-          <div class="row">
-            <div class="col-6 col-md-8 text-center">
-              <a
-                href="https://play.google.com/store/apps/details?id=com.homeistudent.app&pcampaignid=web_share"
-              >
-                <h2>Out Now!</h2>
-              </a>
+        <div class="row">
+            <div class="col s6">
+                <a href="about-us.html"><h6 class="white-text">About Us</h6></a>
+                <a href="faq.html"><h6 class="white-text">FAQs</h6></a>
+                <a href="contact.html"><h6 class="white-text">Contact Us</h6></a>
             </div>
-            <div class="col-6 col-md-4 text-center">
-              <a
-                href="https://play.google.com/store/apps/details?id=com.homeistudent.app&pcampaignid=web_share"
-              >
-                <img
-                  class="google-play-badge"
-                  src="images/google-play-badge.png"
-                  alt="Google Play"
-                />
-              </a>
+            <div class="col s6">
+                <a href="privacy-policy.html"><h6 class="white-text">Privacy Policy</h6></a>
+                <a href="terms-and-conditions.html"><h6 class="white-text">Terms & Conditions</h6></a>
             </div>
-          </div>
         </div>
-
-        <div class="meet-homei solid-background">
-          <div class="row">
-            <div class="col-12 col-md-8 intro">
-              <h1 class="title-margin">Meet <strong>HOMEi</strong></h1>
-              <h4 class="subtitle">
-                <strong>your helpful housemate</strong>
-              </h4>
-              <h4 class="orange header-margin">
-                The world's first household organiser designed by students for
-                students
-              </h4>
-              <div class="row">
-                <div class="col-7">
-                  <button
-                    type="button"
-                    class="btn btn-warning"
-                    data-bs-toggle="modal"
-                    data-bs-target="#mailchimp-subscribe"
-                  >
-                    Subscribe to our mailing list and enter our £50 Nandos
-                    giveaway!
-                  </button>
-                </div>
-                <div class="col-5">
-                  <img
-                    src="images/nandos.png"
-                    alt="Nandos"
-                    style="width: 100%; max-width: 137px"
-                  />
-                </div>
-              </div>
+        <div class="row">
+            <div class="col s3">
+                <img src="images/app-store-apple-logo.svg">
             </div>
-            <div class="col-12 col-md-4 text-center">
-              <img src="images/I1.png" alt="App" />
+            <div class="col s3">
+                <img src="images/google-play-badge-logo.svg">
             </div>
-          </div>
+            <div class="col s2">
+                <img style="width: 100%" src="images/facebook.svg">
+            </div>
+            <div class="col s2">
+                <img style="width: 100%" src="images/instagram.svg">
+            </div>
+            <div class="col s2">
+                <img style="width: 100%" src="images/tiktok.svg">
+            </div>
         </div>
-
-        <div class="funding white-background">
-          <div class="row justify-content-center text-center">
-            <div class="col-12 header-margin">
-              <h2 class="header-margin">Partnerships</h2>
-            </div>
-            <div class="col-md-3">
-              <a
-                href="https://www.sheffield.ac.uk/entrepreneurship"
-                target="_blank"
-              >
-                <img
-                  class="funding-image link rounded-corners"
-                  src="images/I6.jpg"
-                  alt="UoS Emerge"
-                />
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a
-                href="https://www.british-business-bank.co.uk/"
-                target="_blank"
-              >
-                <img
-                  class="funding-image link rounded-corners"
-                  src="images/I7.png"
-                  alt="British Business Bank"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="solid-background coming-soon">
-          <div class="col-12">
-            <div class="image-crop">
-              <div class="image">
-                <img src="images/I5.jpeg" alt="Students" width="100%" />
-                <div class="body">
-                  <h3 class="header-margin">
-                    <strong>Out Now!</strong>
-                  </h3>
-                  <button
-                    type="button"
-                    class="btn btn-warning"
-                    data-bs-toggle="modal"
-                    data-bs-target="#mailchimp-subscribe"
-                  >
-                    Subscribe to our newsletter
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="what-is-homei white-background">
-          <div class="row">
-            <div class="col-12">
-              <h2 class="header-margin">
-                <strong>How can HOMEi help you?</strong>
-              </h2>
-            </div>
-            <div class="col-12 col-md-4 feature">
-              <div class="row">
-                <div class="col-12 feature-image">
-                  <img src="images/I2.png" alt="Chores" />
-                </div>
-                <div class="col-12 feature-description">
-                  <h3>Manage Tasks</h3>
-                  <p>
-                    Quickly and easily organise your and your households&rsquo;
-                    chores, shopping lists, and deadlines
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-4 feature">
-              <div class="row">
-                <div class="col-12 feature-image">
-                  <img src="images/I3.png" alt="Bills" />
-                </div>
-                <div class="col-12 feature-description">
-                  <h3>Split Bills</h3>
-                  <p>
-                    Split bills seamlessly with HOMEi&rsquo;s bill splitter and
-                    debt tracker
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-4 feature">
-              <div class="row">
-                <div class="col-12 feature-image">
-                  <img src="images/I4.png" alt="Calendars" />
-                </div>
-                <div class="col-12 feature-description">
-                  <h3>Calendar</h3>
-                  <p>
-                    Make sure things don&rsquo;t get lost in the group chat with
-                    HOMEi&rsquo;s time optimising personal and communal calendar
-                    system
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="news solid-background">
-          <div class="row">
-            <div class="col-12 header-margin">
-              <h2 class="header-margin">News</h2>
-            </div>
-            <div class="col-12">
-              <a
-                href="https://www.sheffield.ac.uk/entrepreneurship/start-ups-and-successes/messy-flat-genius-app-student-creates-homei-end-shared-living-struggles"
-                target="_blank"
-              >
-                <img
-                  id="article"
-                  class="link rounded-corners"
-                  src="images/article.png"
-                  alt="Article"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="socials white-background">
-          <div class="row">
-            <div class="col-12 header">
-              <h2 class="header-margin">Contact Us</h2>
-            </div>
-          </div>
-          <div
-            class="elfsight-app-6e1aecd5-a7ca-4615-9921-8e0dbdee33a8"
-            data-elfsight-app-lazy
-          ></div>
-          <div class="row">
-            <div class="col-12 col-md-6 socials-links">
-              <div class="row">
-                <div class="col-12">
-                  <a
-                    href="https://www.instagram.com/homeistudent?igsh=MWw2eDRoY3N3aTF6cg%3D%3D&utm_source=qr"
-                    target="_blank"
-                  >
-                    <img
-                      class="rounded-corners socials-link"
-                      src="images/I9.1.png"
-                      alt="Instagram"
-                    />
-                    &nbsp;&nbsp;&nbsp;@homeistudent
-                  </a>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <a
-                    href="https://www.facebook.com/share/F4vn5MzDTavZiyKQ/?mibextid=LQQJ4d"
-                    target="_blank"
-                  >
-                    <img
-                      class="rounded-corners socials-link"
-                      src="images/I9.2.png"
-                      alt="Facebook"
-                    />
-                    &nbsp;&nbsp;&nbsp;@HomeiStudent
-                  </a>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <a
-                    href="https://www.tiktok.com/@homeistudent?_t=8mpq1hxbHUn&_r=1"
-                    target="_blank"
-                  >
-                    <img
-                      class="rounded-corners socials-link"
-                      src="images/I9.3.png"
-                      alt="TikTok"
-                    />
-                    &nbsp;&nbsp;&nbsp;@homeistudent
-                  </a>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <a href="mailto:info.homeistudent@gmail.com">
-                    <img
-                      class="rounded-corners socials-link"
-                      src="images/I9.4.png"
-                      alt="Email"
-                    />
-                    &nbsp;&nbsp;&nbsp;info.homeistudent@gmail.com
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 socials-image">
-              <img
-                class="rounded-corners"
-                src="images/I8.png"
-                alt="James Dudson"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="docs solid-background">
-          <div class="row">
-            <div class="col-6 text-center">
-              <a href="./privacy-policy.html"> Privacy Policy </a>
-            </div>
-            <div class="col-6 text-center">
-              <a href="./terms-and-conditions.html"> Terms and Conditions </a>
-            </div>
-          </div>
-        </div>
-      </main>
     </div>
+</footer>
+</body>
 
-    <div
-      id="mailchimp-subscribe"
-      class="modal fade"
-      tabindex="-1"
-      role="dialog"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div id="mc_embed_shell">
-              <div id="mc_embed_signup">
-                <form
-                  action="https://gmail.us14.list-manage.com/subscribe/post?u=bddf26f0539d38d8df87f3399&amp;id=8718bc460f&amp;f_id=00b99fe0f0"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="validate"
-                  target="_blank"
-                >
-                  <div id="mc_embed_signup_scroll">
-                    <h2>Subscribe</h2>
-                    <div class="indicates-required">
-                      <span class="asterisk">*</span> indicates required
-                    </div>
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL"
-                        >Email Address
-                        <span class="asterisk">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        id="email-signup"
-                        name="EMAIL"
-                        class="required email"
-                        id="mce-EMAIL"
-                        required=""
-                        value=""
-                      />
-                    </div>
-                    <div id="mce-responses" class="clear foot">
-                      <div
-                        class="response"
-                        id="mce-error-response"
-                        style="display: none"
-                      ></div>
-                      <div
-                        class="response"
-                        id="mce-success-response"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div
-                      style="position: absolute; left: -5000px"
-                      aria-hidden="true"
-                    >
-                      /* real people should not fill this in and expect good
-                      things - do not remove this or risk form bot signups */
-                      <input
-                        type="text"
-                        name="b_bddf26f0539d38d8df87f3399_8718bc460f"
-                        tabindex="-1"
-                        value=""
-                      />
-                    </div>
-                    <div class="optionalParent">
-                      <div class="clear foot">
-                        <input
-                          type="submit"
-                          name="subscribe"
-                          id="mc-embedded-subscribe"
-                          class="button"
-                          value="Subscribe"
-                        />
-                        <p style="margin: 0px auto">
-                          <a
-                            href="http://eepurl.com/iQ_NjY"
-                            title="Mailchimp - email marketing made easy and fun"
-                            ><span
-                              style="
-                                display: inline-block;
-                                background-color: transparent;
-                                border-radius: 4px;
-                              "
-                              ><img
-                                class="refferal_badge"
-                                src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg"
-                                alt="Intuit Mailchimp"
-                                style="
-                                  width: 220px;
-                                  height: 40px;
-                                  display: flex;
-                                  padding: 2px 0px;
-                                  justify-content: center;
-                                  align-items: center;
-                                " /></span
-                          ></a>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        M.Sidenav.init(document.querySelectorAll('.sidenav'), {
+            edge: 'right'
+        });
+        M.Carousel.init(document.querySelectorAll('.carousel'), {});
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+        var phone_width = document.querySelector('.phone-svg').clientWidth
+        phone_width = phone_width - (phone_width * 0.10)
 
-    <script type="text/javascript" src="scripts/mailchimp.js"></script>
+        document.querySelector('.phone-video').style.width = phone_width + "px"
+        document.querySelector('.phone-video').style.marginLeft = (phone_width * 0.13) + "px"
+        document.querySelector('.phone-video').style.marginRight = (phone_width * 0.13) + "px"
 
-    <script
-      src="https://static.elfsight.com/platform/platform.js"
-      data-use-service-core
-      defer
-    ></script>
+        var phone_height = document.querySelector('.phone-svg').clientHeight
+        document.querySelector('.gradient-container').style.background = "linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%)"
 
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+        document.querySelector('.carousel-bottom').style.height = document.querySelector('.carousel-item-bottom').clientHeight + "px"
 
-      gtag("config", "G-W9VNT3B173");
-    </script>
+        var car_height = document.querySelector('.carousel-row').clientHeight
+        var button_height = document.querySelector('.carousel-left-bottom').clientHeight
+        car_height = (car_height * 0.5) - (button_height * 0.5)
+        document.querySelector('.carousel-left-bottom').style.transform = "translateY(" + car_height + "px)"
+        document.querySelector('.carousel-right-bottom').style.transform = "translateY(" + car_height + "px)"
 
-    <script type="text/javascript">
-      (function ($) {
-        window.fnames = new Array();
-        window.ftypes = new Array();
-        fnames[0] = "EMAIL";
-        ftypes[0] = "email";
-        fnames[1] = "FNAME";
-        ftypes[1] = "text";
-        fnames[2] = "LNAME";
-        ftypes[2] = "text";
-        fnames[3] = "ADDRESS";
-        ftypes[3] = "address";
-        fnames[4] = "PHONE";
-        ftypes[4] = "phone";
-        fnames[5] = "BIRTHDAY";
-        ftypes[5] = "birthday";
-      })(jQuery);
-      var $mcj = jQuery.noConflict(true);
+    });
 
-      const myModal = document.getElementById("mailchimp-subscribe");
-      const myInput = document.getElementById("email-signup");
 
-      myModal.addEventListener("shown.bs.modal", () => {
-        myInput.focus();
-      });
-    </script>
-  </body>
+    addEventListener("resize", () => {
+        var phone_width = document.querySelector('.phone-svg').clientWidth
+        phone_width = phone_width - (phone_width * 0.10)
+
+        document.querySelector('.phone-video').style.width = phone_width + "px"
+        document.querySelector('.phone-video').style.marginLeft = (phone_width * 0.13) + "px"
+        document.querySelector('.phone-video').style.marginRight = (phone_width * 0.13) + "px"
+
+        var phone_height = document.querySelector('.phone-svg').clientHeight
+        document.querySelector('.gradient-container').style.background = "linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%)"
+
+        document.querySelector('.carousel-bottom').style.height = document.querySelector('.carousel-item-bottom').clientHeight + "px"
+
+        var car_height = document.querySelector('.carousel-row').clientHeight
+        var button_height = document.querySelector('.carousel-left-bottom').clientHeight
+        car_height = (car_height * 0.5) - (button_height * 0.5)
+        document.querySelector('.carousel-left-bottom').style.transform = "translateY(" + car_height + "px)"
+        document.querySelector('.carousel-right-bottom').style.transform = "translateY(" + car_height + "px)"
+    })
+
+    document.querySelector('.carousel-left-bottom').addEventListener('click', () => {
+        var elem = document.querySelector('.carousel-bottom')
+        var instance = M.Carousel.getInstance(elem);
+
+        instance.prev()
+    })
+
+    document.querySelector('.carousel-right-bottom').addEventListener('click', () => {
+        var elem = document.querySelector('.carousel-bottom')
+        var instance = M.Carousel.getInstance(elem);
+
+        instance.next()
+    })
+
+    setInterval(myTimer, 5000);
+
+    function myTimer() {
+        var elem = document.querySelector('.carousel-top')
+        var instance = M.Carousel.getInstance(elem);
+
+        instance.next()
+    }
+
+</script>
 </html>
