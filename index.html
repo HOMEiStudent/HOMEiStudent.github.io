@@ -358,7 +358,12 @@
         document.querySelector('.phone-video').style.marginRight = (phone_width * 0.13) + "px"
 
         var phone_height = document.querySelector('.phone-svg').clientHeight
-        document.querySelector('.gradient-container').style.background = "linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%)"
+        document.querySelector('.gradient-container').style = "background: linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%);" +
+            "background: -moz-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
+            "background: -webkit-gradient(linear, left top, left bottom, color-stop(" + phone_height * 0.28 + "px,transparent), color-stop(" + phone_height * 0.30 + "px,#ffa000), color-stop(100%,#ff6a00)); " +
+            "background: -webkit-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
+            "background: -o-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
+            "background: -ms-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); "
 
         document.querySelector('.carousel-bottom').style.height = document.querySelector('.carousel-item-bottom').clientHeight + "px"
 
@@ -379,7 +384,12 @@
         document.querySelector('.phone-video').style.marginRight = (phone_width * 0.13) + "px"
 
         var phone_height = document.querySelector('.phone-svg').clientHeight
-        document.querySelector('.gradient-container').style.background = "linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%)"
+        document.querySelector('.gradient-container').style = "background: linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%);" +
+            "background: -moz-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
+            "background: -webkit-gradient(linear, left top, left bottom, color-stop(" + phone_height * 0.28 + "px,transparent), color-stop(" + phone_height * 0.30 + "px,#ffa000), color-stop(100%,#ff6a00)); " +
+            "background: -webkit-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
+            "background: -o-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
+            "background: -ms-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); "
 
         document.querySelector('.carousel-bottom').style.height = document.querySelector('.carousel-item-bottom').clientHeight + "px"
 
