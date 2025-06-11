@@ -17,7 +17,7 @@
     <link href="styles/style.css" rel="stylesheet" type="text/css"/>
 
     <script src="scripts/mailchimp.js"></script>
-    <script src="scripts/materialize.min.js"></script>
+    <script src="scripts/materialize.js"></script>
     <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
@@ -274,19 +274,19 @@
     </a>
     <div class="row carousel-row">
         <div class="carousel carousel-slider center col s12 carousel-bottom" style="z-index: 5;">
-            <div class="carousel-item" href="#one!">
+            <div class="carousel-item" href="#one!" style="min-height: 0 !important;">
                 <a href="features.html#people">
                     <img src="images/Carousel1.png"
-                         style="width: 60%; position: absolute; left: 20%; top: 10%; z-index: 2;">
-                    <img class="carousel-item-bottom" style="position: absolute; width: 80%; left: 10%;"
+                         style="width: 60vw; position: absolute; left: 20vw; top: 10vw; z-index: 2;">
+                    <img class="carousel-item-bottom" style="position: absolute; width: 80vw; left: 10vw;"
                          src="images/dots_circle.svg">
                 </a>
             </div>
-            <div class="carousel-item" href="#two!">
+            <div class="carousel-item" href="#two!" style="min-height: 0 !important;">
                 <a href="features.html#people">
                     <img src="images/Carousel2.png"
-                         style="width: 60%; position: absolute; left: 20%; top: 10%; z-index: 2;">
-                    <img style="position: absolute; width: 80%; left: 10%;" src="images/dots_circle.svg">
+                         style="width: 60vw; position: absolute; left: 20vw; top: 10vw; z-index: 2;">
+                    <img style="position: absolute; width: 80vw; left: 10vw;" src="images/dots_circle.svg">
                 </a>
             </div>
 
@@ -342,6 +342,13 @@
             edge: 'right'
         });
         M.Carousel.init(document.querySelectorAll('.carousel'), {});
+    });
+
+    window.addEventListener("load", () => {
+        var elem = document.querySelector('.carousel-bottom')
+        var instance = M.Carousel.getInstance(elem);
+
+        instance.prev()
 
         var phone_width = document.querySelector('.phone-svg').clientWidth
         phone_width = phone_width - (phone_width * 0.10)
@@ -360,7 +367,6 @@
         car_height = (car_height * 0.5) - (button_height * 0.5)
         document.querySelector('.carousel-left-bottom').style.transform = "translateY(" + car_height + "px)"
         document.querySelector('.carousel-right-bottom').style.transform = "translateY(" + car_height + "px)"
-
     });
 
 
