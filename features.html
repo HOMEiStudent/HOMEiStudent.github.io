@@ -42,7 +42,12 @@
 </ul>
 
 <div class="main-body">
-  </div>
+    <section id="tidy"></section>
+    <section id="dates"></section>
+    <section id="shopping"></section>
+    <section id="payments"></section>
+    <section id="people"></section>
+</div>
 
 <div>
     <img style="position: relative; top: 8px" src="images/waves.svg">
@@ -84,8 +89,19 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-      M.Sidenav.init(document.querySelectorAll('.sidenav'), {
-        edge: 'right'
-      });
+        M.Sidenav.init(document.querySelectorAll('.sidenav'), {
+            edge: 'right'
+        });
     })
+
+    window.addEventListener("load", function () {
+        const hash = window.location.hash;
+        if (hash) {
+            const targetElement = document.querySelector(hash);
+            if (targetElement) {
+                targetElement.scrollIntoView({behavior: "smooth"});
+            }
+        }
+    });
+
 </script>
