@@ -277,19 +277,30 @@
     </a>
     <div class="row carousel-row">
         <div class="carousel carousel-slider center col s12 carousel-bottom" style="z-index: 5;">
-            <div class="carousel-item" href="#one!" style="min-height: 0 !important;">
+            <div class="carousel-item container" href="#one!" style="min-height: 0 !important;">
                 <a href="features.html#people">
-                    <img src="images/Carousel1.png"
-                         style="width: 60vw; position: absolute; left: 20vw; top: 10vw; z-index: 2;">
-                    <img class="carousel-item-bottom" style="position: absolute; width: 80vw; left: 10vw;"
-                         src="images/dots_circle.svg">
+                    <div class="row">
+                        <img class="col s12" src="images/Carousel1.png"
+                             style="width: 60vw; position: absolute; left: 20vw; top: 10vw; z-index: 2;">
+                        <img class="carousel-item-bottom col s12" style="position: relative; width: 80vw; left: 10vw;"
+                             src="images/dots_circle.svg">
+                    </div>
+                    <div class="row">
+                        <h1 class="col s12 carousel-bottom-text white-text" style="margin: 0 !important;" data-original-font-size="100px">The Party Planner</h1>
+                    </div>
                 </a>
             </div>
             <div class="carousel-item" href="#two!" style="min-height: 0 !important;">
                 <a href="features.html#people">
-                    <img src="images/Carousel2.png"
-                         style="width: 60vw; position: absolute; left: 20vw; top: 10vw; z-index: 2;">
-                    <img style="position: absolute; width: 80vw; left: 10vw;" src="images/dots_circle.svg">
+                    <div class="row">
+                        <img class="col s12" src="images/Carousel2.png"
+                             style="width: 60vw; position: absolute; left: 20vw; top: 10vw; z-index: 2;">
+                        <img class="carousel-item-bottom col s12" style="position: relative; width: 80vw; left: 10vw;"
+                             src="images/dots_circle.svg">
+                    </div>
+                    <div class="row">
+                        <h1 class="col s12 carousel-bottom-text white-text" style="margin: 0 !important;" data-original-font-size="100px">The Chef</h1>
+                    </div>
                 </a>
             </div>
 
@@ -347,6 +358,45 @@
         M.Carousel.init(document.querySelectorAll('.carousel'), {});
     });
 
+    function adjustCarouselText() {
+        const elements = document.querySelectorAll('.carousel-bottom-text');
+        if (elements.length === 0) {
+            return; // Exit if no elements are found
+        }
+
+        const fontSizes = [];
+
+        elements.forEach(element => {
+            element.style.fontSize = '';
+
+            let originalFontSize = element.getAttribute('data-original-font-size');
+
+            if (!originalFontSize) {
+                originalFontSize = window.getComputedStyle(element).fontSize;
+                element.setAttribute('data-original-font-size', originalFontSize);
+            }
+
+            let currentFontSize = parseInt(originalFontSize);
+            element.style.fontSize = currentFontSize + 'px';
+
+            while (element.scrollHeight > element.clientHeight && currentFontSize > 0) {
+                currentFontSize--;
+                element.style.fontSize = currentFontSize + 'px';
+            }
+
+            fontSizes.push(currentFontSize);
+        });
+
+        if (fontSizes.length > 0) {
+            const minSize = Math.min(...fontSizes); // Using spread syntax is cleaner
+            const finalSize = Math.max(0, minSize - 2); // Ensure it doesn't go below 0
+
+            elements.forEach(element => {
+                element.style.fontSize = finalSize + 'px';
+            });
+        }
+    }
+
     window.addEventListener("load", () => {
         var elem = document.querySelector('.carousel-bottom')
         var instance = M.Carousel.getInstance(elem);
@@ -368,7 +418,10 @@
             "background: -o-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
             "background: -ms-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); "
 
-        document.querySelector('.carousel-bottom').style.height = document.querySelector('.carousel-item-bottom').clientHeight + "px"
+        document.querySelector('.carousel-bottom').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 1.25) + "px"
+        document.querySelector('.carousel-bottom-text').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 0.25) + "px"
+
+        adjustCarouselText()
 
         var car_height = document.querySelector('.carousel-row').clientHeight
         var button_height = document.querySelector('.carousel-left-bottom').clientHeight
@@ -377,6 +430,11 @@
         document.querySelector('.carousel-right-bottom').style.transform = "translateY(" + car_height + "px)"
     });
 
+    let resizeTimer;
+    function debouncedAdjustText() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(adjustCarouselText, 100); // Wait 100ms after the last resize event
+    }
 
     addEventListener("resize", () => {
         var phone_width = document.querySelector('.phone-svg').clientWidth
@@ -394,7 +452,10 @@
             "background: -o-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
             "background: -ms-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); "
 
-        document.querySelector('.carousel-bottom').style.height = document.querySelector('.carousel-item-bottom').clientHeight + "px"
+        document.querySelector('.carousel-bottom').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 1.25) + "px"
+        document.querySelector('.carousel-bottom-text').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 0.25) + "px"
+
+        debouncedAdjustText()
 
         var car_height = document.querySelector('.carousel-row').clientHeight
         var button_height = document.querySelector('.carousel-left-bottom').clientHeight
