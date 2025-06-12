@@ -66,7 +66,7 @@
     </div>
 
     <!--    Section 1    -->
-    <div id="top-text">
+    <div id="top-text" style="text-shadow: 4px 4px 8px black">
         <div class="row">
             <h3 class="col s10 offset-s1 center-align">
                 Optimise your University Experience with HOMEi
@@ -161,10 +161,10 @@
         <div class="carousel-item" href="#one!">
             <div class="container" style="background-image: url('images/towel_tidy.png'); background-size: cover;
              margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
-                <div style="backdrop-filter: blur(5px); height: 100%">
+                <div style="backdrop-filter: blur(5px); height: 100%; text-shadow: 4px 4px 8px black">
                     <div class="row" style="height: 25%; align-content: center;">
                         <h2 class="col s10 offset-s1 center-align"
-                            style="font-size: xxx-large; text-shadow: 3px 3px 20px black">
+                            style="font-size: xxx-large">
                             A tidier home
                         </h2>
                     </div>
@@ -184,10 +184,10 @@
         <div class="carousel-item" href="#two!">
             <div class="container" style="background-image: url('images/Calendar.png'); background-size: cover;
              margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
-                <div style="backdrop-filter: blur(5px); height: 100%">
+                <div style="backdrop-filter: blur(5px); height: 100%; text-shadow: 4px 4px 8px black">
                     <div class="row" style="height: 25%; align-content: center;">
                         <h2 class="col s10 offset-s1 center-align"
-                            style="font-size: xxx-large; text-shadow: 3px 3px 20px black">
+                            style="font-size: xxx-large">
                             Never Miss a Deadline
                         </h2>
                     </div>
@@ -207,10 +207,10 @@
         <div class="carousel-item" href="#three!">
             <div class="container" style="background-image: url('images/Shopping.png'); background-size: cover;
              margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
-                <div style="backdrop-filter: blur(5px); height: 100%">
+                <div style="backdrop-filter: blur(5px); height: 100%; text-shadow: 4px 4px 8px black">
                     <div class="row" style="height: 25%; align-content: center;">
                         <h2 class="col s10 offset-s1 center-align"
-                            style="font-size: xxx-large; text-shadow: 3px 3px 20px black">
+                            style="font-size: xxx-large">
                             Share Shopping Lists
                         </h2>
                     </div>
@@ -231,10 +231,10 @@
         <div class="carousel-item" href="#four!">
             <div class="container" style="background-image: url('images/Banking.png'); background-size: cover;
              margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
-                <div style="backdrop-filter: blur(5px); height: 100%">
+                <div style="backdrop-filter: blur(5px); height: 100%; text-shadow: 4px 4px 8px black">
                     <div class="row" style="height: 25%; align-content: center;">
                         <h2 class="col s10 offset-s1 center-align"
-                            style="font-size: xxx-large; text-shadow: 3px 3px 20px black">
+                            style="font-size: xxx-large">
                             No More Late Payments
                         </h2>
                     </div>
@@ -286,7 +286,11 @@
                              src="images/dots_circle.svg">
                     </div>
                     <div class="row">
-                        <h1 class="col s12 carousel-bottom-text white-text" style="margin: 0 !important;" data-original-font-size="100px">The Party Planner</h1>
+                        <h1 class="col s12 carousel-bottom-text white-text"
+                            style="margin: 0 !important; text-shadow: 3px 3px 20px black"
+                            data-original-font-size="100px">
+                            The Party Planner
+                        </h1>
                     </div>
                 </a>
             </div>
@@ -299,7 +303,11 @@
                              src="images/dots_circle.svg">
                     </div>
                     <div class="row">
-                        <h1 class="col s12 carousel-bottom-text white-text" style="margin: 0 !important;" data-original-font-size="100px">The Chef</h1>
+                        <h1 class="col s12 carousel-bottom-text white-text"
+                            style="margin: 0 !important; text-shadow: 3px 3px 20px black"
+                            data-original-font-size="100px">
+                            The Chef
+                        </h1>
                     </div>
                 </a>
             </div>
@@ -358,6 +366,32 @@
         M.Carousel.init(document.querySelectorAll('.carousel'), {});
     });
 
+    function resizeItems() {
+        var phone_width = document.querySelector('.phone-svg').clientWidth
+        phone_width = phone_width - (phone_width * 0.10)
+
+        document.querySelector('.phone-video').style.width = phone_width + "px"
+        document.querySelector('.phone-video').style.marginLeft = (phone_width * 0.13) + "px"
+        document.querySelector('.phone-video').style.marginRight = (phone_width * 0.13) + "px"
+
+        var phone_height = document.querySelector('.phone-svg').clientHeight
+        document.querySelector('.gradient-container').style = "background: linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%);" +
+            "background: -moz-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
+            "background: -webkit-gradient(linear, left top, left bottom, color-stop(" + phone_height * 0.28 + "px,transparent), color-stop(" + phone_height * 0.30 + "px,#ffa000), color-stop(100%,#ff6a00)); " +
+            "background: -webkit-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
+            "background: -o-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
+            "background: -ms-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); "
+
+        document.querySelector('.carousel-bottom').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 1.25) + "px"
+        document.querySelector('.carousel-bottom-text').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 0.25) + "px"
+
+        var car_height = document.querySelector('.carousel-row').clientHeight
+        var button_height = document.querySelector('.carousel-left-bottom').clientHeight
+        car_height = (car_height * 0.5) - (button_height * 0.5)
+        document.querySelector('.carousel-left-bottom').style.transform = "translateY(" + car_height + "px)"
+        document.querySelector('.carousel-right-bottom').style.transform = "translateY(" + car_height + "px)"
+    }
+
     function adjustCarouselText() {
         const elements = document.querySelectorAll('.carousel-bottom-text');
         if (elements.length === 0) {
@@ -397,71 +431,33 @@
         }
     }
 
-    window.addEventListener("load", () => {
-        var elem = document.querySelector('.carousel-bottom')
-        var instance = M.Carousel.getInstance(elem);
-
-        instance.prev()
-
-        var phone_width = document.querySelector('.phone-svg').clientWidth
-        phone_width = phone_width - (phone_width * 0.10)
-
-        document.querySelector('.phone-video').style.width = phone_width + "px"
-        document.querySelector('.phone-video').style.marginLeft = (phone_width * 0.13) + "px"
-        document.querySelector('.phone-video').style.marginRight = (phone_width * 0.13) + "px"
-
-        var phone_height = document.querySelector('.phone-svg').clientHeight
-        document.querySelector('.gradient-container').style = "background: linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%);" +
-            "background: -moz-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
-            "background: -webkit-gradient(linear, left top, left bottom, color-stop(" + phone_height * 0.28 + "px,transparent), color-stop(" + phone_height * 0.30 + "px,#ffa000), color-stop(100%,#ff6a00)); " +
-            "background: -webkit-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
-            "background: -o-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
-            "background: -ms-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); "
-
-        document.querySelector('.carousel-bottom').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 1.25) + "px"
-        document.querySelector('.carousel-bottom-text').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 0.25) + "px"
-
-        adjustCarouselText()
-
-        var car_height = document.querySelector('.carousel-row').clientHeight
-        var button_height = document.querySelector('.carousel-left-bottom').clientHeight
-        car_height = (car_height * 0.5) - (button_height * 0.5)
-        document.querySelector('.carousel-left-bottom').style.transform = "translateY(" + car_height + "px)"
-        document.querySelector('.carousel-right-bottom').style.transform = "translateY(" + car_height + "px)"
-    });
-
     let resizeTimer;
     function debouncedAdjustText() {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(adjustCarouselText, 100); // Wait 100ms after the last resize event
     }
 
+    setInterval(moveCarousel, 5000);
+    function moveCarousel() {
+        var elem = document.querySelector('.carousel-top')
+        var instance = M.Carousel.getInstance(elem);
+
+        instance.next()
+    }
+
+    window.addEventListener("load", () => {
+        var elem = document.querySelector('.carousel-bottom')
+        var instance = M.Carousel.getInstance(elem);
+
+        instance.prev()
+
+        resizeItems()
+        adjustCarouselText()
+    });
+
     addEventListener("resize", () => {
-        var phone_width = document.querySelector('.phone-svg').clientWidth
-        phone_width = phone_width - (phone_width * 0.10)
-
-        document.querySelector('.phone-video').style.width = phone_width + "px"
-        document.querySelector('.phone-video').style.marginLeft = (phone_width * 0.13) + "px"
-        document.querySelector('.phone-video').style.marginRight = (phone_width * 0.13) + "px"
-
-        var phone_height = document.querySelector('.phone-svg').clientHeight
-        document.querySelector('.gradient-container').style = "background: linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%);" +
-            "background: -moz-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
-            "background: -webkit-gradient(linear, left top, left bottom, color-stop(" + phone_height * 0.28 + "px,transparent), color-stop(" + phone_height * 0.30 + "px,#ffa000), color-stop(100%,#ff6a00)); " +
-            "background: -webkit-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
-            "background: -o-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
-            "background: -ms-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); "
-
-        document.querySelector('.carousel-bottom').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 1.25) + "px"
-        document.querySelector('.carousel-bottom-text').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 0.25) + "px"
-
+        resizeItems()
         debouncedAdjustText()
-
-        var car_height = document.querySelector('.carousel-row').clientHeight
-        var button_height = document.querySelector('.carousel-left-bottom').clientHeight
-        car_height = (car_height * 0.5) - (button_height * 0.5)
-        document.querySelector('.carousel-left-bottom').style.transform = "translateY(" + car_height + "px)"
-        document.querySelector('.carousel-right-bottom').style.transform = "translateY(" + car_height + "px)"
     })
 
     document.querySelector('.carousel-left-bottom').addEventListener('click', () => {
@@ -477,15 +473,6 @@
 
         instance.next()
     })
-
-    setInterval(myTimer, 5000);
-
-    function myTimer() {
-        var elem = document.querySelector('.carousel-top')
-        var instance = M.Carousel.getInstance(elem);
-
-        instance.next()
-    }
 
 </script>
 </html>
