@@ -39,6 +39,7 @@
     </script>
 </head>
 <body class="orange white-text">
+<!--    Navigation Bar    -->
 <nav class="nav navbar white" style="height: 64px">
     <div class="nav-wrapper">
         <a href="index.html" class="brand-logo left" style="left: 0.5rem !important;">
@@ -60,12 +61,13 @@
     <li><a href="faq.html" class="orange-text">FAQs</a></li>
 </ul>
 
+<!--    Main Body    -->
 <div class="main-body" style="width: 100%; position: relative; overflow-x: hidden; height: 100%;">
+    <!--    Title Section    -->
     <div style="width: 100%; position: absolute; overflow: hidden; height: 1000px;">
         <img src="images/happy_people.png" class="overlap-image" alt="Happy People">
     </div>
 
-    <!--    Section 1    -->
     <div id="top-text" style="text-shadow: 4px 4px 8px black">
         <div class="row">
             <h3 class="col s10 offset-s1 center-align">
@@ -93,8 +95,9 @@
         </div>
     </div>
 
-    <!--    Section 2    -->
+    <!--    Phone Video Section    -->
     <div class="gradient-container" style="background: linear-gradient(transparent 15%, #ff6a00 17%)">
+        <!--    Phone outline with video    -->
         <div class="row pt-3">
             <div class="col s3">
                 <img src="images/squares_yellow.svg" style="width: 300%; left: -200%; top: 5%; position: relative" alt="Squares">
@@ -121,6 +124,7 @@
         <img style="position: absolute; transform: translateY(-50%); width: 80vw; left:10vw"
              src="images/dots_circle.svg" alt="Dots">
 
+        <!--    Below Text    -->
         <div class="row">
             <h2 class="col s8 offset-s2 center-align" style="z-index: 2; text-shadow: 3px 3px 20px black">
                 Meet your new favourite housemate
@@ -142,7 +146,6 @@
                 <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
             </a>
         </div>
-
     </div>
 
     <div class="row pt-3" style="position: absolute; z-index: 5; height: 0;">
@@ -155,9 +158,9 @@
         </div>
     </div>
 
-    <!--    Section 3    -->
-    <!--    Needs turning into a vertical carousel    -->
+    <!--    Features Carousel Section    -->
     <div class="carousel carousel-slider center carousel-top" style="z-index: 4;">
+
         <div class="carousel-item" href="#one!">
             <div class="container" style="background-image: url('images/towel_tidy.png'); background-size: cover;
              margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
@@ -181,6 +184,7 @@
                 </div>
             </div>
         </div>
+
         <div class="carousel-item" href="#two!">
             <div class="container" style="background-image: url('images/Calendar.png'); background-size: cover;
              margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
@@ -204,6 +208,7 @@
                 </div>
             </div>
         </div>
+
         <div class="carousel-item" href="#three!">
             <div class="container" style="background-image: url('images/Shopping.png'); background-size: cover;
              margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
@@ -226,8 +231,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
+
         <div class="carousel-item" href="#four!">
             <div class="container" style="background-image: url('images/Banking.png'); background-size: cover;
              margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
@@ -251,6 +256,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <div class="row pt-3" style="position: absolute; z-index: 5; height: 0;">
@@ -262,7 +268,7 @@
         </div>
     </div>
 
-    <!--    Section 5    -->
+    <!--    People Carousel Section    -->
     <div class="row">
         <h2 class="col s8 offset-s2 center-align" style="text-shadow: 3px 3px 20px black">
             How do <span style="-webkit-text-stroke: 2px white; text-shadow: 3px 3px 20px black" class="orange-text"> you </span>
@@ -277,6 +283,7 @@
     </a>
     <div class="row carousel-row">
         <div class="carousel carousel-slider center col s12 carousel-bottom" style="z-index: 5;">
+
             <div class="carousel-item container" href="#one!" style="min-height: 0 !important;">
                 <a href="features.html#people">
                     <div class="row">
@@ -294,6 +301,7 @@
                     </div>
                 </a>
             </div>
+
             <div class="carousel-item" href="#two!" style="min-height: 0 !important;">
                 <a href="features.html#people">
                     <div class="row">
@@ -317,6 +325,7 @@
 
 </div>
 
+<!--    Footer Section    -->
 <div>
     <img style="position: relative; top: 8px" src="images/waves.svg" alt="Waves">
 </div>
@@ -363,6 +372,8 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        // Load MaterializeCSS components
+
         M.Sidenav.init(document.querySelectorAll('.sidenav'), {
             edge: 'right'
         });
@@ -370,6 +381,9 @@
     });
 
     function resizeItems() {
+        // Function to resize webpage items on the window load and window resize
+
+        // Resize video to fit inside the phone SVG container
         let phone_width = document.querySelector('.phone-svg').clientWidth
         phone_width = phone_width - (phone_width * 0.10)
 
@@ -377,6 +391,7 @@
         document.querySelector('.phone-video').style.marginLeft = (phone_width * 0.13) + "px"
         document.querySelector('.phone-video').style.marginRight = (phone_width * 0.13) + "px"
 
+        // Reformat background gradient to match the height of the phone SVG container
         let phone_height = document.querySelector('.phone-svg').clientHeight
         document.querySelector('.gradient-container').style = "background: linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%);" +
             "background: -moz-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
@@ -385,9 +400,11 @@
             "background: -o-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
             "background: -ms-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); "
 
+        // Resize the bottom carousel to fit image and title inside
         document.querySelector('.carousel-bottom').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 1.25) + "px"
         document.querySelector('.carousel-bottom-text').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 0.25) + "px"
 
+        // Move left and right buttons for carousel bottom to be halfway down the carousel
         let car_height = document.querySelector('.carousel-row').clientHeight
         let button_height = document.querySelector('.carousel-left-bottom').clientHeight
         car_height = (car_height * 0.5) - (button_height * 0.5)
@@ -396,14 +413,13 @@
     }
 
     function adjustCarouselText() {
-        const elements = document.querySelectorAll('.carousel-bottom-text');
-        if (elements.length === 0) {
-            return; // Exit if no elements are found
-        }
+        // Function to adjust the font size of the text in the bottom carousel to fit inside its container
 
+        const elements = document.querySelectorAll('.carousel-bottom-text');
         const fontSizes = [];
 
         elements.forEach(element => {
+            // Adjust the font size until the text fits inside the container
             element.style.fontSize = '';
 
             let originalFontSize = element.getAttribute('data-original-font-size');
@@ -421,11 +437,13 @@
                 element.style.fontSize = currentFontSize + 'px';
             }
 
+            // Store the font size so it can match across slides
             fontSizes.push(currentFontSize);
         });
 
+        // Adjust the font size to match across all the slides
         if (fontSizes.length > 0) {
-            const minSize = Math.min(...fontSizes); // Using spread syntax is cleaner
+            const minSize = Math.min(...fontSizes);
             const finalSize = Math.max(0, minSize - 2); // Ensure it doesn't go below 0
 
             elements.forEach(element => {
@@ -434,12 +452,14 @@
         }
     }
 
+    // Stop text resizing being run too often
     let resizeTimer;
     function debouncedAdjustText() {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(adjustCarouselText, 100);
     }
 
+    // Move the top carousel every 5 seconds
     setInterval(moveCarousel, 5000);
     function moveCarousel() {
         let elem = document.querySelector('.carousel-top')
@@ -448,21 +468,24 @@
         instance.next()
     }
 
+    // On page load, resize items and adjust text
     window.addEventListener("load", () => {
+        // Move carousel to next item to correct for strange transformations
         let elem = document.querySelector('.carousel-bottom')
         let instance = M.Carousel.getInstance(elem);
-
         instance.prev()
 
         resizeItems()
         adjustCarouselText()
     });
 
+    // On window resize, resize items and adjust text
     addEventListener("resize", () => {
         resizeItems()
         debouncedAdjustText()
     })
 
+    // On carousel bottom click, move carousel to next or previous item
     document.querySelector('.carousel-left-bottom').addEventListener('click', () => {
         let elem = document.querySelector('.carousel-bottom')
         let instance = M.Carousel.getInstance(elem);
