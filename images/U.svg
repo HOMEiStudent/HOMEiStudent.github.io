@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="166 192 477 633">
     <path d="M296 477V193h88v266a85 85 0 0 0 85 85c47 0 85-38 85-85V193h88v284a173 173 0 0 1-346 0Zm0 0"
-          style="stroke:none;fill-rule:nonzero;fill:#ff791a;fill-opacity:1"/>
+          style="stroke:none;fill:#ff791a;"/>
 
     <path transform="translate(167, 190)"
           d="M1 458V1h88v439a85 85 0 0 0 85 85c47 0 85-38 85-85V1h88v457a173 173 0 0 1-346 0Zm0 0"

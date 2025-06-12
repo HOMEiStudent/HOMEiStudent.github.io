@@ -3,7 +3,7 @@
           d="M294 148v388h-75V163a72 72 0 0 0-72-72c-40 0-72 32-72 72v373H0V148a147 147 0 1 1 294 0Zm0 0"
           style="stroke:none;fill:#fff;fill-opacity:.5"/>
     <path d="M522 436v241h-75V451a72 72 0 0 0-72-72c-40 0-72 32-72 72v226h-75V436a147 147 0 1 1 294 0Zm0 0"
-          style="stroke:none;fill-rule:nonzero;fill:#ff791a;fill-opacity:1"/>
+          style="stroke:none;fill:#ff791a;"/>
 
     <g transform="scale(0.75) translate(103, 370)">
         <rect width="255" height="255" fill="#ffc800" transform="translate(268, 372) rotate(45, 50, 50)"/>

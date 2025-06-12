@@ -1,33 +1,13 @@
 <svg viewBox="32 55 273 225" xmlns="http://www.w3.org/2000/svg">
     <defs>
-        <pattern id="horizontalStripes"
-                 width="16" height="16"
-                 patternUnits="userSpaceOnUse"
-                 patternTransform="rotate(-45)">
+        <pattern id="horizontalStripes" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
             <rect width="16" height="8" fill="white"/>
         </pattern>
     </defs>
 
     <g transform="rotate(45, 155, 150)">
-
-        <rect
-                x="85" y="75" width="170" height="170"
-                rx="20" ry="20"
-                fill="#ffc513"
-        />
-        <rect
-                x="75" y="105" width="150" height="150"
-                rx="25" ry="25"
-                fill="none"
-                stroke="white"
-                stroke-width="3"
-        />
-
-        <rect
-                x="160" y="55" width="120" height="120"
-                rx="15" ry="15"
-                fill="url(#horizontalStripes)"
-        />
-
+        <rect x="85" y="75" width="170" height="170" rx="20" ry="20" fill="#ffc513" />
+        <rect x="75" y="105" width="150" height="150" rx="25" ry="25" fill="none" stroke="white" stroke-width="3" />
+        <rect x="160" y="55" width="120" height="120" rx="15" ry="15" fill="url(#horizontalStripes)" />
     </g>
 </svg>
