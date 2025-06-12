@@ -1,8 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="135 225 540 570">
-    <rect width="255" height="255" fill="#ff791a" transform="translate(268, 372) rotate(45, 50, 50)"/>
-    <rect width="110" height="110" fill="#ff791a" transform="translate(448, 250) rotate(45, 50, 50)"/>
-
-    <g transform="scale(2.5) translate(152, 205) rotate(225, 50, 50)" fill="#ffc800">
+<svg viewBox="5 5 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#ffc800">
         <rect x="6.75" y="6.75" width="6.5" height="6.5" transform="rotate(45 10 10)"/>
         <rect x="16.75" y="6.75" width="6.5" height="6.5" transform="rotate(45 20 10)"/>
         <rect x="26.75" y="6.75" width="6.5" height="6.5" transform="rotate(45 30 10)"/>

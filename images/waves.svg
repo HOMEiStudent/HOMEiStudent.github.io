@@ -1,15 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="30 370 750 278">
-    <defs>
-        <clipPath id="a">
-            <path d="M30 448h750v199.8H30z"/>
-        </clipPath>
-    </defs>
-    <g clip-path="url(#a)">
-        <path d="M779.8 501.8v145.8H30.1V448.7c43 54.7 135 138.8 259.6 124.7 123-10.9 246.6-100.9 380.9-88.9 42.6 3.9 78.3 9.3 109.2 17.3z"
-              style="fill:#ffc800;fill-rule:nonzero;stroke:none;fill-opacity:1"/>
-    </g>
+    <path d="M779.8 501.8v145.8H30.1V448.7c43 54.7 135 138.8 259.6 124.7 123-10.9 246.6-100.9 380.9-88.9 42.6 3.9 78.3 9.3 109.2 17.3z"
+          style="fill:#ffc800;stroke:none;"/>
     <path d="M220.7 594S112.5 616 30 565.3V498c30.3 32.9 95.9 89.5 190.6 96zm559.1-212.1h.1v85.7A619.8 619.8 0 0 0 653.7 451c-129.3-3.5-237.8 82.2-363.9 96.5a226 226 0 0 1-80.6-5.3c58.8 5.2 117.6-21.5 169.6-46 54.1-25.5 102.8-61 157-86.4a390.8 390.8 0 0 1 245-28z"
-          style="fill:#c50;fill-rule:nonzero;stroke:none;fill-opacity:1"/>
+          style="fill:#c50;stroke:none;"/>
     <path d="M779.8 501.8v44.6a764.9 764.9 0 0 0-83-18.6c-132.8-23.3-263.7 56-387 56.5a241.9 241.9 0 0 1-82.6-11.9 241 241 0 0 0 62.5 1c123-10.9 246.6-100.8 380.9-88.8 42.6 3.8 78.3 9.2 109.2 17.2z"
-          style="fill:#ff791a;fill-rule:nonzero;stroke:none;fill-opacity:1"/>
+          style="fill:#ff791a;stroke:none;"/>
 </svg>

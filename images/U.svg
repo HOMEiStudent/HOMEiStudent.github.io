@@ -1,38 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" version="1.2" viewBox="0 0 810 1012.5">
-    <defs>
-        <clipPath id="a">
-            <path d="M295 193h347v458H295Zm0 0"/>
-        </clipPath>
-        <clipPath id="b">
-            <path d="M168 190h347v631H168Zm0 0"/>
-        </clipPath>
-        <clipPath id="e">
-            <path d="M1 1h347v630H1Zm0 0"/>
-        </clipPath>
-        <clipPath id="d">
-            <path d="M0 0h348v632H0z"/>
-        </clipPath>
-        <filter id="f" width="100%" height="100%" x="0%" y="0%" filterUnits="objectBoundingBox">
-            <feColorMatrix in="SourceGraphic" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
-        </filter>
-    </defs>
-    <g clip-path="url(#a)">
-        <path d="M296 477V193h88v266a85 85 0 0 0 85 85c47 0 85-38 85-85V193h88v284a173 173 0 0 1-346 0Zm0 0"
-              style="stroke:none;fill-rule:nonzero;fill:#f7a01c;fill-opacity:1"/>
-    </g>
-    <g clip-path="url(#b)">
-        <g mask="url(#c)" transform="translate(167 190)">
-            <g clip-path="url(#d)">
-                <g clip-path="url(#e)">
-                    <path d="M1 458V1h88v439a85 85 0 0 0 85 85c47 0 85-38 85-85V1h88v457a173 173 0 0 1-346 0Zm0 0"
-                          style="stroke:none;fill-rule:nonzero;fill:#fff;fill-opacity:1"/>
-                </g>
-            </g>
-            <mask id="c">
-                <g filter="url(#f)">
-                    <path d="M0 0h810v1013H0z" style="fill:#000;fill-opacity:.5;stroke:none"/>
-                </g>
-            </mask>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="166 192 477 633">
+    <path d="M296 477V193h88v266a85 85 0 0 0 85 85c47 0 85-38 85-85V193h88v284a173 173 0 0 1-346 0Zm0 0"
+          style="stroke:none;fill-rule:nonzero;fill:#ff791a;fill-opacity:1"/>
+
+    <path transform="translate(167, 190)"
+          d="M1 458V1h88v439a85 85 0 0 0 85 85c47 0 85-38 85-85V1h88v457a173 173 0 0 1-346 0Zm0 0"
+          style="stroke:none;fill:#fff;opacity:.5;"/>
 </svg>
