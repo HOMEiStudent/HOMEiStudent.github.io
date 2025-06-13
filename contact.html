@@ -80,22 +80,22 @@
         <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
 
         <div class="s10 offset-s1 input-field outlined">
-            <input id="name" type="text" placeholder=" " maxlength="40" required>
+            <input id="name" type="text" placeholder=" " maxlength="40" autocomplete="name" required>
             <label for="name">Your Name*</label>
         </div>
 
         <div class="s10 offset-s1 input-field outlined">
-            <input id="email" type="email" placeholder=" " maxlength="320" required>
+            <input id="email" type="email" placeholder=" " maxlength="320" autocomplete="email" required>
             <label for="email">Your Email*</label>
         </div>
         <div class="input-field col s10 offset-s1 outlined">
-            <textarea id="textarea" class="materialize-textarea" placeholder="Write your message here" required></textarea>
-            <label for="textarea"></label>
+            <textarea id="textarea" class="materialize-textarea" placeholder=" " style="height: 40vh;" required></textarea>
+            <label for="textarea">Write your message here</label>
         </div>
 
         <input type="hidden" name="redirect" value="https://web3forms.com/success">
 
-        <button class="btn icon-right waves-effect waves-light col s4 offset-s4 l2 offset-l5 yellow lighten-1 white-text"
+        <button class="btn elevated icon-right waves-effect waves-light col s4 offset-s4 l2 offset-l5 yellow lighten-1 white-text"
                 type="submit" name="action" style="text-shadow: 3px 3px 20px black">
             Submit<i class="material-icons right">send</i>
         </button>

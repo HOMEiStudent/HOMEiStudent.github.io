@@ -21,6 +21,22 @@ body {
   flex: 1 0 auto;
 }
 
+.input-field label {
+    color: #373737 !important;
+}
+
+.input-field input {
+    color: #373737 !important;
+    border: 1px solid #373737 !important;
+    background-color: #0000000f !important;
+}
+
+.input-field textarea {
+    color: #373737 !important;
+    border: 1px solid #373737 !important;
+    background-color: #0000000f !important;
+}
+
 .rotate-90 {
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
