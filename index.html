@@ -13,13 +13,11 @@
     <link rel="icon" href="images/logo64.png"/>
     <link rel="apple-touch-icon" href="images/logo192.png"/>
 
-    <link href="styles/mailchimp.css" rel="stylesheet" type="text/css"/>
     <link href="styles/materialize.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
     <link href="styles/style.css" rel="stylesheet" type="text/css"/>
 
-    <script src="scripts/mailchimp.js"></script>
     <script src="scripts/materialize.js"></script>
     <script
             async
@@ -109,10 +107,15 @@
         </div>
         <div class="row phone-video-container"
              style="position: absolute; z-index: 2; max-width: none !important; width: 100% !important;">
-            <div class="col s6 offset-s3 phone-video" style="margin-left: 5%; margin-right: 5%;">
-                <video class="video" style="height: auto;
+            <div class="col s6 offset-s3 phone-video" style="position: absolute;">
+                <video class="video-background"
+                       style="position: absolute; width: 100%; height: 100%; object-fit: cover; filter: blur(3px); z-index: -1"
+                       autoplay muted loop playsinline>
+                    <source src="images/phone_video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <video class="video-foreground" style="height: auto;
                                             width: 100%;
-                                            transform: translateY(-103.1%);
                                             border-radius: 20px;"
                        autoplay muted loop playsinline>
                     <source src="images/phone_video.mp4" type="video/mp4">
@@ -378,6 +381,31 @@
             edge: 'right'
         });
         M.Carousel.init(document.querySelectorAll('.carousel'), {});
+
+        const backgroundVideo = document.querySelector('.video-background');
+        const foregroundVideo = document.querySelector('.video-foreground');
+
+        // Function to synchronise the videos
+        const syncVideos = () => {
+            if (backgroundVideo.readyState >= 3 && foregroundVideo.readyState >= 3) {
+                const seekTime = foregroundVideo.currentTime;
+                if (Math.abs(backgroundVideo.currentTime - seekTime) > 0.1) {
+                    backgroundVideo.currentTime = seekTime;
+                }
+            }
+        };
+
+        // Listen for time updates on the foreground video
+        foregroundVideo.addEventListener('timeupdate', syncVideos);
+
+        // Initial sync when both videos are ready to play
+        Promise.all([
+            new Promise(resolve => backgroundVideo.oncanplaythrough = resolve),
+            new Promise(resolve => foregroundVideo.oncanplaythrough = resolve)
+        ]).then(() => {
+            backgroundVideo.play();
+            foregroundVideo.play();
+        });
     });
 
     function resizeItems() {
@@ -385,14 +413,15 @@
 
         // Resize video to fit inside the phone SVG container
         let phone_width = document.querySelector('.phone-svg').clientWidth
-        phone_width = phone_width - (phone_width * 0.10)
+        let phone_height = document.querySelector('.phone-svg').clientHeight
 
-        document.querySelector('.phone-video').style.width = phone_width + "px"
-        document.querySelector('.phone-video').style.marginLeft = (phone_width * 0.13) + "px"
-        document.querySelector('.phone-video').style.marginRight = (phone_width * 0.13) + "px"
+        document.querySelector('.phone-video').style.width = (phone_width * 0.87) + "px"
+        document.querySelector('.phone-video').style.left = (phone_width * 0.073) + "px"
+        document.querySelector('.phone-video').style.transform = "translateY(-" + (phone_height * 0.98) + "px)"
+
+        document.querySelector('.video-foreground').style.height = (phone_height * 0.955) + "px"
 
         // Reformat background gradient to match the height of the phone SVG container
-        let phone_height = document.querySelector('.phone-svg').clientHeight
         document.querySelector('.gradient-container').style = "background: linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%);" +
             "background: -moz-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
             "background: -webkit-gradient(linear, left top, left bottom, color-stop(" + phone_height * 0.28 + "px,transparent), color-stop(" + phone_height * 0.30 + "px,#ffa000), color-stop(100%,#ff6a00)); " +
