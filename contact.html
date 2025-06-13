@@ -57,7 +57,50 @@
     <li><a href="faq.html" class="orange-text">FAQs</a></li>
 </ul>
 
-<div class="main-body" style="width: 100%; position: relative; overflow-x: hidden; height: 100%;">
+<div class="main-body" style="width: 100%; position: relative; overflow-x: hidden; height: 100%; overflow-y: hidden;">
+    <div class="row">
+        <h3 class="col s10 offset-s1 center-align white-text" style="text-shadow: 4px 4px 8px black">
+            Get in touch with us
+        </h3>
+    </div>
+    <div class="row">
+        <h5 class="col s10 offset-s1 center-align" style="text-shadow: 4px 4px 8px black">
+            Send us any questions, or just reach out to say hi, we are here to help.
+        </h5>
+    </div>
+
+    <img style="position: absolute; width: 80vw; left:-50vw; z-index: -1; top: 10vw;"
+             src="images/three_squares.svg" alt="Dots">
+
+    <img style="position: absolute; width: 50vw; right: -35vw; z-index: -1; top: 60vw;"
+             src="images/squares_blob.svg" alt="Dots">
+
+    <form class="row" action="https://api.web3forms.com/submit" method="POST">
+
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+
+        <div class="s10 offset-s1 input-field outlined">
+            <input id="name" type="text" placeholder=" " maxlength="40" required>
+            <label for="name">Your Name*</label>
+        </div>
+
+        <div class="s10 offset-s1 input-field outlined">
+            <input id="email" type="email" placeholder=" " maxlength="320" required>
+            <label for="email">Your Email*</label>
+        </div>
+        <div class="input-field col s10 offset-s1 outlined">
+            <textarea id="textarea" class="materialize-textarea" placeholder="Write your message here" required></textarea>
+            <label for="textarea"></label>
+        </div>
+
+        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
+        <button class="btn icon-right waves-effect waves-light col s4 offset-s4 l2 offset-l5 yellow lighten-1 white-text"
+                type="submit" name="action" style="text-shadow: 3px 3px 20px black">
+            Submit<i class="material-icons right">send</i>
+        </button>
+
+    </form>
 </div>
 
 <div>

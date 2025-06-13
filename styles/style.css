@@ -6,8 +6,19 @@
     font-style: normal;
 }
 
+html,
+button, input, optgroup, select, textarea {
+  font-family: 'CalSans', 'Calibri', sans-serif !important;
+}
+
 body {
-    font-family: 'CalSans', 'Calibri', sans-serif !important;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main-body {
+  flex: 1 0 auto;
 }
 
 .rotate-90 {

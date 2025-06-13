@@ -7023,7 +7023,7 @@ textarea.materialize-textarea {
     font-size: 16px;
     position: absolute;
     left: 16px;
-    top: 16px;
+    top: 20px;
     cursor: text;
     -webkit-transform-origin: top left;
     transform-origin: top left;
@@ -7105,7 +7105,7 @@ textarea.materialize-textarea {
 }
 
 .input-field.outlined input:not(:-moz-placeholder-shown) + label, .input-field.outlined textarea:not(:-moz-placeholder-shown) + label {
-    top: -8px;
+    top: -12px;
     left: 16px;
     margin-left: -4px;
     padding: 0 4px;
@@ -7113,7 +7113,7 @@ textarea.materialize-textarea {
 }
 
 .input-field.outlined input:not(:-ms-input-placeholder) + label, .input-field.outlined textarea:not(:-ms-input-placeholder) + label {
-    top: -8px;
+    top: -12px;
     left: 16px;
     margin-left: -4px;
     padding: 0 4px;
@@ -7121,7 +7121,7 @@ textarea.materialize-textarea {
 }
 
 .input-field.outlined input:focus:not([readonly]) + label, .input-field.outlined input:not([placeholder=" "]) + label, .input-field.outlined input:not(:placeholder-shown) + label, .input-field.outlined textarea:focus:not([readonly]) + label, .input-field.outlined textarea:not([placeholder=" "]) + label, .input-field.outlined textarea:not(:placeholder-shown) + label {
-    top: -8px;
+    top: -12px;
     left: 16px;
     margin-left: -4px;
     padding: 0 4px;
@@ -7226,7 +7226,7 @@ textarea {
 }
 
 textarea.materialize-textarea {
-    padding-top: 26px !important;
+    padding-top: 20px !important;
     padding-bottom: 4px !important;
     line-height: normal;
     overflow-y: hidden; /* prevents scroll bar flash */
