@@ -117,7 +117,7 @@ body {
     top: 50%;
     left: 50%;
     /* The final transform state: centered and not rotated. */
-    transform: translate(-50%, 0%) rotate(0deg);
+    transform: translate(-50%, -12%) rotate(0deg);
     max-width: 90vw;
     max-height: 80vh;
     width: auto;
