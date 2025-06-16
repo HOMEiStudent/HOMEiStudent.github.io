@@ -84,3 +84,46 @@ body {
         width: 310vw;
     }
 }
+
+/* Add a cursor to the original image to indicate it's clickable. */
+.zoom-image {
+    cursor: zoom-in;
+    height: 25vh; width: auto; transform: rotate(341deg)
+}
+
+.body-no-scroll {
+    overflow: hidden;
+}
+
+/* The semi-transparent backdrop for the zoomed view.
+   It also serves as the close button. */
+.zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    cursor: zoom-out;
+    /* Start transparent; GSAP will animate this property. */
+    opacity: 0;
+}
+
+/* The class applied to the image when it is in its final, zoomed state.
+   Flip will animate the element to match these properties. */
+.image-zoomed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* The final transform state: centered and not rotated. */
+    transform: translate(-50%, 0%) rotate(0deg);
+    max-width: 90vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    /* Must be higher than the overlay's z-index. */
+    z-index: 1001;
+    cursor: zoom-out;
+}

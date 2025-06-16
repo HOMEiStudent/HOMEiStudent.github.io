@@ -16,6 +16,8 @@
     <link href="styles/style.css" rel="stylesheet" type="text/css"/>
 
     <script src="scripts/materialize.js"></script>
+    <script src="scripts/gsap.min.js"></script>
+    <script src="scripts/Flip.min.js"></script>
     <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
@@ -57,12 +59,12 @@
 
 <div class="main-body" style="width: 100%; position: relative; overflow-x: hidden; height: 100%;">
     <section id="tidy" style="">
-        <div class="container" style="background-image: url('images/towel_tidy.png'); background-size: cover;
-             margin: 0 !important; width: 100% !important; max-width: none !important; height: 100%; z-index: -1;
+        <div class="container img-container" style="background-image: url('images/towel_tidy.png'); background-size: cover;
+             margin: 0 !important; width: 100% !important; max-width: none !important; height: 100%;
              position: relative;">
             <div class="row" style="height: 100%; backdrop-filter: blur(5px)">
                 <div class="col s4" style="align-content: center; height: 100%;">
-                    <img src="images/screenshot_filler.svg" style="height: 25vh; width: auto; transform: rotate(341deg)">
+                    <img class="zoom-image" src="images/screenshot_filler.svg" style="">
                 </div>
                 <div class="col s8 offset-s4">
                     <div class="row">
@@ -79,9 +81,9 @@
             </div>
         </div>
     </section>
-    <section id="dates" style="margin-top: 10px;">
-        <div class="container" style="background-image: url('images/Calendar.png'); background-size: cover;
-             margin: 0 !important; width: 100% !important; max-width: none !important; height: 100%; z-index: -1;
+    <section id="dates" style="margin-top: 10px; position: relative; z-index: -1;">
+        <div class="container img-container" style="background-image: url('images/Calendar.png'); background-size: cover;
+             margin: 0 !important; width: 100% !important; max-width: none !important; height: 100%;
              position: relative;">
             <div class="row" style="height: 100%; backdrop-filter: blur(5px)">
                 <div class="col s8">
@@ -102,13 +104,14 @@
             </div>
         </div>
     </section>
-    <section id="shopping" style="margin-top: 10px;">
-        <div class="container" style="background-image: url('images/Shopping.png'); background-size: cover;
-             margin: 0 !important; width: 100% !important; max-width: none !important; height: 100%; z-index: -1;
+    <section id="shopping" style="margin-top: 10px; position: relative; z-index: -1;">
+        <div class="container img-container" style="background-image: url('images/Shopping.png'); background-size: cover;
+             margin: 0 !important; width: 100% !important; max-width: none !important; height: 100%;
              position: relative;">
             <div class="row" style="height: 100%; backdrop-filter: blur(5px)">
                 <div class="col s4" style="align-content: center; height: 100%;">
-                    <img src="images/screenshot_filler.svg" style="height: 25vh; width: auto; transform: rotate(341deg)">
+                    <img src="images/screenshot_filler.svg"
+                         style="height: 25vh; width: auto; transform: rotate(341deg)">
                 </div>
                 <div class="col s8 offset-s4">
                     <div class="row">
@@ -125,9 +128,9 @@
             </div>
         </div>
     </section>
-    <section id="payments" style="margin-top: 10px;">
-        <div class="container" style="background-image: url('images/Banking.png'); background-size: cover;
-             margin: 0 !important; width: 100% !important; max-width: none !important; height: 100%; z-index: -1;
+    <section id="payments" style="margin-top: 10px; position: relative; z-index: -1;">
+        <div class="container img-container" style="background-image: url('images/Banking.png'); background-size: cover;
+             margin: 0 !important; width: 100% !important; max-width: none !important; height: 100%;
              position: relative;">
             <div class="row" style="height: 100%; backdrop-filter: blur(5px)">
                 <div class="col s8">
@@ -148,11 +151,11 @@
             </div>
         </div>
     </section>
-    <section id="people" style="margin-top: 10px;">
+    <section id="people" style="margin-top: 10px; position: relative; z-index: -1;">
         <div>
             <div class="row" style="position: absolute; transform: translate(-35%, 7.5%); z-index: 2;">
                 <img class="col s5" src="images/Carousel1.png"
-                             style="width: 170%" alt="Person 1">
+                     style="width: 170%" alt="Person 1">
             </div>
             <div class="row" style="position: absolute; width: 100%;">
                 <img class="col s2 offset-s5" src="images/quotation_mark.svg"
@@ -162,7 +165,7 @@
             </div>
             <div class="row" style="align-items: center">
                 <img class="col s5" style="position: relative; width: 200%; transform: translateX(-50%);"
-                 src="images/dots_circle.svg" alt="Dots">
+                     src="images/dots_circle.svg" alt="Dots">
 
                 <h5 class="col s7 offset-s5" style="text-align-last: center;">
                     Lorem Ipsum
@@ -173,7 +176,7 @@
         <div>
             <div class="row" style="position: absolute; transform: translate(5%, 7.5%); z-index: 2;">
                 <img class="col s5 offset-s7" src="images/Carousel2.png"
-                             style="width: 170%" alt="Person 1">
+                     style="width: 170%" alt="Person 1">
             </div>
             <div class="row" style="position: absolute; width: 100%;">
                 <img class="col s2" src="images/quotation_mark.svg"
@@ -187,7 +190,7 @@
                 </h5>
 
                 <img class="col s5 offset-s7" style="position: relative; width: 200%; transform: translateX(-2%);"
-                 src="images/dots_circle.svg" alt="Dots">
+                     src="images/dots_circle.svg" alt="Dots">
             </div>
         </div>
     </section>
@@ -239,6 +242,83 @@
         M.Sidenav.init(document.querySelectorAll('.sidenav'), {
             edge: 'right'
         });
+
+        gsap.registerPlugin(Flip);
+
+        const image = document.querySelector(".zoom-image");
+        const body = document.body;
+
+        if (!image) {
+            console.error("Zoom image element not found.");
+            return;
+        }
+
+        const overlay = document.createElement("div");
+        overlay.classList.add("zoom-overlay");
+
+        let isZoomed = false;
+        let isAnimating = false; // Prevents conflicts from rapid-fire clicks.
+
+        // --- Function to handle the zoom-in animation ---
+        function zoomIn() {
+            if (isZoomed || isAnimating) return;
+            isAnimating = true;
+
+            const state = Flip.getState(image);
+
+            body.appendChild(overlay);
+            image.classList.add("image-zoomed");
+            body.classList.add("body-no-scroll");
+
+            gsap.to(overlay, {opacity: 1, duration: 0.6});
+
+            Flip.from(state, {
+                duration: 0.6,
+                ease: "power3.inOut",
+                scale: true,      // Animate scale for performance.
+                absolute: true,   // Isolate the element from layout shifts.
+                onComplete: () => {
+                    isZoomed = true;
+                    isAnimating = false;
+                }
+            });
+        }
+
+        // --- Function to handle the zoom-out animation ---
+        function zoomOut() {
+            if (!isZoomed || isAnimating) return;
+            isAnimating = true;
+
+            const state = Flip.getState(image);
+
+            image.classList.remove("image-zoomed");
+            body.classList.remove("body-no-scroll");
+
+            gsap.to(overlay, {
+                opacity: 0,
+                duration: 0.6,
+                onComplete: () => {
+                    // Only remove the overlay from the DOM after it's invisible.
+                    if (overlay.parentNode) {
+                        body.removeChild(overlay);
+                    }
+                }
+            });
+
+            Flip.from(state, {
+                duration: 0.6,
+                ease: "power3.inOut",
+                scale: true,
+                absolute: true,
+                onComplete: () => {
+                    isZoomed = false;
+                    isAnimating = false;
+                }
+            });
+        }
+
+        image.addEventListener("click", zoomIn);
+        overlay.addEventListener("click", zoomOut);
     })
 
     window.addEventListener("load", function () {
@@ -249,6 +329,13 @@
                 targetElement.scrollIntoView({behavior: "smooth"});
             }
         }
+
+        let sections = document.querySelectorAll(".img-container")
+        sections.forEach(section => {
+            let currentHeight = section.clientHeight;
+
+            section.style.height = currentHeight + "px";
+        })
     });
 
 </script>
