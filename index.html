@@ -62,8 +62,10 @@
 <!--    Main Body    -->
 <div class="main-body" style="width: 100%; position: relative; overflow-x: hidden; height: 100%;">
     <!--    Title Section    -->
-    <div style="width: 100%; position: absolute; overflow: hidden; height: 1000px;">
-        <img src="images/happy_people.png" class="overlap-image" alt="Happy People">
+    <div class="parallax-container">
+        <div class="parallax" style="width: 100%;">
+            <img src="images/happy_people.png" class="overlap-image" alt="Happy People">
+        </div>
     </div>
 
     <div id="top-text" style="text-shadow: 4px 4px 8px black">
@@ -382,6 +384,7 @@
             edge: 'right'
         });
         M.Carousel.init(document.querySelectorAll('.carousel'), {});
+        M.Parallax.init(document.querySelectorAll('.parallax'), {});
 
         const backgroundVideo = document.querySelector('.video-background');
         const foregroundVideo = document.querySelector('.video-foreground');

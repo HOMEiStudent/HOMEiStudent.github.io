@@ -62,34 +62,25 @@ body {
 }
 
 .overlap-image {
-    position: absolute;
     z-index: -1;
     filter: blur(3px);
-    left: -230px;
-    width: 170vw;
-    top: -20px
+    width: 200vw;
 }
 
 @media only screen and (max-width: 600px) {
     .overlap-image {
-        left: -200px;
         width: 210vw;
-        top: -20px
     }
 }
 
 @media only screen and (max-width: 480px) {
     .overlap-image {
-        left: -200px;
         width: 270vw;
-        top: -20px
     }
 }
 
 @media only screen and (max-width: 350px) {
     .overlap-image {
-        left: -200px;
         width: 310vw;
-        top: -20px
     }
 }

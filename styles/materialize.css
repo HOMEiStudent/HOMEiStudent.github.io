@@ -3140,8 +3140,8 @@ video.responsive-video {
 }
 
 .parallax-container {
-    position: relative;
-    overflow: hidden;
+    position: absolute;
+    /*overflow: hidden;*/
     height: 500px;
 }
 
