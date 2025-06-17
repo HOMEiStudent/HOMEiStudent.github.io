@@ -92,6 +92,7 @@ body {
     width: auto;
     transform: rotate(341deg);
     scroll-margin-top: 10vh;
+    will-change: transform;
 }
 
 .right-image.zoom-image {

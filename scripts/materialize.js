@@ -2112,6 +2112,7 @@ var M = (function (exports) {
             }
         };
         _scroll(x = 0) {
+            const lastCenter = this.center;
             // Track scrolling state
             if (!this.el.classList.contains('scrolling')) {
                 this.el.classList.add('scrolling');
@@ -2127,7 +2128,6 @@ var M = (function (exports) {
             this.center = Math.floor((this.offset + this.dim / 2) / this.dim);
             const half = this.count >> 1, delta = this.offset - this.center * this.dim, dir = delta < 0 ? 1 : -1, tween = (-dir * delta * 2) / this.dim;
             let i, el, alignment, zTranslation, tweenedOpacity, centerTweenedOpacity;
-            const lastCenter = this.center;
             const numVisibleOffset = 1 / this.options.numVisible;
             // delta = this.offset - this.center * this.dim;
             // dir = delta < 0 ? 1 : -1;
