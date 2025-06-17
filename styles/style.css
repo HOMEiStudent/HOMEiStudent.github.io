@@ -86,9 +86,20 @@ body {
 }
 
 /* Add a cursor to the original image to indicate it's clickable. */
-.zoom-image {
-    cursor: zoom-in;
-    height: 25vh; width: auto; transform: rotate(341deg)
+.left-image.zoom-image {
+    cursor: pointer;
+    height: 25vh;
+    width: auto;
+    transform: rotate(341deg);
+    scroll-margin-top: 10vh;
+}
+
+.right-image.zoom-image {
+    cursor: pointer;
+    height: 25vh;
+    width: auto;
+    transform: rotate(19deg);
+    scroll-margin-top: 10vh;
 }
 
 .body-no-scroll {
@@ -112,7 +123,7 @@ body {
 
 /* The class applied to the image when it is in its final, zoomed state.
    Flip will animate the element to match these properties. */
-.image-zoomed {
+.left-image.image-zoomed {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -127,3 +138,20 @@ body {
     z-index: 1001;
     cursor: zoom-out;
 }
+
+.right-image.image-zoomed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* The final transform state: centered and not rotated. */
+    transform: translate(-50%, -12%) rotate(0deg);
+    max-width: 90vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    /* Must be higher than the overlay's z-index. */
+    z-index: 1001;
+    cursor: zoom-out;
+}
+
