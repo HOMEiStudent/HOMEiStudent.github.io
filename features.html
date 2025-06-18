@@ -18,6 +18,8 @@
     <script src="scripts/materialize.js"></script>
     <script src="scripts/gsap.min.js"></script>
     <script src="scripts/Flip.min.js"></script>
+    <script src="scripts/Swup.umd.js"></script>
+    <script src="scripts/Preload.umd.js"></script>
     <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
@@ -237,6 +239,17 @@
 </body>
 
 <script>
+    const swup = new Swup({
+        plugins: [new SwupPreloadPlugin({
+            preloadVisibleLinks: {
+                threshold: 0.2,
+                delay: 0
+            }
+        })]
+    });
+
+    swup.preload('about-us.html', 'features.html', 'faq.html');
+
     document.addEventListener('DOMContentLoaded', function () {
         M.Sidenav.init(document.querySelectorAll('.sidenav'), {
             edge: 'right'

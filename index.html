@@ -20,6 +20,8 @@
 
     <script src="scripts/gsap.min.js"></script>
     <script src="scripts/SplitText.min.js"></script>
+    <script src="scripts/Swup.umd.js"></script>
+    <script src="scripts/Preload.umd.js"></script>
     <script src="scripts/materialize.js"></script>
     <script
             async
@@ -379,6 +381,17 @@
 </body>
 
 <script>
+    const swup = new Swup({
+        plugins: [new SwupPreloadPlugin({
+            preloadVisibleLinks: {
+                threshold: 0.2,
+                delay: 0
+            }
+        })]
+    });
+
+    swup.preload('about-us.html', 'features.html', 'faq.html');
+
     const nextSlide = function (activeSlide) {
         const h2 = activeSlide.querySelector('h2');
         const h5 = activeSlide.querySelector('h5');
