@@ -28,6 +28,7 @@ var M = (function (exports) {
             ARROW_RIGHT: ['ArrowRight', 'Right'],
             DELETE: ['Delete', 'Del']
         };
+
         /**
          * Detects when a key is pressed.
          * @param e Event instance.
@@ -38,6 +39,7 @@ var M = (function (exports) {
                 Utils.tabPressed = true;
             }
         }
+
         /**
          * Detects when a key is released.
          * @param e Event instance.
@@ -48,26 +50,31 @@ var M = (function (exports) {
                 Utils.tabPressed = false;
             }
         }
+
         /**
          * Detects when document is focused.
          * @param e Event instance.
          */
         /* eslint-disabled as of required event type condition check */
+
         /* eslint-disable-next-line */
         static docHandleFocus(e) {
             if (Utils.keyDown) {
                 document.body.classList.add('keyboard-focused');
             }
         }
+
         /**
          * Detects when document is not focused.
          * @param e Event instance.
          */
         /* eslint-disabled as of required event type condition check */
+
         /* eslint-disable-next-line */
         static docHandleBlur(e) {
             document.body.classList.remove('keyboard-focused');
         }
+
         /**
          * Generates a unique string identifier.
          */
@@ -79,6 +86,7 @@ var M = (function (exports) {
             };
             return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
         }
+
         /**
          * Checks for exceeded edges
          * @param container Container element.
@@ -118,6 +126,7 @@ var M = (function (exports) {
             }
             return edges;
         }
+
         /**
          * Checks if element can be aligned in multiple directions.
          * @param el Element to be inspected.
@@ -176,6 +185,7 @@ var M = (function (exports) {
             }
             return canAlign;
         }
+
         /**
          * Retrieves target element id from trigger.
          * @param trigger Trigger element.
@@ -188,18 +198,21 @@ var M = (function (exports) {
             }
             return id;
         }
+
         /**
          * Retrieves document scroll postion from top.
          */
         static getDocumentScrollTop() {
             return window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
         }
+
         /**
          * Retrieves document scroll postion from left.
          */
         static getDocumentScrollLeft() {
             return window.scrollX || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
         }
+
         /**
          * Fires the given function after a certain ammount of time.
          * @param func Function to be fired.
@@ -224,13 +237,13 @@ var M = (function (exports) {
                     timeout = null;
                     previous = now;
                     result = func.apply(this, args);
-                }
-                else if (!timeout && options.trailing !== false) {
+                } else if (!timeout && options.trailing !== false) {
                     timeout = setTimeout(later, remaining);
                 }
                 return result;
             };
         }
+
         /**
          * Renders confirm/close buttons with callback function
          */
@@ -241,6 +254,7 @@ var M = (function (exports) {
             this.createButton(confirmationButtonsContainer, cancelText, ['btn-cancel'], true, onCancel);
             this.createButton(confirmationButtonsContainer, confirmText, ['btn-confirm'], true, onConfirm);
         }
+
         /**
          * Renders a button with optional callback function
          */
@@ -259,27 +273,28 @@ var M = (function (exports) {
             });
             container.append(button);
         }
+
         static _setAbsolutePosition(origin, container, position, margin, transitionMovement, align = 'center') {
-            const originHeight = origin.offsetHeight, originWidth = origin.offsetWidth, containerHeight = container.offsetHeight, containerWidth = container.offsetWidth;
-            let xMovement = 0, yMovement = 0, targetTop = origin.getBoundingClientRect().top + Utils.getDocumentScrollTop(), targetLeft = origin.getBoundingClientRect().left + Utils.getDocumentScrollLeft();
+            const originHeight = origin.offsetHeight, originWidth = origin.offsetWidth,
+                containerHeight = container.offsetHeight, containerWidth = container.offsetWidth;
+            let xMovement = 0, yMovement = 0,
+                targetTop = origin.getBoundingClientRect().top + Utils.getDocumentScrollTop(),
+                targetLeft = origin.getBoundingClientRect().left + Utils.getDocumentScrollLeft();
             if (position === 'top') {
                 targetTop += -containerHeight - margin;
                 if (align === 'center') {
                     targetLeft += originWidth / 2 - containerWidth / 2; // This is center align
                 }
                 yMovement = -transitionMovement;
-            }
-            else if (position === 'right') {
+            } else if (position === 'right') {
                 targetTop += originHeight / 2 - containerHeight / 2;
                 targetLeft = originWidth + margin;
                 xMovement = transitionMovement;
-            }
-            else if (position === 'left') {
+            } else if (position === 'left') {
                 targetTop += originHeight / 2 - containerHeight / 2;
                 targetLeft = -containerWidth - margin;
                 xMovement = -transitionMovement;
-            }
-            else {
+            } else {
                 targetTop += originHeight + margin;
                 if (align === 'center') {
                     targetLeft += originWidth / 2 - containerWidth / 2; // This is center align
@@ -292,8 +307,9 @@ var M = (function (exports) {
             const newCoordinates = Utils._repositionWithinScreen(targetLeft, targetTop, containerWidth, containerHeight, margin, transitionMovement, align);
             container.style.top = newCoordinates.y + 'px';
             container.style.left = newCoordinates.x + 'px';
-            return { x: xMovement, y: yMovement };
+            return {x: xMovement, y: yMovement};
         }
+
         static _repositionWithinScreen(x, y, width, height, margin, transitionMovement, align) {
             const scrollLeft = Utils.getDocumentScrollLeft();
             const scrollTop = Utils.getDocumentScrollTop();
@@ -308,21 +324,18 @@ var M = (function (exports) {
             let offset;
             if (align === 'left' || align == 'center') {
                 offset = margin + transitionMovement;
-            }
-            else if (align === 'right') {
+            } else if (align === 'right') {
                 offset = margin - transitionMovement;
             }
             const edges = Utils.checkWithinContainer(document.body, bounding, offset);
             if (edges.left) {
                 newX = offset;
-            }
-            else if (edges.right) {
+            } else if (edges.right) {
                 newX -= newX + width - window.innerWidth;
             }
             if (edges.top) {
                 newY = offset;
-            }
-            else if (edges.bottom) {
+            } else if (edges.bottom) {
                 newY -= newY + height - window.innerHeight;
             }
             return {
@@ -344,6 +357,7 @@ var M = (function (exports) {
          * The options the instance was initialized with.
          */
         options;
+
         /**
          * Constructs component instance and set everything up.
          */
@@ -359,6 +373,7 @@ var M = (function (exports) {
             }
             this.el = el;
         }
+
         /**
          * Initializes component instances.
          * @param els HTML elements.
@@ -369,8 +384,7 @@ var M = (function (exports) {
             let instances = null;
             if (els instanceof Element) {
                 instances = new classDef(els, options);
-            }
-            else if (!!els && els.length) {
+            } else if (!!els && els.length) {
                 instances = [];
                 for (let i = 0; i < els.length; i++) {
                     instances.push(new classDef(els[i], options));
@@ -378,12 +392,14 @@ var M = (function (exports) {
             }
             return instances;
         }
+
         /**
          * @returns default options for component instance.
          */
         static get defaults() {
             return {};
         }
+
         /**
          * Retrieves component instance for the given element.
          * @param el Associated HTML Element.
@@ -392,6 +408,7 @@ var M = (function (exports) {
         static getInstance(el) {
             throw new Error('This method must be implemented.');
         }
+
         /**
          * Destroy plugin instance and teardown.
          */
@@ -416,6 +433,7 @@ var M = (function (exports) {
         onCloseEnd: null,
         onItemClick: null
     };
+
     class Dropdown extends Component {
         static _dropdowns = [];
         /** ID of the dropdown element. */
@@ -431,6 +449,7 @@ var M = (function (exports) {
         focusedIndex;
         filterQuery;
         filterTimeout;
+
         constructor(el, options) {
             super(el, options, Dropdown);
             this.el['M_Dropdown'] = this;
@@ -452,9 +471,11 @@ var M = (function (exports) {
             this._makeDropdownFocusable();
             this._setupEventHandlers();
         }
+
         static get defaults() {
             return _defaults$n;
         }
+
         /**
          * Initializes instances of Dropdown.
          * @param els HTML elements.
@@ -463,15 +484,18 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Dropdown);
         }
+
         static getInstance(el) {
             return el['M_Dropdown'];
         }
+
         destroy() {
             this._resetDropdownStyles();
             this._removeEventHandlers();
             Dropdown._dropdowns.splice(Dropdown._dropdowns.indexOf(this), 1);
             this.el['M_Dropdown'] = undefined;
         }
+
         _setupEventHandlers() {
             // Trigger keydown handler
             this.el.addEventListener('keydown', this._handleTriggerKeydown);
@@ -483,11 +507,11 @@ var M = (function (exports) {
                 this.el.addEventListener('mouseleave', this._handleMouseLeave);
                 this.dropdownEl.addEventListener('mouseleave', this._handleMouseLeave);
                 // Click event handlers
-            }
-            else {
+            } else {
                 this.el.addEventListener('click', this._handleClick);
             }
         }
+
         _removeEventHandlers() {
             this.el.removeEventListener('keydown', this._handleTriggerKeydown);
             this.dropdownEl.removeEventListener('click', this._handleDropdownClick);
@@ -495,30 +519,31 @@ var M = (function (exports) {
                 this.el.removeEventListener('mouseenter', this._handleMouseEnter);
                 this.el.removeEventListener('mouseleave', this._handleMouseLeave);
                 this.dropdownEl.removeEventListener('mouseleave', this._handleMouseLeave);
-            }
-            else {
+            } else {
                 this.el.removeEventListener('click', this._handleClick);
             }
         }
+
         _setupTemporaryEventHandlers() {
             document.body.addEventListener('click', this._handleDocumentClick);
             document.body.addEventListener('touchmove', this._handleDocumentTouchmove);
             this.dropdownEl.addEventListener('keydown', this._handleDropdownKeydown);
             window.addEventListener('resize', this._handleWindowResize);
         }
+
         _removeTemporaryEventHandlers() {
             document.body.removeEventListener('click', this._handleDocumentClick);
             document.body.removeEventListener('touchmove', this._handleDocumentTouchmove);
             this.dropdownEl.removeEventListener('keydown', this._handleDropdownKeydown);
             window.removeEventListener('resize', this._handleWindowResize);
         }
+
         _handleClick = (e) => {
             e.preventDefault();
             //this._moveDropdown((<HTMLElement>e.target).closest('li'));
             if (this.isOpen) {
                 this.close();
-            }
-            else {
+            } else {
                 this.open();
             }
         };
@@ -544,8 +569,7 @@ var M = (function (exports) {
             if (this.options.closeOnClick && target.closest('.dropdown-content') && !this.isTouchMoving) {
                 // isTouchMoving to check if scrolling on mobile.
                 this.close();
-            }
-            else if (!target.closest('.dropdown-content')) {
+            } else if (!target.closest('.dropdown-content')) {
                 // Do this one frame later so that if the element clicked also triggers _handleClick
                 // For example, if a label for a select was clicked, that we don't close/open the dropdown
                 setTimeout(() => {
@@ -613,8 +637,7 @@ var M = (function (exports) {
                 // Click a or button tag if exists, otherwise click li tag
                 if (!!activatableElement) {
                     activatableElement.click();
-                }
-                else if (!!focusedElement) {
+                } else if (!!focusedElement) {
                     if (focusedElement instanceof HTMLElement) {
                         focusedElement.click();
                     }
@@ -656,12 +679,14 @@ var M = (function (exports) {
         _resetFilterQuery = () => {
             this.filterQuery = [];
         };
+
         _resetDropdownStyles() {
             this.dropdownEl.style.display = '';
             this._resetDropdownPositioningStyles();
             this.dropdownEl.style.transform = '';
             this.dropdownEl.style.opacity = '';
         }
+
         _resetDropdownPositioningStyles() {
             this.dropdownEl.style.width = '';
             this.dropdownEl.style.height = '';
@@ -669,6 +694,7 @@ var M = (function (exports) {
             this.dropdownEl.style.top = '';
             this.dropdownEl.style.transformOrigin = '';
         }
+
         _moveDropdownToElement(containerEl = null) {
             if (this.options.container) {
                 this.options.container.append(this.dropdownEl);
@@ -681,6 +707,7 @@ var M = (function (exports) {
             }
             this.el.after(this.dropdownEl);
         }
+
         _makeDropdownFocusable() {
             if (!this.dropdownEl)
                 return;
@@ -693,6 +720,7 @@ var M = (function (exports) {
                     el.setAttribute('tabindex', '0');
             });
         }
+
         _focusFocusedItem() {
             if (this.focusedIndex >= 0 &&
                 this.focusedIndex < this.dropdownEl.children.length &&
@@ -707,6 +735,7 @@ var M = (function (exports) {
                 });
             }
         }
+
         _getDropdownPosition(closestOverflowParent) {
             // const offsetParentBRect = this.el.offsetParent.getBoundingClientRect();
             const triggerBRect = this.el.getBoundingClientRect();
@@ -733,8 +762,7 @@ var M = (function (exports) {
                     if (!this.options.coverTrigger) {
                         idealYPos -= triggerBRect.height;
                     }
-                }
-                else {
+                } else {
                     this.isScrollable = true;
                     // Determine which side has most space and cutoff at correct height
                     idealHeight -= 20; // Add padding when cutoff
@@ -744,8 +772,7 @@ var M = (function (exports) {
                         idealYPos -= this.options.coverTrigger
                             ? alignments.spaceOnTop - 20
                             : alignments.spaceOnTop - 20 + triggerBRect.height;
-                    }
-                    else {
+                    } else {
                         idealHeight += alignments.spaceOnBottom;
                     }
                 }
@@ -755,15 +782,13 @@ var M = (function (exports) {
                 const oppositeAlignment = horizontalAlignment === 'left' ? 'right' : 'left';
                 if (alignments[oppositeAlignment]) {
                     horizontalAlignment = oppositeAlignment;
-                }
-                else {
+                } else {
                     // Determine which side has most space and cutoff at correct height
                     if (alignments.spaceOnLeft > alignments.spaceOnRight) {
                         horizontalAlignment = 'right';
                         idealWidth += alignments.spaceOnLeft;
                         idealXPos -= alignments.spaceOnLeft;
-                    }
-                    else {
+                    } else {
                         horizontalAlignment = 'left';
                         idealWidth += alignments.spaceOnRight;
                     }
@@ -785,6 +810,7 @@ var M = (function (exports) {
                 width: idealWidth
             };
         }
+
         _animateIn() {
             const duration = this.options.inDuration;
             this.dropdownEl.style.transition = 'none';
@@ -805,6 +831,7 @@ var M = (function (exports) {
                     this.options.onOpenEnd.call(this, this.el);
             }, duration);
         }
+
         _animateOut() {
             const duration = this.options.outDuration;
             // easeOutQuad (opacity) & easeOutQuint
@@ -818,6 +845,7 @@ var M = (function (exports) {
                     this.options.onCloseEnd.call(this, this.el);
             }, duration);
         }
+
         _getClosestAncestor(el, condition) {
             let ancestor = el.parentNode;
             while (ancestor !== null && ancestor !== document) {
@@ -828,6 +856,7 @@ var M = (function (exports) {
             }
             return null;
         }
+
         _placeDropdown() {
             // Container here will be closest ancestor with overflow: hidden
             let closestOverflowParent = this._getClosestAncestor(this.dropdownEl, (ancestor) => {
@@ -853,6 +882,7 @@ var M = (function (exports) {
             this.dropdownEl.style.width = positionInfo.width + 'px';
             this.dropdownEl.style.transformOrigin = `${positionInfo.horizontalAlignment === 'left' ? '0' : '100%'} ${positionInfo.verticalAlignment === 'top' ? '0' : '100%'}`;
         }
+
         /**
          * Open dropdown.
          */
@@ -924,6 +954,7 @@ var M = (function (exports) {
         allowUnsafeHTML: false,
         selected: []
     };
+
     class Autocomplete extends Component {
         /** If the autocomplete is open. */
         isOpen;
@@ -940,6 +971,7 @@ var M = (function (exports) {
         static _keydown;
         selectedValues;
         menuItems;
+
         constructor(el, options) {
             super(el, options, Autocomplete);
             this.el['M_Autocomplete'] = this;
@@ -951,16 +983,18 @@ var M = (function (exports) {
             this.count = 0;
             this.activeIndex = -1;
             this.oldVal = '';
-            this.selectedValues = this.selectedValues || this.options.selected.map((value) => ({ id: value })) || [];
+            this.selectedValues = this.selectedValues || this.options.selected.map((value) => ({id: value})) || [];
             this.menuItems = this.options.data || [];
             this.$active = null;
             this._mousedown = false;
             this._setupDropdown();
             this._setupEventHandlers();
         }
+
         static get defaults() {
             return _defaults$m;
         }
+
         /**
          * Initializes instances of Autocomplete.
          * @param els HTML elements.
@@ -969,14 +1003,17 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Autocomplete);
         }
+
         static getInstance(el) {
             return el['M_Autocomplete'];
         }
+
         destroy() {
             this._removeEventHandlers();
             this._removeDropdown();
             this.el['M_Autocomplete'] = undefined;
         }
+
         _setupEventHandlers() {
             this.el.addEventListener('blur', this._handleInputBlur);
             this.el.addEventListener('keyup', this._handleInputKeyup);
@@ -990,6 +1027,7 @@ var M = (function (exports) {
                 this.container.addEventListener('touchend', this._handleContainerMouseupAndTouchend);
             }
         }
+
         _removeEventHandlers() {
             this.el.removeEventListener('blur', this._handleInputBlur);
             this.el.removeEventListener('keyup', this._handleInputKeyup);
@@ -1003,6 +1041,7 @@ var M = (function (exports) {
                 this.container.removeEventListener('touchend', this._handleContainerMouseupAndTouchend);
             }
         }
+
         _setupDropdown() {
             this.container = document.createElement('ul');
             this.container.style.maxHeight = this.options.maxDropDownHeight;
@@ -1055,10 +1094,12 @@ var M = (function (exports) {
             this.el.parentElement.appendChild(div);
             this._updateSelectedInfo();
         }
+
         _removeDropdown() {
             this.container.ariaExpanded = 'false';
             this.container.parentNode.removeChild(this.container);
         }
+
         _handleInputBlur = () => {
             if (!this._mousedown) {
                 this.close();
@@ -1142,10 +1183,12 @@ var M = (function (exports) {
         _handleContainerMouseupAndTouchend = () => {
             this._mousedown = false;
         };
+
         _resetCurrentElementPosition() {
             this.activeIndex = -1;
             this.$active?.classList.remove('active');
         }
+
         _resetAutocomplete() {
             this.container.replaceChildren();
             this._resetCurrentElementPosition();
@@ -1153,6 +1196,7 @@ var M = (function (exports) {
             this.isOpen = false;
             this._mousedown = false;
         }
+
         _highlightPartialText(input, label) {
             const start = label.toLocaleLowerCase().indexOf('' + input.toLocaleLowerCase() + '');
             const end = start + input.length - 1;
@@ -1162,6 +1206,7 @@ var M = (function (exports) {
             }
             return [label.slice(0, start), label.slice(start, end + 1), label.slice(end + 1)];
         }
+
         _createDropdownItem(entry) {
             const item = document.createElement('li');
             item.setAttribute('data-id', entry.id);
@@ -1188,8 +1233,7 @@ var M = (function (exports) {
             div.setAttribute('style', 'line-height:1.2;font-weight:500;');
             if (this.options.allowUnsafeHTML) {
                 div.innerHTML = parts[0] + '<span class="highlight">' + parts[1] + '</span>' + parts[2];
-            }
-            else {
+            } else {
                 div.appendChild(document.createTextNode(parts[0]));
                 if (parts[1]) {
                     const highlight = document.createElement('span');
@@ -1226,6 +1270,7 @@ var M = (function (exports) {
             item.style.gridTemplateColumns = getGridConfig();
             return item;
         }
+
         _renderDropdown() {
             this._resetAutocomplete();
             // Check if Data is empty
@@ -1237,6 +1282,7 @@ var M = (function (exports) {
                 this.container.append(item);
             }
         }
+
         _setStatusLoading() {
             this.el.parentElement.querySelector('.status-info').innerHTML =
                 `<div style="height:100%;width:50px;"><svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
@@ -1245,6 +1291,7 @@ var M = (function (exports) {
     <circle fill="#888c" stroke="none" cx="46" cy="50" r="6"><animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite"  begin="0.3"/></circle>
   </svg></div>`;
         }
+
         _updateSelectedInfo() {
             const statusElement = this.el.parentElement.querySelector('.status-info');
             if (statusElement) {
@@ -1254,18 +1301,21 @@ var M = (function (exports) {
                     statusElement.innerHTML = '';
             }
         }
+
         _refreshInputText() {
             if (this.selectedValues.length === 1) {
                 const entry = this.selectedValues[0];
                 this.el.value = entry.text || entry.id; // Write Text to Input
             }
         }
+
         _triggerChanged() {
             this.el.dispatchEvent(new Event('change'));
             // Trigger Autocomplete Event
             if (typeof this.options.onAutocomplete === 'function')
                 this.options.onAutocomplete.call(this, this.selectedValues);
         }
+
         /**
          * Show autocomplete.
          */
@@ -1281,8 +1331,7 @@ var M = (function (exports) {
                 setTimeout(() => {
                     this.dropdown.open();
                 }, 0); // TODO: why?
-            }
-            else
+            } else
                 this.dropdown.recalculateDimensions(); // Recalculate dropdown when its already open
         };
         /**
@@ -1291,6 +1340,7 @@ var M = (function (exports) {
         close = () => {
             this.dropdown.close();
         };
+
         /**
          * Updates the visible or selectable items shown in the menu.
          * @param menuItems Items to be available.
@@ -1305,8 +1355,7 @@ var M = (function (exports) {
             }
             if (this.options.isMultiSelect) {
                 this._renderDropdown();
-            }
-            else {
+            } else {
                 this._refreshInputText();
             }
             if (open)
@@ -1314,6 +1363,7 @@ var M = (function (exports) {
             this._updateSelectedInfo();
             this._triggerChanged();
         }
+
         /**
          * Sets selected values.
          * @deprecated @see https://github.com/materializecss/materialize/issues/552
@@ -1327,6 +1377,7 @@ var M = (function (exports) {
             }
             this._triggerChanged();
         }
+
         /**
          * Select a specific autocomplete option via id-property.
          * @param id The id of a data-entry.
@@ -1347,8 +1398,7 @@ var M = (function (exports) {
                     this.selectedValues = this.selectedValues.filter((selectedEntry) => selectedEntry.id !== entry.id);
                 this._renderDropdown();
                 this.el.focus();
-            }
-            else {
+            } else {
                 // Single-Select
                 this.selectedValues = [entry];
                 this._refreshInputText();
@@ -1358,6 +1408,7 @@ var M = (function (exports) {
             this._updateSelectedInfo();
             this._triggerChanged();
         }
+
         selectOptions(ids) {
             const entries = this.menuItems.filter((item) => !(ids.indexOf(item.id) === -1));
             if (!entries)
@@ -1372,6 +1423,7 @@ var M = (function (exports) {
         hoverEnabled: true,
         toolbarEnabled: false
     };
+
     class FloatingActionButton extends Component {
         /**
          * Describes open/close state of FAB.
@@ -1386,6 +1438,7 @@ var M = (function (exports) {
         btnBottom;
         btnLeft;
         btnWidth;
+
         constructor(el, options) {
             super(el, options, FloatingActionButton);
             this.el['M_FloatingActionButton'] = this;
@@ -1413,9 +1466,11 @@ var M = (function (exports) {
                 this.offsetX = 40;
             this._setupEventHandlers();
         }
+
         static get defaults() {
             return _defaults$l;
         }
+
         /**
          * Initializes instances of FloatingActionButton.
          * @param els HTML elements.
@@ -1424,33 +1479,36 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, FloatingActionButton);
         }
+
         static getInstance(el) {
             return el['M_FloatingActionButton'];
         }
+
         destroy() {
             this._removeEventHandlers();
             this.el['M_FloatingActionButton'] = undefined;
         }
+
         _setupEventHandlers() {
             if (this.options.hoverEnabled && !this.options.toolbarEnabled) {
                 this.el.addEventListener('mouseenter', this.open);
                 this.el.addEventListener('mouseleave', this.close);
-            }
-            else {
+            } else {
                 this.el.addEventListener('click', this._handleFABClick);
             }
             this.el.addEventListener('keypress', this._handleFABKeyPress);
         }
+
         _removeEventHandlers() {
             if (this.options.hoverEnabled && !this.options.toolbarEnabled) {
                 this.el.removeEventListener('mouseenter', this.open);
                 this.el.removeEventListener('mouseleave', this.close);
-            }
-            else {
+            } else {
                 this.el.removeEventListener('click', this._handleFABClick);
             }
             this.el.removeEventListener('keypress', this._handleFABKeyPress);
         }
+
         _handleFABClick = () => {
             this._handleFABToggle();
         };
@@ -1462,8 +1520,7 @@ var M = (function (exports) {
         _handleFABToggle = () => {
             if (this.isOpen) {
                 this.close();
-            }
-            else {
+            } else {
                 this.open();
             }
         };
@@ -1493,12 +1550,12 @@ var M = (function (exports) {
             if (this.options.toolbarEnabled) {
                 window.removeEventListener('scroll', this.close, true);
                 document.body.removeEventListener('click', this._handleDocumentClick, true);
-            }
-            else {
+            } else {
                 this._animateOutFAB();
             }
             this.isOpen = false;
         };
+
         _animateInFAB() {
             this.el.classList.add('active');
             this._menu.ariaExpanded = 'true';
@@ -1523,6 +1580,7 @@ var M = (function (exports) {
                 }, delay);
             });
         }
+
         _animateOutFAB() {
             const duration = 175;
             setTimeout(() => {
@@ -1537,11 +1595,13 @@ var M = (function (exports) {
                 el.tabIndex = -1;
             });
         }
+
         _animateInToolbar() {
             const windowWidth = window.innerWidth;
             const windowHeight = window.innerHeight;
             const btnRect = this.el.getBoundingClientRect();
-            const backdrop = document.createElement('div'), scaleFactor = windowWidth / backdrop[0].clientWidth, fabColor = getComputedStyle(this._anchor).backgroundColor; // css('background-color');
+            const backdrop = document.createElement('div'), scaleFactor = windowWidth / backdrop[0].clientWidth,
+                fabColor = getComputedStyle(this._anchor).backgroundColor; // css('background-color');
             backdrop.classList.add('fab-backdrop'); //  $('<div class="fab-backdrop"></div>');
             backdrop.style.backgroundColor = fabColor;
             this._anchor.append(backdrop);
@@ -1591,12 +1651,14 @@ var M = (function (exports) {
         inDuration: 225,
         outDuration: 300
     };
+
     class Cards extends Component {
         isOpen = false;
         cardReveal;
         initialOverflow;
         _activators;
         cardRevealClose;
+
         constructor(el, options) {
             super(el, options, Cards);
             this.el['M_Cards'] = this;
@@ -1620,9 +1682,11 @@ var M = (function (exports) {
                 this._setupEventHandlers();
             }
         }
+
         static get defaults() {
             return _defaults$k;
         }
+
         /**
          * Initializes instances of Cards.
          * @param els HTML elements.
@@ -1631,9 +1695,11 @@ var M = (function (exports) {
         static init(els, options) {
             return super.init(els, options, Cards);
         }
+
         static getInstance(el) {
             return el['M_Cards'];
         }
+
         /**
          * {@inheritDoc}
          */
@@ -1641,6 +1707,7 @@ var M = (function (exports) {
             this._removeEventHandlers();
             this._activators = [];
         }
+
         _setupEventHandlers = () => {
             this._activators.forEach((el) => {
                 el.addEventListener('click', this._handleClickInteraction);
@@ -1720,6 +1787,7 @@ var M = (function (exports) {
             }
             this._removeRevealCloseEventHandlers();
         };
+
         static Init() {
             if (typeof document !== 'undefined')
                 // Handle initialization of static cards.
@@ -1744,6 +1812,7 @@ var M = (function (exports) {
         noWrap: false, // Don't wrap around and cycle through items.
         onCycleTo: null // Callback for when a new slide is cycled to.
     };
+
     class Carousel extends Component {
         hasMultipleSlides;
         showIndicators;
@@ -1774,6 +1843,7 @@ var M = (function (exports) {
         imageHeight;
         scrollingTimeout;
         oneTimeCallback;
+
         constructor(el, options) {
             super(el, options, Carousel);
             this.el['M_Carousel'] = this;
@@ -1834,9 +1904,11 @@ var M = (function (exports) {
             this._setupEventHandlers();
             this._scroll(this.offset);
         }
+
         static get defaults() {
             return _defaults$j;
         }
+
         /**
          * Initializes instances of Carousel.
          * @param els HTML elements.
@@ -1845,13 +1917,16 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Carousel);
         }
+
         static getInstance(el) {
             return el['M_Carousel'];
         }
+
         destroy() {
             this._removeEventHandlers();
             this.el['M_Carousel'] = undefined;
         }
+
         _setupEventHandlers() {
             if (typeof window.ontouchstart !== 'undefined') {
                 this.el.addEventListener('touchstart', this._handleCarouselTap);
@@ -1872,6 +1947,7 @@ var M = (function (exports) {
             // Resize
             window.addEventListener('resize', this._handleThrottledResize);
         }
+
         _removeEventHandlers() {
             if (typeof window.ontouchstart !== 'undefined') {
                 this.el.removeEventListener('touchstart', this._handleCarouselTap);
@@ -1890,6 +1966,7 @@ var M = (function (exports) {
             }
             window.removeEventListener('resize', this._handleThrottledResize);
         }
+
         _handleThrottledResize = () => Utils.throttle(this._handleResize, 200, null).bind(this);
         _handleCarouselTap = (e) => {
             // Fixes firefox draggable image bug
@@ -1921,14 +1998,12 @@ var M = (function (exports) {
                         this.reference = x;
                         this._scroll(this.offset + delta);
                     }
-                }
-                else if (this.dragged) {
+                } else if (this.dragged) {
                     // If dragging don't allow vertical scroll.
                     e.preventDefault();
                     e.stopPropagation();
                     return false;
-                }
-                else {
+                } else {
                     // Vertical scrolling.
                     this.verticalDragged = true;
                 }
@@ -1943,8 +2018,7 @@ var M = (function (exports) {
         _handleCarouselRelease = (e) => {
             if (this.pressed) {
                 this.pressed = false;
-            }
-            else {
+            } else {
                 return;
             }
             clearInterval(this.ticker);
@@ -1958,8 +2032,7 @@ var M = (function (exports) {
             if (this.noWrap) {
                 if (this.target >= this.dim * (this.count - 1)) {
                     this.target = this.dim * (this.count - 1);
-                }
-                else if (this.target < 0) {
+                } else if (this.target < 0) {
                     this.target = 0;
                 }
             }
@@ -1978,8 +2051,7 @@ var M = (function (exports) {
                 e.preventDefault();
                 e.stopPropagation();
                 return false;
-            }
-            else if (!this.options.fullWidth) {
+            } else if (!this.options.fullWidth) {
                 const clickedElem = e.target.closest('.carousel-item');
                 if (!clickedElem)
                     return;
@@ -1996,12 +2068,10 @@ var M = (function (exports) {
                     if (e.clientX - e.target.getBoundingClientRect().left >
                         this.el.clientWidth / 2) {
                         this.next();
-                    }
-                    else {
+                    } else {
                         this.prev();
                     }
-                }
-                else {
+                } else {
                     this._cycleTo(clickedIndex);
                 }
             }
@@ -2031,11 +2101,11 @@ var M = (function (exports) {
                 this.offset = this.center * 2 * this.itemWidth;
                 this.target = this.offset;
                 this._setCarouselHeight(true);
-            }
-            else {
+            } else {
                 this._scroll();
             }
         };
+
         _setCarouselHeight(imageOnly = false) {
             const firstSlide = this.el.querySelector('.carousel-item.active')
                 ? this.el.querySelector('.carousel-item.active')
@@ -2047,27 +2117,25 @@ var M = (function (exports) {
                     const imageHeight = firstImage.clientHeight;
                     if (imageHeight > 0) {
                         this.el.style.height = imageHeight + 'px';
-                    }
-                    else {
+                    } else {
                         // If image still has no height, use the natural dimensions to calculate
                         const naturalWidth = firstImage.naturalWidth;
                         const naturalHeight = firstImage.naturalHeight;
                         const adjustedHeight = (this.el.clientWidth / naturalWidth) * naturalHeight;
                         this.el.style.height = adjustedHeight + 'px';
                     }
-                }
-                else {
+                } else {
                     // Get height when image is loaded normally
                     firstImage.addEventListener('load', () => {
                         this.el.style.height = firstImage.offsetHeight + 'px';
                     });
                 }
-            }
-            else if (!imageOnly) {
+            } else if (!imageOnly) {
                 const slideHeight = firstSlide.clientHeight;
                 this.el.style.height = slideHeight + 'px';
             }
         }
+
         _xpos(e) {
             // touch event
             if (e.type.startsWith('touch') && e.targetTouches.length >= 1) {
@@ -2076,6 +2144,7 @@ var M = (function (exports) {
             // mouse event
             return e.clientX;
         }
+
         _ypos(e) {
             // touch event
             if (e.type.startsWith('touch') && e.targetTouches.length >= 1) {
@@ -2084,11 +2153,14 @@ var M = (function (exports) {
             // mouse event
             return e.clientY;
         }
+
         _wrap(x) {
             return x >= this.count ? x % this.count : x < 0 ? this._wrap(this.count + (x % this.count)) : x;
         }
+
         _track = () => {
-            const now = Date.now(), elapsed = now - this.timestamp, delta = this.offset - this.frame, v = (1000 * delta) / (1 + elapsed);
+            const now = Date.now(), elapsed = now - this.timestamp, delta = this.offset - this.frame,
+                v = (1000 * delta) / (1 + elapsed);
             // now = Date.now();
             // elapsed = now - this.timestamp;
             this.timestamp = now;
@@ -2105,12 +2177,12 @@ var M = (function (exports) {
                 if (delta > 2 || delta < -2) {
                     this._scroll(this.target - delta);
                     requestAnimationFrame(this._autoScroll);
-                }
-                else {
+                } else {
                     this._scroll(this.target);
                 }
             }
         };
+
         _scroll(x = 0) {
             const lastCenter = this.center;
             // Track scrolling state
@@ -2126,7 +2198,8 @@ var M = (function (exports) {
             // Start actual scroll
             this.offset = typeof x === 'number' ? x : this.offset;
             this.center = Math.floor((this.offset + this.dim / 2) / this.dim);
-            const half = this.count >> 1, delta = this.offset - this.center * this.dim, dir = delta < 0 ? 1 : -1, tween = (-dir * delta * 2) / this.dim;
+            const half = this.count >> 1, delta = this.offset - this.center * this.dim, dir = delta < 0 ? 1 : -1,
+                tween = (-dir * delta * 2) / this.dim;
             let i, el, alignment, zTranslation, tweenedOpacity, centerTweenedOpacity;
             const numVisibleOffset = 1 / this.options.numVisible;
             // delta = this.offset - this.center * this.dim;
@@ -2136,8 +2209,7 @@ var M = (function (exports) {
             if (this.options.fullWidth) {
                 alignment = 'translateX(0)';
                 centerTweenedOpacity = 1;
-            }
-            else {
+            } else {
                 alignment = 'translateX(' + (this.el.clientWidth - this.itemWidth) / 2 + 'px) ';
                 // alignment += 'translateY(' + (this.el.clientHeight - this.itemHeight) / 2 + 'px)';
                 centerTweenedOpacity = 1 - numVisibleOffset * tween;
@@ -2170,8 +2242,7 @@ var M = (function (exports) {
                 if (this.options.fullWidth) {
                     zTranslation = this.options.dist;
                     tweenedOpacity = i === half && delta < 0 ? 1 - tween : 1;
-                }
-                else {
+                } else {
                     zTranslation = this.options.dist * (i * 2 + tween * dir);
                     tweenedOpacity = 1 - numVisibleOffset * (i * 2 + tween * dir);
                 }
@@ -2185,8 +2256,7 @@ var M = (function (exports) {
                 if (this.options.fullWidth) {
                     zTranslation = this.options.dist;
                     tweenedOpacity = i === half && delta > 0 ? 1 - tween : 1;
-                }
-                else {
+                } else {
                     zTranslation = this.options.dist * (i * 2 - tween * dir);
                     tweenedOpacity = 1 - numVisibleOffset * (i * 2 - tween * dir);
                 }
@@ -2215,12 +2285,14 @@ var M = (function (exports) {
                 this.oneTimeCallback = null;
             }
         }
+
         _updateItemStyle(el, opacity, zIndex, transform) {
             el.style[this.xform] = transform;
             el.style.zIndex = zIndex.toString();
             el.style.opacity = opacity.toString();
             el.style.visibility = 'visible';
         }
+
         _cycleTo(n, callback = null) {
             let diff = (this.center % this.count) - n;
             // Account for wraparound.
@@ -2229,8 +2301,7 @@ var M = (function (exports) {
                     if (Math.abs(diff + this.count) < Math.abs(diff)) {
                         diff += this.count;
                     }
-                }
-                else if (diff > 0) {
+                } else if (diff > 0) {
                     if (Math.abs(diff - this.count) < diff) {
                         diff -= this.count;
                     }
@@ -2255,6 +2326,7 @@ var M = (function (exports) {
                 requestAnimationFrame(this._autoScroll);
             }
         }
+
         /**
          * Move carousel to next slide or go forward a given amount of slides.
          * @param n How many times the carousel slides.
@@ -2271,6 +2343,7 @@ var M = (function (exports) {
             }
             this._cycleTo(index);
         }
+
         /**
          * Move carousel to previous slide or go back a given amount of slides.
          * @param n How many times the carousel slides.
@@ -2287,6 +2360,7 @@ var M = (function (exports) {
             }
             this._cycleTo(index);
         }
+
         /**
          * Move carousel to nth slide.
          * @param n Index of slide.
@@ -2318,9 +2392,11 @@ var M = (function (exports) {
         onChipSelect: null,
         onChipDelete: null
     };
+
     function gGetIndex(el) {
         return [...el.parentNode.children].indexOf(el);
     }
+
     class Chips extends Component {
         /** Array of the current chips data. */
         chipsData;
@@ -2333,6 +2409,7 @@ var M = (function (exports) {
         _chips;
         static _keydown;
         _selectedChip;
+
         constructor(el, options) {
             super(el, options, Chips);
             this.el['M_Chips'] = this;
@@ -2358,9 +2435,11 @@ var M = (function (exports) {
                 this.el.append(this._input);
             }
         }
+
         static get defaults() {
             return _defaults$i;
         }
+
         /**
          * Initializes instances of Chips.
          * @param els HTML elements.
@@ -2369,12 +2448,15 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Chips);
         }
+
         static getInstance(el) {
             return el['M_Chips'];
         }
+
         getData() {
             return this.chipsData;
         }
+
         destroy() {
             if (this.options.allowUserInput) {
                 this._removeEventHandlers();
@@ -2383,6 +2465,7 @@ var M = (function (exports) {
             this._chips = [];
             this.el['M_Chips'] = undefined;
         }
+
         _setupEventHandlers() {
             this.el.addEventListener('click', this._handleChipClick);
             // @todo why do we need this as document event listener, shouldn't we apply it to the element wrapper itself?
@@ -2393,6 +2476,7 @@ var M = (function (exports) {
             this._input.addEventListener('blur', this._handleInputBlur);
             this._input.addEventListener('keydown', this._handleInputKeydown);
         }
+
         _removeEventHandlers() {
             this.el.removeEventListener('click', this._handleChipClick);
             document.removeEventListener('keydown', Chips._handleChipsKeydown);
@@ -2402,6 +2486,7 @@ var M = (function (exports) {
             this._input.removeEventListener('blur', this._handleInputBlur);
             this._input.removeEventListener('keydown', this._handleInputKeydown);
         }
+
         _handleChipClick = (e) => {
             const _chip = e.target.closest('.chip');
             const clickedClose = e.target.classList.contains('close');
@@ -2410,16 +2495,15 @@ var M = (function (exports) {
                 if (clickedClose) {
                     this.deleteChip(index);
                     this._input.focus();
-                }
-                else {
+                } else {
                     this.selectChip(index);
                 }
                 // Default handle click to focus on input
-            }
-            else {
+            } else {
                 this._input.focus();
             }
         };
+
         static _handleChipsKeydown(e) {
             Chips._keydown = true;
             const chips = e.target.closest('.chips');
@@ -2443,16 +2527,14 @@ var M = (function (exports) {
                     currChips.selectChip(selectIndex);
                 else
                     currChips._input.focus();
-            }
-            else if (Utils.keys.ARROW_LEFT.includes(e.key)) {
+            } else if (Utils.keys.ARROW_LEFT.includes(e.key)) {
                 if (currChips._selectedChip) {
                     const selectIndex = gGetIndex(currChips._selectedChip) - 1;
                     if (selectIndex < 0)
                         return;
                     currChips.selectChip(selectIndex);
                 }
-            }
-            else if (Utils.keys.ARROW_RIGHT.includes(e.key)) {
+            } else if (Utils.keys.ARROW_RIGHT.includes(e.key)) {
                 if (currChips._selectedChip) {
                     const selectIndex = gGetIndex(currChips._selectedChip) + 1;
                     if (selectIndex >= currChips.chipsData.length)
@@ -2462,9 +2544,11 @@ var M = (function (exports) {
                 }
             }
         }
+
         static _handleChipsKeyup() {
             Chips._keydown = false;
         }
+
         static _handleChipsBlur(e) {
             if (!Chips._keydown && document.hidden) {
                 const chips = e.target.closest('.chips');
@@ -2472,6 +2556,7 @@ var M = (function (exports) {
                 currChips._selectedChip = null;
             }
         }
+
         _handleInputFocus = () => {
             this.el.classList.add('focus');
         };
@@ -2487,17 +2572,17 @@ var M = (function (exports) {
                 }
                 e.preventDefault();
                 if (!this.hasAutocomplete || (this.hasAutocomplete && !this.options.autocompleteOnly)) {
-                    this.addChip({ id: this._input.value });
+                    this.addChip({id: this._input.value});
                 }
                 this._input.value = '';
-            }
-            else if ((Utils.keys.BACKSPACE.includes(e.key) || Utils.keys.ARROW_LEFT.includes(e.key)) &&
+            } else if ((Utils.keys.BACKSPACE.includes(e.key) || Utils.keys.ARROW_LEFT.includes(e.key)) &&
                 this._input.value === '' &&
                 this.chipsData.length) {
                 e.preventDefault();
                 this.selectChip(this.chipsData.length - 1);
             }
         };
+
         _renderChip(chip) {
             if (!chip.id)
                 return;
@@ -2519,6 +2604,7 @@ var M = (function (exports) {
             }
             return renderedChip;
         }
+
         _renderChips() {
             this._chips = []; //.remove();
             for (let i = 0; i < this.chipsData.length; i++) {
@@ -2527,6 +2613,7 @@ var M = (function (exports) {
                 this._chips.push(chipElem);
             }
         }
+
         _setupAutocomplete() {
             this.options.autocompleteOptions.onAutocomplete = (items) => {
                 if (items.length > 0)
@@ -2540,6 +2627,7 @@ var M = (function (exports) {
             };
             this.autocomplete = Autocomplete.init(this._input, this.options.autocompleteOptions);
         }
+
         _setupInput() {
             this._input = this.el.querySelector('input');
             if (!this._input) {
@@ -2556,25 +2644,28 @@ var M = (function (exports) {
             if (!this._input.getAttribute('id'))
                 this._input.setAttribute('id', Utils.guid());
         }
+
         _setupLabel() {
             this._label = this.el.querySelector('label');
             if (this._label)
                 this._label.setAttribute('for', this._input.getAttribute('id'));
         }
+
         _setPlaceholder() {
             if (this.chipsData !== undefined && !this.chipsData.length && this.options.placeholder) {
                 this._input.placeholder = this.options.placeholder;
-            }
-            else if ((this.chipsData === undefined || !!this.chipsData.length) &&
+            } else if ((this.chipsData === undefined || !!this.chipsData.length) &&
                 this.options.secondaryPlaceholder) {
                 this._input.placeholder = this.options.secondaryPlaceholder;
             }
         }
+
         _isValidAndNotExist(chip) {
             const isValid = !!chip.id;
             const doesNotExist = !this.chipsData.some((item) => item.id == chip.id);
             return isValid && doesNotExist;
         }
+
         /**
          * Add chip to input.
          * @param chip Chip data object
@@ -2593,6 +2684,7 @@ var M = (function (exports) {
                 this.options.onChipAdd(this.el, renderedChip);
             }
         }
+
         /**
          * Delete nth chip.
          * @param chipIndex  Index of chip
@@ -2608,6 +2700,7 @@ var M = (function (exports) {
                 this.options.onChipDelete(this.el, chip);
             }
         }
+
         /**
          * Select nth chip.
          * @param chipIndex Index of chip
@@ -2621,6 +2714,7 @@ var M = (function (exports) {
                 this.options.onChipSelect(this.el, chip);
             }
         }
+
         static Init() {
             if (typeof document !== 'undefined')
                 // Handle removal of static chips.
@@ -2638,6 +2732,7 @@ var M = (function (exports) {
                     });
                 });
         }
+
         static {
             Chips._keydown = false;
         }
@@ -2652,8 +2747,10 @@ var M = (function (exports) {
         inDuration: 300,
         outDuration: 300
     };
+
     class Collapsible extends Component {
         _headers;
+
         constructor(el, options) {
             super(el, options, Collapsible);
             this.el['M_Collapsible'] = this;
@@ -2672,15 +2769,16 @@ var M = (function (exports) {
                     // Accordion => open first active only
                     this._setExpanded(activeBodies[0]);
                 }
-            }
-            else {
+            } else {
                 // Expandables => all active
                 activeBodies.forEach((el) => this._setExpanded(el));
             }
         }
+
         static get defaults() {
             return _defaults$h;
         }
+
         /**
          * Initializes instances of Collapsible.
          * @param els HTML elements.
@@ -2689,21 +2787,26 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Collapsible);
         }
+
         static getInstance(el) {
             return el['M_Collapsible'];
         }
+
         destroy() {
             this._removeEventHandlers();
             this.el['M_Collapsible'] = undefined;
         }
+
         _setupEventHandlers() {
             this.el.addEventListener('click', this._handleCollapsibleClick);
             this._headers.forEach((header) => header.addEventListener('keydown', this._handleCollapsibleKeydown));
         }
+
         _removeEventHandlers() {
             this.el.removeEventListener('click', this._handleCollapsibleClick);
             this._headers.forEach((header) => header.removeEventListener('keydown', this._handleCollapsibleKeydown));
         }
+
         _handleCollapsibleClick = (e) => {
             const header = e.target.closest('.collapsible-header');
             if (e.target && header) {
@@ -2724,9 +2827,11 @@ var M = (function (exports) {
                 this._handleCollapsibleClick(e);
             }
         };
+
         _setExpanded(li) {
             li.style.maxHeight = li.scrollHeight + 'px';
         }
+
         _animateIn(index) {
             const li = this.el.children[index];
             if (!li)
@@ -2741,6 +2846,7 @@ var M = (function (exports) {
                 }
             }, duration);
         }
+
         _animateOut(index) {
             const li = this.el.children[index];
             if (!li)
@@ -2755,6 +2861,7 @@ var M = (function (exports) {
                 }
             }, duration);
         }
+
         /**
          * Open collapsible section.
          * @param n Nth section to open.
@@ -2802,6 +2909,7 @@ var M = (function (exports) {
         classes: '',
         dropdownOptions: {}
     };
+
     class FormSelect extends Component {
         /** If this is a multiple select. */
         isMultiple;
@@ -2821,6 +2929,7 @@ var M = (function (exports) {
         selectOptions;
         _values;
         nativeTabIndex;
+
         constructor(el, options) {
             super(el, options, FormSelect);
             if (this.el.classList.contains('browser-default'))
@@ -2837,9 +2946,11 @@ var M = (function (exports) {
             this._setupDropdown();
             this._setupEventHandlers();
         }
+
         static get defaults() {
             return _defaults$g;
         }
+
         /**
          * Initializes instances of FormSelect.
          * @param els HTML elements.
@@ -2848,14 +2959,17 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, FormSelect);
         }
+
         static getInstance(el) {
             return el['M_FormSelect'];
         }
+
         destroy() {
             this._removeEventHandlers();
             this._removeDropdown();
             this.el['M_FormSelect'] = undefined;
         }
+
         _setupEventHandlers() {
             this.dropdownOptions.querySelectorAll('li:not(.optgroup)').forEach((el) => {
                 el.addEventListener('click', this._handleOptionClick);
@@ -2867,6 +2981,7 @@ var M = (function (exports) {
             this.el.addEventListener('change', this._handleSelectChange);
             this.input.addEventListener('click', this._handleInputClick);
         }
+
         _removeEventHandlers() {
             this.dropdownOptions.querySelectorAll('li:not(.optgroup)').forEach((el) => {
                 el.removeEventListener('click', this._handleOptionClick);
@@ -2874,6 +2989,7 @@ var M = (function (exports) {
             this.el.removeEventListener('change', this._handleSelectChange);
             this.input.removeEventListener('click', this._handleInputClick);
         }
+
         _handleSelectChange = () => {
             this._setValueToInput();
         };
@@ -2883,6 +2999,7 @@ var M = (function (exports) {
             this._selectOptionElement(virtualOption);
             e.stopPropagation();
         };
+
         _arraysEqual(a, b) {
             if (a === b)
                 return true;
@@ -2895,6 +3012,7 @@ var M = (function (exports) {
                     return false;
             return true;
         }
+
         _selectOptionElement(virtualOption) {
             if (!virtualOption.classList.contains('disabled') &&
                 !virtualOption.classList.contains('optgroup')) {
@@ -2903,8 +3021,7 @@ var M = (function (exports) {
                 if (this.isMultiple) {
                     // Multi-Select
                     this._toggleEntryFromArray(value);
-                }
-                else {
+                } else {
                     // Single-Select
                     this._deselectAll();
                     this._selectValue(value);
@@ -2915,17 +3032,19 @@ var M = (function (exports) {
                 const actualSelectedValues = this.getSelectedValues();
                 const selectionHasChanged = !this._arraysEqual(previousSelectedValues, actualSelectedValues);
                 if (selectionHasChanged)
-                    this.el.dispatchEvent(new Event('change', { bubbles: true, cancelable: true, composed: true })); // trigger('change');
+                    this.el.dispatchEvent(new Event('change', {bubbles: true, cancelable: true, composed: true})); // trigger('change');
             }
             if (!this.isMultiple)
                 this.dropdown.close();
         }
+
         _handleInputClick = () => {
             if (this.dropdown && this.dropdown.isOpen) {
                 this._setValueToInput();
                 this._setSelectedStates();
             }
         };
+
         _setupDropdown() {
             this.labelEl = document.querySelector('[for="' + this.el.id + '"]');
             this.wrapper = document.createElement('div');
@@ -2958,8 +3077,7 @@ var M = (function (exports) {
                         // Option
                         const virtualOption = this._createAndAppendOptionWithIcon(realOption, this.isMultiple ? 'multiple' : undefined);
                         this._addOptionToValues(realOption, virtualOption);
-                    }
-                    else if (realOption.tagName === 'OPTGROUP') {
+                    } else if (realOption.tagName === 'OPTGROUP') {
                         // Optgroup
                         const groupId = 'opt-group-' + Utils.guid();
                         const groupParent = document.createElement('li');
@@ -3020,7 +3138,7 @@ var M = (function (exports) {
             this.wrapper.prepend(dropdownIcon);
             // Initialize dropdown
             if (!this.el.disabled) {
-                const dropdownOptions = { ...this.options.dropdownOptions };
+                const dropdownOptions = {...this.options.dropdownOptions};
                 dropdownOptions.coverTrigger = false;
                 const userOnOpenEnd = dropdownOptions.onOpenEnd;
                 const userOnCloseEnd = dropdownOptions.onCloseEnd;
@@ -3063,9 +3181,11 @@ var M = (function (exports) {
             if (this.labelEl)
                 this.input.after(this.labelEl);
         }
+
         _addOptionToValues(realOption, virtualOption) {
-            this._values.push({ el: realOption, optionEl: virtualOption });
+            this._values.push({el: realOption, optionEl: virtualOption});
         }
+
         _removeDropdown() {
             this.wrapper.querySelector('.caret').remove();
             this.input.remove();
@@ -3073,6 +3193,7 @@ var M = (function (exports) {
             this.wrapper.before(this.el);
             this.wrapper.remove();
         }
+
         _createAndAppendOptionWithIcon(realOption, type) {
             const li = document.createElement('li');
             li.setAttribute('role', 'option');
@@ -3104,6 +3225,7 @@ var M = (function (exports) {
             this.dropdownOptions.append(li);
             return li;
         }
+
         _selectValue(value) {
             value.el.selected = true;
             value.optionEl.classList.add('selected');
@@ -3112,6 +3234,7 @@ var M = (function (exports) {
             if (checkbox)
                 checkbox.checked = true;
         }
+
         _deselectValue(value) {
             value.el.selected = false;
             value.optionEl.classList.remove('selected');
@@ -3120,23 +3243,28 @@ var M = (function (exports) {
             if (checkbox)
                 checkbox.checked = false;
         }
+
         _deselectAll() {
             this._values.forEach((value) => this._deselectValue(value));
         }
+
         _isValueSelected(value) {
             const realValues = this.getSelectedValues();
             return realValues.some((realValue) => realValue === value.el.value);
         }
+
         _toggleEntryFromArray(value) {
             if (this._isValueSelected(value))
                 this._deselectValue(value);
             else
                 this._selectValue(value);
         }
+
         _getSelectedOptions() {
             // remove null, false, ... values
             return Array.prototype.filter.call(this.el.selectedOptions, (realOption) => realOption);
         }
+
         _setValueToInput() {
             const selectedRealOptions = this._getSelectedOptions();
             const selectedOptionPairs = this._values.filter((value) => selectedRealOptions.indexOf(value.el) >= 0);
@@ -3153,6 +3281,7 @@ var M = (function (exports) {
             }
             this.input.value = texts.join(', ');
         }
+
         _setSelectedStates() {
             this._values.forEach((value) => {
                 const optionIsSelected = value.el.selected;
@@ -3161,13 +3290,13 @@ var M = (function (exports) {
                     cb.checked = optionIsSelected;
                 if (optionIsSelected) {
                     this._activateOption(this.dropdownOptions, value.optionEl);
-                }
-                else {
+                } else {
                     value.optionEl.classList.remove('selected');
                     value.optionEl.ariaSelected = 'false'; // attr("aria-selected", 'false');
                 }
             });
         }
+
         _activateOption(ul, li) {
             if (!li)
                 return;
@@ -3176,6 +3305,7 @@ var M = (function (exports) {
             li.classList.add('selected');
             li.ariaSelected = 'true';
         }
+
         getSelectedValues() {
             return this._getSelectedOptions().map((realOption) => realOption.value);
         }
@@ -3187,11 +3317,13 @@ var M = (function (exports) {
         duration: 250,
         align: 'left'
     };
+
     class DockedDisplayPlugin {
         el;
         container;
         options;
         visible;
+
         constructor(el, container, options) {
             this.el = el;
             this.options = {
@@ -3208,6 +3340,7 @@ var M = (function (exports) {
                 }
             });
         }
+
         /**
          * Initializes instance of DockedDisplayPlugin
          * @param el HTMLElement to position to
@@ -3217,6 +3350,7 @@ var M = (function (exports) {
         static init(el, container, options) {
             return new DockedDisplayPlugin(el, container, options);
         }
+
         show = () => {
             if (this.visible)
                 return;
@@ -3349,6 +3483,7 @@ var M = (function (exports) {
         onConfirm: null,
         onCancel: null,
     };
+
     class Datepicker extends Component {
         id;
         multiple = false;
@@ -3374,6 +3509,7 @@ var M = (function (exports) {
         displayPlugin;
         footer;
         static _template;
+
         constructor(el, options) {
             super(el, options, Datepicker);
             this.el['M_Datepicker'] = this;
@@ -3383,7 +3519,7 @@ var M = (function (exports) {
             };
             // make sure i18n defaults are not lost when only few i18n option properties are passed
             if (!!options && options.hasOwnProperty('i18n') && typeof options.i18n === 'object') {
-                this.options.i18n = { ...Datepicker.defaults.i18n, ...options.i18n };
+                this.options.i18n = {...Datepicker.defaults.i18n, ...options.i18n};
             }
             // Remove time component from minDate and maxDate options
             if (this.options.minDate)
@@ -3402,12 +3538,10 @@ var M = (function (exports) {
                 if (this.options.setDefaultDate) {
                     this.setDate(defDate, true);
                     this.setInputValue(this.el, defDate);
-                }
-                else {
+                } else {
                     this.gotoDate(defDate);
                 }
-            }
-            else {
+            } else {
                 this.gotoDate(new Date());
             }
             if (this.options.isDateRange) {
@@ -3431,9 +3565,11 @@ var M = (function (exports) {
                     this.displayPlugin = DockedDisplayPlugin.init(this.el, this.containerEl, this.options.displayPluginOptions);
             }
         }
+
         static get defaults() {
             return _defaults$e;
         }
+
         /**
          * Initializes instances of Datepicker.
          * @param els HTML elements.
@@ -3442,13 +3578,16 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Datepicker);
         }
+
         static _isDate(obj) {
             return /Date/.test(Object.prototype.toString.call(obj)) && !isNaN(obj.getTime());
         }
+
         static _isWeekend(date) {
             const day = date.getDay();
             return day === 0 || day === 6;
         }
+
         /**
          * @deprecated as this function has no effect without any return statement or global parameter setter.
          */
@@ -3456,32 +3595,40 @@ var M = (function (exports) {
             if (Datepicker._isDate(date))
                 date.setHours(0, 0, 0, 0);
         }
+
         static _getDaysInMonth(year, month) {
             return [31, Datepicker._isLeapYear(year) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
         }
+
         static _isLeapYear(year) {
             // solution by Matti Virkkunen: http://stackoverflow.com/a/4881951
             return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
         }
+
         static _compareDates(a, b) {
             // weak date comparison (use setToStartOfDay(date) to ensure correct result)
             return a.getTime() === b.getTime();
         }
+
         static _compareWithinRange(day, date, dateEnd) {
             return day.getTime() > date.getTime() && day.getTime() < dateEnd.getTime();
         }
+
         static _comparePastDate(a, b) {
             return a.getTime() < b.getTime();
         }
+
         static getInstance(el) {
             return el['M_Datepicker'];
         }
+
         destroy() {
             this._removeEventHandlers();
             this.containerEl.remove();
             this.destroySelects();
             this.el['M_Datepicker'] = undefined;
         }
+
         destroySelects() {
             const oldYearSelect = this.calendarEl.querySelector('.orig-select-year');
             if (oldYearSelect) {
@@ -3492,6 +3639,7 @@ var M = (function (exports) {
                 FormSelect.getInstance(oldMonthSelect).destroy();
             }
         }
+
         _insertHTMLIntoDOM() {
             // HTML5 input date field support
             if (this.el.type == 'date') {
@@ -3505,11 +3653,9 @@ var M = (function (exports) {
                 if (!this.options.dateRangeEndEl) {
                     this.endDateEl = this.createDateInput();
                     this.endDateEl.classList.add('datepicker-end-date');
-                }
-                else if (document.querySelector(this.options.dateRangeEndEl) === undefined) {
+                } else if (document.querySelector(this.options.dateRangeEndEl) === undefined) {
                     console.warn('Specified date range end input element in dateRangeEndEl not found');
-                }
-                else {
+                } else {
                     this.endDateEl = document.querySelector(this.options.dateRangeEndEl);
                     if (!this.endDateEl.parentElement.querySelector('.datepicker-format') === null) {
                         this._renderDateInputFormat(this.endDateEl);
@@ -3531,8 +3677,7 @@ var M = (function (exports) {
                 this.options.container =
                     optEl instanceof HTMLElement ? optEl : document.querySelector(optEl);
                 this.options.container.append(this.containerEl);
-            }
-            else {
+            } else {
                 //this.containerEl.before(this.el);
                 const appendTo = !this.endDateEl ? this.el : this.endDateEl;
                 if (!this.options.openByDefault)
@@ -3540,12 +3685,14 @@ var M = (function (exports) {
                 appendTo.parentElement.after(this.containerEl);
             }
         }
+
         /**
          * Renders the date input format
          */
         _renderDateInputFormat(el) {
             el.parentElement.querySelector('.datepicker-format').innerHTML = this.options.format.toString();
         }
+
         /**
          * Gets a string representation of the given date.
          */
@@ -3558,6 +3705,7 @@ var M = (function (exports) {
             // String Format
             return this.formatDate(date, format);
         }
+
         /**
          * Returns the formatted date.
          */
@@ -3567,6 +3715,7 @@ var M = (function (exports) {
                 .map((label) => (this.formats[label] ? this.formats[label](date) : label))
                 .join('');
         }
+
         /**
          * Sets date from input field.
          */
@@ -3574,6 +3723,7 @@ var M = (function (exports) {
             const date = new Date(Date.parse(el.value));
             this.setDate(date, false, el == this.endDateEl, true);
         }
+
         /**
          * Set a date on the datepicker.
          * @param date Date to set on the datepicker.
@@ -3596,6 +3746,7 @@ var M = (function (exports) {
                 this.options.onSelect.call(this, selectedDate);
             }
         }
+
         validateDate(date) {
             if (!date) {
                 this._renderDateDisplay(date);
@@ -3610,12 +3761,12 @@ var M = (function (exports) {
             const min = this.options.minDate, max = this.options.maxDate;
             if (Datepicker._isDate(min) && date < min) {
                 date = min;
-            }
-            else if (Datepicker._isDate(max) && date > max) {
+            } else if (Datepicker._isDate(max) && date > max) {
                 date = max;
             }
             return new Date(date.getTime());
         }
+
         /**
          * Set a single date on the datepicker.
          * @param date Date to set on the datepicker.
@@ -3624,11 +3775,11 @@ var M = (function (exports) {
         setSingleDate(date, isEndDate) {
             if (!isEndDate) {
                 this.date = date;
-            }
-            else if (isEndDate) {
+            } else if (isEndDate) {
                 this.endDate = date;
             }
         }
+
         /**
          * Set a multi date on the datepicker.
          * @param date Date to set on the datepicker.
@@ -3639,18 +3790,19 @@ var M = (function (exports) {
             });
             if (!selectedDate) {
                 this.dates.push(date);
-            }
-            else {
+            } else {
                 this.dates.splice(this.dates.indexOf(selectedDate), 1);
             }
             this.dates.sort((a, b) => (a.getTime() < b.getTime() ? -1 : 0));
         }
+
         /**
          * Sets the data-date attribute on the date input field
          */
         setDataDate(el, date) {
             el.setAttribute('data-date', this.toString(date));
         }
+
         /**
          * Sets dates on the input values.
          */
@@ -3664,6 +3816,7 @@ var M = (function (exports) {
             }
             this.setMultipleSelectionInputValues();
         }
+
         setMultipleSelectionInputValues() {
             const dateElsArr = Array.from(this.dateEls).filter((el, index) => {
                 if (index > this.dates.length - 1)
@@ -3682,6 +3835,7 @@ var M = (function (exports) {
                 this.dateEls.push(dateEl);
             });
         }
+
         /**
          * Sets given date as the input value on the given element.
          */
@@ -3689,17 +3843,17 @@ var M = (function (exports) {
             if (el.type == 'date') {
                 this.setDataDate(el, date);
                 el.value = this.formatDate(date, 'yyyy-mm-dd');
-            }
-            else {
+            } else {
                 el.value = this.toString(date);
             }
             this.el.dispatchEvent(new CustomEvent('change', {
                 bubbles: true,
                 cancelable: true,
                 composed: true,
-                detail: { firedBy: this }
+                detail: {firedBy: this}
             }));
         }
+
         /**
          * Renders the date in the modal head section.
          */
@@ -3709,12 +3863,12 @@ var M = (function (exports) {
             // @todo should we include an option for date formatting by component options?
             if (!this.options.isDateRange) {
                 this.dateTextEl.innerHTML = this.formatDate(displayDate, 'ddd, mmm d');
-            }
-            else {
+            } else {
                 const displayEndDate = Datepicker._isDate(endDate) ? endDate : new Date();
                 this.dateTextEl.innerHTML = `${this.formatDate(displayDate, 'mmm d')} - ${this.formatDate(displayEndDate, 'mmm d')}`;
             }
         }
+
         /**
          * Change date view to a specific date on the datepicker.
          * @param date Date to show on the datepicker.
@@ -3725,7 +3879,9 @@ var M = (function (exports) {
                 return;
             }
             if (this.calendars) {
-                const firstVisibleDate = new Date(this.calendars[0].year, this.calendars[0].month, 1), lastVisibleDate = new Date(this.calendars[this.calendars.length - 1].year, this.calendars[this.calendars.length - 1].month, 1), visibleDate = date.getTime();
+                const firstVisibleDate = new Date(this.calendars[0].year, this.calendars[0].month, 1),
+                    lastVisibleDate = new Date(this.calendars[this.calendars.length - 1].year, this.calendars[this.calendars.length - 1].month, 1),
+                    visibleDate = date.getTime();
                 // get the end of the month
                 lastVisibleDate.setMonth(lastVisibleDate.getMonth() + 1);
                 lastVisibleDate.setDate(lastVisibleDate.getDate() - 1);
@@ -3742,10 +3898,12 @@ var M = (function (exports) {
             }
             this.adjustCalendars();
         }
+
         adjustCalendars() {
             this.calendars[0] = this.adjustCalendar(this.calendars[0]);
             this.draw();
         }
+
         adjustCalendar(calendar) {
             if (calendar.month < 0) {
                 calendar.year -= Math.ceil(Math.abs(calendar.month) / 12);
@@ -3757,14 +3915,17 @@ var M = (function (exports) {
             }
             return calendar;
         }
+
         nextMonth() {
             this.calendars[0].month++;
             this.adjustCalendars();
         }
+
         prevMonth() {
             this.calendars[0].month--;
             this.adjustCalendars();
         }
+
         render(year, month, randId) {
             const now = new Date(), days = Datepicker._getDaysInMonth(year, month), data = [];
             let before = new Date(year, month, 1).getDay(), row = [];
@@ -3775,7 +3936,9 @@ var M = (function (exports) {
                     before += 7;
                 }
             }
-            const previousMonth = month === 0 ? 11 : month - 1, nextMonth = month === 11 ? 0 : month + 1, yearOfPreviousMonth = month === 0 ? year - 1 : year, yearOfNextMonth = month === 11 ? year + 1 : year, daysInPreviousMonth = Datepicker._getDaysInMonth(yearOfPreviousMonth, previousMonth);
+            const previousMonth = month === 0 ? 11 : month - 1, nextMonth = month === 11 ? 0 : month + 1,
+                yearOfPreviousMonth = month === 0 ? year - 1 : year, yearOfNextMonth = month === 11 ? year + 1 : year,
+                daysInPreviousMonth = Datepicker._getDaysInMonth(yearOfPreviousMonth, previousMonth);
             let cells = days + before, after = cells;
             while (after > 7) {
                 after -= 7;
@@ -3783,15 +3946,24 @@ var M = (function (exports) {
             cells += 7 - after;
             let isWeekSelected = false;
             for (let i = 0, r = 0; i < cells; i++) {
-                const day = new Date(year, month, 1 + (i - before)), isToday = Datepicker._compareDates(day, now), hasEvent = this.options.events.indexOf(day.toDateString()) !== -1, isEmpty = i < before || i >= days + before, isStartRange = this.options.startRange && Datepicker._compareDates(this.options.startRange, day), isEndRange = this.options.endRange && Datepicker._compareDates(this.options.endRange, day), isInRange = this.options.startRange &&
-                    this.options.endRange &&
-                    this.options.startRange < day &&
-                    day < this.options.endRange, isDisabled = (this.options.minDate && day < this.options.minDate) ||
-                    (this.options.maxDate && day > this.options.maxDate) ||
-                    (this.options.disableWeekends && Datepicker._isWeekend(day)) ||
-                    (this.options.disableDayFn && this.options.disableDayFn(day)), isDateRangeStart = this.options.isDateRange && this.date && this.endDate && Datepicker._compareDates(this.date, day), isDateRangeEnd = this.options.isDateRange && this.endDate && Datepicker._compareDates(this.endDate, day), isDateRange = this.options.isDateRange &&
-                    Datepicker._isDate(this.endDate) &&
-                    Datepicker._compareWithinRange(day, this.date, this.endDate);
+                const day = new Date(year, month, 1 + (i - before)), isToday = Datepicker._compareDates(day, now),
+                    hasEvent = this.options.events.indexOf(day.toDateString()) !== -1,
+                    isEmpty = i < before || i >= days + before,
+                    isStartRange = this.options.startRange && Datepicker._compareDates(this.options.startRange, day),
+                    isEndRange = this.options.endRange && Datepicker._compareDates(this.options.endRange, day),
+                    isInRange = this.options.startRange &&
+                        this.options.endRange &&
+                        this.options.startRange < day &&
+                        day < this.options.endRange,
+                    isDisabled = (this.options.minDate && day < this.options.minDate) ||
+                        (this.options.maxDate && day > this.options.maxDate) ||
+                        (this.options.disableWeekends && Datepicker._isWeekend(day)) ||
+                        (this.options.disableDayFn && this.options.disableDayFn(day)),
+                    isDateRangeStart = this.options.isDateRange && this.date && this.endDate && Datepicker._compareDates(this.date, day),
+                    isDateRangeEnd = this.options.isDateRange && this.endDate && Datepicker._compareDates(this.endDate, day),
+                    isDateRange = this.options.isDateRange &&
+                        Datepicker._isDate(this.endDate) &&
+                        Datepicker._compareWithinRange(day, this.date, this.endDate);
                 let dayNumber = 1 + (i - before), monthNumber = month, yearNumber = year;
                 let isSelected = false;
                 if (Datepicker._isDate(this.date)) {
@@ -3809,8 +3981,7 @@ var M = (function (exports) {
                         dayNumber = daysInPreviousMonth + dayNumber;
                         monthNumber = previousMonth;
                         yearNumber = yearOfPreviousMonth;
-                    }
-                    else {
+                    } else {
                         dayNumber = dayNumber - days;
                         monthNumber = nextMonth;
                         yearNumber = yearOfNextMonth;
@@ -3843,25 +4014,27 @@ var M = (function (exports) {
             }
             return this.renderTable(this.options, data, randId);
         }
+
         renderDay(opts) {
             const classMap = {
-                isDisabled: 'is-disabled',
-                isToday: 'is-today',
-                isSelected: 'is-selected',
-                hasEvent: 'has-event',
-                isInRange: 'is-inrange',
-                isStartRange: 'is-startrange',
-                isEndRange: 'is-endrange',
-                isDateRangeStart: 'is-daterange-start',
-                isDateRangeEnd: 'is-daterange-end',
-                isDateRange: 'is-daterange'
-            }, ariaSelected = !(['isSelected', 'isDateRange'].filter((prop) => !!(opts.hasOwnProperty(prop) && opts[prop] === true)).length === 0), arr = ['datepicker-day'];
+                    isDisabled: 'is-disabled',
+                    isToday: 'is-today',
+                    isSelected: 'is-selected',
+                    hasEvent: 'has-event',
+                    isInRange: 'is-inrange',
+                    isStartRange: 'is-startrange',
+                    isEndRange: 'is-endrange',
+                    isDateRangeStart: 'is-daterange-start',
+                    isDateRangeEnd: 'is-daterange-end',
+                    isDateRange: 'is-daterange'
+                },
+                ariaSelected = !(['isSelected', 'isDateRange'].filter((prop) => !!(opts.hasOwnProperty(prop) && opts[prop] === true)).length === 0),
+                arr = ['datepicker-day'];
             if (opts.isEmpty) {
                 if (opts.showDaysInNextAndPreviousMonths) {
                     arr.push('is-outside-current-month');
                     arr.push('is-selection-disabled');
-                }
-                else {
+                } else {
                     return '<td class="is-empty"></td>';
                 }
             }
@@ -3874,6 +4047,7 @@ var M = (function (exports) {
                 `<button class="datepicker-day-button" type="button" data-year="${opts.year}" data-month="${opts.month}" data-day="${opts.day}">${opts.day}</button>` +
                 '</td>');
         }
+
         renderRow(days, isRTL, isRowSelected) {
             return ('<tr class="datepicker-row' +
                 (isRowSelected ? ' is-selected' : '') +
@@ -3881,6 +4055,7 @@ var M = (function (exports) {
                 (isRTL ? days.reverse() : days).join('') +
                 '</tr>');
         }
+
         renderTable(opts, data, randId) {
             return ('<div class="datepicker-table-wrapper"><table cellpadding="0" cellspacing="0" class="datepicker-table" role="grid" aria-labelledby="' +
                 randId +
@@ -3889,6 +4064,7 @@ var M = (function (exports) {
                 this.renderBody(data) +
                 '</table></div>');
         }
+
         renderHead(opts) {
             const arr = [];
             let i;
@@ -3897,9 +4073,11 @@ var M = (function (exports) {
             }
             return '<thead><tr>' + (opts.isRTL ? arr.reverse() : arr).join('') + '</tr></thead>';
         }
+
         renderBody(rows) {
             return '<tbody>' + rows.join('') + '</tbody>';
         }
+
         renderTitle(instance, c, year, month, refYear, randId) {
             const opts = this.options, isMinYear = year === opts.minYear, isMaxYear = year === opts.maxYear;
             let i, j, arr = [], html = '<div id="' +
@@ -3923,8 +4101,7 @@ var M = (function (exports) {
             if (Array.isArray(opts.yearRange)) {
                 i = opts.yearRange[0];
                 j = opts.yearRange[1] + 1;
-            }
-            else {
+            } else {
                 i = year - opts.yearRange;
                 j = 1 + year + opts.yearRange;
             }
@@ -3938,13 +4115,12 @@ var M = (function (exports) {
             const yearHtml = `<select class="datepicker-select orig-select-year" tabindex="-1">${arr.join('')}</select>`;
             const leftArrow = '<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/><path d="M0-.5h24v24H0z" fill="none"/></svg>';
             html += `<button class="month-prev${prev ? '' : ' is-disabled'
-        // @todo remove button class and add scss mixin, current implementation temporary for focus states, @see https://github.com/materializecss/materialize/issues/566
-        } btn" type="button">${leftArrow}</button>`;
+                // @todo remove button class and add scss mixin, current implementation temporary for focus states, @see https://github.com/materializecss/materialize/issues/566
+            } btn" type="button">${leftArrow}</button>`;
             html += '<div class="selects-container">';
             if (opts.showMonthAfterYear) {
                 html += yearHtml + monthHtml;
-            }
-            else {
+            } else {
                 html += monthHtml + yearHtml;
             }
             html += '</div>';
@@ -3956,13 +4132,15 @@ var M = (function (exports) {
             }
             const rightArrow = '<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0-.25h24v24H0z" fill="none"/></svg>';
             html += `<button class="month-next${next ? '' : ' is-disabled'
-        // @todo remove button class and add scss mixin, current implementation temporary for focus states, @see https://github.com/materializecss/materialize/issues/566
-        } btn" type="button">${rightArrow}</button>`;
+                // @todo remove button class and add scss mixin, current implementation temporary for focus states, @see https://github.com/materializecss/materialize/issues/566
+            } btn" type="button">${rightArrow}</button>`;
             return (html += '</div>');
         }
+
         // refresh HTML
         draw() {
-            const opts = this.options, minYear = opts.minYear, maxYear = opts.maxYear, minMonth = opts.minMonth, maxMonth = opts.maxMonth;
+            const opts = this.options, minYear = opts.minYear, maxYear = opts.maxYear, minMonth = opts.minMonth,
+                maxMonth = opts.maxMonth;
             let html = '';
             if (this._y <= minYear) {
                 this._y = minYear;
@@ -3984,8 +4162,7 @@ var M = (function (exports) {
             for (let c = 0; c < 1; c++) {
                 if (!this.options.isDateRange) {
                     this._renderDateDisplay(this.date);
-                }
-                else {
+                } else {
                     this._renderDateDisplay(this.date, this.endDate);
                 }
                 html +=
@@ -3999,11 +4176,11 @@ var M = (function (exports) {
             // @todo fix accessibility @see https://github.com/materializecss/materialize/issues/522
             FormSelect.init(yearSelect, {
                 classes: 'select-year',
-                dropdownOptions: { container: document.body, constrainWidth: false }
+                dropdownOptions: {container: document.body, constrainWidth: false}
             });
             FormSelect.init(monthSelect, {
                 classes: 'select-month',
-                dropdownOptions: { container: document.body, constrainWidth: false }
+                dropdownOptions: {container: document.body, constrainWidth: false}
             });
             // Add change handlers for select
             yearSelect.addEventListener('change', this._handleYearChange);
@@ -4012,6 +4189,7 @@ var M = (function (exports) {
                 this.options.onDraw.call(this);
             }
         }
+
         _setupEventHandlers() {
             this.el.addEventListener('click', this._handleInputClick);
             this.el.addEventListener('keydown', this._handleInputKeydown);
@@ -4024,6 +4202,7 @@ var M = (function (exports) {
               this.clearBtn.addEventListener('click', this._handleClearClick);
             }*/
         }
+
         _setupVariables() {
             const template = document.createElement('template');
             template.innerHTML = Datepicker._template.trim();
@@ -4072,6 +4251,7 @@ var M = (function (exports) {
                 }
             };
         }
+
         _removeEventHandlers() {
             this.el.removeEventListener('click', this._handleInputClick);
             this.el.removeEventListener('keydown', this._handleInputKeydown);
@@ -4083,6 +4263,7 @@ var M = (function (exports) {
                 this.endDateEl.removeEventListener('change', this._handleInputChange);
             }
         }
+
         _handleInputClick = (e) => {
             // Prevents default browser datepicker modal rendering
             if (e.type == 'date') {
@@ -4122,11 +4303,9 @@ var M = (function (exports) {
                     }
                     if (this.options.autoSubmit)
                         this._finishSelection();
-                }
-                else if (target.closest('.month-prev')) {
+                } else if (target.closest('.month-prev')) {
                     this.prevMonth();
-                }
-                else if (target.closest('.month-next')) {
+                } else if (target.closest('.month-next')) {
                     this.nextMonth();
                 }
             }
@@ -4157,6 +4336,7 @@ var M = (function (exports) {
         _handleYearChange = (e) => {
             this.gotoYear(e.target.value);
         };
+
         // change view to a specific month (zero-index, e.g. 0: January)
         gotoMonth(month) {
             if (!isNaN(month)) {
@@ -4164,6 +4344,7 @@ var M = (function (exports) {
                 this.adjustCalendars();
             }
         }
+
         // change view to a specific full year (e.g. "2012")
         gotoYear(year) {
             if (!isNaN(year)) {
@@ -4171,6 +4352,7 @@ var M = (function (exports) {
                 this.adjustCalendars();
             }
         }
+
         _handleInputChange = (e) => {
             let date;
             const el = e.target;
@@ -4184,8 +4366,7 @@ var M = (function (exports) {
                 date = this.options.parse(e.target.value, typeof this.options.format === 'function'
                     ? this.options.format(new Date(this.el.value))
                     : this.options.format);
-            }
-            else {
+            } else {
                 date = new Date(Date.parse(e.target.value));
             }
             if (Datepicker._isDate(date)) {
@@ -4196,6 +4377,7 @@ var M = (function (exports) {
                 }
             }
         };
+
         renderDayName(opts, day, abbr = false) {
             day += opts.firstDay;
             while (day >= 7) {
@@ -4203,6 +4385,7 @@ var M = (function (exports) {
             }
             return abbr ? opts.i18n.weekdaysAbbrev[day] : opts.i18n.weekdays[day];
         }
+
         createDateInput() {
             const dateInput = this.el.cloneNode(true);
             dateInput.addEventListener('click', this._handleInputClick);
@@ -4211,6 +4394,7 @@ var M = (function (exports) {
             this.el.parentElement.appendChild(dateInput);
             return dateInput;
         }
+
         // Set input value to the selected date and close Datepicker
         _finishSelection = () => {
             this.setInputValues();
@@ -4226,15 +4410,18 @@ var M = (function (exports) {
             if (typeof this.options.onCancel === 'function')
                 this.options.onCancel.call(this);
         };
+
         // deprecated
         open() {
             console.warn('Datepicker.open() is deprecated. Remove this method and wrap in modal yourself.');
             return this;
         }
+
         close() {
             console.warn('Datepicker.close() is deprecated. Remove this method and wrap in modal yourself.');
             return this;
         }
+
         static {
             Datepicker._template = `
         <div class="datepicker-container">
@@ -4275,18 +4462,17 @@ var M = (function (exports) {
                 !textfield.required &&
                 textfield.classList.contains('validate')) {
                 textfield.classList.remove('invalid');
-            }
-            else if (textfield.classList.contains('validate')) {
+            } else if (textfield.classList.contains('validate')) {
                 // Check for character counter attributes
                 if ((textfield.validity.valid && hasLength && len <= lenAttr) ||
                     (textfield.validity.valid && !hasLength)) {
                     textfield.classList.remove('invalid');
-                }
-                else {
+                } else {
                     textfield.classList.add('invalid');
                 }
             }
         }
+
         /**
          * Resizes the given TextArea after updating the
          *  value content dynamically.
@@ -4342,8 +4528,7 @@ var M = (function (exports) {
             // Approximate with half of window size
             if (textarea.offsetWidth > 0 && textarea.offsetHeight > 0) {
                 hiddenDiv.style.width = textarea.getBoundingClientRect().width + 'px'; // ('width', textarea.width() + 'px');
-            }
-            else {
+            } else {
                 hiddenDiv.style.width = window.innerWidth / 2 + 'px'; //css('width', window.innerWidth / 2 + 'px');
             }
             // Resize if the new height is greater than the
@@ -4354,8 +4539,7 @@ var M = (function (exports) {
                 return;
             if (originalHeight <= hiddenDiv.clientHeight) {
                 textarea.style.height = hiddenDiv.clientHeight + 'px'; //css('height', hiddenDiv.innerHeight() + 'px');
-            }
-            else if (textarea.value.length < prevLength) {
+            } else if (textarea.value.length < prevLength) {
                 // In case the new height is less than original height, it
                 // means the textarea has less text than before
                 // So we set the height to the original one
@@ -4363,6 +4547,7 @@ var M = (function (exports) {
             }
             textarea.setAttribute('previous-length', (textarea.value || '').length.toString());
         }
+
         static Init() {
             if (typeof document !== 'undefined')
                 document?.addEventListener('DOMContentLoaded', () => {
@@ -4395,16 +4580,17 @@ var M = (function (exports) {
                     document
                         .querySelectorAll('.materialize-textarea')
                         .forEach((textArea) => {
-                        Forms.InitTextarea(textArea);
-                    });
+                            Forms.InitTextarea(textArea);
+                        });
                     // File Input Path
                     document
                         .querySelectorAll('.file-field input[type="file"]')
                         .forEach((fileInput) => {
-                        Forms.InitFileInputPath(fileInput);
-                    });
+                            Forms.InitFileInputPath(fileInput);
+                        });
                 });
         }
+
         static InitTextarea(textarea) {
             // Save Data in Element
             textarea.setAttribute('original-height', textarea.getBoundingClientRect().height.toString());
@@ -4413,6 +4599,7 @@ var M = (function (exports) {
             textarea.addEventListener('keyup', (e) => Forms.textareaAutoResize(e.target));
             textarea.addEventListener('keydown', (e) => Forms.textareaAutoResize(e.target));
         }
+
         static InitFileInputPath(fileInput) {
             fileInput.addEventListener('change', () => {
                 const fileField = fileInput.closest('.file-field');
@@ -4423,7 +4610,7 @@ var M = (function (exports) {
                     filenames.push(files[i].name);
                 }
                 pathInput.value = filenames.join(', ');
-                pathInput.dispatchEvent(new Event('change', { bubbles: true, cancelable: true, composed: true }));
+                pathInput.dispatchEvent(new Event('change', {bubbles: true, cancelable: true, composed: true}));
             });
         }
     }
@@ -4436,6 +4623,7 @@ var M = (function (exports) {
         onCloseStart: null,
         onCloseEnd: null
     };
+
     class Materialbox extends Component {
         /** If the materialbox overlay is showing. */
         overlayActive;
@@ -4458,6 +4646,7 @@ var M = (function (exports) {
         attrHeight;
         _overlay;
         _photoCaption;
+
         constructor(el, options) {
             super(el, options, Materialbox);
             this.el['M_Materialbox'] = this;
@@ -4479,9 +4668,11 @@ var M = (function (exports) {
             this.placeholder.append(this.el);
             this._setupEventHandlers();
         }
+
         static get defaults() {
             return _defaults$d;
         }
+
         /**
          * Initializes instances of MaterialBox.
          * @param els HTML elements.
@@ -4490,9 +4681,11 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Materialbox);
         }
+
         static getInstance(el) {
             return el['M_Materialbox'];
         }
+
         destroy() {
             this._removeEventHandlers();
             this.el['M_Materialbox'] = undefined;
@@ -4501,14 +4694,17 @@ var M = (function (exports) {
             this.placeholder.remove();
             this.el.removeAttribute('style');
         }
+
         _setupEventHandlers() {
             this.el.addEventListener('click', this._handleMaterialboxClick);
             this.el.addEventListener('keypress', this._handleMaterialboxKeypress);
         }
+
         _removeEventHandlers() {
             this.el.removeEventListener('click', this._handleMaterialboxClick);
             this.el.removeEventListener('keypress', this._handleMaterialboxKeypress);
         }
+
         _handleMaterialboxClick = () => {
             this._handleMaterialboxToggle();
         };
@@ -4536,6 +4732,7 @@ var M = (function (exports) {
             if (Utils.keys.ESC.includes(e.key) && this.doneAnimating && this.overlayActive)
                 this.close();
         };
+
         _makeAncestorsOverflowVisible() {
             this._changedAncestorList = [];
             let ancestor = this.placeholder.parentNode;
@@ -4548,6 +4745,7 @@ var M = (function (exports) {
                 ancestor = ancestor.parentNode;
             }
         }
+
         _offset(el) {
             const box = el.getBoundingClientRect();
             const docElem = document.documentElement;
@@ -4556,11 +4754,13 @@ var M = (function (exports) {
                 left: box.left + window.scrollX - docElem.clientLeft
             };
         }
+
         _updateVars() {
             this.windowWidth = window.innerWidth;
             this.windowHeight = window.innerHeight;
             this.caption = this.el.getAttribute('data-caption') || '';
         }
+
         // Image
         _animateImageIn() {
             this.el.style.maxHeight = this.newHeight.toString() + 'px';
@@ -4582,16 +4782,16 @@ var M = (function (exports) {
                 this.el.style.width = this.newWidth + 'px';
                 this.el.style.left =
                     Utils.getDocumentScrollLeft() +
-                        this.windowWidth / 2 -
-                        this._offset(this.placeholder).left -
-                        this.newWidth / 2 +
-                        'px';
+                    this.windowWidth / 2 -
+                    this._offset(this.placeholder).left -
+                    this.newWidth / 2 +
+                    'px';
                 this.el.style.top =
                     Utils.getDocumentScrollTop() +
-                        this.windowHeight / 2 -
-                        this._offset(this.placeholder).top -
-                        this.newHeight / 2 +
-                        'px';
+                    this.windowHeight / 2 -
+                    this._offset(this.placeholder).top -
+                    this.newHeight / 2 +
+                    'px';
             }, 1);
             setTimeout(() => {
                 this.doneAnimating = true;
@@ -4623,6 +4823,7 @@ var M = (function (exports) {
             });
             */
         }
+
         _animateImageOut() {
             const duration = this.options.outDuration;
             // easeOutQuad
@@ -4660,6 +4861,7 @@ var M = (function (exports) {
                     this.options.onCloseEnd.call(this, this.el);
             }, duration);
         }
+
         // Caption
         _addCaption() {
             this._photoCaption = document.createElement('div');
@@ -4676,6 +4878,7 @@ var M = (function (exports) {
                 this._photoCaption.style.opacity = '1';
             }, 1);
         }
+
         _removeCaption() {
             const duration = this.options.outDuration;
             this._photoCaption.style.transition = `opacity ${duration}ms ease`;
@@ -4684,6 +4887,7 @@ var M = (function (exports) {
                 this._photoCaption.remove();
             }, duration);
         }
+
         // Overlay
         _addOverlay() {
             this._overlay = document.createElement('div');
@@ -4691,7 +4895,7 @@ var M = (function (exports) {
             this._overlay.addEventListener('click', () => {
                 if (this.doneAnimating)
                     this.close();
-            }, { once: true });
+            }, {once: true});
             // Put before in origin image to preserve z-index layering.
             this.el.before(this._overlay);
             // Set dimensions if needed
@@ -4709,6 +4913,7 @@ var M = (function (exports) {
                 this._overlay.style.opacity = '1';
             }, 1);
         }
+
         _removeOverlay() {
             const duration = this.options.outDuration;
             this._overlay.style.transition = `opacity ${duration}ms ease`;
@@ -4718,6 +4923,7 @@ var M = (function (exports) {
                 this._overlay.remove();
             }, duration);
         }
+
         /**
          * Open materialbox.
          */
@@ -4768,8 +4974,7 @@ var M = (function (exports) {
                 const ratio = this.originalHeight / this.originalWidth;
                 this.newWidth = this.windowWidth * 0.9;
                 this.newHeight = this.windowWidth * 0.9 * ratio;
-            }
-            else {
+            } else {
                 // Height first
                 const ratio = this.originalWidth / this.originalHeight;
                 this.newWidth = this.windowHeight * 0.9 * ratio;
@@ -4817,6 +5022,7 @@ var M = (function (exports) {
         startingTop: '4%',
         endingTop: '10%'
     };
+
     class Modal extends Component {
         constructor(el, options) {
             super(el, options, Modal);
@@ -4828,29 +5034,51 @@ var M = (function (exports) {
             this.el.tabIndex = 0;
             this._setupEventHandlers();
         }
+
         static get defaults() {
             return _defaults$c;
         }
+
         static init(els, options = {}) {
             return super.init(els, options, Modal);
         }
+
         static getInstance(el) {
             return el['M_Modal'];
         }
-        destroy() { }
-        _setupEventHandlers() { }
-        _removeEventHandlers() { }
-        _handleTriggerClick() { }
-        _handleOverlayClick() { }
-        _handleModalCloseClick() { }
-        _handleKeydown() { }
-        _handleFocus() { }
+
+        destroy() {
+        }
+
+        _setupEventHandlers() {
+        }
+
+        _removeEventHandlers() {
+        }
+
+        _handleTriggerClick() {
+        }
+
+        _handleOverlayClick() {
+        }
+
+        _handleModalCloseClick() {
+        }
+
+        _handleKeydown() {
+        }
+
+        _handleFocus() {
+        }
+
         open() {
             return this;
         }
+
         close() {
             return this;
         }
+
         // Experimental!
         static #createHtml(config) {
             return `<dialog id="modal1" class="modal">
@@ -4861,26 +5089,32 @@ var M = (function (exports) {
       ${config.header ? '<div class="modal-footer">' + config.footer + '</div>' : ''}
     </dialog>`;
         }
+
         static #createHtmlElement(config) {
             const dialog = document.createElement('dialog');
             dialog.id = config.id;
             return dialog;
         }
+
         static create(config) {
             return this.#createHtmlElement(config);
         }
-        static { }
+
+        static {
+        }
     }
 
     const _defaults$b = {
         responsiveThreshold: 0 // breakpoint for swipeable
     };
+
     class Parallax extends Component {
         _enabled;
         _img;
         static _parallaxes = [];
         static _handleScrollThrottled;
         static _handleWindowResizeThrottled;
+
         constructor(el, options) {
             super(el, options, Parallax);
             this.el['M_Parallax'] = this;
@@ -4895,9 +5129,11 @@ var M = (function (exports) {
             this._setupStyles();
             Parallax._parallaxes.push(this);
         }
+
         static get defaults() {
             return _defaults$b;
         }
+
         /**
          * Initializes instances of Parallax.
          * @param els HTML elements.
@@ -4906,27 +5142,32 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Parallax);
         }
+
         static getInstance(el) {
             return el['M_Parallax'];
         }
+
         destroy() {
             Parallax._parallaxes.splice(Parallax._parallaxes.indexOf(this), 1);
             this._img.style.transform = '';
             this._removeEventHandlers();
             this.el['M_Parallax'] = undefined;
         }
+
         static _handleScroll() {
             for (let i = 0; i < Parallax._parallaxes.length; i++) {
                 const parallaxInstance = Parallax._parallaxes[i];
                 parallaxInstance._updateParallax.call(parallaxInstance);
             }
         }
+
         static _handleWindowResize() {
             for (let i = 0; i < Parallax._parallaxes.length; i++) {
                 const parallaxInstance = Parallax._parallaxes[i];
                 parallaxInstance._enabled = window.innerWidth > parallaxInstance.options.responsiveThreshold;
             }
         }
+
         _setupEventHandlers() {
             this._img.addEventListener('load', this._handleImageLoad);
             if (Parallax._parallaxes.length === 0) {
@@ -4940,6 +5181,7 @@ var M = (function (exports) {
                 window.addEventListener('resize', Parallax._handleWindowResizeThrottled);
             }
         }
+
         _removeEventHandlers() {
             this._img.removeEventListener('load', this._handleImageLoad);
             if (Parallax._parallaxes.length === 0) {
@@ -4947,12 +5189,15 @@ var M = (function (exports) {
                 window.removeEventListener('resize', Parallax._handleWindowResizeThrottled);
             }
         }
+
         _setupStyles() {
             this._img.style.opacity = '1';
         }
+
         _handleImageLoad = () => {
             this._updateParallax();
         };
+
         _offset(el) {
             const box = el.getBoundingClientRect();
             const docElem = document.documentElement;
@@ -4961,6 +5206,7 @@ var M = (function (exports) {
                 left: box.left + window.scrollX - docElem.clientLeft
             };
         }
+
         _updateParallax() {
             const containerHeight = this.el.getBoundingClientRect().height > 0 ? this.el.parentElement.offsetHeight : 500;
             const imgHeight = this._img.offsetHeight;
@@ -4974,8 +5220,7 @@ var M = (function (exports) {
             const parallax = parallaxDist * percentScrolled;
             if (!this._enabled) {
                 this._img.style.transform = '';
-            }
-            else if (bottom > scrollTop && top < scrollTop + windowHeight) {
+            } else if (bottom > scrollTop && top < scrollTop + windowHeight) {
                 this._img.style.transform = `translate3D(-50%, ${parallax}px, 0)`;
             }
         }
@@ -4987,9 +5232,11 @@ var M = (function (exports) {
         offset: 0,
         onPositionChange: null
     };
+
     class Pushpin extends Component {
         static _pushpins;
         originalOffset;
+
         constructor(el, options) {
             super(el, options, Pushpin);
             this.el['M_Pushpin'] = this;
@@ -5002,9 +5249,11 @@ var M = (function (exports) {
             this._setupEventHandlers();
             this._updatePosition();
         }
+
         static get defaults() {
             return _defaults$a;
         }
+
         /**
          * Initializes instances of Pushpin.
          * @param els HTML elements.
@@ -5013,9 +5262,11 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Pushpin);
         }
+
         static getInstance(el) {
             return el['M_Pushpin'];
         }
+
         destroy() {
             this.el.style.top = null;
             this._removePinClasses();
@@ -5027,18 +5278,22 @@ var M = (function (exports) {
             }
             this.el['M_Pushpin'] = undefined;
         }
+
         static _updateElements() {
             for (const elIndex in Pushpin._pushpins) {
                 const pInstance = Pushpin._pushpins[elIndex];
                 pInstance._updatePosition();
             }
         }
+
         _setupEventHandlers() {
             document.addEventListener('scroll', Pushpin._updateElements);
         }
+
         _removeEventHandlers() {
             document.removeEventListener('scroll', Pushpin._updateElements);
         }
+
         _updatePosition() {
             const scrolled = Utils.getDocumentScrollTop() + this.options.offset;
             if (this.options.top <= scrolled &&
@@ -5073,12 +5328,14 @@ var M = (function (exports) {
                 }
             }
         }
+
         _removePinClasses() {
             // IE 11 bug (can't remove multiple classes in one line)
             this.el.classList.remove('pin-top');
             this.el.classList.remove('pinned');
             this.el.classList.remove('pin-bottom');
         }
+
         static {
             Pushpin._pushpins = [];
         }
@@ -5094,6 +5351,7 @@ var M = (function (exports) {
         keepTopElementActive: false,
         animationDuration: null
     };
+
     class ScrollSpy extends Component {
         static _elements;
         static _count;
@@ -5104,6 +5362,7 @@ var M = (function (exports) {
         static _keptTopActiveElement = null;
         tickId;
         id;
+
         constructor(el, options) {
             super(el, options, ScrollSpy);
             this.el['M_ScrollSpy'] = this;
@@ -5119,9 +5378,11 @@ var M = (function (exports) {
             this._setupEventHandlers();
             this._handleWindowScroll();
         }
+
         static get defaults() {
             return _defaults$9;
         }
+
         /**
          * Initializes instances of ScrollSpy.
          * @param els HTML elements.
@@ -5130,9 +5391,11 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, ScrollSpy);
         }
+
         static getInstance(el) {
             return el['M_ScrollSpy'];
         }
+
         destroy() {
             ScrollSpy._elements.splice(ScrollSpy._elements.indexOf(this), 1);
             ScrollSpy._elementsInView.splice(ScrollSpy._elementsInView.indexOf(this), 1);
@@ -5143,6 +5406,7 @@ var M = (function (exports) {
             actElem.classList.remove(this.options.activeClass);
             this.el['M_ScrollSpy'] = undefined;
         }
+
         _setupEventHandlers() {
             if (ScrollSpy._count === 1) {
                 window.addEventListener('scroll', this._handleWindowScroll);
@@ -5150,6 +5414,7 @@ var M = (function (exports) {
                 document.body.addEventListener('click', this._handleTriggerClick);
             }
         }
+
         _removeEventHandlers() {
             if (ScrollSpy._count === 0) {
                 window.removeEventListener('scroll', this._handleWindowScroll);
@@ -5157,6 +5422,7 @@ var M = (function (exports) {
                 document.body.removeEventListener('click', this._handleTriggerClick);
             }
         }
+
         _handleThrottledResize = () => Utils.throttle(this._handleWindowScroll, 200).bind(this);
         _handleTriggerClick = (e) => {
             const trigger = e.target;
@@ -5167,9 +5433,8 @@ var M = (function (exports) {
                     e.preventDefault();
                     if (scrollspy.el['M_ScrollSpy'].options.animationDuration) {
                         ScrollSpy._smoothScrollIntoView(scrollspy.el, scrollspy.el['M_ScrollSpy'].options.animationDuration);
-                    }
-                    else {
-                        scrollspy.el.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        scrollspy.el.scrollIntoView({behavior: 'smooth'});
                     }
                     break;
                 }
@@ -5179,7 +5444,8 @@ var M = (function (exports) {
             // unique tick id
             ScrollSpy._ticks++;
             // viewport rectangle
-            const top = Utils.getDocumentScrollTop(), left = Utils.getDocumentScrollLeft(), right = left + window.innerWidth, bottom = top + window.innerHeight;
+            const top = Utils.getDocumentScrollTop(), left = Utils.getDocumentScrollLeft(),
+                right = left + window.innerWidth, bottom = top + window.innerHeight;
             // determine which elements are in view
             const intersections = ScrollSpy._findElements(top, right, bottom, left);
             for (let i = 0; i < intersections.length; i++) {
@@ -5210,14 +5476,14 @@ var M = (function (exports) {
                     const topElements = ScrollSpy._elements
                         .filter((value) => ScrollSpy._getDistanceToViewport(value.el) <= 0)
                         .sort((a, b) => {
-                        const distanceA = ScrollSpy._getDistanceToViewport(a.el);
-                        const distanceB = ScrollSpy._getDistanceToViewport(b.el);
-                        if (distanceA < distanceB)
-                            return -1;
-                        if (distanceA > distanceB)
-                            return 1;
-                        return 0;
-                    });
+                            const distanceA = ScrollSpy._getDistanceToViewport(a.el);
+                            const distanceB = ScrollSpy._getDistanceToViewport(b.el);
+                            if (distanceA < distanceB)
+                                return -1;
+                            if (distanceA > distanceB)
+                                return 1;
+                            return 0;
+                        });
                     const nearestTopElement = topElements.length
                         ? topElements[topElements.length - 1]
                         : ScrollSpy._elements[0];
@@ -5227,6 +5493,7 @@ var M = (function (exports) {
                 }
             }
         };
+
         static _offset(el) {
             const box = el.getBoundingClientRect();
             const docElem = document.documentElement;
@@ -5235,13 +5502,16 @@ var M = (function (exports) {
                 left: box.left + window.pageXOffset - docElem.clientLeft
             };
         }
+
         static _findElements(top, right, bottom, left) {
             const hits = [];
             for (let i = 0; i < ScrollSpy._elements.length; i++) {
                 const scrollspy = ScrollSpy._elements[i];
                 const currTop = top + scrollspy.options.scrollOffset || 200;
                 if (scrollspy.el.getBoundingClientRect().height > 0) {
-                    const elTop = ScrollSpy._offset(scrollspy.el).top, elLeft = ScrollSpy._offset(scrollspy.el).left, elRight = elLeft + scrollspy.el.getBoundingClientRect().width, elBottom = elTop + scrollspy.el.getBoundingClientRect().height;
+                    const elTop = ScrollSpy._offset(scrollspy.el).top, elLeft = ScrollSpy._offset(scrollspy.el).left,
+                        elRight = elLeft + scrollspy.el.getBoundingClientRect().width,
+                        elBottom = elTop + scrollspy.el.getBoundingClientRect().height;
                     const isIntersect = !(elLeft > right ||
                         elRight < left ||
                         elTop > bottom ||
@@ -5253,6 +5523,7 @@ var M = (function (exports) {
             }
             return hits;
         }
+
         _enter() {
             ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter((value) => value.getBoundingClientRect().height !== 0);
             if (ScrollSpy._visibleElements[0]) {
@@ -5261,18 +5532,17 @@ var M = (function (exports) {
                 if (ScrollSpy._visibleElements[0]['M_ScrollSpy'] &&
                     this.id < ScrollSpy._visibleElements[0]['M_ScrollSpy'].id) {
                     ScrollSpy._visibleElements.unshift(this.el);
-                }
-                else {
+                } else {
                     ScrollSpy._visibleElements.push(this.el);
                 }
-            }
-            else {
+            } else {
                 ScrollSpy._visibleElements.push(this.el);
             }
             this._resetKeptTopActiveElementIfNeeded();
             const selector = this.options.getActiveElement(ScrollSpy._visibleElements[0].id);
             document.querySelector(selector)?.classList.add(this.options.activeClass);
         }
+
         _exit() {
             ScrollSpy._visibleElements = ScrollSpy._visibleElements.filter((value) => value.getBoundingClientRect().height !== 0);
             if (ScrollSpy._visibleElements[0]) {
@@ -5287,22 +5557,26 @@ var M = (function (exports) {
                 }
             }
         }
+
         _resetKeptTopActiveElementIfNeeded() {
             if (ScrollSpy._keptTopActiveElement) {
                 ScrollSpy._keptTopActiveElement.classList.remove(this.options.activeClass);
                 ScrollSpy._keptTopActiveElement = null;
             }
         }
+
         static _getDistanceToViewport(element) {
             const rect = element.getBoundingClientRect();
             const distance = rect.top;
             return distance;
         }
+
         static _smoothScrollIntoView(element, duration = 300) {
             const targetPosition = element.getBoundingClientRect().top + (window.scrollY || window.pageYOffset);
             const startPosition = window.scrollY || window.pageYOffset;
             const distance = targetPosition - startPosition;
             const startTime = performance.now();
+
             function scrollStep(currentTime) {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
@@ -5310,13 +5584,14 @@ var M = (function (exports) {
                 if (progress < 1) {
                     window.scrollTo(0, scrollY);
                     requestAnimationFrame(scrollStep);
-                }
-                else {
+                } else {
                     window.scrollTo(0, targetPosition);
                 }
             }
+
             requestAnimationFrame(scrollStep);
         }
+
         static {
             ScrollSpy._elements = [];
             ScrollSpy._elementsInView = [];
@@ -5339,6 +5614,7 @@ var M = (function (exports) {
         onCloseEnd: null,
         preventScrolling: true
     };
+
     class Sidenav extends Component {
         id;
         /** Describes open/close state of Sidenav. */
@@ -5361,6 +5637,7 @@ var M = (function (exports) {
         deltaX;
         velocityX;
         percentOpen;
+
         constructor(el, options) {
             super(el, options, Sidenav);
             this.el['M_Sidenav'] = this;
@@ -5382,9 +5659,11 @@ var M = (function (exports) {
             this._setupFixed();
             Sidenav._sidenavs.push(this);
         }
+
         static get defaults() {
             return _defaults$8;
         }
+
         /**
          * Initializes instances of Sidenav.
          * @param els HTML elements.
@@ -5393,9 +5672,11 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Sidenav);
         }
+
         static getInstance(el) {
             return el['M_Sidenav'];
         }
+
         destroy() {
             this._removeEventHandlers();
             this._enableBodyScrolling();
@@ -5408,12 +5689,14 @@ var M = (function (exports) {
                 Sidenav._sidenavs.splice(index, 1);
             }
         }
+
         _createOverlay() {
             this._overlay = document.createElement('div');
             this._overlay.classList.add('sidenav-overlay');
             this._overlay.addEventListener('click', this.close);
             document.body.appendChild(this._overlay);
         }
+
         _setupEventHandlers() {
             if (Sidenav._sidenavs.length === 0) {
                 document.body.addEventListener('click', this._handleTriggerClick);
@@ -5434,6 +5717,7 @@ var M = (function (exports) {
             this._setAriaHidden();
             this._setTabIndex();
         }
+
         _removeEventHandlers() {
             if (Sidenav._sidenavs.length === 1) {
                 document.body.removeEventListener('click', this._handleTriggerClick);
@@ -5450,6 +5734,7 @@ var M = (function (exports) {
                 window.removeEventListener('resize', this._handleWindowResize);
             }
         }
+
         _handleTriggerClick(e) {
             const trigger = e.target.closest('.sidenav-trigger');
             if (e.target && trigger) {
@@ -5461,6 +5746,7 @@ var M = (function (exports) {
                 e.preventDefault();
             }
         }
+
         // Set variables needed at the beginning of drag and stop any current transition.
         _startDrag(e) {
             const clientX = e.targetTouches[0].clientX;
@@ -5473,6 +5759,7 @@ var M = (function (exports) {
             this._initialScrollTop = this.isOpen ? this.el.scrollTop : Utils.getDocumentScrollTop();
             this._verticallyScrolling = false;
         }
+
         //Set variables needed at each drag move update tick
         _dragMoveUpdate(e) {
             const clientX = e.targetTouches[0].clientX;
@@ -5485,6 +5772,7 @@ var M = (function (exports) {
                 this._verticallyScrolling = true;
             }
         }
+
         _handleDragTargetDrag = (e) => {
             // Check if draggable
             if (!this._isDraggable())
@@ -5517,8 +5805,7 @@ var M = (function (exports) {
             if (this.isDragged) {
                 if (this.percentOpen > 0.2) {
                     this.open();
-                }
-                else {
+                } else {
                     this._animateOut();
                 }
                 this.isDragged = false;
@@ -5560,8 +5847,7 @@ var M = (function (exports) {
             if (this.isOpen && this.isDragged) {
                 if (this.percentOpen > 0.8) {
                     this._animateIn();
-                }
-                else {
+                } else {
                     this.close();
                 }
                 this.isDragged = false;
@@ -5580,34 +5866,39 @@ var M = (function (exports) {
             if (this.lastWindowWidth !== window.innerWidth) {
                 if (window.innerWidth > 992) {
                     this.open();
-                }
-                else {
+                } else {
                     this.close();
                 }
             }
             this.lastWindowWidth = window.innerWidth;
             this.lastWindowHeight = window.innerHeight;
         };
+
         _setupClasses() {
             if (this.options.edge === 'right') {
                 this.el.classList.add('right-aligned');
                 this.dragTarget.classList.add('right-aligned');
             }
         }
+
         _removeClasses() {
             this.el.classList.remove('right-aligned');
             this.dragTarget.classList.remove('right-aligned');
         }
+
         _setupFixed() {
             if (this._isCurrentlyFixed())
                 this.open();
         }
+
         _isDraggable() {
             return this.options.draggable && !this._isCurrentlyFixed() && !this._verticallyScrolling;
         }
+
         _isCurrentlyFixed() {
             return this.isFixed && window.innerWidth > 992;
         }
+
         _createDragTarget() {
             const dragTarget = document.createElement('div');
             dragTarget.classList.add('drag-target');
@@ -5615,12 +5906,15 @@ var M = (function (exports) {
             document.body.appendChild(dragTarget);
             this.dragTarget = dragTarget;
         }
+
         _preventBodyScrolling() {
             document.body.style.overflow = 'hidden';
         }
+
         _enableBodyScrolling() {
             document.body.style.overflow = '';
         }
+
         /**
          * Opens Sidenav.
          */
@@ -5671,8 +5965,7 @@ var M = (function (exports) {
                 this._enableBodyScrolling();
                 if (!this.isDragged || this.percentOpen != 0) {
                     this._animateOut();
-                }
-                else {
+                } else {
                     this._overlay.style.display = 'none';
                 }
                 /* Set aria-hidden state */
@@ -5680,14 +5973,17 @@ var M = (function (exports) {
                 this._setTabIndex();
             }
         };
+
         _animateIn() {
             this._animateSidenavIn();
             this._animateOverlayIn();
         }
+
         _animateOut() {
             this._animateSidenavOut();
             this._animateOverlayOut();
         }
+
         _animateSidenavIn() {
             let slideOutPercent = this.options.edge === 'left' ? -1 : 1;
             if (this.isDragged) {
@@ -5710,6 +6006,7 @@ var M = (function (exports) {
                     this.options.onOpenEnd.call(this, this.el);
             }, duration);
         }
+
         _animateSidenavOut() {
             const endPercent = this.options.edge === 'left' ? -1 : 1;
             // let slideOutPercent = 0;
@@ -5729,6 +6026,7 @@ var M = (function (exports) {
                     this.options.onCloseEnd.call(this, this.el);
             }, duration);
         }
+
         _animateOverlayIn() {
             let start = 0;
             if (this.isDragged)
@@ -5747,6 +6045,7 @@ var M = (function (exports) {
                 this._overlay.style.opacity = '1';
             }, 1);
         }
+
         _animateOverlayOut() {
             const duration = this.options.outDuration;
             // easeOutQuad
@@ -5757,6 +6056,7 @@ var M = (function (exports) {
                 this._overlay.style.display = 'none';
             }, duration);
         }
+
         _setAriaHidden = () => {
             this.el.ariaHidden = this.isOpen ? 'false' : 'true';
             const navWrapper = document.querySelector('.nav-wrapper ul');
@@ -5786,6 +6086,7 @@ var M = (function (exports) {
         swipeable: false,
         responsiveThreshold: Infinity // breakpoint for swipeable
     };
+
     class Tabs extends Component {
         _tabLinks;
         _index;
@@ -5795,6 +6096,7 @@ var M = (function (exports) {
         _tabsCarousel;
         _activeTabLink;
         _content;
+
         constructor(el, options) {
             super(el, options, Tabs);
             this.el['M_Tabs'] = this;
@@ -5807,8 +6109,7 @@ var M = (function (exports) {
             this._setupActiveTabLink();
             if (this.options.swipeable) {
                 this._setupSwipeableTabs();
-            }
-            else {
+            } else {
                 this._setupNormalTabs();
             }
             // Setup tabs indicator after content to ensure accurate widths
@@ -5816,9 +6117,11 @@ var M = (function (exports) {
             this._createIndicator();
             this._setupEventHandlers();
         }
+
         static get defaults() {
             return _defaults$7;
         }
+
         /**
          * Initializes instances of Tabs.
          * @param els HTML elements.
@@ -5827,34 +6130,39 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Tabs);
         }
+
         static getInstance(el) {
             return el['M_Tabs'];
         }
+
         destroy() {
             this._removeEventHandlers();
             this._indicator.parentNode.removeChild(this._indicator);
             if (this.options.swipeable) {
                 this._teardownSwipeableTabs();
-            }
-            else {
+            } else {
                 this._teardownNormalTabs();
             }
             this.el['M_Tabs'] = undefined;
         }
+
         /**
          * The index of tab that is currently shown.
          */
         get index() {
             return this._index;
         }
+
         _setupEventHandlers() {
             window.addEventListener('resize', this._handleWindowResize);
             this.el.addEventListener('click', this._handleTabClick);
         }
+
         _removeEventHandlers() {
             window.removeEventListener('resize', this._handleWindowResize);
             this.el.removeEventListener('click', this._handleTabClick);
         }
+
         _handleWindowResize = () => {
             this._setTabsAndTabWidth();
             if (this._tabWidth !== 0 && this._tabsWidth !== 0) {
@@ -5902,8 +6210,7 @@ var M = (function (exports) {
                             this.options.onShow.call(this, this._content);
                     });
                 }
-            }
-            else {
+            } else {
                 if (this._content) {
                     this._content.style.display = 'block';
                     this._content.classList.add('active');
@@ -5920,6 +6227,7 @@ var M = (function (exports) {
             this._animateIndicator(prevIndex);
             e.preventDefault();
         };
+
         _createIndicator() {
             const indicator = document.createElement('li');
             indicator.classList.add('indicator');
@@ -5928,6 +6236,7 @@ var M = (function (exports) {
             this._indicator.style.left = this._calcLeftPos(this._activeTabLink) + 'px';
             this._indicator.style.right = this._calcRightPos(this._activeTabLink) + 'px';
         }
+
         _setupActiveTabLink() {
             // If the location.hash matches one of the links, use that as the active tab.
             this._activeTabLink = Array.from(this._tabLinks).find((a) => a.getAttribute('href') === location.hash);
@@ -5948,6 +6257,7 @@ var M = (function (exports) {
                     this._content.classList.add('active');
             }
         }
+
         _setupSwipeableTabs() {
             // Change swipeable according to responsive threshold
             if (window.innerWidth > this.options.responsiveThreshold)
@@ -5989,6 +6299,7 @@ var M = (function (exports) {
             // Set initial carousel slide to active tab
             this._tabsCarousel.set(activeTabIndex);
         }
+
         _teardownSwipeableTabs() {
             const tabsWrapper = this._tabsCarousel.el;
             this._tabsCarousel.destroy();
@@ -5996,6 +6307,7 @@ var M = (function (exports) {
             tabsWrapper.append(tabsWrapper.parentElement);
             tabsWrapper.remove();
         }
+
         _setupNormalTabs() {
             // Hide Tabs Content
             Array.from(this._tabLinks).forEach((a) => {
@@ -6008,6 +6320,7 @@ var M = (function (exports) {
                 }
             });
         }
+
         _teardownNormalTabs() {
             // show Tabs Content
             this._tabLinks.forEach((a) => {
@@ -6018,16 +6331,20 @@ var M = (function (exports) {
                 }
             });
         }
+
         _setTabsAndTabWidth() {
             this._tabsWidth = this.el.getBoundingClientRect().width;
             this._tabWidth = Math.max(this._tabsWidth, this.el.scrollWidth) / this._tabLinks.length;
         }
+
         _calcRightPos(el) {
             return Math.ceil(this._tabsWidth - el.offsetLeft - el.getBoundingClientRect().width);
         }
+
         _calcLeftPos(el) {
             return Math.floor(el.offsetLeft);
         }
+
         /**
          * Recalculate tab indicator position. This is useful when
          * the indicator position is not correct.
@@ -6036,6 +6353,7 @@ var M = (function (exports) {
             this._setTabsAndTabWidth();
             this._animateIndicator(this._index);
         }
+
         _animateIndicator(prevIndex) {
             let leftDelay = 0, rightDelay = 0;
             const isMovingLeftOrStaying = this._index - prevIndex >= 0;
@@ -6050,6 +6368,7 @@ var M = (function (exports) {
             this._indicator.style.left = this._calcLeftPos(this._activeTabLink) + 'px';
             this._indicator.style.right = this._calcRightPos(this._activeTabLink) + 'px';
         }
+
         /**
          * Show tab content that corresponds to the tab with the id.
          * @param tabId The id of the tab that you want to switch to.
@@ -6065,6 +6384,7 @@ var M = (function (exports) {
         onOpen: null,
         onClose: null
     };
+
     class TapTarget extends Component {
         /**
          * If the tap target is open.
@@ -6076,6 +6396,7 @@ var M = (function (exports) {
         originEl;
         waveEl;
         contentEl;
+
         constructor(el, options) {
             super(el, options, TapTarget);
             this.el['M_TapTarget'] = this;
@@ -6092,9 +6413,11 @@ var M = (function (exports) {
             this._setupEventHandlers();
             TapTarget._taptargets.push(this);
         }
+
         static get defaults() {
             return _defaults$6;
         }
+
         /**
          * Initializes instances of TapTarget.
          * @param els HTML elements.
@@ -6103,9 +6426,11 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, TapTarget);
         }
+
         static getInstance(el) {
             return el['M_TapTarget'];
         }
+
         destroy() {
             this._removeEventHandlers();
             this.el['M_TapTarget'] = undefined;
@@ -6114,6 +6439,7 @@ var M = (function (exports) {
                 TapTarget._taptargets.splice(index, 1);
             }
         }
+
         _setupEventHandlers() {
             this.originEl.addEventListener('click', this._handleTargetToggle);
             this.originEl.addEventListener('keypress', this._handleKeyboardInteraction, true);
@@ -6121,12 +6447,14 @@ var M = (function (exports) {
             // Resize
             window.addEventListener('resize', this._handleThrottledResize);
         }
+
         _removeEventHandlers() {
             this.originEl.removeEventListener('click', this._handleTargetToggle);
             this.originEl.removeEventListener('keypress', this._handleKeyboardInteraction, true);
             // this.originEl.removeEventListener('click', this._handleOriginClick);
             window.removeEventListener('resize', this._handleThrottledResize);
         }
+
         _handleThrottledResize = () => Utils.throttle(this._handleResize, 200).bind(this);
         _handleKeyboardInteraction = (e) => {
             if (Utils.keys.ENTER.includes(e.key)) {
@@ -6153,6 +6481,7 @@ var M = (function (exports) {
                 // e.stopPropagation();
             }
         };
+
         _setup() {
             // Creating tap target
             this.wrapper = this.el.parentElement;
@@ -6189,6 +6518,7 @@ var M = (function (exports) {
                 this.wrapper.append(this.waveEl);
             }
         }
+
         _offset(el) {
             const box = el.getBoundingClientRect();
             const docElem = document.documentElement;
@@ -6197,6 +6527,7 @@ var M = (function (exports) {
                 left: box.left + window.pageXOffset - docElem.clientLeft
             };
         }
+
         _calculatePositioning() {
             // Element or parent is fixed position?
             let isFixed = getComputedStyle(this.originEl).position === 'fixed';
@@ -6277,6 +6608,7 @@ var M = (function (exports) {
             this.waveEl.style.width = tapTargetWaveWidth + 'px';
             this.waveEl.style.height = tapTargetWaveHeight + 'px';
         }
+
         /**
          * Open Tap Target.
          */
@@ -6343,6 +6675,7 @@ var M = (function (exports) {
         displayPlugin: null,
         displayPluginOptions: null,
     };
+
     class Timepicker extends Component {
         id;
         containerEl;
@@ -6386,6 +6719,7 @@ var M = (function (exports) {
         toggleViewTimer;
         vibrateTimer;
         displayPlugin;
+
         constructor(el, options) {
             super(el, options, Timepicker);
             this.el['M_Timepicker'] = this;
@@ -6404,9 +6738,11 @@ var M = (function (exports) {
                     this.displayPlugin = DockedDisplayPlugin.init(this.el, this.containerEl, this.options.displayPluginOptions);
             }
         }
+
         static get defaults() {
             return _defaults$5;
         }
+
         /**
          * Initializes instances of Timepicker.
          * @param els HTML elements.
@@ -6415,13 +6751,16 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Timepicker);
         }
+
         static _addLeadingZero(num) {
             return (num < 10 ? '0' : '') + num;
         }
+
         static _createSVGEl(name) {
             const svgNS = 'http://www.w3.org/2000/svg';
             return document.createElementNS(svgNS, name);
         }
+
         static _Pos(e) {
             if (e.type.startsWith('touch') && e.targetTouches.length >= 1) {
                 return {
@@ -6430,16 +6769,19 @@ var M = (function (exports) {
                 };
             }
             // mouse event
-            return { x: e.clientX, y: e.clientY };
+            return {x: e.clientX, y: e.clientY};
         }
+
         static getInstance(el) {
             return el['M_Timepicker'];
         }
+
         destroy() {
             this._removeEventHandlers();
             this.containerEl.remove();
             this.el['M_Timepicker'] = undefined;
         }
+
         _setupEventHandlers() {
             this.el.addEventListener('click', this._handleInputClick);
             this.el.addEventListener('keydown', this._handleInputKeydown);
@@ -6451,10 +6793,12 @@ var M = (function (exports) {
             this.inputMinutes.addEventListener('focus', () => this.showView('minutes'));
             this.inputMinutes.addEventListener('focusout', () => this.formatMinutes());
         }
+
         _removeEventHandlers() {
             this.el.removeEventListener('click', this._handleInputClick);
             this.el.removeEventListener('keydown', this._handleInputKeydown);
         }
+
         _handleInputClick = () => {
             this.inputHours.focus();
             if (typeof this.options.onInputInteraction === 'function')
@@ -6481,7 +6825,7 @@ var M = (function (exports) {
         _handleClockClickStart = (e) => {
             e.preventDefault();
             const clockPlateBR = this.plate.getBoundingClientRect();
-            const offset = { x: clockPlateBR.left, y: clockPlateBR.top };
+            const offset = {x: clockPlateBR.left, y: clockPlateBR.top};
             this.x0 = offset.x + this.options.dialRadius;
             this.y0 = offset.y + this.options.dialRadius;
             this.moved = false;
@@ -6518,8 +6862,7 @@ var M = (function (exports) {
             if (this.currentView === 'hours') {
                 this.inputMinutes.focus();
                 this.showView('minutes', this.options.duration / 2);
-            }
-            else {
+            } else {
                 // this.minutesView.classList.add('timepicker-dial-out');
                 setTimeout(() => {
                     if (this.options.autoSubmit)
@@ -6533,6 +6876,7 @@ var M = (function (exports) {
             document.removeEventListener('mousemove', this._handleDocumentClickMove);
             document.removeEventListener('touchmove', this._handleDocumentClickMove);
         };
+
         _insertHTMLIntoDOM() {
             const template = document.createElement('template');
             template.innerHTML = Timepicker._template.trim();
@@ -6543,11 +6887,11 @@ var M = (function (exports) {
             const containerEl = optEl instanceof HTMLElement ? optEl : document.querySelector(optEl);
             if (this.options.container && !!containerEl) {
                 containerEl.append(this.containerEl);
-            }
-            else {
+            } else {
                 this.el.parentElement.appendChild(this.containerEl);
             }
         }
+
         _setupVariables() {
             this.currentView = 'hours';
             this.vibrate = navigator.vibrate
@@ -6566,6 +6910,7 @@ var M = (function (exports) {
             this.footer = this.containerEl.querySelector('.timepicker-footer');
             this.amOrPm = 'PM';
         }
+
         /*private _createButton(text: string, visibility: string): HTMLButtonElement {
           const button = document.createElement('button');
           button.classList.add('btn', 'waves-effect', 'text');
@@ -6599,6 +6944,7 @@ var M = (function (exports) {
             this._updateTimeFromInput();
             this.showView('hours');
         }
+
         _clockSetup() {
             if (this.options.twelveHour) {
                 // AM Button
@@ -6622,6 +6968,7 @@ var M = (function (exports) {
             this._buildMinutesView();
             this._buildSVGClock();
         }
+
         _buildSVGClock() {
             // Draw clock hands and others
             const dialRadius = this.options.dialRadius;
@@ -6654,6 +7001,7 @@ var M = (function (exports) {
             this.bearing = bearing;
             this.g = g;
         }
+
         _buildHoursView() {
             // const $tick = document.createElement('div');
             // $tick.classList.add('timepicker-tick');
@@ -6665,8 +7013,7 @@ var M = (function (exports) {
                     const radius = this.options.outerRadius;
                     this._buildHoursTick(i, radian, radius);
                 }
-            }
-            else {
+            } else {
                 for (let i = 0; i < 24; i += 1) {
                     // const tick = <HTMLElement>$tick.cloneNode(true);
                     const radian = (i / 6) * Math.PI;
@@ -6676,6 +7023,7 @@ var M = (function (exports) {
                 }
             }
         }
+
         _buildHoursTick(i, radian, radius) {
             const tick = document.createElement('div');
             tick.classList.add('timepicker-tick');
@@ -6686,6 +7034,7 @@ var M = (function (exports) {
             tick.innerHTML = i === 0 ? '00' : i.toString();
             this.hoursView.appendChild(tick);
         }
+
         _buildMinutesView() {
             const _tick = document.createElement('div');
             _tick.classList.add('timepicker-tick');
@@ -6695,18 +7044,19 @@ var M = (function (exports) {
                 const radian = (i / 30) * Math.PI;
                 tick.style.left =
                     this.options.dialRadius +
-                        Math.sin(radian) * this.options.outerRadius -
-                        this.options.tickRadius +
-                        'px';
+                    Math.sin(radian) * this.options.outerRadius -
+                    this.options.tickRadius +
+                    'px';
                 tick.style.top =
                     this.options.dialRadius -
-                        Math.cos(radian) * this.options.outerRadius -
-                        this.options.tickRadius +
-                        'px';
+                    Math.cos(radian) * this.options.outerRadius -
+                    this.options.tickRadius +
+                    'px';
                 tick.innerHTML = Timepicker._addLeadingZero(i);
                 this.minutesView.appendChild(tick);
             }
         }
+
         _handleAmPmClick = (e) => {
             this._handleAmPmInteraction(e.target);
         };
@@ -6719,26 +7069,26 @@ var M = (function (exports) {
             this.amOrPm = e.classList.contains('am-btn') ? 'AM' : 'PM';
             this._updateAmPmView();
         };
+
         _updateAmPmView() {
             if (this.options.twelveHour) {
                 if (this.amOrPm === 'PM') {
                     this._amBtn.classList.remove('filled');
                     this._pmBtn.classList.add('filled');
-                }
-                else if (this.amOrPm === 'AM') {
+                } else if (this.amOrPm === 'AM') {
                     this._amBtn.classList.add('filled');
                     this._pmBtn.classList.remove('filled');
                 }
             }
         }
+
         _updateTimeFromInput() {
             // Get the time
             let value = ((this.el.value || this.options.defaultTime || '') + '').split(':');
             if (this.options.twelveHour && !(typeof value[1] === 'undefined')) {
                 if (value[1].toUpperCase().indexOf('AM') > 0) {
                     this.amOrPm = 'AM';
-                }
-                else {
+                } else {
                     this.amOrPm = 'PM';
                 }
                 value[1] = value[1].replace('AM', '').replace('PM', '');
@@ -6756,6 +7106,7 @@ var M = (function (exports) {
             this.inputMinutes.value = Timepicker._addLeadingZero(this.minutes);
             this._updateAmPmView();
         }
+
         /**
          * Show hours or minutes view on timepicker.
          * @param view The name of the view you want to switch to, 'hours' or 'minutes'.
@@ -6763,7 +7114,8 @@ var M = (function (exports) {
          */
         showView = (view, delay = null) => {
             if (view === 'minutes' && getComputedStyle(this.hoursView).visibility === 'visible') ;
-            const isHours = view === 'hours', nextView = isHours ? this.hoursView : this.minutesView, hideView = isHours ? this.minutesView : this.hoursView;
+            const isHours = view === 'hours', nextView = isHours ? this.hoursView : this.minutesView,
+                hideView = isHours ? this.minutesView : this.hoursView;
             this.currentView = view;
             /*if (isHours) {
               this.inputHours.classList.add('text-primary');
@@ -6784,58 +7136,62 @@ var M = (function (exports) {
                 hideView.style.visibility = 'hidden';
             }, this.options.duration);
         };
+
         resetClock(delay) {
-            const view = this.currentView, value = this[view], isHours = view === 'hours', unit = Math.PI / (isHours ? 6 : 30), radian = value * unit, radius = isHours && value > 0 && value < 13 ? this.options.innerRadius : this.options.outerRadius, x = Math.sin(radian) * radius, y = -Math.cos(radian) * radius;
+            const view = this.currentView, value = this[view], isHours = view === 'hours',
+                unit = Math.PI / (isHours ? 6 : 30), radian = value * unit,
+                radius = isHours && value > 0 && value < 13 ? this.options.innerRadius : this.options.outerRadius,
+                x = Math.sin(radian) * radius, y = -Math.cos(radian) * radius;
             if (delay) {
                 this._canvas?.classList.add('timepicker-canvas-out');
                 setTimeout(() => {
                     this._canvas?.classList.remove('timepicker-canvas-out');
                     this.setHand(x, y);
                 }, delay);
-            }
-            else {
+            } else {
                 this.setHand(x, y);
             }
         }
+
         _inputFromTextField = () => {
             const isHours = this.currentView === 'hours';
             if (isHours && this.inputHours.value !== '') {
                 const value = parseInt(this.inputHours.value);
                 if (value > 0 && value < (this.options.twelveHour ? 13 : 24)) {
                     this.hours = value;
-                }
-                else {
+                } else {
                     this.setHoursDefault();
                 }
                 this.drawClockFromTimeInput(this.hours, isHours);
-            }
-            else if (!isHours && this.inputMinutes.value !== '') {
+            } else if (!isHours && this.inputMinutes.value !== '') {
                 const value = parseInt(this.inputMinutes.value);
                 if (value >= 0 && value < 60) {
                     this.minutes = value;
-                }
-                else {
+                } else {
                     this.minutes = new Date().getMinutes();
                     this.inputMinutes.value = this.minutes.toString();
                 }
                 this.drawClockFromTimeInput(this.minutes, isHours);
             }
         };
+
         drawClockFromTimeInput(value, isHours) {
             const unit = Math.PI / (isHours ? 6 : 30);
             const radian = value * unit;
             let radius;
             if (this.options.twelveHour) {
                 radius = this.options.outerRadius;
-            }
-            else {
+            } else {
                 radius =
                     isHours && value > 0 && value < 13 ? this.options.innerRadius : this.options.outerRadius;
             }
             this.setClockAttributes(radian, radius);
         }
+
         setHand(x, y, roundBy5 = false) {
-            const isHours = this.currentView === 'hours', unit = Math.PI / (isHours || roundBy5 ? 6 : 30), z = Math.sqrt(x * x + y * y), inner = isHours && z < (this.options.outerRadius + this.options.innerRadius) / 2;
+            const isHours = this.currentView === 'hours', unit = Math.PI / (isHours || roundBy5 ? 6 : 30),
+                z = Math.sqrt(x * x + y * y),
+                inner = isHours && z < (this.options.outerRadius + this.options.innerRadius) / 2;
             let radian = Math.atan2(x, -y), radius = inner ? this.options.innerRadius : this.options.outerRadius;
             if (this.options.twelveHour) {
                 radius = this.options.outerRadius;
@@ -6853,22 +7209,19 @@ var M = (function (exports) {
                 if (isHours) {
                     if (value === 0)
                         value = 12;
-                }
-                else {
+                } else {
                     if (roundBy5)
                         value *= 5;
                     if (value === 60)
                         value = 0;
                 }
-            }
-            else {
+            } else {
                 if (isHours) {
                     if (value === 12) {
                         value = 0;
                     }
                     value = inner ? (value === 0 ? 12 : value) : value === 0 ? 0 : value + 12;
-                }
-                else {
+                } else {
                     if (roundBy5) {
                         value *= 5;
                     }
@@ -6892,34 +7245,40 @@ var M = (function (exports) {
             this[this.currentView] = value;
             if (isHours) {
                 this.inputHours.value = Timepicker._addLeadingZero(value);
-            }
-            else {
+            } else {
                 this.inputMinutes.value = Timepicker._addLeadingZero(value);
             }
             // Set clock hand and others' position
             this.setClockAttributes(radian, radius);
         }
+
         setClockAttributes(radian, radius) {
-            const cx1 = Math.sin(radian) * (radius - this.options.tickRadius), cy1 = -Math.cos(radian) * (radius - this.options.tickRadius), cx2 = Math.sin(radian) * radius, cy2 = -Math.cos(radian) * radius;
+            const cx1 = Math.sin(radian) * (radius - this.options.tickRadius),
+                cy1 = -Math.cos(radian) * (radius - this.options.tickRadius), cx2 = Math.sin(radian) * radius,
+                cy2 = -Math.cos(radian) * radius;
             this.hand.setAttribute('x2', cx1.toString());
             this.hand.setAttribute('y2', cy1.toString());
             this.bg.setAttribute('cx', cx2.toString());
             this.bg.setAttribute('cy', cy2.toString());
         }
+
         formatHours() {
             if (this.inputHours.value == '')
                 this.setHoursDefault();
             this.inputHours.value = Timepicker._addLeadingZero(Number(this.inputHours.value));
         }
+
         formatMinutes() {
             if (this.inputMinutes.value == '')
                 this.minutes = new Date().getMinutes();
             this.inputMinutes.value = Timepicker._addLeadingZero(Number(this.inputMinutes.value));
         }
+
         setHoursDefault() {
             this.hours = new Date().getHours();
             this.inputHours.value = (this.hours % (this.options.twelveHour ? 12 : 24)).toString();
         }
+
         done = (clearValue = null) => {
             // Set input value
             const last = this.el.value;
@@ -6933,7 +7292,7 @@ var M = (function (exports) {
             this.el.value = value;
             // Trigger change event
             if (value !== last) {
-                this.el.dispatchEvent(new Event('change', { bubbles: true, cancelable: true, composed: true }));
+                this.el.dispatchEvent(new Event('change', {bubbles: true, cancelable: true, composed: true}));
             }
         };
         confirm = () => {
@@ -6950,15 +7309,18 @@ var M = (function (exports) {
         clear = () => {
             this.done(true);
         };
+
         // deprecated
         open() {
             console.warn('Timepicker.close() is deprecated. Remove this method and wrap in modal yourself.');
             return this;
         }
+
         close() {
             console.warn('Timepicker.close() is deprecated. Remove this method and wrap in modal yourself.');
             return this;
         }
+
         static {
             Timepicker._template = `<div class="timepicker-container">
           <div class="timepicker-digital-display">
@@ -7002,6 +7364,7 @@ var M = (function (exports) {
         transitionMovement: 10,
         opacity: 1
     };
+
     class Tooltip extends Component {
         /**
          * If tooltip is open.
@@ -7020,6 +7383,7 @@ var M = (function (exports) {
         _enterDelayTimeout;
         xMovement;
         yMovement;
+
         constructor(el, options) {
             super(el, options, Tooltip);
             this.el['M_Tooltip'] = this;
@@ -7034,9 +7398,11 @@ var M = (function (exports) {
             this._appendTooltipEl();
             this._setupEventHandlers();
         }
+
         static get defaults() {
             return _defaults$4;
         }
+
         /**
          * Initializes instances of Tooltip.
          * @param els HTML elements.
@@ -7045,14 +7411,17 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Tooltip);
         }
+
         static getInstance(el) {
             return el['M_Tooltip'];
         }
+
         destroy() {
             this.tooltipEl.remove();
             this._removeEventHandlers();
             this.el['M_Tooltip'] = undefined;
         }
+
         _appendTooltipEl() {
             this.tooltipEl = document.createElement('div');
             this.tooltipEl.classList.add('material-tooltip');
@@ -7066,26 +7435,31 @@ var M = (function (exports) {
             this.tooltipEl.appendChild(tooltipContentEl);
             document.body.appendChild(this.tooltipEl);
         }
+
         _setTooltipContent(tooltipContentEl) {
             if (this.options.tooltipId)
                 return;
             tooltipContentEl.innerText = this.options.text;
         }
+
         _updateTooltipContent() {
             this._setTooltipContent(this.tooltipEl.querySelector('.tooltip-content'));
         }
+
         _setupEventHandlers() {
             this.el.addEventListener('mouseenter', this._handleMouseEnter);
             this.el.addEventListener('mouseleave', this._handleMouseLeave);
             this.el.addEventListener('focus', this._handleFocus, true);
             this.el.addEventListener('blur', this._handleBlur, true);
         }
+
         _removeEventHandlers() {
             this.el.removeEventListener('mouseenter', this._handleMouseEnter);
             this.el.removeEventListener('mouseleave', this._handleMouseLeave);
             this.el.removeEventListener('focus', this._handleFocus, true);
             this.el.removeEventListener('blur', this._handleBlur, true);
         }
+
         /**
          * Show tooltip.
          */
@@ -7095,7 +7469,7 @@ var M = (function (exports) {
             isManual = isManual === undefined ? true : undefined; // Default value true
             this.isOpen = true;
             // Update tooltip content with HTML attribute options
-            this.options = { ...this.options, ...this._getAttributeOptions() };
+            this.options = {...this.options, ...this._getAttributeOptions()};
             this._updateTooltipContent();
             this._setEnterDelayTimeout(isManual);
         };
@@ -7110,6 +7484,7 @@ var M = (function (exports) {
             this.isOpen = false;
             this._setExitDelayTimeout();
         };
+
         _setExitDelayTimeout() {
             clearTimeout(this._exitDelayTimeout);
             this._exitDelayTimeout = setTimeout(() => {
@@ -7118,6 +7493,7 @@ var M = (function (exports) {
                 this._animateOut();
             }, this.options.exitDelay);
         }
+
         _setEnterDelayTimeout(isManual) {
             clearTimeout(this._enterDelayTimeout);
             this._enterDelayTimeout = setTimeout(() => {
@@ -7126,9 +7502,11 @@ var M = (function (exports) {
                 this._animateIn();
             }, this.options.enterDelay);
         }
+
         _positionTooltip() {
             const tooltip = this.tooltipEl;
-            const origin = this.el, originHeight = origin.offsetHeight, originWidth = origin.offsetWidth, tooltipHeight = tooltip.offsetHeight, tooltipWidth = tooltip.offsetWidth, margin = this.options.margin;
+            const origin = this.el, originHeight = origin.offsetHeight, originWidth = origin.offsetWidth,
+                tooltipHeight = tooltip.offsetHeight, tooltipWidth = tooltip.offsetWidth, margin = this.options.margin;
             this.xMovement = 0;
             this.yMovement = 0;
             let targetTop = origin.getBoundingClientRect().top + Utils.getDocumentScrollTop();
@@ -7137,18 +7515,15 @@ var M = (function (exports) {
                 targetTop += -tooltipHeight - margin;
                 targetLeft += originWidth / 2 - tooltipWidth / 2;
                 this.yMovement = -this.options.transitionMovement;
-            }
-            else if (this.options.position === 'right') {
+            } else if (this.options.position === 'right') {
                 targetTop += originHeight / 2 - tooltipHeight / 2;
                 targetLeft += originWidth + margin;
                 this.xMovement = this.options.transitionMovement;
-            }
-            else if (this.options.position === 'left') {
+            } else if (this.options.position === 'left') {
                 targetTop += originHeight / 2 - tooltipHeight / 2;
                 targetLeft += -tooltipWidth - margin;
                 this.xMovement = -this.options.transitionMovement;
-            }
-            else {
+            } else {
                 targetTop += originHeight + margin;
                 targetLeft += originWidth / 2 - tooltipWidth / 2;
                 this.yMovement = this.options.transitionMovement;
@@ -7157,6 +7532,7 @@ var M = (function (exports) {
             tooltip.style.top = newCoordinates.y + 'px';
             tooltip.style.left = newCoordinates.x + 'px';
         }
+
         _repositionWithinScreen(x, y, width, height) {
             const scrollLeft = Utils.getDocumentScrollLeft();
             const scrollTop = Utils.getDocumentScrollTop();
@@ -7172,14 +7548,12 @@ var M = (function (exports) {
             const edges = Utils.checkWithinContainer(document.body, bounding, offset);
             if (edges.left) {
                 newX = offset;
-            }
-            else if (edges.right) {
+            } else if (edges.right) {
                 newX -= newX + width - window.innerWidth;
             }
             if (edges.top) {
                 newY = offset;
-            }
-            else if (edges.bottom) {
+            } else if (edges.bottom) {
                 newY -= newY + height - window.innerHeight;
             }
             return {
@@ -7187,6 +7561,7 @@ var M = (function (exports) {
                 y: newY + scrollTop
             };
         }
+
         _animateIn() {
             this._positionTooltip();
             this.tooltipEl.style.visibility = 'visible';
@@ -7200,6 +7575,7 @@ var M = (function (exports) {
                 this.tooltipEl.style.opacity = (this.options.opacity || 1).toString();
             }, 1);
         }
+
         _animateOut() {
             const duration = this.options.outDuration;
             // easeOutCubic
@@ -7222,6 +7598,7 @@ var M = (function (exports) {
             });
             */
         }
+
         _handleMouseEnter = () => {
             this.isHovered = true;
             this.isFocused = false; // Allows close of tooltip when opened by focus.
@@ -7242,6 +7619,7 @@ var M = (function (exports) {
             this.isFocused = false;
             this.close();
         };
+
         _getAttributeOptions() {
             const attributeOptions = {};
             const tooltipTextOption = this.el.getAttribute('data-tooltip');
@@ -7269,6 +7647,7 @@ var M = (function (exports) {
                 left: box.left + window.pageXOffset - docElem.clientLeft
             };
         }
+
         // https://phoenix-dx.com/css-techniques-for-material-ripple-effect/
         static renderWaveEffect(targetElement, position = null, color = null) {
             const isCentered = position === null;
@@ -7288,23 +7667,23 @@ var M = (function (exports) {
                     const stop = 90 * easing + '%';
                     targetElement.style.backgroundImage =
                         'radial-gradient(' +
-                            circle +
-                            ', ' +
-                            waveColor +
-                            ' ' +
-                            stop +
-                            ', transparent ' +
-                            stop +
-                            ')';
+                        circle +
+                        ', ' +
+                        waveColor +
+                        ' ' +
+                        stop +
+                        ', transparent ' +
+                        stop +
+                        ')';
                     animationFrame = window.requestAnimationFrame(animationStep);
-                }
-                else {
+                } else {
                     targetElement.style.backgroundImage = 'none';
                     window.cancelAnimationFrame(animationFrame);
                 }
             };
             animationFrame = window.requestAnimationFrame(animationStep);
         }
+
         static Init() {
             if (typeof document !== 'undefined')
                 document?.addEventListener('DOMContentLoaded', () => {
@@ -7317,8 +7696,8 @@ var M = (function (exports) {
                             const y = e.pageY - Waves._offset(el).top;
                             let color = null;
                             if (el.classList.contains('waves-light'))
-                                color = { r: 255, g: 255, b: 255 };
-                            Waves.renderWaveEffect(el, isCircular ? null : { x, y }, color);
+                                color = {r: 255, g: 255, b: 255};
+                            Waves.renderWaveEffect(el, isCircular ? null : {x, y}, color);
                         }
                     });
                 });
@@ -7326,11 +7705,13 @@ var M = (function (exports) {
     }
 
     const _defaults$3 = {};
+
     // TODO: !!!!!
     class Range extends Component {
         _mousedown;
         value;
         thumb;
+
         constructor(el, options) {
             super(el, options, Range);
             this.el['M_Range'] = this;
@@ -7342,9 +7723,11 @@ var M = (function (exports) {
             this._setupThumb();
             this._setupEventHandlers();
         }
+
         static get defaults() {
             return _defaults$3;
         }
+
         /**
          * Initializes instances of Range.
          * @param els HTML elements.
@@ -7353,14 +7736,17 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Range);
         }
+
         static getInstance(el) {
             return el['M_Range'];
         }
+
         destroy() {
             this._removeEventHandlers();
             this._removeThumb();
             this.el['M_Range'] = undefined;
         }
+
         _setupEventHandlers() {
             this.el.addEventListener('change', this._handleRangeChange);
             this.el.addEventListener('mousedown', this._handleRangeMousedownTouchstart);
@@ -7374,6 +7760,7 @@ var M = (function (exports) {
             this.el.addEventListener('mouseout', this._handleRangeBlurMouseoutTouchleave);
             this.el.addEventListener('touchleave', this._handleRangeBlurMouseoutTouchleave);
         }
+
         _removeEventHandlers() {
             this.el.removeEventListener('change', this._handleRangeChange);
             this.el.removeEventListener('mousedown', this._handleRangeMousedownTouchstart);
@@ -7387,6 +7774,7 @@ var M = (function (exports) {
             this.el.removeEventListener('mouseout', this._handleRangeBlurMouseoutTouchleave);
             this.el.removeEventListener('touchleave', this._handleRangeBlurMouseoutTouchleave);
         }
+
         _handleRangeChange = () => {
             this.value.innerHTML = this.el.value;
             if (!this.thumb.classList.contains('active')) {
@@ -7450,6 +7838,7 @@ var M = (function (exports) {
                 this.thumb.classList.remove('active');
             }
         };
+
         _setupThumb() {
             this.thumb = document.createElement('span');
             this.value = document.createElement('span');
@@ -7458,9 +7847,11 @@ var M = (function (exports) {
             this.thumb.append(this.value);
             this.el.after(this.thumb);
         }
+
         _removeThumb() {
             this.thumb.remove();
         }
+
         _showRangeBubble() {
             const paddingLeft = parseInt(getComputedStyle(this.thumb.parentElement).paddingLeft);
             const marginLeftText = -7 + paddingLeft + 'px'; // TODO: fix magic number?
@@ -7478,6 +7869,7 @@ var M = (function (exports) {
             this.thumb.style.top = '-30px';
             this.thumb.style.marginLeft = marginLeftText;
         }
+
         _calcRangeOffset() {
             const width = this.el.getBoundingClientRect().width - 15;
             const max = parseFloat(this.el.getAttribute('max')) || 100; // Range default max
@@ -7485,6 +7877,7 @@ var M = (function (exports) {
             const percent = (parseFloat(this.el.value) - min) / (max - min);
             return percent * width;
         }
+
         /**
          * Initializes every range input in the current document.
          */
@@ -7495,6 +7888,7 @@ var M = (function (exports) {
     }
 
     const _defaults$2 = Object.freeze({});
+
     class CharacterCounter extends Component {
         /** Stores the reference to the counter HTML element. */
         counterEl;
@@ -7502,6 +7896,7 @@ var M = (function (exports) {
         isInvalid;
         /** Specifies whether the input text has valid length or not. */
         isValidLength;
+
         constructor(el, options) {
             super(el, {}, CharacterCounter);
             this.el['M_CharacterCounter'] = this;
@@ -7514,9 +7909,11 @@ var M = (function (exports) {
             this._setupCounter();
             this._setupEventHandlers();
         }
+
         static get defaults() {
             return _defaults$2;
         }
+
         /**
          * Initializes instances of CharacterCounter.
          * @param els HTML elements.
@@ -7525,22 +7922,27 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, CharacterCounter);
         }
+
         static getInstance(el) {
             return el['M_CharacterCounter'];
         }
+
         destroy() {
             this._removeEventHandlers();
             this.el['CharacterCounter'] = undefined;
             this._removeCounter();
         }
+
         _setupEventHandlers() {
             this.el.addEventListener('focus', this.updateCounter, true);
             this.el.addEventListener('input', this.updateCounter, true);
         }
+
         _removeEventHandlers() {
             this.el.removeEventListener('focus', this.updateCounter, true);
             this.el.removeEventListener('input', this.updateCounter, true);
         }
+
         _setupCounter() {
             this.counterEl = document.createElement('span');
             this.counterEl.classList.add('character-counter');
@@ -7549,9 +7951,11 @@ var M = (function (exports) {
             this.counterEl.style.height = '1';
             this.el.parentElement.appendChild(this.counterEl);
         }
+
         _removeCounter() {
             this.counterEl.remove();
         }
+
         updateCounter = () => {
             const maxLength = parseInt(this.el.getAttribute('maxlength')), actualLength = this.el.value.length;
             this.isValidLength = actualLength <= maxLength;
@@ -7562,12 +7966,12 @@ var M = (function (exports) {
             }
             this.counterEl.innerHTML = counterString;
         };
+
         _validateInput() {
             if (this.isValidLength && this.isInvalid) {
                 this.isInvalid = false;
                 this.el.classList.remove('invalid');
-            }
-            else if (!this.isValidLength && !this.isInvalid) {
+            } else if (!this.isValidLength && !this.isInvalid) {
                 this.isInvalid = true;
                 this.el.classList.remove('valid');
                 this.el.classList.add('invalid');
@@ -7584,6 +7988,7 @@ var M = (function (exports) {
         pauseOnHover: true,
         indicatorLabelFunc: null // Function which will generate a label for the indicators (ARIA)
     };
+
     class Slider extends Component {
         /** Index of current slide. */
         activeIndex;
@@ -7597,6 +8002,7 @@ var M = (function (exports) {
         _focused;
         _focusCurrent;
         _sliderId;
+
         constructor(el, options) {
             super(el, options, Slider);
             this.el['M_Slider'] = this;
@@ -7650,8 +8056,7 @@ var M = (function (exports) {
             if (this._activeSlide) {
                 this._activeSlide.style.display = 'block';
                 this._activeSlide.style.visibility = 'visible';
-            }
-            else {
+            } else {
                 this.activeIndex = 0;
                 this._slides[0].classList.add('active');
                 this._slides[0].style.visibility = 'visible';
@@ -7666,9 +8071,11 @@ var M = (function (exports) {
             // auto scroll
             this.start();
         }
+
         static get defaults() {
             return _defaults$1;
         }
+
         /**
          * Initializes instances of Slider.
          * @param els HTML elements.
@@ -7677,15 +8084,18 @@ var M = (function (exports) {
         static init(els, options = {}) {
             return super.init(els, options, Slider);
         }
+
         static getInstance(el) {
             return el['M_Slider'];
         }
+
         destroy() {
             this.pause();
             this._removeIndicators();
             this._removeEventHandlers();
             this.el['M_Slider'] = undefined;
         }
+
         _setupEventHandlers() {
             if (this.options.pauseOnFocus) {
                 this.el.addEventListener('focusin', this._handleAutoPauseFocus);
@@ -7701,6 +8111,7 @@ var M = (function (exports) {
                 });
             }
         }
+
         _removeEventHandlers() {
             if (this.options.pauseOnFocus) {
                 this.el.removeEventListener('focusin', this._handleAutoPauseFocus);
@@ -7716,6 +8127,7 @@ var M = (function (exports) {
                 });
             }
         }
+
         _handleIndicatorClick = (e) => {
             const el = e.target.parentElement;
             const currIndex = [...el.parentNode.children].indexOf(el);
@@ -7755,6 +8167,7 @@ var M = (function (exports) {
                 newActiveIndex += 1;
             this.set(newActiveIndex);
         };
+
         _animateSlide(slide, isDirectionIn) {
             let dx = 0, dy = 0;
             // from
@@ -7784,19 +8197,20 @@ var M = (function (exports) {
                 caption.style.transform = isDirectionIn ? `translate(0, 0)` : `translate(${dx}px, ${dy}px)`;
             }, this.options.duration); // delay
         }
+
         _setSliderHeight() {
             // If fullscreen, do nothing
             if (!this.el.classList.contains('fullscreen')) {
                 if (this.options.indicators) {
                     // Add height if indicators are present
                     this.el.style.height = this.options.height + 40 + 'px'; //.css('height', this.options.height + 40 + 'px');
-                }
-                else {
+                } else {
                     this.el.style.height = this.options.height + 'px';
                 }
                 this._slider.style.height = this.options.height + 'px';
             }
         }
+
         _setupIndicators() {
             if (this.options.indicators) {
                 const ul = document.createElement('ul');
@@ -7816,9 +8230,11 @@ var M = (function (exports) {
                 this._indicators = arrLi;
             }
         }
+
         _removeIndicators() {
             this.el.querySelector('ul.indicators').remove(); //find('ul.indicators').remove();
         }
+
         set(index) {
             // Wrap around indices.
             if (index >= this._slides.length)
@@ -7869,11 +8285,13 @@ var M = (function (exports) {
                 this.start();
             }
         }
+
         _pause(fromEvent) {
             clearInterval(this.interval);
             this.eventPause = fromEvent;
             this.interval = null;
         }
+
         /**
          * Pause slider autoslide.
          */
@@ -7923,6 +8341,7 @@ var M = (function (exports) {
         completeCallback: null,
         activationPercent: 0.8
     };
+
     class Toast {
         /** The toast element. */
         el;
@@ -7947,6 +8366,7 @@ var M = (function (exports) {
         static _toasts;
         static _container;
         static _draggedToast;
+
         constructor(options) {
             this.options = {
                 ...Toast.defaults,
@@ -7966,12 +8386,15 @@ var M = (function (exports) {
             this._animateIn();
             this._setTimer();
         }
+
         static get defaults() {
             return _defaults;
         }
+
         static getInstance(el) {
             return el['M_Toast'];
         }
+
         static _createContainer() {
             const container = document.createElement('div');
             container.setAttribute('id', 'toast-container');
@@ -7985,12 +8408,14 @@ var M = (function (exports) {
             document.body.appendChild(container);
             Toast._container = container;
         }
+
         static _removeContainer() {
             document.removeEventListener('mousemove', Toast._onDragMove);
             document.removeEventListener('mouseup', Toast._onDragEnd);
             Toast._container.remove();
             Toast._container = null;
         }
+
         static _onDragStart(e) {
             if (e.target && e.target.closest('.toast')) {
                 const toastElem = e.target.closest('.toast');
@@ -8004,6 +8429,7 @@ var M = (function (exports) {
                 toast.xPos = Toast._xPos(e);
             }
         }
+
         static _onDragMove(e) {
             if (!!Toast._draggedToast) {
                 e.preventDefault();
@@ -8018,6 +8444,7 @@ var M = (function (exports) {
                 toast.el.style.opacity = (1 - Math.abs(totalDeltaX / activationDistance)).toString();
             }
         }
+
         static _onDragEnd() {
             if (!!Toast._draggedToast) {
                 const toast = Toast._draggedToast;
@@ -8031,8 +8458,7 @@ var M = (function (exports) {
                     toast.wasSwiped = true;
                     toast.dismiss();
                     // Animate toast back to original position
-                }
-                else {
+                } else {
                     toast.el.style.transition = 'transform .2s, opacity .2s';
                     toast.el.style.transform = '';
                     toast.el.style.opacity = '';
@@ -8040,6 +8466,7 @@ var M = (function (exports) {
                 Toast._draggedToast = null;
             }
         }
+
         static _xPos(e) {
             if (e.type.startsWith('touch') && e.targetTouches.length >= 1) {
                 return e.targetTouches[0].clientX;
@@ -8047,6 +8474,7 @@ var M = (function (exports) {
             // mouse event
             return e.clientX;
         }
+
         /**
          * dismiss all toasts.
          */
@@ -8055,6 +8483,7 @@ var M = (function (exports) {
                 Toast._toasts[toastIndex].dismiss();
             }
         }
+
         _createToast() {
             let toast = this.options.toastId
                 ? document.getElementById(this.options.toastId)
@@ -8076,6 +8505,7 @@ var M = (function (exports) {
             Toast._container.appendChild(toast);
             return toast;
         }
+
         _animateIn() {
             // Animate toast in
             this.el.style.display = '';
@@ -8090,6 +8520,7 @@ var M = (function (exports) {
                 this.el.style.opacity = '1';
             }, 1);
         }
+
         /**
          * Create setInterval which automatically removes toast when timeRemaining >= 0
          * has been reached.
@@ -8108,6 +8539,7 @@ var M = (function (exports) {
                 }, 20);
             }
         }
+
         /**
          * Dismiss toast with animation.
          */
@@ -8142,6 +8574,7 @@ var M = (function (exports) {
                 }
             }, this.options.outDuration);
         }
+
         static {
             Toast._toasts = [];
             Toast._container = null;
@@ -8151,6 +8584,7 @@ var M = (function (exports) {
 
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const version = '2.2.2';
+
     /**
      * Automatically initialize components.
      * @param context Root element to initialize. Defaults to `document.body`.
@@ -8198,6 +8632,7 @@ var M = (function (exports) {
         Tooltip.init(registry.Tooltip, options?.Tooltip ?? {});
         FloatingActionButton.init(registry.FloatingActionButton, options?.FloatingActionButton ?? {});
     }
+
     // Init
     if (typeof document !== 'undefined') {
         document.addEventListener('keydown', Utils.docHandleKeydown, true);

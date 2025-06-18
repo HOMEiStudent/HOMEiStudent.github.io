@@ -15,8 +15,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
     <link href="styles/style.css" rel="stylesheet" type="text/css"/>
 
-    <script src="scripts/materialize.js"></script><script src="scripts/Swup.umd.js"></script>
+    <script src="scripts/materialize.js"></script>
+    <script src="scripts/gsap.min.js"></script>
+    <script src="scripts/Swup.umd.js"></script>
     <script src="scripts/Preload.umd.js"></script>
+    <script src="scripts/JS.umd.js"></script>
     <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
@@ -56,7 +59,7 @@
     <li><a href="faq.html" class="orange-text">FAQs</a></li>
 </ul>
 
-<div class="main-body" style="width: 100%; position: relative; overflow-x: hidden; height: 100%;">
+<div id="swup" class="main-body" style="width: 100%; position: relative; overflow-x: hidden; height: 100%;">
 </div>
 
 <div>
@@ -107,14 +110,32 @@
                 threshold: 0.2,
                 delay: 0
             }
+        }),
+        new SwupJsPlugin({
+            animations: [{
+                from: '(.*)',
+                to: '(.*)',
+                out: async () => {
+                    let instance = M.Sidenav.getInstance(document.querySelector('.sidenav'));
+                    instance.close()
+
+                    await gsap.to('#swup', {opacity: 0, duration: 0.25});
+                },
+                in: async () => {
+                    await gsap.fromTo('#swup', {opacity: 0}, {opacity: 1, duration: 0.25});
+                }
+            }]
         })]
     });
 
     swup.preload(['about-us.html', 'features.html', 'faq.html']);
 
-    document.addEventListener('DOMContentLoaded', function () {
+    const pageInit = function () {
         M.Sidenav.init(document.querySelectorAll('.sidenav'), {
             edge: 'right'
         });
-    })
+    }
+
+    swup.hooks.on('page:view', pageInit)
+    document.addEventListener('DOMContentLoaded', pageInit)
 </script>

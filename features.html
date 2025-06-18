@@ -20,6 +20,7 @@
     <script src="scripts/Flip.min.js"></script>
     <script src="scripts/Swup.umd.js"></script>
     <script src="scripts/Preload.umd.js"></script>
+    <script src="scripts/JS.umd.js"></script>
     <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
@@ -59,7 +60,7 @@
     <li><a href="faq.html" class="orange-text">FAQs</a></li>
 </ul>
 
-<div class="main-body" style="width: 100%; position: relative; overflow-x: hidden; height: 100%;">
+<div id="swup" class="main-body" style="width: 100%; position: relative; overflow-x: hidden; height: 100%;">
     <section id="tidy" style="position: relative; z-index: 1;">
         <div class="container" style="background-image: url('images/towel_tidy.png'); background-size: cover;
              margin: 0 !important; width: 100% !important; max-width: none !important; height: 100%;
@@ -245,12 +246,27 @@
                 threshold: 0.2,
                 delay: 0
             }
+        }),
+        new SwupJsPlugin({
+            animations: [{
+                from: '(.*)',
+                to: '(.*)',
+                out: async () => {
+                    let instance = M.Sidenav.getInstance(document.querySelector('.sidenav'));
+                    instance.close()
+
+                    await gsap.to('#swup', {opacity: 0, duration: 0.25});
+                },
+                in: async () => {
+                    await gsap.fromTo('#swup', {opacity: 0}, {opacity: 1, duration: 0.25});
+                }
+            }]
         })]
     });
 
     swup.preload(['about-us.html', 'features.html', 'faq.html']);
 
-    document.addEventListener('DOMContentLoaded', function () {
+    const pageInit = function () {
         M.Sidenav.init(document.querySelectorAll('.sidenav'), {
             edge: 'right'
         });
@@ -355,9 +371,8 @@
         })
 
         overlay.addEventListener("click", zoomOut);
-    })
-
-    window.addEventListener("load", function () {
+    }
+    const pageLoad = function () {
         const hash = window.location.hash;
         if (hash) {
             const targetElement = document.querySelector(hash);
@@ -375,6 +390,14 @@
                 subSection.style.height = currentHeight + "px";
             }
         })
-    });
+    }
+
+    swup.hooks.on('page:view', function () {
+        pageInit();
+        pageLoad();
+    })
+
+    document.addEventListener("DOMContentLoaded", pageInit);
+    window.addEventListener("load", pageLoad);
 
 </script>

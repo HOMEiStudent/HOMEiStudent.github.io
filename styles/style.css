@@ -8,17 +8,17 @@
 
 html,
 button, input, optgroup, select, textarea {
-  font-family: 'CalSans', 'Calibri', sans-serif !important;
+    font-family: 'CalSans', 'Calibri', sans-serif !important;
 }
 
 body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 .main-body {
-  flex: 1 0 auto;
+    flex: 1 0 auto;
 }
 
 .input-field label {
