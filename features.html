@@ -264,7 +264,7 @@
         })]
     });
 
-    swup.preload(['about-us.html', 'features.html', 'faq.html']);
+    swup.preload(['about-us.html', 'index.html', 'faq.html']);
 
     const pageInit = function () {
         M.Sidenav.init(document.querySelectorAll('.sidenav'), {
@@ -397,6 +397,12 @@
         pageLoad();
     })
 
+    const pageUnload = function () {
+        console.log("Page unloaded")
+        M.Sidenav.getInstance(document.querySelector('.sidenav')).destroy()
+    }
+
+    swup.hooks.before('content:replace', () => pageUnload());
     document.addEventListener("DOMContentLoaded", pageInit);
     window.addEventListener("load", pageLoad);
 

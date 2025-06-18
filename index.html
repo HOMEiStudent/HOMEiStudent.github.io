@@ -493,6 +493,16 @@
         adjustCarouselText()
     }
 
+    const pageUnload = function () {
+        console.log("Page unloaded")
+        M.Sidenav.getInstance(document.querySelector('.sidenav')).destroy()
+        M.Carousel.getInstance(document.querySelector('.carousel-top')).destroy()
+        M.Carousel.getInstance(document.querySelector('.carousel-bottom')).destroy()
+        M.Parallax.getInstance(document.querySelector('.parallax')).destroy()
+    }
+
+    swup.hooks.before('content:replace', () => pageUnload());
+
     // Listen for preloaded page coming into view (replaces DOMContentLoaded)
     swup.hooks.on('page:view', function () {
         pageInit();
@@ -503,12 +513,16 @@
     });
 
     // Listen for DOMContentLoaded if first page viewed is this one
-    document.addEventListener('DOMContentLoaded', pageInit);
+    document.addEventListener('DOMContentLoaded', () => {pageInit()});
     // Listen for page load if first page viewed is this one
-    window.addEventListener('load', pageLoad);
+    window.addEventListener('load', () => {
+        pageLoad();
+        setInterval(moveCarousel, 5000);
+    });
 
     function resizeItems() {
         // Function to resize webpage items on the window load and window resize
+        console.log("Resizing items")
 
         // Resize video to fit inside the phone SVG container
         let phone_width = document.querySelector('.phone-svg').clientWidth
