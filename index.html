@@ -20,9 +20,6 @@
 
     <script src="scripts/gsap.min.js"></script>
     <script src="scripts/SplitText.min.js"></script>
-    <script src="scripts/Swup.umd.js"></script>
-    <script src="scripts/Preload.umd.js"></script>
-    <script src="scripts/JS.umd.js"></script>
     <script src="scripts/materialize.js"></script>
     <script
             async
@@ -384,59 +381,14 @@
 </body>
 
 <script>
-    // Lots of try and catch statements to prevent preload errors, only important to let the phone video align properly
-
-    const swup = new Swup({
-        plugins: [new SwupPreloadPlugin({
-            preloadVisibleLinks: {
-                threshold: 0.2,
-                delay: 10
-            }
-        }),
-        new SwupJsPlugin({
-            animations: [{
-                from: '(.*)',
-                to: '(.*)',
-                out: async () => {
-                    let instance = M.Sidenav.getInstance(document.querySelector('.sidenav'));
-                    instance.close()
-
-                    await gsap.to('#swup', {opacity: 0, duration: 0.25});
-                },
-                in: async () => {
-                    await gsap.fromTo('#swup', {opacity: 0}, {opacity: 1, duration: 0.25});
-                }
-            }]
-        })]
-    });
-
     // Listen for DOMContentLoaded if first page viewed is this one
     document.addEventListener('DOMContentLoaded', () => pageInit());
+
     // Listen for page load if first page viewed is this one
     window.addEventListener('load', () => {
         pageLoad();
         carouselInterval = setInterval(moveCarousel, 5000);
     });
-
-    document.addEventListener('swup:page:view', () => {
-        console.log("Page view")
-        pageInit();
-        pageLoad();
-    })
-
-    swup.hooks.before('content:replace', () => pageUnload());
-
-    // Listen for preloaded page coming into view (replaces DOMContentLoaded)
-    // swup.hooks.on('page:view', () => {
-    //     console.log("Page view")
-    //     pageInit();
-    //     pageLoad();
-    //
-    //     // Move the top carousel every 5 seconds
-    //     carouselInterval = setInterval(moveCarousel, 5000);
-    // });
-
-    swup.preload(['images/phone.svg', 'images/phone.svg', 'about-us.html', 'features.html', 'faq.html']);
 
     const nextSlide = function (activeSlide) {
         const h2 = activeSlide.querySelector('h2');
@@ -500,7 +452,7 @@
         };
 
         // Listen for time updates on the foreground video
-        try {foregroundVideo.addEventListener('timeupdate', syncVideos);
+        foregroundVideo.addEventListener('timeupdate', syncVideos);
 
         // Initial sync when both videos are ready to play
         Promise.all([
@@ -509,13 +461,13 @@
         ]).then(() => {
             backgroundVideo.play();
             foregroundVideo.play();
-        })} catch (e) {}
+        })
     }
 
     const pageLoad = function () {
-        try{let elem = document.querySelector('.carousel-bottom')
+        let elem = document.querySelector('.carousel-bottom')
         let instance = M.Carousel.getInstance(elem);
-        instance.prev()} catch (e) {}
+        instance.prev()
 
         resizeItems()
         adjustCarouselText()
@@ -523,21 +475,8 @@
 
     let carouselInterval = NaN
 
-    const pageUnload = function () {
-        clearInterval(carouselInterval)
-
-        try {M.Sidenav.getInstance(document.querySelector('.sidenav')).destroy()} catch (e) {}
-        try {M.Carousel.getInstance(document.querySelector('.carousel-top')).destroy()} catch (e) {}
-        try {M.Carousel.getInstance(document.querySelector('.carousel-bottom')).destroy()} catch (e) {}
-        try {M.Parallax.getInstance(document.querySelector('.parallax')).destroy()} catch (e) {}
-    }
-
     function resizeItems() {
         // Function to resize webpage items on the window load and window resize
-        console.log("Resizing items")
-        console.log(document.querySelector('.phone-svg'))
-        console.log(document.querySelector('.phone-svg').clientHeight)
-        console.log(document.querySelector('.phone-svg').clientWidth)
 
         // Resize video to fit inside the phone SVG container
         let phone_width = document.querySelector('.phone-svg').clientWidth

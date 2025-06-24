@@ -17,9 +17,6 @@
 
     <script src="scripts/materialize.js"></script>
     <script src="scripts/gsap.min.js"></script>
-    <script src="scripts/Swup.umd.js"></script>
-    <script src="scripts/Preload.umd.js"></script>
-    <script src="scripts/JS.umd.js"></script>
     <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
@@ -148,44 +145,11 @@
 </body>
 
 <script>
-    const swup = new Swup({
-        plugins: [new SwupPreloadPlugin({
-            preloadVisibleLinks: {
-                threshold: 0.2,
-                delay: 0
-            }
-        }),
-        new SwupJsPlugin({
-            animations: [{
-                from: '(.*)',
-                to: '(.*)',
-                out: async () => {
-                    let instance = M.Sidenav.getInstance(document.querySelector('.sidenav'));
-                    instance.close()
-
-                    await gsap.to('#swup', {opacity: 0, duration: 0.25});
-                },
-                in: async () => {
-                    await gsap.fromTo('#swup', {opacity: 0}, {opacity: 1, duration: 0.25});
-                }
-            }]
-        })]
-    });
-
-    swup.preload(['images/phone.svg', 'about-us.html', 'features.html', 'faq.html', 'index.html']);
-
     const pageInit = function () {
         M.Sidenav.init(document.querySelectorAll('.sidenav'), {
             edge: 'right'
         });
     }
 
-    const pageUnload = function () {
-        console.log("Page unloaded")
-        M.Sidenav.getInstance(document.querySelector('.sidenav')).destroy()
-    }
-
-    swup.hooks.before('content:replace', () => pageUnload());
-    swup.hooks.on('page:view', pageInit)
     document.addEventListener('DOMContentLoaded', pageInit)
 </script>
