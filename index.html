@@ -384,11 +384,13 @@
 </body>
 
 <script>
+    // Lots of try and catch statements to prevent preload errors, only important to let the phone video align properly
+
     const swup = new Swup({
         plugins: [new SwupPreloadPlugin({
             preloadVisibleLinks: {
                 threshold: 0.2,
-                delay: 0
+                delay: 10
             }
         }),
         new SwupJsPlugin({
@@ -408,7 +410,33 @@
         })]
     });
 
-    swup.preload(['about-us.html', 'features.html', 'faq.html']);
+    // Listen for DOMContentLoaded if first page viewed is this one
+    document.addEventListener('DOMContentLoaded', () => pageInit());
+    // Listen for page load if first page viewed is this one
+    window.addEventListener('load', () => {
+        pageLoad();
+        carouselInterval = setInterval(moveCarousel, 5000);
+    });
+
+    document.addEventListener('swup:page:view', () => {
+        console.log("Page view")
+        pageInit();
+        pageLoad();
+    })
+
+    swup.hooks.before('content:replace', () => pageUnload());
+
+    // Listen for preloaded page coming into view (replaces DOMContentLoaded)
+    // swup.hooks.on('page:view', () => {
+    //     console.log("Page view")
+    //     pageInit();
+    //     pageLoad();
+    //
+    //     // Move the top carousel every 5 seconds
+    //     carouselInterval = setInterval(moveCarousel, 5000);
+    // });
+
+    swup.preload(['images/phone.svg', 'images/phone.svg', 'about-us.html', 'features.html', 'faq.html']);
 
     const nextSlide = function (activeSlide) {
         const h2 = activeSlide.querySelector('h2');
@@ -496,7 +524,6 @@
     let carouselInterval = NaN
 
     const pageUnload = function () {
-        console.log("Page unloaded")
         clearInterval(carouselInterval)
 
         try {M.Sidenav.getInstance(document.querySelector('.sidenav')).destroy()} catch (e) {}
@@ -505,27 +532,12 @@
         try {M.Parallax.getInstance(document.querySelector('.parallax')).destroy()} catch (e) {}
     }
 
-    swup.hooks.before('content:replace', () => pageUnload());
-
-    // Listen for preloaded page coming into view (replaces DOMContentLoaded)
-    swup.hooks.on('page:view', function () {
-        pageInit();
-        pageLoad();
-
-        // Move the top carousel every 5 seconds
-        carouselInterval = setInterval(moveCarousel, 5000);
-    });
-
-    // Listen for DOMContentLoaded if first page viewed is this one
-    document.addEventListener('DOMContentLoaded', pageInit);
-    // Listen for page load if first page viewed is this one
-    window.addEventListener('load', () => {
-        pageLoad();
-        carouselInterval = setInterval(moveCarousel, 5000);
-    });
-
     function resizeItems() {
         // Function to resize webpage items on the window load and window resize
+        console.log("Resizing items")
+        console.log(document.querySelector('.phone-svg'))
+        console.log(document.querySelector('.phone-svg').clientHeight)
+        console.log(document.querySelector('.phone-svg').clientWidth)
 
         // Resize video to fit inside the phone SVG container
         let phone_width = document.querySelector('.phone-svg').clientWidth
