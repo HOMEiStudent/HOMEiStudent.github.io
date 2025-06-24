@@ -313,8 +313,6 @@ function resizeItems() {
         let phone_width = document.querySelector('.phone-svg').clientWidth
         let phone_height = phone_width * 1.97073170732
 
-        console.log(phone_width, phone_height)
-
         document.querySelector('.phone-video').style.width = (phone_width * 0.87) + "px"
         document.querySelector('.phone-video').style.left = (phone_width * 0.073) + "px"
         document.querySelector('.phone-video').style.transform = "translateY(-" + (phone_height * 0.98) + "px)"
