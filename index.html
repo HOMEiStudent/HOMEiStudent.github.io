@@ -20,7 +20,11 @@
 
     <script src="scripts/gsap.min.js"></script>
     <script src="scripts/SplitText.min.js"></script>
+    <script src="scripts/Flip.min.js"></script>
     <script src="scripts/materialize.js"></script>
+    <script src="scripts/Swup.umd.js"></script>
+    <script src="scripts/Preload.umd.js"></script>
+    <script src="scripts/JS.umd.js"></script>
     <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
@@ -64,7 +68,7 @@
 <!--    Main Body    -->
 <div id="swup" class="main-body" style="width: 100%; position: relative; overflow-x: hidden; height: 100%;">
     <!--    Title Section    -->
-    <div class="parallax-container">
+    <div class="parallax-container index-body">
         <div class="parallax" style="width: 100%;">
             <img src="images/happy_people.png" class="overlap-image" alt="Happy People">
         </div>
@@ -380,209 +384,6 @@
 </footer>
 </body>
 
-<script>
-    // Listen for DOMContentLoaded if first page viewed is this one
-    document.addEventListener('DOMContentLoaded', () => pageInit());
+<script src="scripts/AllScripts.js"></script>
 
-    // Listen for page load if first page viewed is this one
-    window.addEventListener('load', () => {
-        pageLoad();
-        carouselInterval = setInterval(moveCarousel, 5000);
-    });
-
-    const nextSlide = function (activeSlide) {
-        const h2 = activeSlide.querySelector('h2');
-        const h5 = activeSlide.querySelector('h5');
-        const icon = activeSlide.querySelector('i');
-
-        gsap.killTweensOf([h2, h5, icon]);
-
-        gsap.set(h2, {opacity: 1});
-
-        let split = SplitText.create(h2, {
-            type: "words",
-            wordsClass: "word++",
-            wordDelimiter: " "
-        });
-
-        gsap.from(split.words, {
-            y: -50,
-            opacity: 0,
-            rotation: "random(-80, 80)",
-            stagger: 0.2,
-            duration: 1,
-            ease: "back"
-        });
-
-        var tl = gsap.timeline({repeat: 1});
-
-        tl.to(icon, {
-            scale: 1.3,
-            duration: 0.3,
-            ease: "back"
-        })
-            .to(icon, {
-                scale: 1,
-                duration: 0.3,
-                ease: "back"
-            })
-    }
-
-    const pageInit = function () {
-        M.Sidenav.init(document.querySelectorAll('.sidenav'), {
-            edge: 'right'
-        });
-        M.Carousel.init(document.querySelectorAll('.carousel-top'), {
-            onCycleTo: nextSlide
-        });
-        M.Carousel.init(document.querySelectorAll('.carousel-bottom'), {})
-        M.Parallax.init(document.querySelectorAll('.parallax'), {});
-
-        const backgroundVideo = document.querySelector('.video-background');
-        const foregroundVideo = document.querySelector('.video-foreground');
-
-        // Function to synchronise the videos
-        const syncVideos = () => {
-            if (backgroundVideo.readyState >= 3 && foregroundVideo.readyState >= 3) {
-                const seekTime = foregroundVideo.currentTime;
-                if (Math.abs(backgroundVideo.currentTime - seekTime) > 0.1) {
-                    backgroundVideo.currentTime = seekTime;
-                }
-            }
-        };
-
-        // Listen for time updates on the foreground video
-        foregroundVideo.addEventListener('timeupdate', syncVideos);
-
-        // Initial sync when both videos are ready to play
-        Promise.all([
-            new Promise(resolve => backgroundVideo.oncanplaythrough = resolve),
-            new Promise(resolve => foregroundVideo.oncanplaythrough = resolve)
-        ]).then(() => {
-            backgroundVideo.play();
-            foregroundVideo.play();
-        })
-    }
-
-    const pageLoad = function () {
-        let elem = document.querySelector('.carousel-bottom')
-        let instance = M.Carousel.getInstance(elem);
-        instance.prev()
-
-        resizeItems()
-        adjustCarouselText()
-    }
-
-    let carouselInterval = NaN
-
-    function resizeItems() {
-        // Function to resize webpage items on the window load and window resize
-
-        // Resize video to fit inside the phone SVG container
-        let phone_width = document.querySelector('.phone-svg').clientWidth
-        let phone_height = document.querySelector('.phone-svg').clientHeight
-
-        document.querySelector('.phone-video').style.width = (phone_width * 0.87) + "px"
-        document.querySelector('.phone-video').style.left = (phone_width * 0.073) + "px"
-        document.querySelector('.phone-video').style.transform = "translateY(-" + (phone_height * 0.98) + "px)"
-
-        document.querySelector('.video-foreground').style.height = (phone_height * 0.955) + "px"
-
-        // Reformat background gradient to match the height of the phone SVG container
-        document.querySelector('.gradient-container').style = "background: linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%);" +
-            "background: -moz-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
-            "background: -webkit-gradient(linear, left top, left bottom, color-stop(" + phone_height * 0.28 + "px,transparent), color-stop(" + phone_height * 0.30 + "px,#ffa000), color-stop(100%,#ff6a00)); " +
-            "background: -webkit-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
-            "background: -o-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); " +
-            "background: -ms-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); "
-
-        // Resize the bottom carousel to fit image and title inside
-        document.querySelector('.carousel-bottom').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 1.25) + "px"
-        document.querySelector('.carousel-bottom-text').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 0.25) + "px"
-
-        // Move left and right buttons for carousel bottom to be halfway down the carousel
-        let car_height = document.querySelector('.carousel-row').clientHeight
-        let button_height = document.querySelector('.carousel-left-bottom').clientHeight
-        car_height = (car_height * 0.5) - (button_height * 0.5)
-        document.querySelector('.carousel-left-bottom').style.transform = "translateY(" + car_height + "px)"
-        document.querySelector('.carousel-right-bottom').style.transform = "translateY(" + car_height + "px)"
-    }
-
-    function adjustCarouselText() {
-        // Function to adjust the font size of the text in the bottom carousel to fit inside its container
-
-        const elements = document.querySelectorAll('.carousel-bottom-text');
-        const fontSizes = [];
-
-        elements.forEach(element => {
-            // Adjust the font size until the text fits inside the container
-            element.style.fontSize = '';
-
-            let originalFontSize = element.getAttribute('data-original-font-size');
-
-            if (!originalFontSize) {
-                originalFontSize = window.getComputedStyle(element).fontSize;
-                element.setAttribute('data-original-font-size', originalFontSize);
-            }
-
-            let currentFontSize = parseInt(originalFontSize);
-            element.style.fontSize = currentFontSize + 'px';
-
-            while (element.scrollHeight > element.clientHeight && currentFontSize > 0) {
-                currentFontSize--;
-                element.style.fontSize = currentFontSize + 'px';
-            }
-
-            // Store the font size so it can match across slides
-            fontSizes.push(currentFontSize);
-        });
-
-        // Adjust the font size to match across all the slides
-        if (fontSizes.length > 0) {
-            const minSize = Math.min(...fontSizes);
-            const finalSize = Math.max(0, minSize - 2); // Ensure it doesn't go below 0
-
-            elements.forEach(element => {
-                element.style.fontSize = finalSize + 'px';
-            });
-        }
-    }
-
-    // Stop text resizing being run too often
-    let resizeTimer;
-
-    function debouncedAdjustText() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(adjustCarouselText, 100);
-    }
-
-    function moveCarousel() {
-        let elem = document.querySelector('.carousel-top')
-        let instance = M.Carousel.getInstance(elem);
-
-        instance.next()
-    }
-
-    // On window resize, resize items and adjust text
-    window.addEventListener("resize", () => {
-        resizeItems()
-        debouncedAdjustText()
-    })
-
-    // On carousel bottom click, move carousel to next or previous item
-    document.querySelector('.carousel-left-bottom').addEventListener('click', () => {
-        let elem = document.querySelector('.carousel-bottom')
-        let instance = M.Carousel.getInstance(elem);
-
-        instance.prev()
-    })
-
-    document.querySelector('.carousel-right-bottom').addEventListener('click', () => {
-        let elem = document.querySelector('.carousel-bottom')
-        let instance = M.Carousel.getInstance(elem);
-
-        instance.next()
-    })
-
-</script>
 </html>

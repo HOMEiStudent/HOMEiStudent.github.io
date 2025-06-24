@@ -15,8 +15,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
     <link href="styles/style.css" rel="stylesheet" type="text/css"/>
 
-    <script src="scripts/materialize.js"></script>
     <script src="scripts/gsap.min.js"></script>
+    <script src="scripts/SplitText.min.js"></script>
+    <script src="scripts/Flip.min.js"></script>
+    <script src="scripts/materialize.js"></script>
+    <script src="scripts/Swup.umd.js"></script>
+    <script src="scripts/Preload.umd.js"></script>
+    <script src="scripts/JS.umd.js"></script>
     <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
@@ -221,12 +226,6 @@
 </footer>
 </body>
 
-<script>
-    const pageInit = function () {
-        M.Sidenav.init(document.querySelectorAll('.sidenav'), {
-            edge: 'right'
-        });
-    }
+<script src="scripts/AllScripts.js"></script>
 
-    document.addEventListener('DOMContentLoaded', pageInit)
-</script>
+</html>

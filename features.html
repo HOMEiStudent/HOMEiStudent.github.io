@@ -15,9 +15,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
     <link href="styles/style.css" rel="stylesheet" type="text/css"/>
 
-    <script src="scripts/materialize.js"></script>
     <script src="scripts/gsap.min.js"></script>
+    <script src="scripts/SplitText.min.js"></script>
     <script src="scripts/Flip.min.js"></script>
+    <script src="scripts/materialize.js"></script>
+    <script src="scripts/Swup.umd.js"></script>
+    <script src="scripts/Preload.umd.js"></script>
+    <script src="scripts/JS.umd.js"></script>
     <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
@@ -236,136 +240,5 @@
 </footer>
 </body>
 
-<script>
-    const pageInit = function () {
-        M.Sidenav.init(document.querySelectorAll('.sidenav'), {
-            edge: 'right'
-        });
-
-        gsap.registerPlugin(Flip);
-
-        const images = document.querySelectorAll(".zoom-image");
-        const body = document.body;
-
-        const overlay = document.createElement("div");
-        overlay.classList.add("zoom-overlay");
-
-        let isZoomed = false;
-        let isAnimating = false; // Prevents conflicts from rapid-fire clicks.
-        let allParentSections = document.querySelectorAll("section")
-
-        // --- Function to handle the zoom-in animation ---
-        function zoomIn() {
-            let image = event.currentTarget;
-            overlay.id = image.id;
-
-            let parentSectionID = image.parentNode.parentNode.parentNode.parentNode.id
-
-            allParentSections.forEach(section => {
-                if (section.querySelector(".zoom-image")) {
-                    if (section.id !== parentSectionID) {
-                        section.style.zIndex = -1;
-                    }
-                }
-            })
-
-            if (isZoomed || isAnimating) return;
-            isAnimating = true;
-
-            const state = Flip.getState(image);
-
-            body.appendChild(overlay);
-            image.classList.add("image-zoomed");
-
-            image.scrollIntoView({behavior: "smooth"})
-
-            body.classList.add("body-no-scroll");
-
-            gsap.to(overlay, {opacity: 1, duration: 0.6});
-
-            Flip.from(state, {
-                duration: 0.6,
-                ease: "power3.inOut",
-                scale: true,      // Animate scale for performance.
-                absolute: true,   // Isolate the element from layout shifts.
-                onComplete: () => {
-                    isZoomed = true;
-                    isAnimating = false;
-                }
-            });
-        }
-
-        // --- Function to handle the zoom-out animation ---
-        function zoomOut() {
-            let overlay = event.currentTarget;
-            let image = document.getElementById(overlay.id);
-
-            if (!isZoomed || isAnimating) return;
-            isAnimating = true;
-
-            const state = Flip.getState(image);
-
-            image.classList.remove("image-zoomed");
-            body.classList.remove("body-no-scroll");
-
-            gsap.to(overlay, {
-                opacity: 0,
-                duration: 0.6,
-                onComplete: () => {
-                    // Only remove the overlay from the DOM after it's invisible.
-                    if (overlay.parentNode) {
-                        body.removeChild(overlay);
-                    }
-                }
-            });
-
-            Flip.from(state, {
-                duration: 0.6,
-                ease: "power3.inOut",
-                scale: true,
-                absolute: true,
-                onComplete: () => {
-                    isZoomed = false;
-                    isAnimating = false;
-
-                    allParentSections.forEach(section => {
-                        if (section.querySelector(".zoom-image")) {
-                            section.style.zIndex = 1;
-                        }
-                    })
-                }
-            });
-        }
-
-        images.forEach(image => {
-            image.addEventListener("click", zoomIn);
-        })
-
-        overlay.addEventListener("click", zoomOut);
-    }
-
-    const pageLoad = function () {
-        const hash = window.location.hash;
-        if (hash) {
-            const targetElement = document.querySelector(hash);
-            if (targetElement) {
-                targetElement.scrollIntoView({behavior: "smooth"});
-            }
-        }
-
-        let allParentSections = document.querySelectorAll("section")
-        allParentSections.forEach(section => {
-            if (section.querySelector(".zoom-image")) {
-                let subSection = section.querySelector(".container");
-                let currentHeight = subSection.clientHeight;
-
-                subSection.style.height = currentHeight + "px";
-            }
-        })
-    }
-
-    document.addEventListener("DOMContentLoaded", pageInit);
-    window.addEventListener("load", pageLoad);
-</script>
-
+<script src="scripts/AllScripts.js"></script>
 </html>
