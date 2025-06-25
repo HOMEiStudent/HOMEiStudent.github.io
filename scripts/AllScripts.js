@@ -1,5 +1,6 @@
 let carouselInterval;
 let resizeTimer;
+
 const swup = new Swup({
     plugins: [new SwupPreloadPlugin({
         preloadVisibleLinks: {
@@ -62,16 +63,21 @@ const pageUnload = function () {
 
     // Optional materialize components
     if (document.querySelectorAll('.carousel')) {
-        M.Carousel.getInstance(document.querySelectorAll('.carousel')).destroy();
+        let elems = document.querySelectorAll('.carousel')
+        elems.forEach(elem => {M.Carousel.getInstance(elem).destroy();})
     }
 
     if (document.querySelectorAll('.parallax')) {
-        M.Parallax.getInstance(document.querySelectorAll('.parallax')).destroy();
+        let elems = document.querySelectorAll('.parallax')
+        elems.forEach(elem => {M.Parallax.getInstance(elem).destroy();})
     }
 
     if (document.querySelectorAll('.collapsible')) {
-        M.Collapsible.getInstance(document.querySelectorAll('.collapsible')).destroy();
+        let elems = document.querySelectorAll('.collapsible')
+        elems.forEach(elem => {M.Collapsible.getInstance(elem).destroy();})
     }
+
+    clearInterval(carouselInterval)
 }
 
 const pageInit = function () {
