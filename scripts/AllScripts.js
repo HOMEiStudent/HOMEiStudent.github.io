@@ -367,6 +367,21 @@ function resizeItems() {
         document.querySelector('.carousel-left-bottom').style.transform = "translateY(" + car_height + "px)"
         document.querySelector('.carousel-right-bottom').style.transform = "translateY(" + car_height + "px)"
     }
+
+    if (document.querySelectorAll('.quote-text')) {
+        let elems = document.querySelectorAll('.quote-text')
+        elems.forEach(elem => {
+            let quote_text = elem.querySelector('.quote-text-inner')
+            let quote_left = elem.querySelector('.quote-left')
+            let quote_right = elem.querySelector('.quote-right')
+
+            let quote_bbox = quote_text.getBoundingClientRect()
+
+            quote_left.style.left = (quote_bbox.left - quote_left.getBoundingClientRect().width) + "px"
+            quote_right.style.right = (quote_bbox.left - quote_left.getBoundingClientRect().width) + "px"
+            quote_right.style.top = quote_right.style.height
+        })
+    }
 }
 
 function adjustCarouselText() {
