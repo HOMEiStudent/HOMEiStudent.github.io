@@ -5221,7 +5221,7 @@ var M = (function (exports) {
             if (!this._enabled) {
                 this._img.style.transform = '';
             } else if (bottom > scrollTop && top < scrollTop + windowHeight) {
-                this._img.style.transform = `translate3D(-50%, ${parallax}px, 0)`;
+                this._img.style.transform = `translate3D(-5%, ${parallax}px, 0)`;
             }
         }
     }

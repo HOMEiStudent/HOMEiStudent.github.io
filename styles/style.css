@@ -64,28 +64,9 @@ body {
 .overlap-image {
     z-index: -1;
     filter: blur(3px);
-    width: 200vw;
+    width: 110vw;
 }
 
-@media only screen and (max-width: 600px) {
-    .overlap-image {
-        width: 210vw;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    .overlap-image {
-        width: 270vw;
-    }
-}
-
-@media only screen and (max-width: 350px) {
-    .overlap-image {
-        width: 310vw;
-    }
-}
-
-/* Add a cursor to the original image to indicate it's clickable. */
 .left-image.zoom-image {
     cursor: pointer;
     height: 25vh;
@@ -107,8 +88,6 @@ body {
     overflow: hidden;
 }
 
-/* The semi-transparent backdrop for the zoomed view.
-   It also serves as the close button. */
 .zoom-overlay {
     position: fixed;
     top: 0;
@@ -117,14 +96,10 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0);
     z-index: 1000;
-    cursor: zoom-out;
-    /* Start transparent; GSAP will animate this property. */
     opacity: 0;
 }
 
-/* The class applied to the image when it is in its final, zoomed state.
-   Flip will animate the element to match these properties. */
-.left-image.image-zoomed {
+:is(.left-image, .right-image).image-zoomed {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -137,22 +112,4 @@ body {
     object-fit: contain;
     /* Must be higher than the overlay's z-index. */
     z-index: 1001;
-    cursor: zoom-out;
 }
-
-.right-image.image-zoomed {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    /* The final transform state: centered and not rotated. */
-    transform: translate(-50%, -12%) rotate(0deg);
-    max-width: 90vw;
-    max-height: 80vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    /* Must be higher than the overlay's z-index. */
-    z-index: 1001;
-    cursor: zoom-out;
-}
-

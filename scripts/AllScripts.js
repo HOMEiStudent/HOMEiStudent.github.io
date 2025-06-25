@@ -24,17 +24,8 @@ const swup = new Swup({
     })]
 });
 
-// On window resize, resize items and adjust text
-window.addEventListener("resize", () => {
-    resizeItems()
-
-    if (document.querySelector('.carousel-bottom-text')) {
-        debouncedAdjustText()
-    }
-})
-
 // Listen for DOMContentLoaded if first page viewed is this one
-document.addEventListener('DOMContentLoaded', () => pageInit());
+document.addEventListener('DOMContentLoaded', () => {pageInit()});
 
 // Listen for page load if first page viewed is this one
 window.addEventListener('load', () => {
@@ -44,6 +35,16 @@ window.addEventListener('load', () => {
         carouselInterval = setInterval(moveCarousel, 5000,
             document.querySelector('.carousel-top'), 'next');
     }
+
+    // On window resize, resize items and adjust text
+    window.addEventListener("resize", () => {
+        pageInit();
+        pageLoad();
+
+        if (document.querySelector('.carousel-bottom-text')) {
+            debouncedAdjustText()
+        }
+    })
 });
 
 document.addEventListener('swup:page:view', () => {
@@ -51,10 +52,27 @@ document.addEventListener('swup:page:view', () => {
     pageLoad();
 })
 
-// swup.hooks.before('content:replace', () => pageUnload());
+swup.hooks.before('content:replace', () => pageUnload());
 
 swup.preload(['index.html', 'about-us.html', 'features.html', 'faq.html']);
 
+const pageUnload = function () {
+    // Sidenav on all pages
+    M.Sidenav.getInstance(document.querySelector('.sidenav')).destroy();
+
+    // Optional materialize components
+    if (document.querySelectorAll('.carousel')) {
+        M.Carousel.getInstance(document.querySelectorAll('.carousel')).destroy();
+    }
+
+    if (document.querySelectorAll('.parallax')) {
+        M.Parallax.getInstance(document.querySelectorAll('.parallax')).destroy();
+    }
+
+    if (document.querySelectorAll('.collapsible')) {
+        M.Collapsible.getInstance(document.querySelectorAll('.collapsible')).destroy();
+    }
+}
 
 const pageInit = function () {
     gsap.registerPlugin(Flip);
@@ -79,6 +97,10 @@ const pageInit = function () {
 
     if (document.querySelectorAll('.parallax')) {
         M.Parallax.init(document.querySelectorAll('.parallax'), {});
+    }
+
+    if (document.querySelectorAll('.collapsible')) {
+        M.Collapsible.init(document.querySelectorAll('.collapsible'), {});
     }
 
     // Initialise video synchronisation
@@ -176,8 +198,8 @@ const pageInit = function () {
         function zoomOut() {
             let overlay = event.currentTarget;
             let image = document.getElementById(overlay.id);
-
-            if (!isZoomed || isAnimating) return;
+            
+            if (!isZoomed || isAnimating) {return}
             isAnimating = true;
 
             const state = Flip.getState(image);
@@ -215,6 +237,7 @@ const pageInit = function () {
         }
 
         images.forEach(image => {
+
             image.addEventListener("click", zoomIn);
         })
 
