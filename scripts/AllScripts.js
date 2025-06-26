@@ -22,7 +22,6 @@ const swup = new Swup({
                 await gsap.to('#swup', {opacity: 0, duration: 0.25});
             },
             in: async (done, data) => {
-                console.log(data)
                 let tl = gsap.timeline();
 
                 let urlSearchParams = new URLSearchParams(window.location.search);
@@ -49,11 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {pageInit()});
 // Listen for page load if first page viewed is this one
 window.addEventListener('load', () => {
     pageLoad();
-
-    if (document.querySelector('.carousel-top')) {
-        carouselInterval = setInterval(moveCarousel, 5000,
-            document.querySelector('.carousel-top'), 'next');
-    }
 
     // On window resize, resize items and adjust text
     window.addEventListener("resize", () => {
