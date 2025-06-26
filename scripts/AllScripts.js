@@ -1,6 +1,9 @@
 let carouselInterval;
 let resizeTimer;
 
+gsap.registerPlugin(Flip);
+gsap.registerPlugin(ScrollToPlugin);
+
 const swup = new Swup({
     plugins: [new SwupPreloadPlugin({
         preloadVisibleLinks: {
@@ -18,8 +21,23 @@ const swup = new Swup({
 
                 await gsap.to('#swup', {opacity: 0, duration: 0.25});
             },
-            in: async () => {
-                await gsap.fromTo('#swup', {opacity: 0}, {opacity: 1, duration: 0.25});
+            in: async (done, data) => {
+                console.log(data)
+                let tl = gsap.timeline();
+
+                let urlSearchParams = new URLSearchParams(window.location.search);
+                let anchor = urlSearchParams.get("anchor");
+
+                if (anchor) {
+                    await tl.fromTo('#swup', {opacity: 0}, {opacity: 1, duration: 0.25})
+                        .to(window, {
+                            duration: 0.5,
+                            scrollTo:{y:anchor, autoKill: true},
+                            ease: "power2.in"
+                        })
+                } else {
+                    await tl.fromTo('#swup', {opacity: 0}, {opacity: 1, duration: 0.25});
+                }
             }
         }]
     })]
@@ -81,8 +99,6 @@ const pageUnload = function () {
 }
 
 const pageInit = function () {
-    gsap.registerPlugin(Flip);
-
     // Initialise Materialize components
 
     // Sidenav on all pages
@@ -254,13 +270,6 @@ const pageInit = function () {
 
 const pageLoad = function () {
     // Function to run on page load
-    const hash = window.location.hash;
-    if (hash) {
-        const targetElement = document.querySelector(hash);
-        if (targetElement) {
-            targetElement.scrollIntoView({behavior: "smooth"});
-        }
-    }
 
     // Move all the carousels by one before adjusting sizes (prevents conflicts)
     if (document.querySelectorAll('.carousel')) {
