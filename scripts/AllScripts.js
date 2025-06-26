@@ -357,8 +357,8 @@ function resizeItems() {
             "background: -ms-linear-gradient(transparent " + phone_height * 0.28 + "px, #ffa000 " + phone_height * 0.30 + "px, #ff6a00 100%); "
 
         // Resize the bottom carousel to fit image and title inside
-        document.querySelector('.carousel-bottom').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 1.25) + "px"
-        document.querySelector('.carousel-bottom-text').style.height = (document.querySelector('.carousel-item-bottom').clientHeight * 0.25) + "px"
+        document.querySelector('.carousel-bottom').style.height = (document.querySelector('.carousel-item-bottom').clientWidth * 1.25) + "px"
+        document.querySelector('.carousel-bottom-text').style.height = (document.querySelector('.carousel-item-bottom').clientWidth * 0.25) + "px"
 
         // Move left and right buttons for carousel bottom to be halfway down the carousel
         let car_height = document.querySelector('.carousel-row').clientHeight
