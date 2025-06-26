@@ -340,6 +340,22 @@ const nextSlide = function (activeSlide) {
 function resizeItems() {
     // Function to resize webpage items on the window load and window resize
 
+    if (document.querySelector('.height-parent')) {
+        let parents = document.querySelectorAll('.height-parent')
+        parents.forEach(parent => {
+            const definer = parent.querySelector('.height-definer');
+            const child  = parent.querySelector('.height-child');
+
+            const H = definer.clientHeight;
+            parent.style.height = H + 'px';
+
+            const hChild = child.clientHeight;
+            const offset = (H - hChild) / 2;
+
+            child.style.paddingTop  = offset + 'px';
+        })
+    }
+
     if (document.querySelector('.index-body')) {
         // Resize video to fit inside the phone SVG container
         let phone_width = document.querySelector('.phone-svg').clientWidth
@@ -369,6 +385,19 @@ function resizeItems() {
         car_height = (car_height * 0.5) - (button_height * 0.5)
         document.querySelector('.carousel-left-bottom').style.transform = "translateY(" + car_height + "px)"
         document.querySelector('.carousel-right-bottom').style.transform = "translateY(" + car_height + "px)"
+    }
+
+    if (document.querySelector('#people')) {
+        let people = document.querySelector('#people')
+        let person = people.querySelectorAll('.person')
+
+        person.forEach(elem => {
+            let image_row = elem.querySelector('.image-row')
+            let quote_row = elem.querySelector('.quote-row')
+
+            quote_row.style.height = image_row.clientHeight + "px"
+            }
+        )
     }
 
     if (document.querySelectorAll('.quote-text')) {
