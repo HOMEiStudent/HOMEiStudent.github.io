@@ -33,7 +33,7 @@ const swup = new Swup({
                         .to(window, {
                             duration: 0.5,
                             scrollTo:{y:anchor, autoKill: true},
-                            ease: "power2.in"
+                            ease: "power3.inOut"
                         })
                 } else {
                     await tl.fromTo('#swup', {opacity: 0}, {opacity: 1, duration: 0.25});
