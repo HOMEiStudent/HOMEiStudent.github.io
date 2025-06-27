@@ -337,6 +337,14 @@ const nextSlide = function (activeSlide) {
         })
 }
 
+const transformItem = function (elem, transform) {
+    elem.style.transform = transform
+    elem.style.webkitTransform = transform
+    elem.style.MozTransform = transform
+    elem.style.msTransform = transform
+    elem.style.OTransform = transform
+}
+
 function resizeItems() {
     // Function to resize webpage items on the window load and window resize
 
@@ -361,8 +369,11 @@ function resizeItems() {
         let phone_width = document.querySelector('.phone-svg').clientWidth
         let phone_height = phone_width * 1.97073170732
 
-        document.querySelector('.phone-video').style.width = (phone_width * 0.87) + "px"
-        document.querySelector('.phone-video').style.transform = "translate("+ (phone_width * 0.073) +"px, -" + (phone_height * 0.98) + "px)"
+        let video_element = document.querySelector('.phone-video')
+        let translation = "translate("+ (phone_width * 0.073) +"px, -" + (phone_height * 0.98) + "px)"
+
+        video_element.style.width = (phone_width * 0.87) + "px"
+        transformItem(video_element, translation)
 
         document.querySelector('.video-foreground').style.height = (phone_height * 0.955) + "px"
 
@@ -382,8 +393,9 @@ function resizeItems() {
         let car_height = document.querySelector('.carousel-row').clientHeight
         let button_height = document.querySelector('.carousel-left-bottom').clientHeight
         car_height = (car_height * 0.5) - (button_height * 0.5)
-        document.querySelector('.carousel-left-bottom').style.transform = "translateY(" + car_height + "px)"
-        document.querySelector('.carousel-right-bottom').style.transform = "translateY(" + car_height + "px)"
+
+        transformItem(document.querySelector('.carousel-left-bottom'), "translateY(" + car_height + "px)")
+        transformItem(document.querySelector('.carousel-right-bottom'), "translateY(" + car_height + "px)")
     }
 
     if (document.querySelector('#people')) {
