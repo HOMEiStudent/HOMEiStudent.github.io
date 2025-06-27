@@ -421,8 +421,9 @@ function resizeItems() {
             let quote_bbox = quote_text.getBoundingClientRect()
 
             quote_left.style.left = (quote_bbox.left - quote_left.getBoundingClientRect().width) + "px"
+            quote_left.style.top = ((quote_bbox.top - quote_bbox.height) - quote_left.getBoundingClientRect().height * 2) + "px"
             quote_right.style.right = (quote_bbox.left - quote_left.getBoundingClientRect().width) + "px"
-            quote_right.style.top = quote_right.style.height
+            quote_right.style.top = (quote_bbox.top - quote_right.getBoundingClientRect().height) + "px"
         })
     }
 }
