@@ -282,6 +282,7 @@ const pageLoad = function () {
     }
 
     if (document.querySelector('.carousel-top')) {
+        clearInterval(carouselInterval)
         carouselInterval = setInterval(moveCarousel, 5000,
             document.querySelector('.carousel-top'), 'next');
     }
