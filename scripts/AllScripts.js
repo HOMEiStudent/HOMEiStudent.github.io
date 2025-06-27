@@ -67,7 +67,7 @@ document.addEventListener('swup:page:view', () => {
 
 swup.hooks.before('content:replace', () => pageUnload());
 
-swup.preload(['about-us.html', 'features.html', 'faq.html']);
+swup.preload(['index.html', 'about-us.html', 'features.html', 'faq.html']);
 
 const pageUnload = function () {
     // Sidenav on all pages
