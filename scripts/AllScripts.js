@@ -362,8 +362,7 @@ function resizeItems() {
         let phone_height = phone_width * 1.97073170732
 
         document.querySelector('.phone-video').style.width = (phone_width * 0.87) + "px"
-        document.querySelector('.phone-video').style.left = (phone_width * 0.073) + "px"
-        document.querySelector('.phone-video').style.transform = "translateY(-" + (phone_height * 0.98) + "px)"
+        document.querySelector('.phone-video').style.transform = "translate("+ (phone_width * 0.073) +"px, -" + (phone_height * 0.98) + "px)"
 
         document.querySelector('.video-foreground').style.height = (phone_height * 0.955) + "px"
 
