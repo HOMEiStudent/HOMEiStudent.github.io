@@ -1984,37 +1984,37 @@ var M = (function (exports) {
             clearInterval(this.ticker);
             this.ticker = setInterval(this._track, 100);
         };
-        _handleCarouselDrag = (e) => {
-            let x, y, delta, deltaY;
-            if (this.pressed) {
-                x = this._xpos(e);
-                y = this._ypos(e);
-                delta = this.reference - x;
-                deltaY = Math.abs(this.referenceY - y);
-                if (deltaY < 30 && !this.verticalDragged) {
-                    // If vertical scrolling don't allow dragging.
-                    if (delta > 2 || delta < -2) {
-                        this.dragged = true;
-                        this.reference = x;
-                        this._scroll(this.offset + delta);
-                    }
-                } else if (this.dragged) {
-                    // If dragging don't allow vertical scroll.
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
-                } else {
-                    // Vertical scrolling.
-                    this.verticalDragged = true;
-                }
-            }
-            if (this.dragged) {
-                // If dragging don't allow vertical scroll.
-                e.preventDefault();
-                e.stopPropagation();
-                return false;
-            }
-        };
+        // _handleCarouselDrag = (e) => {
+        //     let x, y, delta, deltaY;
+        //     if (this.pressed) {
+        //         x = this._xpos(e);
+        //         y = this._ypos(e);
+        //         delta = this.reference - x;
+        //         deltaY = Math.abs(this.referenceY - y);
+        //         if (deltaY < 30 && !this.verticalDragged) {
+        //             // If vertical scrolling don't allow dragging.
+        //             if (delta > 2 || delta < -2) {
+        //                 this.dragged = true;
+        //                 this.reference = x;
+        //                 this._scroll(this.offset + delta);
+        //             }
+        //         } else if (this.dragged) {
+        //             // If dragging don't allow vertical scroll.
+        //             e.preventDefault();
+        //             e.stopPropagation();
+        //             return false;
+        //         } else {
+        //             // Vertical scrolling.
+        //             this.verticalDragged = true;
+        //         }
+        //     }
+        //     if (this.dragged) {
+        //         // If dragging don't allow vertical scroll.
+        //         e.preventDefault();
+        //         e.stopPropagation();
+        //         return false;
+        //     }
+        // };
         _handleCarouselRelease = (e) => {
             if (this.pressed) {
                 this.pressed = false;
