@@ -2015,36 +2015,36 @@ var M = (function (exports) {
                 return false;
             }
         };
-        // _handleCarouselRelease = (e) => {
-        //     if (this.pressed) {
-        //         this.pressed = false;
-        //     } else {
-        //         return;
-        //     }
-        //     clearInterval(this.ticker);
-        //     this.target = this.offset;
-        //     if (this.velocity > 10 || this.velocity < -10) {
-        //         this.amplitude = 0.9 * this.velocity;
-        //         this.target = this.offset + this.amplitude;
-        //     }
-        //     this.target = Math.round(this.target / this.dim) * this.dim;
-        //     // No wrap of items.
-        //     if (this.noWrap) {
-        //         if (this.target >= this.dim * (this.count - 1)) {
-        //             this.target = this.dim * (this.count - 1);
-        //         } else if (this.target < 0) {
-        //             this.target = 0;
-        //         }
-        //     }
-        //     this.amplitude = this.target - this.offset;
-        //     this.timestamp = Date.now();
-        //     requestAnimationFrame(this._autoScroll);
-        //     if (this.dragged) {
-        //         e.preventDefault();
-        //         e.stopPropagation();
-        //     }
-        //     return false;
-        // };
+        _handleCarouselRelease = (e) => {
+            if (this.pressed) {
+                this.pressed = false;
+            } else {
+                return;
+            }
+            clearInterval(this.ticker);
+            this.target = this.offset;
+            if (this.velocity > 10 || this.velocity < -10) {
+                this.amplitude = 0.9 * this.velocity;
+                this.target = this.offset + this.amplitude;
+            }
+            this.target = Math.round(this.target / this.dim) * this.dim;
+            // No wrap of items.
+            if (this.noWrap) {
+                if (this.target >= this.dim * (this.count - 1)) {
+                    this.target = this.dim * (this.count - 1);
+                } else if (this.target < 0) {
+                    this.target = 0;
+                }
+            }
+            this.amplitude = this.target - this.offset;
+            this.timestamp = Date.now();
+            requestAnimationFrame(this._autoScroll);
+            if (this.dragged) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            return false;
+        };
         _handleCarouselClick = (e) => {
             // Disable clicks if carousel was dragged.
             if (this.dragged) {
