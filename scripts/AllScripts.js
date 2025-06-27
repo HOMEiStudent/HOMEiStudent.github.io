@@ -266,13 +266,13 @@ const pageLoad = function () {
     // Function to run on page load
 
     // Move all the carousels by one before adjusting sizes (prevents conflicts)
-    if (document.querySelectorAll('.carousel')) {
-        let carousels = document.querySelectorAll('.carousel');
-        carousels.forEach(carousel => {
-            let instance = M.Carousel.getInstance(carousel);
-            instance.next()
-        })
-    }
+    // if (document.querySelectorAll('.carousel')) {
+    //     let carousels = document.querySelectorAll('.carousel');
+    //     carousels.forEach(carousel => {
+    //         let instance = M.Carousel.getInstance(carousel);
+    //         instance.next()
+    //     })
+    // }
 
     // Resize items and adjust text
     resizeItems()
