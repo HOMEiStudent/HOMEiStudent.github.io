@@ -55,8 +55,13 @@ window.addEventListener('load', () => {
         pageLoad();
 
         if (document.querySelector('.carousel-bottom-text')) {
-            debouncedAdjustText()
+            debouncedAdjustText('.carousel-bottom-text')
         }
+
+        if (document.querySelector('.fave-house')) {
+            debouncedAdjustText('.fave-house', true)
+        }
+
     })
 
     screen.orientation.addEventListener("change", () => {
@@ -64,8 +69,13 @@ window.addEventListener('load', () => {
         pageLoad();
 
         if (document.querySelector('.carousel-bottom-text')) {
-            debouncedAdjustText()
+            debouncedAdjustText('.carousel-bottom-text')
         }
+
+        if (document.querySelector('.fave-house')) {
+            debouncedAdjustText('.fave-house', true)
+        }
+
     })
 });
 
@@ -278,7 +288,11 @@ const pageLoad = function () {
     resizeItems()
 
     if (document.querySelector('.carousel-bottom-text')) {
-        adjustCarouselText()
+        FitTextToBox('.carousel-bottom-text')
+    }
+
+    if (document.querySelector('.fave-house')) {
+        FitTextToBox('.fave-house', true)
     }
 
     if (document.querySelector('.carousel-top')) {
@@ -429,10 +443,10 @@ function resizeItems() {
     }
 }
 
-function adjustCarouselText() {
+function FitTextToBox(selector, oneLine=false) {
     // Function to adjust the font size of the text in the bottom carousel to fit inside its container
 
-    const elements = document.querySelectorAll('.carousel-bottom-text');
+    const elements = document.querySelectorAll(selector);
     const fontSizes = [];
 
     elements.forEach(element => {
@@ -449,12 +463,22 @@ function adjustCarouselText() {
         let currentFontSize = parseInt(originalFontSize);
         element.style.fontSize = currentFontSize + 'px';
 
-        while (element.scrollHeight > element.clientHeight && currentFontSize > 0) {
-            currentFontSize--;
-            element.style.fontSize = currentFontSize + 'px';
+         if (oneLine) {
+            // Ensure the text does not wrap to multiple lines
+            element.style.whiteSpace = 'nowrap'
+            element.style.overflow = 'hidden'
         }
 
-        // Store the font size so it can match across slides
+        // Adjust font size based on whether we're enforcing one line or not
+        while (
+            (oneLine && element.scrollWidth > element.clientWidth) ||
+            (!oneLine && element.scrollHeight > element.clientHeight)
+        ) {
+            currentFontSize--
+            if (currentFontSize <= 0) {break}
+            element.style.fontSize = currentFontSize + 'px'
+        }
+
         fontSizes.push(currentFontSize);
     });
 
@@ -469,9 +493,9 @@ function adjustCarouselText() {
     }
 }
 
-function debouncedAdjustText() {
+function debouncedAdjustText(selector, oneLine=false) {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(adjustCarouselText, 100);
+    resizeTimer = setTimeout(() => {FitTextToBox(selector, oneLine)}, 100);
 }
 
 function moveCarousel(elem, direction) {
