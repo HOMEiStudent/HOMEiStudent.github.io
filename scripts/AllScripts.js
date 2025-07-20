@@ -58,6 +58,15 @@ window.addEventListener('load', () => {
             debouncedAdjustText()
         }
     })
+
+    screen.orientation.addEventListener("change", () => {
+        pageInit();
+        pageLoad();
+
+        if (document.querySelector('.carousel-bottom-text')) {
+            debouncedAdjustText()
+        }
+    })
 });
 
 document.addEventListener('swup:page:view', () => {
