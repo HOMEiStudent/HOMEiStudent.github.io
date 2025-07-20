@@ -312,8 +312,6 @@ const pageLoad = function () {
             }
         })
     }
-
-    frames['footerFrame'].contentWindow.document.querySelector('.light').style.backgroundColor = '#ff6a00'
 }
 
 const nextSlide = function (activeSlide) {
