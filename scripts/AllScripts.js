@@ -12,6 +12,7 @@ let isZoomed
 let isAnimating
 let allParentSections
 let body
+let isIndex
 
 const optional_components = [['.carousel', 'M_Carousel'], ['.parallax', 'M_Parallax'], ['.collapsible', 'M_Collapsible']]
 
@@ -103,13 +104,17 @@ const pageInit = function () {
     isZoomed = false;
     isAnimating = false;
     allParentSections = document.querySelectorAll('section')
-
     body = document.body;
-    car_top = document.querySelector('.carousel-top')
-    car_bottom = document.querySelector('.carousel-bottom')
-    car_left = document.querySelector('.carousel-left-bottom')
-    car_right = document.querySelector('.carousel-right-bottom')
-    car_bottom_text = document.querySelector('.carousel-bottom-text')
+
+    isIndex = document.querySelector('.index-body')
+    if (isIndex) {
+        car_top = document.querySelector('.carousel-top')
+        car_bottom = document.querySelector('.carousel-bottom')
+        car_left = document.querySelector('.carousel-left-bottom')
+        car_right = document.querySelector('.carousel-right-bottom')
+        car_bottom_text = document.querySelector('.carousel-bottom-text')
+    }
+
     zoom_images = document.querySelectorAll('.zoom-image')
     fav_house = document.querySelector('.fave-house')
 
@@ -333,7 +338,7 @@ function resizeItems() {
         })
     }
 
-    if (document.querySelector('.index-body')) {
+    if (isIndex) {
         // Resize video to fit inside the phone SVG container
         let phone_width = document.querySelector('.phone-svg').clientWidth
         let phone_height = phone_width * 1.97073170732
