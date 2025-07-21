@@ -341,23 +341,24 @@ function resizeItems() {
     if (isIndex) {
         // Resize video to fit inside the phone SVG container
         let phone_width = document.querySelector('.phone-svg').clientWidth
-        let phone_height = phone_width * 1.97073170732
 
         let video_element = document.querySelector('.phone-video')
-        let translation = 'translate(' + (phone_width * 0.073) + 'px, -' + (phone_height * 0.98) + 'px)'
+        let translation = 'translate(' + (phone_width * 0.073) + 'px, -' + (phone_width * 1.931) + 'px)'
 
         video_element.style.width = (phone_width * 0.87) + 'px'
         transformItem(video_element, translation)
 
-        document.querySelector('.video-foreground').style.height = (phone_height * 0.955) + 'px'
+        document.querySelector('.video-foreground').style.height = (phone_width * 1.882) + 'px'
 
         // Reformat background gradient to match the height of the phone SVG container
-        document.querySelector('.gradient-container').style = 'background: linear-gradient(transparent ' + phone_height * 0.28 + 'px, #ffa000 ' + phone_height * 0.30 + 'px, #ff6a00 100%);' +
-            'background: -moz-linear-gradient(transparent ' + phone_height * 0.28 + 'px, #ffa000 ' + phone_height * 0.30 + 'px, #ff6a00 100%); ' +
-            'background: -webkit-gradient(linear, left top, left bottom, color-stop(' + phone_height * 0.28 + 'px,transparent), color-stop(' + phone_height * 0.30 + 'px,#ffa000), color-stop(100%,#ff6a00)); ' +
-            'background: -webkit-linear-gradient(transparent ' + phone_height * 0.28 + 'px, #ffa000 ' + phone_height * 0.30 + 'px, #ff6a00 100%); ' +
-            'background: -o-linear-gradient(transparent ' + phone_height * 0.28 + 'px, #ffa000 ' + phone_height * 0.30 + 'px, #ff6a00 100%); ' +
-            'background: -ms-linear-gradient(transparent ' + phone_height * 0.28 + 'px, #ffa000 ' + phone_height * 0.30 + 'px, #ff6a00 100%); '
+        let first_stop = phone_width * 0.552
+        let second_stop = phone_width * 0.591
+        document.querySelector('.gradient-container').style = 'background: linear-gradient(transparent ' + first_stop + 'px, #ffa000 ' + second_stop + 'px, #ff6a00 100%);' +
+            'background: -moz-linear-gradient(transparent ' + first_stop + 'px, #ffa000 ' + second_stop + 'px, #ff6a00 100%); ' +
+            'background: -webkit-gradient(linear, left top, left bottom, color-stop(' + first_stop + 'px,transparent), color-stop(' + second_stop + 'px,#ffa000), color-stop(100%,#ff6a00)); ' +
+            'background: -webkit-linear-gradient(transparent ' + first_stop + 'px, #ffa000 ' + second_stop + 'px, #ff6a00 100%); ' +
+            'background: -o-linear-gradient(transparent ' + first_stop + 'px, #ffa000 ' + second_stop + 'px, #ff6a00 100%); ' +
+            'background: -ms-linear-gradient(transparent ' + first_stop + 'px, #ffa000 ' + second_stop + 'px, #ff6a00 100%); '
 
         // Resize the bottom carousel to fit image and title inside
         let car_item_bottom = document.querySelector('.carousel-item-bottom')
@@ -365,9 +366,8 @@ function resizeItems() {
         car_bottom_text.style.height = (car_item_bottom.clientWidth * 0.25) + 'px'
 
         // Move left and right buttons for carousel bottom to be halfway down the carousel
-        let car_height = document.querySelector('.carousel-row').clientHeight
-        let button_height = car_left.clientHeight
-        car_height = (car_height * 0.5) - (button_height * 0.5)
+        let car_height = (document.querySelector('.carousel-row').clientHeight * 0.5) -
+            (car_left.clientHeight * 0.5)
 
         transformItem(car_left, 'translateY(' + car_height + 'px)')
         transformItem(car_right, 'translateY(' + car_height + 'px)')
@@ -379,20 +379,16 @@ function resizeItems() {
 
         person.forEach(elem => {
             let image_row = elem.querySelector('.image-row')
-            let quote_row = elem.querySelector('.quote-row')
-
-            quote_row.style.height = image_row.clientHeight + 'px'
+            elem.querySelector('.quote-row').style.height = image_row.clientHeight + 'px'
         })
     }
 
     let quote_elems = document.querySelectorAll('.quote-text')
     if (quote_elems) {
         quote_elems.forEach(elem => {
-            let quote_text = elem.querySelector('.quote-text-inner')
             let quote_left = elem.querySelector('.quote-left')
             let quote_right = elem.querySelector('.quote-right')
-
-            let quote_bbox = quote_text.getBoundingClientRect()
+            let quote_bbox = elem.querySelector('.quote-text-inner').getBoundingClientRect()
 
             quote_left.style.left = (quote_bbox.left - quote_left.getBoundingClientRect().width) + 'px'
             quote_left.style.top = ((quote_bbox.top - quote_bbox.height) - quote_left.getBoundingClientRect().height * 2) + 'px'
