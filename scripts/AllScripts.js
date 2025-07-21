@@ -368,26 +368,21 @@ function FitTextToBox(selector, oneLine = false) {
   const sizes = [];
 
   els.forEach(el => {
-    // 1. Reset any override
     el.style.fontSize = '';
     el.style.whiteSpace = oneLine ? 'nowrap' : '';
 
-    // 2. Cache the original size
     let orig = parseFloat(el.getAttribute('data-orig-size') ||
                   window.getComputedStyle(el).fontSize);
     el.setAttribute('data-orig-size', orig);
 
-    // 3. Find optimal size via binary search
     const optimal = findMaxSize(el, 4, orig, oneLine);
     sizes.push(optimal);
   });
 
   if (sizes.length === 0) {return}
 
-  // 4. Pick the smallest size across all and subtract a tiny buffer
   const finalSize = Math.max(4, Math.min(...sizes) - 1);
 
-  // 5. Apply once to all
   els.forEach(el => {
     el.style.fontSize = finalSize + 'px';
   });
