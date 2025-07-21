@@ -127,33 +127,6 @@ const pageInit = function () {
 
     if (car_top) {M.Carousel.init(car_top, {onCycleTo: nextSlide})}
 
-    // Initialise video synchronisation
-    const backgroundVideo = document.querySelector('.video-background');
-    const foregroundVideo = document.querySelector('.video-foreground');
-    if (backgroundVideo && foregroundVideo) {
-        // Function to synchronise the videos
-        const syncVideos = () => {
-            if (backgroundVideo.readyState >= 3 && foregroundVideo.readyState >= 3) {
-                const seekTime = foregroundVideo.currentTime;
-                if (Math.abs(backgroundVideo.currentTime - seekTime) > 0.1) {
-                    backgroundVideo.currentTime = seekTime;
-                }
-            }
-        };
-
-        // Listen for time updates on the foreground video
-        foregroundVideo.addEventListener('timeupdate', syncVideos);
-
-        // Initial sync when both videos are ready to play
-        Promise.all([
-            new Promise(resolve => backgroundVideo.oncanplaythrough = resolve),
-            new Promise(resolve => foregroundVideo.oncanplaythrough = resolve)
-        ]).then(() => {
-            backgroundVideo.play();
-            foregroundVideo.play();
-        })
-    }
-
     if (car_left && car_right) {
         car_left.addEventListener('click', () => {moveCarousel(car_bottom, 'prev')})
         car_right.addEventListener('click', () => {moveCarousel(car_bottom, 'next')})
@@ -339,16 +312,7 @@ function resizeItems() {
     }
 
     if (isIndex) {
-        // Resize video to fit inside the phone SVG container
         let phone_width = document.querySelector('.phone-svg').clientWidth
-
-        let video_element = document.querySelector('.phone-video')
-        let translation = 'translate(' + (phone_width * 0.073) + 'px, -' + (phone_width * 1.931) + 'px)'
-
-        video_element.style.width = (phone_width * 0.87) + 'px'
-        transformItem(video_element, translation)
-
-        document.querySelector('.video-foreground').style.height = (phone_width * 1.882) + 'px'
 
         // Reformat background gradient to match the height of the phone SVG container
         let first_stop = phone_width * 0.552
