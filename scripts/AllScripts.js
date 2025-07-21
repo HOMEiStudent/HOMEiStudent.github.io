@@ -14,7 +14,8 @@ let allParentSections
 let body
 let isIndex
 
-const optional_components = [['.carousel', 'M_Carousel'], ['.parallax', 'M_Parallax'], ['.collapsible', 'M_Collapsible']]
+const optional_components = [['.carousel', 'M_Carousel'], ['.parallax', 'M_Parallax'],
+    ['.collapsible', 'M_Collapsible']]
 
 gsap.registerPlugin(Flip);
 gsap.registerPlugin(ScrollToPlugin);
@@ -362,54 +363,55 @@ function resizeItems() {
     }
 }
 
-function FitTextToBox(selector, oneLine=false) {
-    // Function to adjust the font size of the text in the bottom carousel to fit inside its container
+function FitTextToBox(selector, oneLine = false) {
+  const els = Array.from(document.querySelectorAll(selector));
+  const sizes = [];
 
-    const elements = document.querySelectorAll(selector);
-    const fontSizes = [];
+  els.forEach(el => {
+    // 1. Reset any override
+    el.style.fontSize = '';
+    el.style.whiteSpace = oneLine ? 'nowrap' : '';
 
-    elements.forEach(element => {
-        // Adjust the font size until the text fits inside the container
-        element.style.fontSize = '';
+    // 2. Cache the original size
+    let orig = parseFloat(el.getAttribute('data-orig-size') ||
+                  window.getComputedStyle(el).fontSize);
+    el.setAttribute('data-orig-size', orig);
 
-        let originalFontSize = element.getAttribute('data-original-font-size');
+    // 3. Find optimal size via binary search
+    const optimal = findMaxSize(el, 4, orig, oneLine);
+    sizes.push(optimal);
+  });
 
-        if (!originalFontSize) {
-            originalFontSize = window.getComputedStyle(element).fontSize;
-            element.setAttribute('data-original-font-size', originalFontSize);
-        }
+  if (sizes.length === 0) {return}
 
-        let currentFontSize = parseInt(originalFontSize);
-        element.style.fontSize = currentFontSize + 'px';
+  // 4. Pick the smallest size across all and subtract a tiny buffer
+  const finalSize = Math.max(4, Math.min(...sizes) - 1);
 
-         if (oneLine) {
-            // Ensure the text does not wrap to multiple lines
-            element.style.whiteSpace = 'nowrap'
-            element.style.overflow = 'hidden'
-        }
+  // 5. Apply once to all
+  els.forEach(el => {
+    el.style.fontSize = finalSize + 'px';
+  });
+}
 
-        // Adjust font size based on whether we're enforcing one line or not
-        while (
-            (oneLine && element.scrollWidth > element.clientWidth) ||
-            (!oneLine && element.scrollHeight > element.clientHeight)
-        ) {
-            currentFontSize--
-            if (currentFontSize <= 0) {break}
-            element.style.fontSize = currentFontSize + 'px'
-        }
+// helper from above
+function findMaxSize(el, min, max, oneLine) {
+  let lo = min, hi = max, best = min;
+  while (lo <= hi) {
+    const mid = Math.ceil((lo + hi) / 2);
+    el.style.fontSize = mid + 'px';
 
-        fontSizes.push(currentFontSize);
-    });
+    const fits = oneLine
+      ? el.scrollWidth <= el.clientWidth
+      : el.scrollHeight <= el.clientHeight;
 
-    // Adjust the font size to match across all the slides
-    if (fontSizes.length > 0) {
-        const minSize = Math.min(...fontSizes);
-        const finalSize = Math.max(0, minSize - 2); // Ensure it doesn't go below 0
-
-        elements.forEach(element => {
-            element.style.fontSize = finalSize + 'px';
-        });
+    if (fits) {
+      best = mid;
+      lo = mid + 1;
+    } else {
+      hi = mid - 1;
     }
+  }
+  return best;
 }
 
 function debouncedAdjustText(selector, oneLine=false) {
