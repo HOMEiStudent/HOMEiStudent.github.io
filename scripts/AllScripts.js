@@ -27,39 +27,41 @@ const swup = new Swup({
             delay: 10
         }
     }),
-    new SwupJsPlugin({
-        animations: [{
-            from: '(.*)',
-            to: '(.*)',
-            out: async () => {
-                let instance = M.Sidenav.getInstance(document.querySelector('.sidenav'));
-                instance.close()
+        new SwupJsPlugin({
+            animations: [{
+                from: '(.*)',
+                to: '(.*)',
+                out: async () => {
+                    let instance = M.Sidenav.getInstance(document.querySelector('.sidenav'));
+                    instance.close()
 
-                await gsap.to('#swup', {opacity: 0, duration: 0.25});
-            },
-            in: async () => {
-                let tl = gsap.timeline();
+                    await gsap.to('#swup', {opacity: 0, duration: 0.25});
+                },
+                in: async () => {
+                    let tl = gsap.timeline();
 
-                let urlSearchParams = new URLSearchParams(window.location.search);
-                let anchor = urlSearchParams.get('anchor');
+                    let urlSearchParams = new URLSearchParams(window.location.search);
+                    let anchor = urlSearchParams.get('anchor');
 
-                if (anchor) {
-                    await tl.fromTo('#swup', {opacity: 0}, {opacity: 1, duration: 0.25})
-                        .to(window, {
-                            duration: 0.5,
-                            scrollTo:{y:anchor, autoKill: true},
-                            ease: 'power3.inOut'
-                        })
-                } else {
-                    await tl.fromTo('#swup', {opacity: 0}, {opacity: 1, duration: 0.25});
+                    if (anchor) {
+                        await tl.fromTo('#swup', {opacity: 0}, {opacity: 1, duration: 0.25})
+                            .to(window, {
+                                duration: 0.5,
+                                scrollTo: {y: anchor, autoKill: true},
+                                ease: 'power3.inOut'
+                            })
+                    } else {
+                        await tl.fromTo('#swup', {opacity: 0}, {opacity: 1, duration: 0.25});
+                    }
                 }
-            }
-        }]
-    })]
+            }]
+        })]
 });
 
 // Listen for DOMContentLoaded if first page viewed is this one
-document.addEventListener('DOMContentLoaded', () => {pageInit()});
+document.addEventListener('DOMContentLoaded', () => {
+    pageInit()
+});
 
 // Listen for page load if first page viewed is this one
 window.addEventListener('load', () => {
@@ -69,13 +71,21 @@ window.addEventListener('load', () => {
         pageInit();
         pageLoad();
 
-        if (car_bottom_text) {debouncedAdjustText('.carousel-bottom-text')}
-        if (fav_house) {debouncedAdjustText('.fave-house', true)}
+        if (car_bottom_text) {
+            debouncedAdjustText('.carousel-bottom-text')
+        }
+        if (fav_house) {
+            debouncedAdjustText('.fave-house', true)
+        }
     }
 
     // On window resize, resize items and adjust text
-    window.addEventListener('resize', () => {resizeEvent()})
-    screen.orientation.addEventListener('change', () => {resizeEvent()})
+    window.addEventListener('resize', () => {
+        resizeEvent()
+    })
+    screen.orientation.addEventListener('change', () => {
+        resizeEvent()
+    })
 });
 
 document.addEventListener('swup:page:view', () => {
@@ -94,7 +104,11 @@ const pageUnload = function () {
     // Optional materialize components
     optional_components.forEach(component => {
         let elems = document.querySelectorAll(component[0])
-        if (elems) {elems.forEach(elem => {elem[component[1]].destroy()})}
+        if (elems) {
+            elems.forEach(elem => {
+                elem[component[1]].destroy()
+            })
+        }
     })
 
     clearInterval(carouselInterval)
@@ -126,11 +140,17 @@ const pageInit = function () {
     // Sidenav on all pages
     M.Sidenav.init(document.querySelectorAll('.sidenav'), {edge: 'right'});
 
-    if (car_top) {M.Carousel.init(car_top, {onCycleTo: nextSlide})}
+    if (car_top) {
+        M.Carousel.init(car_top, {onCycleTo: nextSlide})
+    }
 
     if (car_left && car_right) {
-        car_left.addEventListener('click', () => {moveCarousel(car_bottom, 'prev')})
-        car_right.addEventListener('click', () => {moveCarousel(car_bottom, 'next')})
+        car_left.addEventListener('click', () => {
+            moveCarousel(car_bottom, 'prev')
+        })
+        car_right.addEventListener('click', () => {
+            moveCarousel(car_bottom, 'next')
+        })
     }
 
     if (zoom_images) {
@@ -151,8 +171,12 @@ const pageLoad = function () {
     // Resize items and adjust text
     resizeItems()
 
-    if (car_bottom_text) {FitTextToBox('.carousel-bottom-text')}
-    if (fav_house) {FitTextToBox('.fave-house', true)}
+    if (car_bottom_text) {
+        FitTextToBox('.carousel-bottom-text')
+    }
+    if (fav_house) {
+        FitTextToBox('.fave-house', true)
+    }
 
     if (car_top) {
         clearInterval(carouselInterval)
@@ -178,11 +202,13 @@ function zoomIn() {
 
     allParentSections.forEach(section => {
         if (section.querySelector('.zoom-image') && section.id !== parentSectionID) {
-              section.style.zIndex = -1;
+            section.style.zIndex = -1;
         }
     })
 
-    if (isZoomed || isAnimating) {return}
+    if (isZoomed || isAnimating) {
+        return
+    }
     isAnimating = true;
 
     const state = Flip.getState(image);
@@ -212,8 +238,10 @@ function zoomIn() {
 function zoomOut() {
     let overlay = event.currentTarget;
     let image = document.getElementById(overlay.id);
-    
-    if (!isZoomed || isAnimating) {return}
+
+    if (!isZoomed || isAnimating) {
+        return
+    }
     isAnimating = true;
 
     const state = Flip.getState(image);
@@ -225,7 +253,9 @@ function zoomOut() {
         opacity: 0,
         duration: 0.6,
         onComplete: () => {
-            if (overlay.parentNode) {body.removeChild(overlay)}
+            if (overlay.parentNode) {
+                body.removeChild(overlay)
+            }
         }
     });
 
@@ -301,14 +331,14 @@ function resizeItems() {
     if (parents) {
         parents.forEach(parent => {
             let definer = parent.querySelector('.height-definer');
-            let child  = parent.querySelector('.height-child');
+            let child = parent.querySelector('.height-child');
 
             let H = definer.clientHeight;
             parent.style.height = H + 'px';
 
             let offset = (H - child.clientHeight) / 2;
 
-            child.style.paddingTop  = offset + 'px';
+            child.style.paddingTop = offset + 'px';
         })
     }
 
@@ -331,8 +361,11 @@ function resizeItems() {
         car_bottom_text.style.height = (car_item_bottom.clientWidth * 0.25) + 'px'
 
         // Move left and right buttons for carousel bottom to be halfway down the carousel
-        let car_height = (document.querySelector('.carousel-row').clientHeight * 0.5) -
-            (car_left.clientHeight * 0.5)
+        let active_height = document.querySelector('.carousel-bottom')
+            .querySelector('.carousel-item.active')
+            .querySelector('.carousel-item-bottom')
+        let car_height = (active_height.clientHeight * 0.5) -
+            (car_left.clientHeight * 0.5) - (active_height.clientHeight * 0.1)
 
         transformItem(car_left, 'translateY(' + car_height + 'px)')
         transformItem(car_right, 'translateY(' + car_height + 'px)')
@@ -364,54 +397,58 @@ function resizeItems() {
 }
 
 function FitTextToBox(selector, oneLine = false) {
-  const els = Array.from(document.querySelectorAll(selector));
-  const sizes = [];
+    const els = Array.from(document.querySelectorAll(selector));
+    const sizes = [];
 
-  els.forEach(el => {
-    el.style.fontSize = '';
-    el.style.whiteSpace = oneLine ? 'nowrap' : '';
+    els.forEach(el => {
+        el.style.fontSize = '';
+        el.style.whiteSpace = oneLine ? 'nowrap' : '';
 
-    let orig = parseFloat(el.getAttribute('data-orig-size') ||
-                  window.getComputedStyle(el).fontSize);
-    el.setAttribute('data-orig-size', orig);
+        let orig = parseFloat(el.getAttribute('data-orig-size') ||
+            window.getComputedStyle(el).fontSize);
+        el.setAttribute('data-orig-size', orig);
 
-    const optimal = findMaxSize(el, 4, orig, oneLine);
-    sizes.push(optimal);
-  });
+        const optimal = findMaxSize(el, 4, orig, oneLine);
+        sizes.push(optimal);
+    });
 
-  if (sizes.length === 0) {return}
+    if (sizes.length === 0) {
+        return
+    }
 
-  const finalSize = Math.max(4, Math.min(...sizes) - 1);
+    const finalSize = Math.max(4, Math.min(...sizes) - 1);
 
-  els.forEach(el => {
-    el.style.fontSize = finalSize + 'px';
-  });
+    els.forEach(el => {
+        el.style.fontSize = finalSize + 'px';
+    });
 }
 
 // helper from above
 function findMaxSize(el, min, max, oneLine) {
-  let lo = min, hi = max, best = min;
-  while (lo <= hi) {
-    const mid = Math.ceil((lo + hi) / 2);
-    el.style.fontSize = mid + 'px';
+    let lo = min, hi = max, best = min;
+    while (lo <= hi) {
+        const mid = Math.ceil((lo + hi) / 2);
+        el.style.fontSize = mid + 'px';
 
-    const fits = oneLine
-      ? el.scrollWidth <= el.clientWidth
-      : el.scrollHeight <= el.clientHeight;
+        const fits = oneLine
+            ? el.scrollWidth <= el.clientWidth
+            : el.scrollHeight <= el.clientHeight;
 
-    if (fits) {
-      best = mid;
-      lo = mid + 1;
-    } else {
-      hi = mid - 1;
+        if (fits) {
+            best = mid;
+            lo = mid + 1;
+        } else {
+            hi = mid - 1;
+        }
     }
-  }
-  return best;
+    return best;
 }
 
-function debouncedAdjustText(selector, oneLine=false) {
+function debouncedAdjustText(selector, oneLine = false) {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {FitTextToBox(selector, oneLine)}, 100);
+    resizeTimer = setTimeout(() => {
+        FitTextToBox(selector, oneLine)
+    }, 100);
 }
 
 function moveCarousel(elem, direction) {
