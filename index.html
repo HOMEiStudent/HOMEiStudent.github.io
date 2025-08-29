@@ -115,43 +115,18 @@
             </div>
             <div class="col s6" style="z-index: 4">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="193 81 424 837" class="phone-svg">
-                    <foreignObject x="221" y="105" width="365" height="790">
-  <!-- IMPORTANT: add the XHTML namespace on the wrapper -->
-  <div xmlns="http://www.w3.org/1999/xhtml" style="position:relative; width:100%; height:100%; overflow:hidden;">
-    <!-- blurred background video: full-cover -->
-    <video
-      class="video-background"
-      autoplay
-      muted
-      loop
-      playsinline
-      webkit-playsinline
-      preload="auto"
-      style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; -webkit-object-fit:cover; filter:blur(3px); z-index:1; display:block;"
-      width="365"
-      height="790"
-    >
-      <source src="images/phone_video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-
-    <!-- foreground video: positioned relative inside the phone screen -->
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      webkit-playsinline
-      preload="auto"
-      style="position:relative; width:100%; height:auto; top:30px; display:block; z-index:2;"
-      width="365"
-    >
-      <source src="images/phone_video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</foreignObject>
-
+                    <foreignObject x="221" y="105" height="790" width="365">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="position: fixed">
+                            <video class="video-background" style="position: absolute; width: 100%; height: 100%; object-fit: cover; filter: blur(3px); z-index: -1" autoplay muted loop playsinline preload>
+                                <source src="images/phone_video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <video style="height: auto; width: 100%; top: 30px; position: relative" autoplay muted loop playsinline preload>
+                                <source src="images/phone_video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </foreignObject>
 
                     <path d="M551 85H259c-31 0-57 26-57 57v714c0 32 26 57 57 57h292c31 0 57-25 57-57V142c0-31-26-57-57-57Zm-97 26c3 0 5 3 5 5 0 3-2 6-5 6s-5-3-5-6c0-2 2-5 5-5Zm-76 2h49c2 0 4 1 4 3s-2 4-4 4h-49c-2 0-3-2-3-4s1-3 3-3Zm209 746c0 19-15 34-34 34H257c-18 0-34-15-34-34V140c0-19 16-34 34-34h44v9c0 11 9 19 19 19h170c10 0 19-8 19-19v-9h44c19 0 34 15 34 34v719Zm0 0"
                           style="fill:#000;stroke:#000;stroke-width:.5"/>
