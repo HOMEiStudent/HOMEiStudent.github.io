@@ -22,7 +22,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="features.html">Features</a></li>
                 <li><a href="how-it-works.html">How It Works</a></li>
-                <li><a href="#" class="nav-cta">Get the App</a></li>
+                <li><a href="https://apps.apple.com/gb/app/homei/id6736709087" class="nav-cta" target="_blank" rel="noopener">Get the App - Free</a></li>
             </ul>
 
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -39,7 +39,7 @@
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
         <a href="how-it-works.html">How It Works</a>
-        <a href="#">Get the App</a>
+        <a href="https://apps.apple.com/gb/app/homei/id6736709087" target="_blank" rel="noopener">Get the App - Free</a>
     </div>
 
     <!-- PAGE HEADER -->
@@ -94,22 +94,63 @@
             <div class="contact-form">
                 <h2>Send Us a Message</h2>
                 <!--
-                    FORM SUBMISSIONS: This form uses Web3Forms to send submissions to your email.
+                    ============================================
+                    CONTACT FORM OPTIONS - CHOOSE ONE
+                    ============================================
 
-                    To set it up:
-                    1. Go to https://web3forms.com
-                    2. Enter your email address
-                    3. You'll receive an access key via email
-                    4. Replace YOUR_ACCESS_KEY_HERE below with your actual access key
+                    This form is currently set up with Formspree (recommended for security).
+                    Below are your options - uncomment the one you want to use:
 
-                    All form submissions will be sent directly to your email address.
+                    ============================================
+                    OPTION 1: FORMSPREE (RECOMMENDED - GDPR Compliant)
+                    ============================================
+                    - Website: https://formspree.io
+                    - Data stored in EU (GDPR compliant)
+                    - Free tier: 50 submissions/month
+                    - Paid: $10/month for 1000 submissions
+                    - Setup: Create account, get form ID, replace YOUR_FORM_ID below
+
+                    ============================================
+                    OPTION 2: FORMSPARK (Privacy-Focused)
+                    ============================================
+                    - Website: https://formspark.io
+                    - No data stored - sends directly to email
+                    - Free tier: 250 submissions
+                    - Setup: Create workspace, get form ID
+                    - Change action to: https://submit-form.com/YOUR_FORM_ID
+
+                    ============================================
+                    OPTION 3: GETFORM (Simple Setup)
+                    ============================================
+                    - Website: https://getform.io
+                    - Free tier: 50 submissions/month
+                    - Setup: Create endpoint, copy URL
+                    - Change action to your Getform endpoint URL
+
+                    ============================================
+                    OPTION 4: NETLIFY FORMS (If hosting on Netlify)
+                    ============================================
+                    - Built into Netlify hosting
+                    - Free tier: 100 submissions/month
+                    - Add: data-netlify="true" to form tag
+                    - Remove action attribute
+
+                    ============================================
+                    OPTION 5: WEB3FORMS
+                    ============================================
+                    - Website: https://web3forms.com
+                    - Free, no account needed
+                    - Change action to: https://api.web3forms.com/submit
+                    - Add: <input type="hidden" name="access_key" value="YOUR_KEY">
+
+                    ============================================
+                    CURRENT SETUP: FORMSPREE
+                    Replace YOUR_FORM_ID with your actual Formspree form ID
+                    ============================================
                 -->
-                <form action="https://api.web3forms.com/submit" method="POST">
-                    <!-- Replace with your Web3Forms access key -->
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                    <input type="hidden" name="subject" value="New Contact Form Submission - HOMEi Website">
-                    <input type="hidden" name="from_name" value="HOMEi Website">
-                    <input type="hidden" name="redirect" value="https://homeistudent.github.io/new-design/contact.html?submitted=true">
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <!-- Hidden field for email subject -->
+                    <input type="hidden" name="_subject" value="New Contact Form Submission - HOMEi Website">
 
                     <div class="form-group">
                         <label for="name">Your Name</label>
@@ -181,13 +222,13 @@
                 <h4>Product</h4>
                 <a href="features.html">Features</a>
                 <a href="how-it-works.html">How It Works</a>
-                <a href="#">Download</a>
+                <a href="https://apps.apple.com/gb/app/homei/id6736709087" target="_blank" rel="noopener">Download</a>
             </div>
             <div class="footer-section">
                 <h4>Company</h4>
                 <a href="about.html">About Us</a>
                 <a href="contact.html">Contact</a>
-                <a href="#">Blog</a>
+                <a href="blog.html">Blog</a>
             </div>
             <div class="footer-section">
                 <h4>Legal</h4>
