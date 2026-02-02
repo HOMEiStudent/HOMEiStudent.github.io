@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - HOMEi | Your Helpful Housemate</title>
-    <meta name="description" content="Get in touch with the HOMEi team. We'd love to hear from you - whether you have questions, feedback, or just want to say hi.">
+    <title>Contact Us - HOMEi | Get in Touch</title>
+    <meta name="description" content="Have a question about HOMEi? Get in touch with our team - we'd love to hear from you.">
 
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Stylesheet -->
+    <link rel="icon" type="image/png" href="images/logo/homei-logo.png">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -19,29 +14,15 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo-container">
-                <svg class="logo-icon" viewBox="0 0 200 200">
-                    <defs>
-                        <linearGradient id="navLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#ffc800" />
-                            <stop offset="50%" style="stop-color:#ffa000" />
-                            <stop offset="100%" style="stop-color:#ff6a00" />
-                        </linearGradient>
-                    </defs>
-                    <circle cx="100" cy="100" r="90" fill="url(#navLogoGrad)"/>
-                    <circle cx="100" cy="100" r="75" fill="white"/>
-                    <path d="M 70 90 L 70 60 L 100 50 L 130 60 L 130 90 L 120 100 L 120 120 L 80 120 L 80 100 Z" fill="white" stroke="url(#navLogoGrad)" stroke-width="4"/>
-                    <circle cx="85" cy="75" r="6" fill="#ffa000"/>
-                    <path d="M 95 75 L 102 82" stroke="#ffa000" stroke-width="3" stroke-linecap="round"/>
-                    <path d="M 80 88 Q 90 95 100 88" stroke="#ffa000" stroke-width="3" stroke-linecap="round" fill="none"/>
-                </svg>
+                <img src="images/logo/homei-logo.png" alt="HOMEi" class="logo-icon">
+                <span class="logo-text">HOMEi</span>
             </a>
 
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="features.html">Features</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="tips.html">Tips & Resources</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="#" class="nav-cta">Get the App</a></li>
             </ul>
 
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -57,132 +38,130 @@
     <div class="mobile-nav" id="mobileNav">
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
-        <a href="about.html">About Us</a>
-        <a href="tips.html">Tips & Resources</a>
-        <a href="contact.html">Contact</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="#">Get the App</a>
     </div>
 
     <!-- PAGE HEADER -->
-    <section class="hero" style="min-height: 350px; padding: var(--spacing-lg) var(--spacing-md);">
-        <div class="hero-content" style="grid-template-columns: 1fr; text-align: center;">
-            <div class="hero-text">
-                <h1>Get In Touch</h1>
-                <p>Have a question, suggestion, or just want to say hi? We'd love to hear from you.</p>
-            </div>
-        </div>
+    <section class="page-header">
+        <h1>Get In Touch</h1>
+        <p>Have a question, suggestion, or just want to say hi? We'd love to hear from you.</p>
     </section>
 
     <!-- CONTACT SECTION -->
     <section class="contact-section">
-        <div class="contact-content">
-            <!-- Contact Form -->
-            <div class="contact-form">
-                <h3 style="margin-bottom: 1.5rem;">Send Us a Message</h3>
-                <form action="https://api.web3forms.com/submit" method="POST">
-                    <!-- Web3Forms Access Key - Replace with your own -->
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                    <input type="hidden" name="subject" value="New Contact Form Submission - HOMEi Website">
-                    <input type="hidden" name="from_name" value="HOMEi Website Contact Form">
-
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Enter your name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="Enter your email">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="custom_subject" placeholder="What's this about?">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required placeholder="Tell us what's on your mind..."></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-btn">
-                        Send Message
-                    </button>
-                </form>
-            </div>
-
+        <div class="contact-container">
             <!-- Contact Info -->
             <div class="contact-info">
-                <h3>Other Ways to Reach Us</h3>
+                <h2>Let's Chat</h2>
+                <p>Whether you have a question about the app, feedback to share, or a partnership opportunity - we're all ears.</p>
 
-                <div class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <div class="contact-item-content">
-                        <strong>Email</strong>
-                        <a href="mailto:Support@Homeistudent.com">Support@Homeistudent.com</a>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="contact-method-icon">📧</div>
+                        <div class="contact-method-content">
+                            <h3>Email Us</h3>
+                            <p><a href="mailto:Support@Homeistudent.com">Support@Homeistudent.com</a></p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <div class="contact-item-content">
-                        <strong>Location</strong>
-                        <span>Sheffield, United Kingdom</span>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">⏰</div>
-                    <div class="contact-item-content">
-                        <strong>Response Time</strong>
-                        <span>We aim to respond within 24 hours</span>
+                    <div class="contact-method">
+                        <div class="contact-method-icon">📱</div>
+                        <div class="contact-method-content">
+                            <h3>In-App Support</h3>
+                            <p>Use the support feature directly in the HOMEi app for faster help.</p>
+                        </div>
                     </div>
                 </div>
 
                 <div style="margin-top: 2rem;">
-                    <h4 style="margin-bottom: 1rem;">Follow Us</h4>
+                    <h3>Follow Us</h3>
+                    <p style="margin-bottom: 1rem;">Stay updated with the latest news and tips.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook">📘</a>
-                        <a href="#" class="social-link" aria-label="Instagram">📸</a>
-                        <a href="#" class="social-link" aria-label="TikTok">🎵</a>
-                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                        <!-- Instagram - Update href with your Instagram URL -->
+                        <a href="https://instagram.com/homeistudent" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            📸
+                        </a>
+                        <!-- TikTok - Update href with your TikTok URL -->
+                        <a href="https://tiktok.com/@homeistudent" class="social-link" aria-label="TikTok" target="_blank" rel="noopener">
+                            🎵
+                        </a>
                     </div>
                 </div>
+            </div>
 
-                <div style="margin-top: 2rem; padding: 1.5rem; background: var(--bg-light); border-radius: var(--border-radius-md);">
-                    <h4 style="margin-bottom: 0.5rem;">Looking for Support?</h4>
-                    <p style="font-size: 0.95rem;">For app-related issues, you can also reach us directly through the HOMEi app's built-in support feature.</p>
-                </div>
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2>Send Us a Message</h2>
+                <!--
+                    FORM SUBMISSIONS: This form uses Web3Forms to send submissions to your email.
+
+                    To set it up:
+                    1. Go to https://web3forms.com
+                    2. Enter your email address
+                    3. You'll receive an access key via email
+                    4. Replace YOUR_ACCESS_KEY_HERE below with your actual access key
+
+                    All form submissions will be sent directly to your email address.
+                -->
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Replace with your Web3Forms access key -->
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <input type="hidden" name="subject" value="New Contact Form Submission - HOMEi Website">
+                    <input type="hidden" name="from_name" value="HOMEi Website">
+                    <input type="hidden" name="redirect" value="https://homeistudent.github.io/new-design/contact.html?submitted=true">
+
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="What should we call you?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="Where can we reach you?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic">What's this about?</label>
+                        <select id="topic" name="topic">
+                            <option value="general">General Enquiry</option>
+                            <option value="support">App Support</option>
+                            <option value="feedback">Feedback / Suggestion</option>
+                            <option value="bug">Bug Report</option>
+                            <option value="partnership">Partnership Opportunity</option>
+                            <option value="press">Press / Media</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required placeholder="Tell us what's on your mind..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        Send Message
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- FAQ PREVIEW -->
-    <section class="section" style="background: var(--bg-light);">
-        <div class="container">
-            <div class="section-header">
-                <h2>Frequently Asked Questions</h2>
-                <p>Quick answers to common questions</p>
-            </div>
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Ready to Try HOMEi?</h2>
+            <p>Download free and see why students love it.</p>
 
-            <div class="features-grid" style="max-width: 900px; margin: 0 auto;">
-                <div class="feature-card" style="background: white; text-align: left;">
-                    <h4 style="margin-bottom: 0.5rem;">Is HOMEi free to use?</h4>
-                    <p>Yes! HOMEi is completely free for students. Download it from the App Store or Google Play and start organizing your household today.</p>
-                </div>
-
-                <div class="feature-card" style="background: white; text-align: left;">
-                    <h4 style="margin-bottom: 0.5rem;">How many housemates can join?</h4>
-                    <p>You can add as many housemates as you need. Whether you're in a 2-person flat or a 10-person house, HOMEi scales with you.</p>
-                </div>
-
-                <div class="feature-card" style="background: white; text-align: left;">
-                    <h4 style="margin-bottom: 0.5rem;">Is my data secure?</h4>
-                    <p>Absolutely. We use industry-standard encryption and never share your personal information with third parties.</p>
-                </div>
-
-                <div class="feature-card" style="background: white; text-align: left;">
-                    <h4 style="margin-bottom: 0.5rem;">Can I use HOMEi after graduation?</h4>
-                    <p>Of course! While we built HOMEi for students, anyone sharing a home can benefit from our features.</p>
+            <div class="cta-download">
+                <div class="download-buttons">
+                    <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="store-button" target="_blank" rel="noopener">
+                        <img src="images/icons/app-store-icon.png" alt="App Store">
+                        <span>App Store</span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" class="store-button" target="_blank" rel="noopener">
+                        <img src="images/icons/play-store-icon.png" alt="Google Play">
+                        <span>Google Play</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -191,35 +170,36 @@
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>HOMEi</h3>
-                <p>Your Helpful Housemate</p>
-                <p style="margin-top: 1rem;">Making shared living effortless for students across the UK.</p>
+            <div class="footer-brand">
+                <div class="logo-container">
+                    <img src="images/logo/homei-logo.png" alt="HOMEi" class="logo-icon">
+                    <span class="logo-text" style="color: white;">HOMEi</span>
+                </div>
+                <p>The app that makes shared student living actually work. Built by students, for students.</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
-                <a href="index.html">Home</a>
+                <h4>Product</h4>
                 <a href="features.html">Features</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="#">Download</a>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
                 <a href="about.html">About Us</a>
-                <a href="tips.html">Tips & Resources</a>
                 <a href="contact.html">Contact</a>
+                <a href="#">Blog</a>
             </div>
             <div class="footer-section">
-                <h3>Download</h3>
-                <a href="https://apps.apple.com/gb/app/homei/id6736709087" target="_blank" rel="noopener">📱 App Store</a>
-                <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" target="_blank" rel="noopener">🤖 Google Play</a>
-            </div>
-            <div class="footer-section">
-                <h3>Get In Touch</h3>
-                <p>Email: Support@Homeistudent.com</p>
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 HOMEiStudent Ltd. All rights reserved.</p>
+            <p>&copy; 2026 HOMEiStudent Ltd. Made with love in Sheffield.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="scripts/main.js"></script>
 </body>
 </html>
