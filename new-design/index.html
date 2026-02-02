@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOMEi - Your Helpful Housemate</title>
+    <meta name="description" content="The all-in-one app that makes shared student living effortless. Manage chores, split bills, and live in harmony with your housemates.">
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">
+            <svg viewBox="0 0 200 200">
+                <defs>
+                    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ffc800" />
+                        <stop offset="50%" style="stop-color:#ffa000" />
+                        <stop offset="100%" style="stop-color:#ff6a00" />
+                    </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="90" fill="url(#logoGrad)"/>
+                <circle cx="100" cy="100" r="75" fill="white"/>
+                <path d="M 70 90 L 70 60 L 100 50 L 130 60 L 130 90 L 120 100 L 120 120 L 80 120 L 80 100 Z" fill="white" stroke="url(#logoGrad)" stroke-width="4"/>
+                <circle cx="85" cy="75" r="6" fill="#ffa000"/>
+                <path d="M 95 75 L 102 82" stroke="#ffa000" stroke-width="3" stroke-linecap="round"/>
+                <path d="M 80 88 Q 90 95 100 88" stroke="#ffa000" stroke-width="3" stroke-linecap="round" fill="none"/>
+            </svg>
+        </div>
+        <div class="loading-progress">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <svg class="logo-icon" viewBox="0 0 200 200">
+                    <defs>
+                        <linearGradient id="navLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ffc800" />
+                            <stop offset="50%" style="stop-color:#ffa000" />
+                            <stop offset="100%" style="stop-color:#ff6a00" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="100" cy="100" r="90" fill="url(#navLogoGrad)"/>
+                    <circle cx="100" cy="100" r="75" fill="white"/>
+                    <path d="M 70 90 L 70 60 L 100 50 L 130 60 L 130 90 L 120 100 L 120 120 L 80 120 L 80 100 Z" fill="white" stroke="url(#navLogoGrad)" stroke-width="4"/>
+                    <circle cx="85" cy="75" r="6" fill="#ffa000"/>
+                    <path d="M 95 75 L 102 82" stroke="#ffa000" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M 80 88 Q 90 95 100 88" stroke="#ffa000" stroke-width="3" stroke-linecap="round" fill="none"/>
+                </svg>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="tips.html">Tips & Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="about.html">About Us</a>
+        <a href="tips.html">Tips & Resources</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Turn Household Chaos Into Harmony</h1>
+                <p>The all-in-one app that makes shared student living effortless. Improve your grades, reduce stress, and actually enjoy living with your housemates.</p>
+
+                <div class="benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📚</div>
+                        <div class="benefit-content">
+                            <strong>Better Grades</strong>
+                            <span>Less stress, more focus</span>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">😌</div>
+                        <div class="benefit-content">
+                            <strong>Reduced Stress</strong>
+                            <span>Harmony at home</span>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⚡</div>
+                        <div class="benefit-content">
+                            <strong>Save Time</strong>
+                            <span>Everything in one place</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="download-buttons">
+                    <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="store-button" target="_blank" rel="noopener">
+                        <span>📱</span>
+                        <span>App Store</span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" class="store-button" target="_blank" rel="noopener">
+                        <span>🤖</span>
+                        <span>Google Play</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="phone-mockup">
+                <div class="phone-frame">
+                    <div class="phone-screen" id="phoneScreen">
+                        <!-- Add your app screenshots here -->
+                        <!-- <img src="images/screenshots/screenshot-1.png" alt="HOMEi App Screenshot 1" class="phone-screenshot active"> -->
+                        <!-- <img src="images/screenshots/screenshot-2.png" alt="HOMEi App Screenshot 2" class="phone-screenshot"> -->
+                        <!-- <img src="images/screenshots/screenshot-3.png" alt="HOMEi App Screenshot 3" class="phone-screenshot"> -->
+
+                        <!-- Placeholder screens (remove when adding real screenshots) -->
+                        <div class="screenshot-placeholder active">
+                            <div class="placeholder-icon">📱</div>
+                            <p><strong>Screenshot 1</strong><br>Add your app screenshot</p>
+                        </div>
+                        <div class="screenshot-placeholder">
+                            <div class="placeholder-icon">🏠</div>
+                            <p><strong>Screenshot 2</strong><br>Add your app screenshot</p>
+                        </div>
+                        <div class="screenshot-placeholder">
+                            <div class="placeholder-icon">✨</div>
+                            <p><strong>Screenshot 3</strong><br>Add your app screenshot</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot-dots" id="screenshotDots">
+                    <div class="screenshot-dot active"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">1,200+</div>
+                <div class="stat-label">Students Trusting HOMEi</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3.5</div>
+                <div class="stat-label">Daily App Opens Per User</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.8★</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPLIT SECTIONS -->
+    <div class="split-sections">
+        <!-- Section 1: Student Life Simplified -->
+        <div class="split-section">
+            <div class="split-image">
+                <!-- Add image: <img src="images/split/student-life.jpg" alt="Student Life"> -->
+                <span class="placeholder-icon">📸</span>
+            </div>
+            <div class="split-content">
+                <h2>Student Life, Simplified</h2>
+                <p>Housemate conflicts kill your grades and stress levels. Missing milk, messy rotas, money arguments - small frustrations become big problems fast.</p>
+                <p>HOMEi fixes this. One app. All your household needs. Zero drama.</p>
+            </div>
+        </div>
+
+        <!-- Section 2: Fair Chores -->
+        <div class="split-section reverse">
+            <div class="split-image" style="background: linear-gradient(135deg, #ffa000, #ff6a00);">
+                <!-- Add image: <img src="images/split/chores.jpg" alt="Fair Chores"> -->
+                <span class="placeholder-icon">🧹</span>
+            </div>
+            <div class="split-content">
+                <h2>Fair Chores, Zero Arguments</h2>
+                <p>Smart rotation means everyone does their share. Auto-reminders keep things running.</p>
+                <p>See who's responsible. Track what's done. No awkward conversations needed.</p>
+            </div>
+        </div>
+
+        <!-- Section 3: Money Made Simple -->
+        <div class="split-section">
+            <div class="split-image" style="background: linear-gradient(135deg, #ff6a00, #ffc800);">
+                <!-- Add image: <img src="images/split/money.jpg" alt="Money Made Simple"> -->
+                <span class="placeholder-icon">💰</span>
+            </div>
+            <div class="split-content">
+                <h2>Money Made Simple</h2>
+                <p>Split bills instantly. Track who owes what. Clear records everyone can see.</p>
+                <p>From electricity to takeaways - manage it all without the awkwardness.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURES PREVIEW -->
+    <section class="features">
+        <div class="features-container">
+            <h2>Everything You Need In One App</h2>
+
+            <div class="carousel-container" id="featuresCarouselContainer">
+                <button class="carousel-btn prev" aria-label="Previous features">‹</button>
+
+                <div class="carousel">
+                    <div class="feature-card carousel-item">
+                        <div class="feature-icon">📋</div>
+                        <h3>Smart Shared Lists</h3>
+                        <p>Say goodbye to the missing milk saga. Create shopping lists, track what you need, and keep everyone on the same page.</p>
+                    </div>
+                    <div class="feature-card carousel-item">
+                        <div class="feature-icon">🧹</div>
+                        <h3>Chore Rotas</h3>
+                        <p>No more arguments about whose turn it is. Set up fair, rotating chore schedules that everyone can see.</p>
+                    </div>
+                    <div class="feature-card carousel-item">
+                        <div class="feature-icon">💰</div>
+                        <h3>Easy Bill Splitting</h3>
+                        <p>Track shared expenses effortlessly. No more confusion over who owes what.</p>
+                    </div>
+                    <div class="feature-card carousel-item">
+                        <div class="feature-icon">📅</div>
+                        <h3>Communal Calendars</h3>
+                        <p>No more missed events. Keep track of bin days, house events, and important dates.</p>
+                    </div>
+                </div>
+
+                <button class="carousel-btn next" aria-label="Next features">›</button>
+
+                <div class="carousel-dots"></div>
+            </div>
+
+            <div class="text-center" style="margin-top: 2rem;">
+                <a href="features.html" class="btn btn-primary">See All Features</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <h2>What Students Are Saying</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"This app has completely transformed how we manage our house. No more arguments!"</p>
+                <p class="testimonial-author">- Sarah M., University of Sheffield</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Finally, an app that actually helps with the chaos of student living."</p>
+                <p class="testimonial-author">- Tom R., Sheffield Student</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Game changer for our household! My stress levels have definitely gone down."</p>
+                <p class="testimonial-author">- Emma L., Sheffield University</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUES PREVIEW -->
+    <section class="values-section">
+        <h2>More Than Just An App</h2>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon climate">1%</div>
+                <div class="value-content">
+                    <h3>Our Climate Commitment</h3>
+                    <p>1% of our profits go to verified carbon offset programs. Every download helps the planet. We're building a better future, not just better households.</p>
+                </div>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon community">⚽</div>
+                <div class="value-content">
+                    <h3>Supporting Our Community</h3>
+                    <p>Proud sponsors of a Rotherham United Women's U21 player. We believe in investing in young people's potential - on the pitch and at home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>HOMEi</h3>
+                <p>Your Helpful Housemate</p>
+                <p style="margin-top: 1rem;">Making shared living effortless for students across the UK.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="features.html">Features</a>
+                <a href="about.html">About Us</a>
+                <a href="tips.html">Tips & Resources</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Download</h3>
+                <a href="https://apps.apple.com/gb/app/homei/id6736709087" target="_blank" rel="noopener">📱 App Store</a>
+                <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" target="_blank" rel="noopener">🤖 Google Play</a>
+            </div>
+            <div class="footer-section">
+                <h3>Get In Touch</h3>
+                <p>Email: Support@Homeistudent.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 HOMEiStudent Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>
