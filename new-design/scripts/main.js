@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initCarousels();
     initScreenshotCarousel();
+    initTestimonialsScroll();
 });
 
 // ==========================================
@@ -435,3 +436,40 @@ function initScrollAnimations() {
 
 // Initialize scroll animations if needed
 // initScrollAnimations();
+
+// ==========================================
+// 8. TESTIMONIALS SCROLL (Mobile Carousel)
+// ==========================================
+function initTestimonialsScroll() {
+    const grid = document.querySelector('.testimonials-grid');
+    const dotsContainer = document.getElementById('testimonialDots');
+
+    if (!grid || !dotsContainer) return;
+
+    const cards = grid.querySelectorAll('.testimonial-card');
+    const dots = dotsContainer.querySelectorAll('.testimonial-dot');
+
+    if (cards.length === 0 || dots.length === 0) return;
+
+    // Update dots based on scroll position
+    grid.addEventListener('scroll', function() {
+        const scrollLeft = grid.scrollLeft;
+        const cardWidth = cards[0].offsetWidth + 16; // Card width + gap
+        const currentIndex = Math.round(scrollLeft / cardWidth);
+
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    });
+
+    // Click dots to scroll to card
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', function() {
+            const cardWidth = cards[0].offsetWidth + 16;
+            grid.scrollTo({
+                left: index * cardWidth,
+                behavior: 'smooth'
+            });
+        });
+    });
+}
