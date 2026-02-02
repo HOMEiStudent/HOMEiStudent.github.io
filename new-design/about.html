@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - HOMEi | Your Helpful Housemate</title>
-    <meta name="description" content="Learn about the team behind HOMEi and our mission to make shared student living effortless.">
+    <title>About Us - HOMEi | Our Mission to Fix Student Living</title>
+    <meta name="description" content="We're on a mission to end the housemate conflict epidemic. Learn about the team behind HOMEi and why we're building the future of shared living.">
 
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Stylesheet -->
+    <link rel="icon" type="image/png" href="images/logo/homei-logo.png">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -19,29 +14,15 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo-container">
-                <svg class="logo-icon" viewBox="0 0 200 200">
-                    <defs>
-                        <linearGradient id="navLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#ffc800" />
-                            <stop offset="50%" style="stop-color:#ffa000" />
-                            <stop offset="100%" style="stop-color:#ff6a00" />
-                        </linearGradient>
-                    </defs>
-                    <circle cx="100" cy="100" r="90" fill="url(#navLogoGrad)"/>
-                    <circle cx="100" cy="100" r="75" fill="white"/>
-                    <path d="M 70 90 L 70 60 L 100 50 L 130 60 L 130 90 L 120 100 L 120 120 L 80 120 L 80 100 Z" fill="white" stroke="url(#navLogoGrad)" stroke-width="4"/>
-                    <circle cx="85" cy="75" r="6" fill="#ffa000"/>
-                    <path d="M 95 75 L 102 82" stroke="#ffa000" stroke-width="3" stroke-linecap="round"/>
-                    <path d="M 80 88 Q 90 95 100 88" stroke="#ffa000" stroke-width="3" stroke-linecap="round" fill="none"/>
-                </svg>
+                <img src="images/logo/homei-logo.png" alt="HOMEi" class="logo-icon">
+                <span class="logo-text">HOMEi</span>
             </a>
 
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="features.html">Features</a></li>
-                <li><a href="about.html" class="active">About Us</a></li>
-                <li><a href="tips.html">Tips & Resources</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="#" class="nav-cta">Get the App</a></li>
             </ul>
 
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -57,120 +38,96 @@
     <div class="mobile-nav" id="mobileNav">
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
-        <a href="about.html">About Us</a>
-        <a href="tips.html">Tips & Resources</a>
-        <a href="contact.html">Contact</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="#">Get the App</a>
     </div>
 
     <!-- PAGE HEADER -->
-    <section class="hero" style="min-height: 400px; padding: var(--spacing-lg) var(--spacing-md);">
-        <div class="hero-content" style="grid-template-columns: 1fr; text-align: center;">
-            <div class="hero-text">
-                <h1>Making Shared Living Work</h1>
-                <p>Your home should support your success, not sabotage it. We're fixing shared living for students everywhere.</p>
+    <section class="page-header">
+        <h1>We're Fixing Shared Living</h1>
+        <p>Because your home should help you thrive, not hold you back.</p>
+    </section>
+
+    <!-- THE PROBLEM -->
+    <section class="feature-detail">
+        <div class="feature-detail-content">
+            <div class="feature-detail-image">
+                😤
+            </div>
+            <div class="feature-detail-text">
+                <h2>The Housemate Conflict Epidemic</h2>
+                <p>Let's be honest: shared living is broken.</p>
+                <p>Over half of students say housemate conflicts hurt their grades and mental health. Arguments about bills, chores, and who ate whose food create a toxic environment exactly when you need peace and focus most.</p>
+                <p>The group chat becomes a battlefield. Friendships get strained. And somehow, taking out the bins becomes a political issue.</p>
+                <p><strong>We knew there had to be a better way.</strong></p>
             </div>
         </div>
     </section>
 
-    <!-- OUR STORY -->
-    <section class="about-section">
-        <div class="about-story">
-            <div class="about-story-content">
-                <h3>Why HOMEi Exists</h3>
-                <p>January 2023. James Dudson was living in chaos. Missing groceries. Messy rotas. Awkward money talks.</p>
-                <p>As a former HMO manager with an MSc in Real Estate, he knew this wasn't just his problem. Over half of students say housemate conflicts hurt their grades and wellbeing.</p>
-                <p>We tested HOMEi with 600+ students across 8 UK universities. They confirmed it: students need one app that handles everything, not five separate tools.</p>
-                <p>So we built it. Launched in Sheffield, September 2025. Got 1,200+ downloads in two weeks.</p>
-
-                <!-- Timeline -->
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">January 2023</div>
-                        <div class="timeline-title">The Problem Identified</div>
-                        <p>James experienced the chaos of disorganized shared living firsthand</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">March 2023</div>
-                        <div class="timeline-title">Validation Phase</div>
-                        <p>Tested concept with 600+ students across 8 universities</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024-2025</div>
-                        <div class="timeline-title">Building & Testing</div>
-                        <p>Developed and refined the MVP based on real student feedback</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">September 2025</div>
-                        <div class="timeline-title">Launch in Sheffield</div>
-                        <p>1,200+ downloads in just two weeks proved the demand</p>
-                    </div>
-                </div>
+    <!-- OUR SOLUTION -->
+    <section class="feature-detail">
+        <div class="feature-detail-content">
+            <div class="feature-detail-image">
+                💡
+            </div>
+            <div class="feature-detail-text">
+                <h2>One App to End the Chaos</h2>
+                <p>HOMEi was born from real frustration. Our founder James was living the chaos himself - missing groceries, messy rotas, awkward money conversations.</p>
+                <p>With experience as an HMO manager and an MSc in Real Estate, he understood the problem from every angle. So we tested with 600+ students across UK universities. They all said the same thing:</p>
+                <p><em>"We need ONE app that handles everything."</em></p>
+                <p>So we built it. Launched September 2025. 1,200+ downloads in two weeks proved we were onto something.</p>
             </div>
         </div>
+    </section>
 
-        <!-- Team Section -->
-        <div class="team-section">
-            <h3>The Team Behind HOMEi</h3>
+    <!-- THE TEAM -->
+    <section class="features" style="background: var(--bg-light);">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>The Humans Behind HOMEi</h2>
+                <p>A small team with a big mission</p>
+            </div>
 
-            <div class="team-grid">
+            <div class="features-grid" style="max-width: 800px; margin: 0 auto;">
                 <!-- Team Member 1 -->
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <!-- Add image: <img src="images/team/james.jpg" alt="James Dudson"> -->
-                        👨‍💼
-                    </div>
-                    <h4>James Dudson</h4>
-                    <div class="team-role">Founder & CEO</div>
-                    <p>Award-winning founder with an MSc in Real Estate and real experience as an HMO manager. James knows how shared housing actually works - from both sides.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>James</h3>
+                    <p class="team-role-tag">Founder & CEO</p>
+                    <p>Former HMO manager who lived the chaos. Now on a mission to make sure no student has to argue about the bins ever again. Fuelled by coffee and a hatred of passive-aggressive Post-it notes.</p>
                 </div>
 
                 <!-- Team Member 2 -->
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <!-- Add image: <img src="images/team/gurprit.jpg" alt="Gurprit Jandu"> -->
-                        👨‍💻
-                    </div>
-                    <h4>Gurprit Jandu</h4>
-                    <div class="team-role">Chief Technology Officer</div>
-                    <p>MSc Computer Science. Built systems for Polestar and the Bank of England. Gurprit brings enterprise-grade tech to student life.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>Gurprit</h3>
+                    <p class="team-role-tag">Chief Technology Officer</p>
+                    <p>Built systems for Polestar and the Bank of England. Now bringing that same reliability to your house rota. Believes great tech should feel invisible - it just works.</p>
                 </div>
-
-                <!-- Team Member 3 -->
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <!-- Add image: <img src="images/team/sipho.jpg" alt="Sipho Yawe"> -->
-                        🎨
-                    </div>
-                    <h4>Sipho Yawe</h4>
-                    <div class="team-role">Head of Design & UX</div>
-                    <p>Former Chairman of Sheffield UX Society. BSc Computer Science. Makes HOMEi feel natural from the first tap.</p>
-                </div>
-            </div>
-
-            <!-- Advisors -->
-            <div class="advisors">
-                <h3>Backed by the Best</h3>
-                <p>Morgan Killick (20+ years startup experience), Robin Gibbons (CEO, Latimer Tuition), Drew Morgan (Senior Dev, Aire Logic), plus the University of Sheffield's Emerge incubator.</p>
             </div>
         </div>
     </section>
 
     <!-- VALUES SECTION -->
-    <section class="values-section" style="background: var(--bg-light);">
-        <h2>Our Values</h2>
+    <section class="features" style="background: var(--bg-white);">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>What We Stand For</h2>
+                <p>Building a business that gives back</p>
+            </div>
 
-        <div class="values-grid">
-            <div class="value-card" style="background: white;">
-                <div class="value-icon climate">1%</div>
-                <div class="value-content">
+            <div class="features-grid" style="max-width: 800px; margin: 0 auto;">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <!-- Climate pledge logo placeholder -->
+                        <img src="images/icons/climate-pledge-logo.png" alt="Climate Pledge" style="width: 40px; height: 40px; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.textContent='🌍';">
+                    </div>
                     <h3>Our Climate Commitment</h3>
                     <p>1% of our profits go to verified carbon offset programs. Every download helps the planet. We're building a better future, not just better households.</p>
                 </div>
-            </div>
 
-            <div class="value-card" style="background: white;">
-                <div class="value-icon community">⚽</div>
-                <div class="value-content">
+                <div class="feature-card">
+                    <div class="feature-icon">⚽</div>
                     <h3>Supporting Our Community</h3>
                     <p>Proud sponsors of a Rotherham United Women's U21 player. We believe in investing in young people's potential - on the pitch and at home.</p>
                 </div>
@@ -179,19 +136,30 @@
     </section>
 
     <!-- CTA SECTION -->
-    <section class="testimonials">
-        <div class="container text-center">
-            <h2>Join the HOMEi Community</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95; color: white;">Be part of the movement transforming student living across the UK.</p>
-            <div class="download-buttons" style="justify-content: center;">
-                <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="store-button" target="_blank" rel="noopener">
-                    <span>📱</span>
-                    <span>App Store</span>
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" class="store-button" target="_blank" rel="noopener">
-                    <span>🤖</span>
-                    <span>Google Play</span>
-                </a>
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Join the Movement</h2>
+            <p>Be part of the generation that fixed shared living. Download free today.</p>
+
+            <div class="cta-download">
+                <div class="download-buttons">
+                    <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="store-button" target="_blank" rel="noopener">
+                        <img src="images/icons/app-store-icon.png" alt="App Store">
+                        <span>App Store</span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" class="store-button" target="_blank" rel="noopener">
+                        <img src="images/icons/play-store-icon.png" alt="Google Play">
+                        <span>Google Play</span>
+                    </a>
+                </div>
+                <div class="qr-section cta-qr">
+                    <div class="qr-placeholder">
+                        <img src="images/icons/qr-code.png" alt="Scan to download">
+                    </div>
+                    <div class="qr-text">
+                        Scan to<br>download
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -199,35 +167,36 @@
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>HOMEi</h3>
-                <p>Your Helpful Housemate</p>
-                <p style="margin-top: 1rem;">Making shared living effortless for students across the UK.</p>
+            <div class="footer-brand">
+                <div class="logo-container">
+                    <img src="images/logo/homei-logo.png" alt="HOMEi" class="logo-icon">
+                    <span class="logo-text" style="color: white;">HOMEi</span>
+                </div>
+                <p>The app that makes shared student living actually work. Built by students, for students.</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
-                <a href="index.html">Home</a>
+                <h4>Product</h4>
                 <a href="features.html">Features</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="#">Download</a>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
                 <a href="about.html">About Us</a>
-                <a href="tips.html">Tips & Resources</a>
                 <a href="contact.html">Contact</a>
+                <a href="#">Blog</a>
             </div>
             <div class="footer-section">
-                <h3>Download</h3>
-                <a href="https://apps.apple.com/gb/app/homei/id6736709087" target="_blank" rel="noopener">📱 App Store</a>
-                <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" target="_blank" rel="noopener">🤖 Google Play</a>
-            </div>
-            <div class="footer-section">
-                <h3>Get In Touch</h3>
-                <p>Email: Support@Homeistudent.com</p>
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 HOMEiStudent Ltd. All rights reserved.</p>
+            <p>&copy; 2026 HOMEiStudent Ltd. Made with love in Sheffield.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="scripts/main.js"></script>
 </body>
 </html>
