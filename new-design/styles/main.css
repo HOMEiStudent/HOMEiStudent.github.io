@@ -220,6 +220,7 @@ p {
     height: 44px;
     width: 44px;
     border-radius: var(--border-radius-sm);
+    object-fit: contain;
 }
 
 .logo-text {
@@ -505,10 +506,13 @@ p {
 }
 
 .store-button img {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
     object-fit: contain;
     flex-shrink: 0;
+    border-radius: 4px;
 }
 
 .store-button:hover {
@@ -543,12 +547,13 @@ p {
     font-size: 0.7rem;
     color: var(--text-light);
     text-align: center;
-    border: 2px dashed rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
 .qr-placeholder img {
-    width: 100%;
-    height: 100%;
+    width: 64px;
+    height: 64px;
     object-fit: contain;
 }
 
@@ -938,11 +943,13 @@ p {
     padding: 0.75rem;
     border-radius: var(--border-radius-md);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
 }
 
 .cta-qr .qr-placeholder {
     background: white;
     border: none;
+    border-radius: var(--border-radius-sm);
 }
 
 .cta-qr .qr-text {
@@ -1186,6 +1193,7 @@ p {
 .loading-logo img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
 .loading-dots {
@@ -1271,12 +1279,15 @@ p {
     justify-content: center;
     font-size: 4rem;
     overflow: hidden;
+    max-height: 400px;
 }
 
 .feature-detail-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 80%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
 .feature-detail-text h2 {
