@@ -510,9 +510,9 @@ p {
     height: 24px;
     min-width: 24px;
     min-height: 24px;
-    object-fit: contain;
+    object-fit: cover;
     flex-shrink: 0;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
 .store-button:hover {
@@ -576,17 +576,17 @@ p {
     position: relative;
     width: 280px;
     background: #1a1a1a;
-    border-radius: 40px;
-    padding: 8px;
+    border-radius: 36px;
+    padding: 6px;
     box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
 }
 
 .phone-screen {
     position: relative;
     width: 100%;
-    aspect-ratio: 9/19.5;
-    background: transparent;
-    border-radius: 32px;
+    aspect-ratio: 1170/2532;
+    background: #ffffff;
+    border-radius: 30px;
     overflow: hidden;
 }
 
@@ -1271,7 +1271,7 @@ p {
 }
 
 .feature-detail-image {
-    background: var(--gradient-soft);
+    background: #ffffff;
     border-radius: var(--border-radius-lg);
     aspect-ratio: 4/3;
     display: flex;
@@ -1280,14 +1280,33 @@ p {
     font-size: 4rem;
     overflow: hidden;
     max-height: 400px;
+    position: relative;
+}
+
+/* Radial fade to blend mascot image edges into the section background */
+.feature-detail-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--border-radius-lg);
+    background: radial-gradient(ellipse 80% 80% at center, transparent 50%, rgba(255, 255, 255, 0.6) 85%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Even sections have --bg-light (#f5f5f7) background */
+.feature-detail:nth-child(even) .feature-detail-image::after {
+    background: radial-gradient(ellipse 80% 80% at center, transparent 50%, rgba(245, 245, 247, 0.6) 85%, rgba(245, 245, 247, 1) 100%);
 }
 
 .feature-detail-image img {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 85%;
+    max-height: 85%;
     width: auto;
     height: auto;
     object-fit: contain;
+    display: block;
+    margin: auto;
 }
 
 .feature-detail-text h2 {
