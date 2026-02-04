@@ -9,6 +9,8 @@
    5. Screenshot Carousel
    6. Initialize Carousels
    7. Scroll Animations
+   8. Testimonials Scroll
+   9. Counter Animation
    ========================================== */
 
 // ==========================================
@@ -20,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initCarousels();
     initScreenshotCarousel();
     initTestimonialsScroll();
+    initScrollAnimations();
+    initCounterAnimation();
+    initStickyCta();
 });
 
 // ==========================================
@@ -43,6 +48,7 @@ function initNavigation() {
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
     const navOverlay = document.getElementById('navOverlay');
+    const navbar = document.querySelector('.navbar');
 
     if (!hamburger || !mobileNav) return;
 
@@ -82,6 +88,17 @@ function initNavigation() {
             link.classList.add('active');
         }
     });
+
+    // Navbar shrink on scroll
+    if (navbar) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }, { passive: true });
+    }
 }
 
 // ==========================================
@@ -102,8 +119,8 @@ class Carousel {
         this.totalItems = this.items.length;
         this.autoPlayInterval = null;
         this.autoPlayDelay = options.autoPlayDelay || 5000;
-        this.loop = options.loop !== false; // Default to true
-        this.gap = options.gap || 32; // 2rem default
+        this.loop = options.loop !== false;
+        this.gap = options.gap || 32;
 
         if (this.totalItems === 0) return;
 
@@ -150,17 +167,14 @@ class Carousel {
         const containerWidth = this.carousel.offsetWidth;
         const cardWidth = this.getCardWidth(this.currentIndex);
 
-        // Calculate total width of all cards before current
         let scrollPosition = 0;
         for (let i = 0; i < this.currentIndex; i++) {
             scrollPosition += this.getCardWidth(i) + this.gap;
         }
 
-        // Center the current card
         const centerOffset = (containerWidth - cardWidth) / 2;
         scrollPosition = scrollPosition - centerOffset;
 
-        // Clamp to valid range
         const maxScroll = this.carousel.scrollWidth - containerWidth;
         return Math.max(0, Math.min(scrollPosition, maxScroll));
     }
@@ -178,7 +192,6 @@ class Carousel {
 
     goToSlide(index) {
         if (this.loop) {
-            // Handle looping
             if (index < 0) {
                 this.currentIndex = this.totalItems - 1;
             } else if (index >= this.totalItems) {
@@ -187,7 +200,6 @@ class Carousel {
                 this.currentIndex = index;
             }
         } else {
-            // Clamp without looping
             this.currentIndex = Math.max(0, Math.min(index, this.totalItems - 1));
         }
 
@@ -217,7 +229,6 @@ class Carousel {
     }
 
     bindEvents() {
-        // Button clicks
         if (this.prevBtn) {
             this.prevBtn.addEventListener('click', () => this.prev());
         }
@@ -225,13 +236,11 @@ class Carousel {
             this.nextBtn.addEventListener('click', () => this.next());
         }
 
-        // Pause auto-play on hover
         this.carousel.addEventListener('mouseenter', () => this.stopAutoPlay());
         this.carousel.addEventListener('mouseleave', () => {
             if (this.autoPlayDelay > 0) this.startAutoPlay();
         });
 
-        // Touch swipe support
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -246,7 +255,6 @@ class Carousel {
             if (this.autoPlayDelay > 0) this.startAutoPlay();
         }, { passive: true });
 
-        // Mouse drag support
         let isDragging = false;
         let startX = 0;
         let scrollLeft = 0;
@@ -272,7 +280,6 @@ class Carousel {
                 isDragging = false;
                 this.carousel.style.cursor = 'grab';
 
-                // Determine direction based on drag distance
                 const endX = e.pageX - this.carousel.offsetLeft;
                 const diff = startX - endX;
 
@@ -296,10 +303,8 @@ class Carousel {
             this.carousel.scrollLeft = scrollLeft - walk;
         });
 
-        // Set grab cursor
         this.carousel.style.cursor = 'grab';
 
-        // Handle window resize
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
@@ -354,10 +359,8 @@ function initScreenshotCarousel() {
         updateScreenshot();
     }
 
-    // Auto-rotate every 4 seconds
     setInterval(nextScreenshot, 4000);
 
-    // Click dots to change screenshot
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             currentIndex = index;
@@ -370,8 +373,7 @@ function initScreenshotCarousel() {
 // 6. INITIALIZE CAROUSELS
 // ==========================================
 function initCarousels() {
-    // Features Carousel
-    const featuresCarousel = new Carousel({
+    new Carousel({
         container: '#featuresCarouselContainer',
         carousel: '.carousel',
         items: '.feature-card',
@@ -383,8 +385,7 @@ function initCarousels() {
         gap: 32
     });
 
-    // Blog Carousel
-    const blogCarousel = new Carousel({
+    new Carousel({
         container: '#blogCarouselContainer',
         carousel: '.carousel',
         items: '.blog-card',
@@ -396,8 +397,7 @@ function initCarousels() {
         gap: 32
     });
 
-    // Testimonials Carousel (if on testimonials page)
-    const testimonialsCarousel = new Carousel({
+    new Carousel({
         container: '#testimonialsCarouselContainer',
         carousel: '.carousel',
         items: '.testimonial-card',
@@ -411,31 +411,29 @@ function initCarousels() {
 }
 
 // ==========================================
-// 7. SCROLL ANIMATIONS (Optional enhancement)
+// 7. SCROLL ANIMATIONS
 // ==========================================
 function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+    const animatedElements = document.querySelectorAll('.fade-up, .fade-in, .fade-right, .fade-left, .scale-in');
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+    if (animatedElements.length === 0) return;
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
+                entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
+    });
 
-    // Observe elements with animation classes
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    animatedElements.forEach(function(el) {
         observer.observe(el);
     });
 }
-
-// Initialize scroll animations if needed
-// initScrollAnimations();
 
 // ==========================================
 // 8. TESTIMONIALS SCROLL (Mobile Carousel)
@@ -451,10 +449,9 @@ function initTestimonialsScroll() {
 
     if (cards.length === 0 || dots.length === 0) return;
 
-    // Update dots based on scroll position
     grid.addEventListener('scroll', function() {
         const scrollLeft = grid.scrollLeft;
-        const cardWidth = cards[0].offsetWidth + 16; // Card width + gap
+        const cardWidth = cards[0].offsetWidth + 16;
         const currentIndex = Math.round(scrollLeft / cardWidth);
 
         dots.forEach((dot, index) => {
@@ -462,7 +459,6 @@ function initTestimonialsScroll() {
         });
     });
 
-    // Click dots to scroll to card
     dots.forEach((dot, index) => {
         dot.addEventListener('click', function() {
             const cardWidth = cards[0].offsetWidth + 16;
@@ -472,4 +468,92 @@ function initTestimonialsScroll() {
             });
         });
     });
+}
+
+// ==========================================
+// 9. COUNTER ANIMATION
+// ==========================================
+function initCounterAnimation() {
+    const counters = document.querySelectorAll('[data-count]');
+
+    if (counters.length === 0) return;
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(function(counter) {
+        observer.observe(counter);
+    });
+}
+
+function animateCounter(element) {
+    const target = element.getAttribute('data-count');
+    const prefix = element.getAttribute('data-prefix') || '';
+    const suffix = element.getAttribute('data-suffix') || '';
+    const numericTarget = parseFloat(target.replace(/[^0-9.]/g, ''));
+    const hasDecimal = target.includes('.');
+    const duration = 1500;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = numericTarget * eased;
+
+        if (hasDecimal) {
+            element.textContent = prefix + current.toFixed(1) + suffix;
+        } else {
+            element.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+        }
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.textContent = prefix + target + suffix;
+        }
+    }
+
+    requestAnimationFrame(update);
+}
+
+// ==========================================
+// 10. STICKY MOBILE CTA
+// ==========================================
+function initStickyCta() {
+    var stickyCta = document.getElementById('stickyCta');
+    var closeBtn = document.getElementById('stickyCtaClose');
+
+    if (!stickyCta) return;
+
+    var dismissed = false;
+    var heroSection = document.querySelector('.hero');
+
+    // Show CTA after scrolling past the hero section
+    window.addEventListener('scroll', function() {
+        if (dismissed) return;
+
+        var heroBottom = heroSection ? heroSection.offsetTop + heroSection.offsetHeight : 600;
+
+        if (window.scrollY > heroBottom) {
+            stickyCta.classList.add('visible');
+        } else {
+            stickyCta.classList.remove('visible');
+        }
+    }, { passive: true });
+
+    // Dismiss CTA when close button is clicked
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            dismissed = true;
+            stickyCta.classList.remove('visible');
+        });
+    }
 }
