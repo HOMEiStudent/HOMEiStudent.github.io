@@ -575,18 +575,20 @@ p {
 .phone-frame {
     position: relative;
     width: 280px;
-    background: #1a1a1a;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
     border-radius: 36px;
-    padding: 6px;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
 .phone-screen {
     position: relative;
     width: 100%;
     aspect-ratio: 1170/2532;
-    background: #1a1a1a;
-    border-radius: 30px;
+    background: transparent;
+    border-radius: 0;
     overflow: hidden;
 }
 
@@ -960,8 +962,8 @@ p {
    13. FOOTER
    ========================================== */
 .footer {
-    background: linear-gradient(180deg, #4a2800 0%, #3a1f00 100%);
-    color: white;
+    background: linear-gradient(180deg, #5a3200 0%, #4a2800 50%, #3a1f00 100%) !important;
+    color: #ffffff;
     padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
 }
 
@@ -1652,8 +1654,8 @@ p {
    20. BEFORE VS AFTER SECTION
    ========================================== */
 .before-after {
-    padding: var(--spacing-lg) var(--spacing-md);
-    background: var(--bg-light);
+    padding: var(--spacing-xl) var(--spacing-md);
+    background: var(--bg-white);
 }
 
 .before-after-container {
@@ -1663,35 +1665,65 @@ p {
 
 .before-after-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 2rem;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    margin-top: 3rem;
+    align-items: stretch;
 }
 
 .before-card,
 .after-card {
     background: var(--bg-white);
     border-radius: var(--border-radius-lg);
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     position: relative;
-    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .before-card {
     border-top: 4px solid #e74c3c;
+    background: linear-gradient(180deg, rgba(231, 76, 60, 0.03) 0%, var(--bg-white) 100%);
 }
 
 .after-card {
-    border-top: 4px solid #2ecc71;
+    border-top: 4px solid var(--primary-orange);
+    background: linear-gradient(180deg, rgba(255, 160, 0, 0.05) 0%, var(--bg-white) 100%);
+    box-shadow: 0 8px 32px rgba(255, 160, 0, 0.12);
+    border-color: rgba(255, 160, 0, 0.15);
+}
+
+.before-after-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.5rem;
+}
+
+.before-after-arrow {
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 16px rgba(255, 106, 0, 0.3);
+    flex-shrink: 0;
 }
 
 .before-after-label {
-    display: inline-block;
-    padding: 0.35rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--border-radius-md);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1.75rem;
+    letter-spacing: 0.02em;
 }
 
 .before-label {
@@ -1700,8 +1732,8 @@ p {
 }
 
 .after-label {
-    background: rgba(46, 204, 113, 0.1);
-    color: #27ae60;
+    background: rgba(255, 160, 0, 0.12);
+    color: var(--primary-deep-orange);
 }
 
 .before-after-list {
@@ -1710,35 +1742,76 @@ p {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.25rem;
 }
 
 .before-after-list li {
     display: flex;
     align-items: flex-start;
-    gap: 0.75rem;
-    font-size: 0.95rem;
-    color: var(--text-medium);
-    line-height: 1.5;
+    gap: 0.875rem;
+    font-size: 1rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius-sm);
+    transition: background var(--transition-fast);
+}
+
+.before-card .before-after-list li {
+    background: rgba(231, 76, 60, 0.04);
+    text-decoration: line-through;
+    text-decoration-color: rgba(231, 76, 60, 0.3);
+    color: var(--text-light);
+}
+
+.after-card .before-after-list li {
+    background: rgba(255, 160, 0, 0.06);
+    color: var(--text-dark);
 }
 
 .before-after-icon {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     flex-shrink: 0;
-    line-height: 1.5;
+    line-height: 1.6;
+}
+
+.before-after-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.before-after-cta p {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 1.25rem;
 }
 
 @media (max-width: 768px) {
     .before-after-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .before-after-divider {
+        padding: 0.5rem 0;
+    }
+
+    .before-after-arrow {
+        transform: rotate(90deg);
+    }
+
+    .before-card,
+    .after-card {
+        padding: 2rem 1.5rem;
     }
 }
 
 /* ==========================================
-   21. STICKY MOBILE CTA
+   21. STICKY CTA BAR
    ========================================== */
 .sticky-cta {
-    display: none;
+    display: flex;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -1747,9 +1820,11 @@ p {
     padding: 0.75rem 1rem;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
     align-items: center;
+    justify-content: center;
     gap: 0.75rem;
     transform: translateY(100%);
     transition: transform 0.4s ease-out;
@@ -1759,34 +1834,53 @@ p {
     transform: translateY(0);
 }
 
+.sticky-cta-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
 .sticky-cta-button {
-    flex: 1;
-    display: block;
+    display: inline-block;
     text-align: center;
-    padding: 0.75rem 1.5rem;
+    padding: 0.625rem 1.5rem;
     background: var(--gradient-primary);
     color: white;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     border-radius: var(--border-radius-md);
     text-decoration: none;
     box-shadow: 0 2px 12px rgba(255, 106, 0, 0.3);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.sticky-cta-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(255, 106, 0, 0.4);
 }
 
 .sticky-cta-close {
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: var(--text-light);
     cursor: pointer;
     padding: 0.25rem 0.5rem;
     line-height: 1;
+    transition: color var(--transition-fast);
 }
 
-/* Only show on mobile */
+.sticky-cta-close:hover {
+    color: var(--text-dark);
+}
+
 @media (max-width: 768px) {
-    .sticky-cta {
-        display: flex;
+    .sticky-cta-text {
+        display: none;
+    }
+
+    .sticky-cta-button {
+        flex: 1;
     }
 }
 
