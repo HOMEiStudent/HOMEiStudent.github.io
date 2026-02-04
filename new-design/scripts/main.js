@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initTestimonialsScroll();
     initScrollAnimations();
     initCounterAnimation();
+    initStickyCta();
 });
 
 // ==========================================
@@ -521,4 +522,38 @@ function animateCounter(element) {
     }
 
     requestAnimationFrame(update);
+}
+
+// ==========================================
+// 10. STICKY MOBILE CTA
+// ==========================================
+function initStickyCta() {
+    var stickyCta = document.getElementById('stickyCta');
+    var closeBtn = document.getElementById('stickyCtaClose');
+
+    if (!stickyCta) return;
+
+    var dismissed = false;
+    var heroSection = document.querySelector('.hero');
+
+    // Show CTA after scrolling past the hero section
+    window.addEventListener('scroll', function() {
+        if (dismissed) return;
+
+        var heroBottom = heroSection ? heroSection.offsetTop + heroSection.offsetHeight : 600;
+
+        if (window.scrollY > heroBottom) {
+            stickyCta.classList.add('visible');
+        } else {
+            stickyCta.classList.remove('visible');
+        }
+    }, { passive: true });
+
+    // Dismiss CTA when close button is clicked
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            dismissed = true;
+            stickyCta.classList.remove('visible');
+        });
+    }
 }
