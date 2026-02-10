@@ -7,7 +7,7 @@
     <meta name="description" content="Have a question about HOMEi? Get in touch with our team - we'd love to hear from you.">
 
     <link rel="icon" type="image/png" href="images/logo/homei-logo.png">
-    <link rel="stylesheet" href="styles/main.css?v=2.2">
+    <link rel="stylesheet" href="styles/main.css?v=2.3">
 </head>
 <body>
     <!-- NAVIGATION -->
@@ -105,7 +105,13 @@
                     Log in to formspark.io and update your workspace settings
                     ============================================
                 -->
-                <form action="https://submit-form.com/rSTvCm13U" method="POST">
+                <form action="https://submit-form.com/rSTvCm13U" method="POST" id="contactForm">
+                    <!-- Formspark redirect after submission -->
+                    <input type="hidden" name="_redirect" value="https://homeistudent.com/contact.html?success=true">
+
+                    <!-- Honeypot spam protection (hidden field) -->
+                    <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+
                     <div class="form-group">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required placeholder="What should we call you?">
@@ -133,10 +139,26 @@
                         <textarea id="message" name="message" required placeholder="Tell us what's on your mind..."></textarea>
                     </div>
 
-                    <button type="submit" class="submit-button">
+                    <button type="submit" class="submit-button" id="submitBtn">
                         Send Message
                     </button>
                 </form>
+
+                <!-- Success message (shown after form submission) -->
+                <div id="formSuccess" style="display: none; margin-top: 1rem; padding: 1.5rem; background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); border-radius: 12px; color: #155724; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
+                    <strong style="font-size: 1.1rem;">Message sent successfully!</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #155724;">We'll get back to you as soon as possible.</p>
+                </div>
+
+                <script>
+                    // Show success message if redirected back with success parameter
+                    if (window.location.search.includes('success=true')) {
+                        document.getElementById('contactForm').style.display = 'none';
+                        document.getElementById('formSuccess').style.display = 'block';
+                        document.querySelector('.contact-form h2').textContent = 'Thank You!';
+                    }
+                </script>
             </div>
         </div>
     </section>
@@ -170,7 +192,7 @@
                     <img src="images/logo/homei-logo.png" alt="HOMEi" class="logo-icon" width="44" height="44">
                     <span class="logo-text" style="color: white;">HOMEi</span>
                 </div>
-                <p>The app that makes shared student living actually work. Built by students, for students.</p>
+                <p>Your all-in-one app for managing bills, chores, and schedules. Built by students, for students.</p>
                 <div class="social-links">
                     <a href="#" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
                         <img src="images/social/instagram.png" alt="Instagram" onerror="this.parentElement.style.display='none'">
@@ -209,6 +231,6 @@
         </div>
     </footer>
 
-    <script src="scripts/main.js?v=2.2"></script>
+    <script src="scripts/main.js?v=2.3"></script>
 </body>
 </html>
