@@ -7,7 +7,49 @@
     <meta name="description" content="Setting up HOMEi is quick and easy. Download, create your house, invite housemates - start living in harmony.">
 
     <link rel="icon" type="image/png" href="images/logo/homei-logo.png">
-    <link rel="stylesheet" href="styles/main.css?v=2.3">
+    <link rel="stylesheet" href="styles/main.css?v=2.4">
+
+    <!-- FAQ Schema for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How much does HOMEi cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "HOMEi is free with ads. If you'd prefer an ad-free experience, you can subscribe for just £2.99/month. All features are available on both plans."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is my data safe with HOMEi?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely. We use industry-standard encryption and never share your personal info. Your household data stays private and we're not in the business of selling your information."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What if someone doesn't have a smartphone?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "They can still be added to the house manually by other members. They just won't get notifications or be able to update things themselves."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is HOMEi just for students?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We built it with students in mind, but anyone sharing a home can use HOMEi. Young professionals, flatmates, families, anyone who wants a more organised household."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <!-- NAVIGATION -->
@@ -239,6 +281,10 @@
             </div>
         </div>
         <div class="footer-bottom">
+            <div class="footer-badges">
+                <span class="trust-badge">🔒 GDPR Compliant</span>
+                <span class="trust-badge">🛡️ Data Encrypted</span>
+            </div>
             <p>&copy; 2026 HOMEiStudent Ltd. Made with ❤️ in Sheffield.</p>
         </div>
     </footer>
