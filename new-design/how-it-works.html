@@ -6,8 +6,14 @@
     <title>How It Works - HOMEi | Get Started in 2 Minutes</title>
     <meta name="description" content="Setting up HOMEi is quick and easy. Download, create your house, invite housemates - start living in harmony.">
 
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+
     <link rel="icon" type="image/png" href="images/logo/homei-logo.png">
-    <link rel="stylesheet" href="styles/main.css?v=2.4">
+    <link rel="stylesheet" href="styles/main.css?v=2.5">
 
     <!-- FAQ Schema for SEO -->
     <script type="application/ld+json">
@@ -28,7 +34,7 @@
                 "name": "Is my data safe with HOMEi?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Absolutely. We use industry-standard encryption and never share your personal info. Your household data stays private and we're not in the business of selling your information."
+                    "text": "Absolutely. We use industry-standard encryption and never share your personal info. Your household data stays private and we're GDPR compliant."
                 }
             },
             {
@@ -44,7 +50,55 @@
                 "name": "Is HOMEi just for students?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "We built it with students in mind, but anyone sharing a home can use HOMEi. Young professionals, flatmates, families, anyone who wants a more organised household."
+                    "text": "We built it with students in mind, but anyone sharing a home can use HOMEi. Young professionals, flatmates, families - anyone who wants a more organised household."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens if someone moves out?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No problem! House admins can remove members at any time. Any outstanding balances are clearly shown so you can settle up before they go."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use HOMEi for multiple houses?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! You can be a member of multiple houses. Perfect if you split time between places or manage properties."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How is HOMEi different from Splitwise?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Splitwise is great for splitting expenses with friends. HOMEi is purpose-built for housemates - we also handle chore rotas, shared calendars, shopping lists, and house-specific features that Splitwise doesn't offer."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What if my housemates won't use it?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Even with just 2-3 people using HOMEi, you'll see benefits. You can still track who owes what and manage tasks. Usually once housemates see how easy it is, they join in."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I export my data?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, you can export your expense history and other data at any time. Your data belongs to you."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is there a web version?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Currently HOMEi is mobile-only (iOS and Android). A web version is on our roadmap for the future."
                 }
             }
         ]
@@ -64,7 +118,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="features.html">Features</a></li>
                 <li><a href="how-it-works.html" class="active">How It Works</a></li>
-                <li><a href="https://apps.apple.com/gb/app/homei/id6736709087" class="nav-cta" target="_blank" rel="noopener">Get the App</a></li>
+                <li><a href="https://apps.apple.com/gb/app/homei/id6736709087" class="nav-cta" target="_blank" rel="noopener noreferrer">Get the App</a></li>
             </ul>
 
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -81,7 +135,7 @@
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
         <a href="how-it-works.html">How It Works</a>
-        <a href="https://apps.apple.com/gb/app/homei/id6736709087" target="_blank" rel="noopener">Get the App</a>
+        <a href="https://apps.apple.com/gb/app/homei/id6736709087" target="_blank" rel="noopener noreferrer">Get the App</a>
     </div>
 
     <!-- PAGE HEADER -->
@@ -95,18 +149,18 @@
         <div class="feature-detail-content">
             <div class="feature-detail-image fade-right">
                 <!-- Upload mascot image: images/mascots/mascot-download.gif -->
-                <img src="images/mascots/mascot-download.gif" alt="Download Mascot" onerror="this.style.display='none'; this.parentElement.innerHTML='📱';">
+                <img loading="lazy" src="images/mascots/mascot-download.gif" alt="Download Mascot" onerror="this.style.display='none'; this.parentElement.innerHTML='📱';">
             </div>
             <div class="feature-detail-text fade-left">
                 <h2>Step 1: Download the App</h2>
                 <p>HOMEi is available on both iOS and Android. Download it and get started straight away.</p>
                 <p>Just download and you're ready to go.</p>
                 <div class="download-buttons" style="margin-top: 1.5rem;">
-                    <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="store-button apple" target="_blank" rel="noopener">
+                    <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="store-button apple" target="_blank" rel="noopener noreferrer">
                         <img src="images/icons/app-store-icon.png" alt="App Store">
                         <span>App Store</span>
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" class="store-button google" target="_blank" rel="noopener">
+                    <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" class="store-button google" target="_blank" rel="noopener noreferrer">
                         <img src="images/icons/play-store-icon.png" alt="Google Play" onerror="this.style.display='none'">
                         <span>Google Play</span>
                     </a>
@@ -120,7 +174,7 @@
         <div class="feature-detail-content">
             <div class="feature-detail-image fade-left">
                 <!-- Upload mascot image: images/mascots/mascot-house.gif -->
-                <img src="images/mascots/mascot-house.gif" alt="House Mascot" onerror="this.style.display='none'; this.parentElement.innerHTML='🏠';">
+                <img loading="lazy" src="images/mascots/mascot-house.gif" alt="House Mascot" onerror="this.style.display='none'; this.parentElement.innerHTML='🏠';">
             </div>
             <div class="feature-detail-text fade-right">
                 <h2>Step 2: Create Your House</h2>
@@ -140,7 +194,7 @@
         <div class="feature-detail-content">
             <div class="feature-detail-image fade-right">
                 <!-- Upload mascot image: images/mascots/mascot-friends.gif -->
-                <img src="images/mascots/mascot-friends.gif" alt="Friends Mascot" onerror="this.style.display='none'; this.parentElement.innerHTML='👥';">
+                <img loading="lazy" src="images/mascots/mascot-friends.gif" alt="Friends Mascot" onerror="this.style.display='none'; this.parentElement.innerHTML='👥';">
             </div>
             <div class="feature-detail-text fade-left">
                 <h2>Step 3: Invite Your Housemates</h2>
@@ -160,7 +214,7 @@
         <div class="feature-detail-content">
             <div class="feature-detail-image fade-left">
                 <!-- Upload mascot image: images/mascots/mascot-happy.gif -->
-                <img src="images/mascots/mascot-happy.gif" alt="Happy Mascot" onerror="this.style.display='none'; this.parentElement.innerHTML='✨';">
+                <img loading="lazy" src="images/mascots/mascot-happy.gif" alt="Happy Mascot" onerror="this.style.display='none'; this.parentElement.innerHTML='✨';">
             </div>
             <div class="feature-detail-text fade-right">
                 <h2>Step 4: Start Living Better</h2>
@@ -180,7 +234,7 @@
     <section class="features" style="background: var(--bg-white);">
         <div class="features-container">
             <div class="section-header fade-up">
-                <h2>FAQs</h2>
+                <h2>Frequently Asked Questions</h2>
                 <p>Quick answers to things you might be wondering</p>
             </div>
 
@@ -193,7 +247,7 @@
                 <div class="feature-card fade-up stagger-2">
                     <div class="feature-icon">🔒</div>
                     <h3>Is my data safe?</h3>
-                    <p>Absolutely. We use industry-standard encryption and never share your personal info. Your household data stays private and we're not in the business of selling your information.</p>
+                    <p>Absolutely. We use industry-standard encryption and never share your personal info. Your household data stays private and we're GDPR compliant.</p>
                 </div>
                 <div class="feature-card fade-up stagger-3">
                     <div class="feature-icon">📱</div>
@@ -203,7 +257,37 @@
                 <div class="feature-card fade-up stagger-4">
                     <div class="feature-icon">🎓</div>
                     <h3>Is it just for students?</h3>
-                    <p>We built it with students in mind, but anyone sharing a home can use HOMEi. Young professionals, flatmates, families, anyone who wants a more organised household.</p>
+                    <p>We built it with students in mind, but anyone sharing a home can use HOMEi. Young professionals, flatmates, families - anyone who wants a more organised household.</p>
+                </div>
+                <div class="feature-card fade-up stagger-1">
+                    <div class="feature-icon">🚪</div>
+                    <h3>What happens if someone moves out?</h3>
+                    <p>No problem! House admins can remove members at any time. Any outstanding balances are clearly shown so you can settle up before they go.</p>
+                </div>
+                <div class="feature-card fade-up stagger-2">
+                    <div class="feature-icon">🏘️</div>
+                    <h3>Can I use HOMEi for multiple houses?</h3>
+                    <p>Yes! You can be a member of multiple houses. Perfect if you split time between places or manage properties.</p>
+                </div>
+                <div class="feature-card fade-up stagger-3">
+                    <div class="feature-icon">⚖️</div>
+                    <h3>How is HOMEi different from Splitwise?</h3>
+                    <p>Splitwise is great for splitting expenses with friends. HOMEi is purpose-built for housemates - we also handle chore rotas, shared calendars, and shopping lists.</p>
+                </div>
+                <div class="feature-card fade-up stagger-4">
+                    <div class="feature-icon">🤝</div>
+                    <h3>What if my housemates won't use it?</h3>
+                    <p>Even with just 2-3 people using HOMEi, you'll see benefits. Usually once housemates see how easy it is, they join in.</p>
+                </div>
+                <div class="feature-card fade-up stagger-1">
+                    <div class="feature-icon">📤</div>
+                    <h3>Can I export my data?</h3>
+                    <p>Yes, you can export your expense history and other data at any time. Your data belongs to you.</p>
+                </div>
+                <div class="feature-card fade-up stagger-2">
+                    <div class="feature-icon">💻</div>
+                    <h3>Is there a web version?</h3>
+                    <p>Currently HOMEi is mobile-only (iOS and Android). A web version is on our roadmap for the future.</p>
                 </div>
             </div>
         </div>
@@ -217,11 +301,11 @@
 
             <div class="cta-download">
                 <div class="download-buttons">
-                    <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="store-button" target="_blank" rel="noopener">
+                    <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="store-button" target="_blank" rel="noopener noreferrer">
                         <img src="images/icons/app-store-icon.png" alt="App Store">
                         <span>App Store</span>
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" class="store-button" target="_blank" rel="noopener">
+                    <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" class="store-button" target="_blank" rel="noopener noreferrer">
                         <img src="images/icons/play-store-icon.png" alt="Google Play" onerror="this.style.display='none'">
                         <span>Google Play</span>
                     </a>
@@ -248,16 +332,16 @@
                 </div>
                 <p>Your all-in-one app for managing bills, chores, and schedules. Built by students, for students.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
+                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                         <img src="images/social/instagram.png" alt="Instagram" onerror="this.parentElement.style.display='none'">
                     </a>
-                    <a href="#" class="social-link" target="_blank" rel="noopener" aria-label="TikTok">
+                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
                         <img src="images/social/tiktok.png" alt="TikTok" onerror="this.parentElement.style.display='none'">
                     </a>
-                    <a href="#" class="social-link" target="_blank" rel="noopener" aria-label="Twitter">
+                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                         <img src="images/social/twitter.png" alt="Twitter" onerror="this.parentElement.style.display='none'">
                     </a>
-                    <a href="#" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                         <img src="images/social/linkedin.png" alt="LinkedIn" onerror="this.parentElement.style.display='none'">
                     </a>
                 </div>
@@ -266,7 +350,7 @@
                 <h4>Product</h4>
                 <a href="features.html">Features</a>
                 <a href="how-it-works.html">How It Works</a>
-                <a href="https://apps.apple.com/gb/app/homei/id6736709087" target="_blank" rel="noopener">Download</a>
+                <a href="https://apps.apple.com/gb/app/homei/id6736709087" target="_blank" rel="noopener noreferrer">Download</a>
             </div>
             <div class="footer-section">
                 <h4>Company</h4>
@@ -289,6 +373,6 @@
         </div>
     </footer>
 
-    <script src="scripts/main.js?v=2.3"></script>
+    <script src="scripts/main.js?v=2.5"></script>
 </body>
 </html>
