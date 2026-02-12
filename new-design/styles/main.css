@@ -566,7 +566,7 @@ p {
     line-height: 1.4;
 }
 
-/* Phone Mockup */
+/* Phone Mockup - Clean Screenshot Display */
 .phone-mockup {
     display: flex;
     flex-direction: column;
@@ -580,18 +580,20 @@ p {
     width: 280px;
     background: transparent;
     padding: 0;
-    box-shadow: none;
-    border-radius: 40px;
+    border-radius: 32px;
     overflow: hidden;
-    border: none;
+    /* Subtle shadow for depth */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 .phone-screen {
     position: relative;
     width: 100%;
     background: transparent;
-    border-radius: 36px;
+    border-radius: 32px;
     overflow: hidden;
+    /* Touch action for swipe */
+    touch-action: pan-y pinch-zoom;
 }
 
 .phone-screenshot {
@@ -600,13 +602,16 @@ p {
     height: auto;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 0.6s ease-in-out;
-    border-radius: 36px;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 32px;
+    /* Prevent any gaps */
+    vertical-align: middle;
 }
 
 .phone-screenshot.active {
     opacity: 1;
     position: relative;
+    z-index: 1;
 }
 
 .phone-screenshot:not(.active) {
@@ -614,6 +619,7 @@ p {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 0;
 }
 
 .screenshot-dots {
@@ -1241,7 +1247,183 @@ p {
 }
 
 /* ==========================================
-   15. LOADING SCREEN
+   15. INTERACTIVE ELEMENTS
+   ========================================== */
+
+/* Before/After Toggle Tabs */
+.toggle-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 2rem;
+    background: var(--glass-white);
+    border-radius: 30px;
+    padding: 4px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--glass-border);
+}
+
+.toggle-tab {
+    flex: 1;
+    padding: 0.875rem 1.5rem;
+    border: none;
+    background: transparent;
+    border-radius: 26px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-medium);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-tab.active {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 168, 0, 0.3);
+}
+
+.toggle-tab:hover:not(.active) {
+    background: rgba(255, 168, 0, 0.1);
+}
+
+.toggle-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.toggle-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Accordion FAQ Styles */
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-md);
+    margin-bottom: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: rgba(255, 168, 0, 0.3);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: background 0.2s ease;
+}
+
+.faq-question:hover {
+    background: rgba(255, 168, 0, 0.05);
+}
+
+.faq-icon {
+    font-size: 1.25rem;
+    margin-right: 0.75rem;
+}
+
+.faq-question-text {
+    flex: 1;
+}
+
+.faq-toggle {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.faq-item.active .faq-toggle {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+}
+
+.faq-answer-content {
+    padding: 0 1.5rem 1.25rem 3.5rem;
+    color: var(--text-medium);
+    line-height: 1.7;
+}
+
+/* Swipe Hint for Mobile */
+.swipe-hint {
+    display: none;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    animation: pulse 2s infinite;
+}
+
+@media (max-width: 768px) {
+    .swipe-hint {
+        display: block;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Interactive Card Highlight */
+.interactive-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.interactive-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.interactive-card:active {
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   16. LOADING SCREEN
    ========================================== */
 .loading-screen {
     position: fixed;
@@ -1387,6 +1569,34 @@ p {
     object-fit: contain;
     display: block;
     margin: auto;
+}
+
+/* Feature Screenshot Preview */
+.feature-screenshot-preview {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 120px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+    background: var(--bg-white);
+}
+
+.feature-screenshot-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+    .feature-screenshot-preview {
+        width: 100px;
+        bottom: -15px;
+        right: -10px;
+    }
 }
 
 .feature-detail-text h2 {
