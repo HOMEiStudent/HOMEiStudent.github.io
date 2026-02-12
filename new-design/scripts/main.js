@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initCounterAnimation();
     initStickyCta();
+    initBeforeAfterToggle();
+    initFaqAccordion();
 });
 
 // ==========================================
@@ -348,6 +350,7 @@ function initScreenshotCarousel() {
 
     let currentIndex = 0;
     const totalScreenshots = screenshots.length;
+    let autoPlayInterval = null;
 
     function updateScreenshot() {
         screenshots.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
@@ -359,14 +362,76 @@ function initScreenshotCarousel() {
         updateScreenshot();
     }
 
-    setInterval(nextScreenshot, 4000);
+    function prevScreenshot() {
+        currentIndex = (currentIndex - 1 + totalScreenshots) % totalScreenshots;
+        updateScreenshot();
+    }
 
+    function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayInterval = setInterval(nextScreenshot, 4000);
+    }
+
+    function stopAutoPlay() {
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
+        }
+    }
+
+    // Start auto-play
+    startAutoPlay();
+
+    // Dot click handlers
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             currentIndex = index;
             updateScreenshot();
+            // Restart autoplay after manual interaction
+            startAutoPlay();
         });
     });
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let isSwiping = false;
+
+    phoneScreen.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        isSwiping = true;
+        stopAutoPlay();
+    }, { passive: true });
+
+    phoneScreen.addEventListener('touchmove', function(e) {
+        // Optional: Add visual feedback during swipe
+    }, { passive: true });
+
+    phoneScreen.addEventListener('touchend', function(e) {
+        if (!isSwiping) return;
+        isSwiping = false;
+
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        const threshold = 50;
+
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                // Swipe left - next screenshot
+                nextScreenshot();
+            } else {
+                // Swipe right - previous screenshot
+                prevScreenshot();
+            }
+        }
+
+        // Restart autoplay
+        startAutoPlay();
+    }, { passive: true });
+
+    // Pause on hover (desktop)
+    phoneScreen.addEventListener('mouseenter', stopAutoPlay);
+    phoneScreen.addEventListener('mouseleave', startAutoPlay);
 }
 
 // ==========================================
@@ -555,5 +620,108 @@ function initStickyCta() {
             dismissed = true;
             stickyCta.classList.remove('visible');
         });
+    }
+}
+
+// ==========================================
+// 11. BEFORE/AFTER TOGGLE
+// ==========================================
+function initBeforeAfterToggle() {
+    var toggleContainer = document.getElementById('beforeAfterToggle');
+    if (!toggleContainer) return;
+
+    var toggleTabs = toggleContainer.querySelectorAll('.toggle-tab');
+    var beforeContent = document.getElementById('before-content');
+    var afterContent = document.getElementById('after-content');
+
+    if (!beforeContent || !afterContent || toggleTabs.length === 0) return;
+
+    toggleTabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            var targetTab = this.getAttribute('data-tab');
+
+            // Update active tab
+            toggleTabs.forEach(function(t) {
+                t.classList.remove('active');
+            });
+            this.classList.add('active');
+
+            // Update content visibility
+            if (targetTab === 'before') {
+                beforeContent.classList.add('active');
+                afterContent.classList.remove('active');
+            } else {
+                beforeContent.classList.remove('active');
+                afterContent.classList.add('active');
+            }
+        });
+    });
+
+    // Add swipe support for toggle content
+    var wrapper = document.querySelector('.toggle-content-wrapper');
+    if (wrapper) {
+        var touchStartX = 0;
+        var touchEndX = 0;
+
+        wrapper.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        wrapper.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            var diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > 50) {
+                if (diff > 0 && beforeContent.classList.contains('active')) {
+                    // Swipe left - show After
+                    toggleTabs[1].click();
+                } else if (diff < 0 && afterContent.classList.contains('active')) {
+                    // Swipe right - show Before
+                    toggleTabs[0].click();
+                }
+            }
+        }, { passive: true });
+    }
+}
+
+// ==========================================
+// 12. FAQ ACCORDION
+// ==========================================
+function initFaqAccordion() {
+    var accordion = document.getElementById('faqAccordion');
+    if (!accordion) return;
+
+    var faqItems = accordion.querySelectorAll('.faq-item');
+
+    faqItems.forEach(function(item) {
+        var question = item.querySelector('.faq-question');
+        var toggle = item.querySelector('.faq-toggle');
+
+        if (question) {
+            question.addEventListener('click', function() {
+                var isActive = item.classList.contains('active');
+
+                // Close all other items
+                faqItems.forEach(function(otherItem) {
+                    otherItem.classList.remove('active');
+                    var otherToggle = otherItem.querySelector('.faq-toggle');
+                    if (otherToggle) otherToggle.textContent = '+';
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                    if (toggle) toggle.textContent = '−';
+                }
+            });
+        }
+    });
+
+    // Open first FAQ by default for better UX
+    if (faqItems.length > 0) {
+        var firstItem = faqItems[0];
+        firstItem.classList.add('active');
+        var firstToggle = firstItem.querySelector('.faq-toggle');
+        if (firstToggle) firstToggle.textContent = '−';
     }
 }

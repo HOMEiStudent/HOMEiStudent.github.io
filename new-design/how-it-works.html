@@ -13,7 +13,7 @@
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 
     <link rel="icon" type="image/png" href="images/logo/homei-logo.png">
-    <link rel="stylesheet" href="styles/main.css?v=2.5">
+    <link rel="stylesheet" href="styles/main.css?v=2.6">
 
     <!-- FAQ Schema for SEO -->
     <script type="application/ld+json">
@@ -230,64 +230,123 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- FAQ Section - Accordion Style -->
     <section class="features" style="background: var(--bg-white);">
         <div class="features-container">
             <div class="section-header fade-up">
                 <h2>Frequently Asked Questions</h2>
-                <p>Quick answers to things you might be wondering</p>
+                <p>Tap a question to see the answer</p>
             </div>
 
-            <div class="features-grid">
-                <div class="feature-card fade-up stagger-1">
-                    <div class="feature-icon">💷</div>
-                    <h3>How much does it cost?</h3>
-                    <p>HOMEi is free with ads. If you'd prefer an ad-free experience, you can subscribe for just £2.99/month. All features are available on both plans.</p>
+            <div class="faq-accordion fade-up" id="faqAccordion">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-icon">💷</span>
+                        <span class="faq-question-text">How much does it cost?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">HOMEi is free with ads. If you'd prefer an ad-free experience, you can subscribe for just £2.99/month. All features are available on both plans.</p>
+                    </div>
                 </div>
-                <div class="feature-card fade-up stagger-2">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Is my data safe?</h3>
-                    <p>Absolutely. We use industry-standard encryption and never share your personal info. Your household data stays private and we're GDPR compliant.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-icon">🔒</span>
+                        <span class="faq-question-text">Is my data safe?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">Absolutely. We use industry-standard encryption and never share your personal info. Your household data stays private and we're GDPR compliant.</p>
+                    </div>
                 </div>
-                <div class="feature-card fade-up stagger-3">
-                    <div class="feature-icon">📱</div>
-                    <h3>What if someone doesn't have a smartphone?</h3>
-                    <p>They can still be added to the house manually by other members. They just won't get notifications or be able to update things themselves.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-icon">📱</span>
+                        <span class="faq-question-text">What if someone doesn't have a smartphone?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">They can still be added to the house manually by other members. They just won't get notifications or be able to update things themselves.</p>
+                    </div>
                 </div>
-                <div class="feature-card fade-up stagger-4">
-                    <div class="feature-icon">🎓</div>
-                    <h3>Is it just for students?</h3>
-                    <p>We built it with students in mind, but anyone sharing a home can use HOMEi. Young professionals, flatmates, families - anyone who wants a more organised household.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-icon">🎓</span>
+                        <span class="faq-question-text">Is it just for students?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">We built it with students in mind, but anyone sharing a home can use HOMEi. Young professionals, flatmates, families - anyone who wants a more organised household.</p>
+                    </div>
                 </div>
-                <div class="feature-card fade-up stagger-1">
-                    <div class="feature-icon">🚪</div>
-                    <h3>What happens if someone moves out?</h3>
-                    <p>No problem! House admins can remove members at any time. Any outstanding balances are clearly shown so you can settle up before they go.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-icon">🚪</span>
+                        <span class="faq-question-text">What happens if someone moves out?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">No problem! House admins can remove members at any time. Any outstanding balances are clearly shown so you can settle up before they go.</p>
+                    </div>
                 </div>
-                <div class="feature-card fade-up stagger-2">
-                    <div class="feature-icon">🏘️</div>
-                    <h3>Can I use HOMEi for multiple houses?</h3>
-                    <p>Yes! You can be a member of multiple houses. Perfect if you split time between places or manage properties.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-icon">🏘️</span>
+                        <span class="faq-question-text">Can I use HOMEi for multiple houses?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">Yes! You can be a member of multiple houses. Perfect if you split time between places or manage properties.</p>
+                    </div>
                 </div>
-                <div class="feature-card fade-up stagger-3">
-                    <div class="feature-icon">⚖️</div>
-                    <h3>How is HOMEi different from Splitwise?</h3>
-                    <p>Splitwise is great for splitting expenses with friends. HOMEi is purpose-built for housemates - we also handle chore rotas, shared calendars, and shopping lists.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-icon">⚖️</span>
+                        <span class="faq-question-text">How is HOMEi different from Splitwise?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">Splitwise is great for splitting expenses with friends. HOMEi is purpose-built for housemates - we also handle chore rotas, shared calendars, and shopping lists.</p>
+                    </div>
                 </div>
-                <div class="feature-card fade-up stagger-4">
-                    <div class="feature-icon">🤝</div>
-                    <h3>What if my housemates won't use it?</h3>
-                    <p>Even with just 2-3 people using HOMEi, you'll see benefits. Usually once housemates see how easy it is, they join in.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-icon">🤝</span>
+                        <span class="faq-question-text">What if my housemates won't use it?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">Even with just 2-3 people using HOMEi, you'll see benefits. Usually once housemates see how easy it is, they join in.</p>
+                    </div>
                 </div>
-                <div class="feature-card fade-up stagger-1">
-                    <div class="feature-icon">📤</div>
-                    <h3>Can I export my data?</h3>
-                    <p>Yes, you can export your expense history and other data at any time. Your data belongs to you.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-icon">📤</span>
+                        <span class="faq-question-text">Can I export my data?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">Yes, you can export your expense history and other data at any time. Your data belongs to you.</p>
+                    </div>
                 </div>
-                <div class="feature-card fade-up stagger-2">
-                    <div class="feature-icon">💻</div>
-                    <h3>Is there a web version?</h3>
-                    <p>Currently HOMEi is mobile-only (iOS and Android). A web version is on our roadmap for the future.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-icon">💻</span>
+                        <span class="faq-question-text">Is there a web version?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">Currently HOMEi is mobile-only (iOS and Android). A web version is on our roadmap for the future.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -373,6 +432,6 @@
         </div>
     </footer>
 
-    <script src="scripts/main.js?v=2.5"></script>
+    <script src="scripts/main.js?v=2.6"></script>
 </body>
 </html>

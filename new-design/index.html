@@ -41,7 +41,7 @@
     <link rel="dns-prefetch" href="https://apps.apple.com">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles/main.css?v=2.5">
+    <link rel="stylesheet" href="styles/main.css?v=2.6">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -181,6 +181,7 @@
                     <div class="screenshot-dot"></div>
                     <div class="screenshot-dot"></div>
                 </div>
+                <div class="swipe-hint">Swipe to see more</div>
             </div>
         </div>
     </section>
@@ -203,13 +204,6 @@
                 </div>
             </div>
             <div class="proof-item fade-up stagger-3">
-                <div class="proof-icon">📲</div>
-                <div class="proof-content">
-                    <strong><span data-count="5000" data-suffix="+ Downloads">5,000+ Downloads</span></strong>
-                    <span>And growing daily</span>
-                </div>
-            </div>
-            <div class="proof-item fade-up stagger-4">
                 <div class="proof-icon">🚀</div>
                 <div class="proof-content">
                     <strong>All in One</strong>
@@ -219,69 +213,74 @@
         </div>
     </section>
 
-    <!-- BEFORE VS AFTER -->
+    <!-- BEFORE VS AFTER - Interactive Toggle -->
     <section class="before-after">
         <div class="before-after-container">
             <div class="section-header fade-up">
                 <h2>Here's What Changes</h2>
-                <p>See the difference HOMEi makes to your student house</p>
+                <p>Tap to see the difference HOMEi makes</p>
             </div>
 
-            <div class="before-after-grid">
-                <div class="before-card fade-right">
-                    <div class="before-after-label before-label">&#10060; Without HOMEi</div>
-                    <ul class="before-after-list">
-                        <li>
-                            <span class="before-after-icon">😤</span>
-                            <span>"Who ate my food?" arguments every week</span>
-                        </li>
-                        <li>
-                            <span class="before-after-icon">💸</span>
-                            <span>Chasing housemates for bill money</span>
-                        </li>
-                        <li>
-                            <span class="before-after-icon">🗑️</span>
-                            <span>Nobody takes the bins out</span>
-                        </li>
-                        <li>
-                            <span class="before-after-icon">📱</span>
-                            <span>100+ unread group chat messages</span>
-                        </li>
-                        <li>
-                            <span class="before-after-icon">😰</span>
-                            <span>Awkward tension you can feel</span>
-                        </li>
-                    </ul>
+            <!-- Toggle Tabs for Mobile Interactivity -->
+            <div class="toggle-tabs fade-up" id="beforeAfterToggle">
+                <button class="toggle-tab active" data-tab="before">Without HOMEi</button>
+                <button class="toggle-tab" data-tab="after">With HOMEi</button>
+            </div>
+
+            <!-- Toggle Content - Mobile View -->
+            <div class="toggle-content-wrapper">
+                <div class="toggle-content active" id="before-content">
+                    <div class="before-card" style="max-width: 500px; margin: 0 auto;">
+                        <ul class="before-after-list">
+                            <li>
+                                <span class="before-after-icon">😤</span>
+                                <span>"Who ate my food?" arguments every week</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">💸</span>
+                                <span>Chasing housemates for bill money</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">🗑️</span>
+                                <span>Nobody takes the bins out</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">📱</span>
+                                <span>100+ unread group chat messages</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">😰</span>
+                                <span>Awkward tension you can feel</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="before-after-divider">
-                    <div class="before-after-arrow">&#10132;</div>
-                </div>
-
-                <div class="after-card fade-left">
-                    <div class="before-after-label after-label">&#10004; With HOMEi</div>
-                    <ul class="before-after-list">
-                        <li>
-                            <span class="before-after-icon">🛒</span>
-                            <span>Shared shopping lists everyone can see</span>
-                        </li>
-                        <li>
-                            <span class="before-after-icon">💰</span>
-                            <span>Bills split fairly and tracked automatically</span>
-                        </li>
-                        <li>
-                            <span class="before-after-icon">✅</span>
-                            <span>Fair chore rota with reminders</span>
-                        </li>
-                        <li>
-                            <span class="before-after-icon">📅</span>
-                            <span>One calendar for everything house-related</span>
-                        </li>
-                        <li>
-                            <span class="before-after-icon">😊</span>
-                            <span>A house that actually feels like home</span>
-                        </li>
-                    </ul>
+                <div class="toggle-content" id="after-content">
+                    <div class="after-card" style="max-width: 500px; margin: 0 auto;">
+                        <ul class="before-after-list">
+                            <li>
+                                <span class="before-after-icon">🛒</span>
+                                <span>Shared shopping lists everyone can see</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">💰</span>
+                                <span>Bills split fairly and tracked automatically</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">✅</span>
+                                <span>Fair chore rota with reminders</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">📅</span>
+                                <span>One calendar for everything house-related</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">😊</span>
+                                <span>A house that actually feels like home</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
@@ -500,6 +499,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="scripts/main.js?v=2.5"></script>
+    <script src="scripts/main.js?v=2.6"></script>
 </body>
 </html>
