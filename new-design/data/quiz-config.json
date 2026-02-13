@@ -1,0 +1,145 @@
+{
+  "title": "What Type of Housemate Are You?",
+  "questions": [
+    {
+      "id": 1,
+      "question": "It's the end of the month and bills are due. What do you do?",
+      "options": [
+        {
+          "text": "I've already calculated everyone's share and sent reminders",
+          "scores": { "organiser": 3, "peacekeeper": 1, "socialite": 0, "chilled": 0 }
+        },
+        {
+          "text": "I'll sort it when someone mentions it",
+          "scores": { "organiser": 0, "peacekeeper": 1, "socialite": 1, "chilled": 3 }
+        },
+        {
+          "text": "I make sure everyone's happy with the split before paying",
+          "scores": { "organiser": 1, "peacekeeper": 3, "socialite": 1, "chilled": 0 }
+        },
+        {
+          "text": "Bills? I thought someone else was handling that!",
+          "scores": { "organiser": 0, "peacekeeper": 0, "socialite": 2, "chilled": 2 }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "The kitchen is a mess. What's your move?",
+      "options": [
+        {
+          "text": "Create a cleaning rota so this never happens again",
+          "scores": { "organiser": 3, "peacekeeper": 1, "socialite": 0, "chilled": 0 }
+        },
+        {
+          "text": "Clean it myself to avoid any drama",
+          "scores": { "organiser": 1, "peacekeeper": 3, "socialite": 0, "chilled": 1 }
+        },
+        {
+          "text": "Suggest we all clean together and put some music on",
+          "scores": { "organiser": 0, "peacekeeper": 1, "socialite": 3, "chilled": 1 }
+        },
+        {
+          "text": "Honestly? I might be part of the problem...",
+          "scores": { "organiser": 0, "peacekeeper": 0, "socialite": 1, "chilled": 3 }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Your housemate forgot to take the bins out (again). You...",
+      "options": [
+        {
+          "text": "Add it to the house app and set up automatic reminders",
+          "scores": { "organiser": 3, "peacekeeper": 1, "socialite": 0, "chilled": 0 }
+        },
+        {
+          "text": "Just do it yourself to keep the peace",
+          "scores": { "organiser": 0, "peacekeeper": 3, "socialite": 0, "chilled": 1 }
+        },
+        {
+          "text": "Joke about it in the group chat",
+          "scores": { "organiser": 0, "peacekeeper": 1, "socialite": 3, "chilled": 1 }
+        },
+        {
+          "text": "Wait, the bins needed taking out?",
+          "scores": { "organiser": 0, "peacekeeper": 0, "socialite": 0, "chilled": 3 }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "There's tension in the house. How do you handle it?",
+      "options": [
+        {
+          "text": "Call a house meeting with a clear agenda",
+          "scores": { "organiser": 3, "peacekeeper": 2, "socialite": 0, "chilled": 0 }
+        },
+        {
+          "text": "Talk to each person privately to understand both sides",
+          "scores": { "organiser": 1, "peacekeeper": 3, "socialite": 1, "chilled": 0 }
+        },
+        {
+          "text": "Suggest a house night out to clear the air",
+          "scores": { "organiser": 0, "peacekeeper": 1, "socialite": 3, "chilled": 1 }
+        },
+        {
+          "text": "Stay in my room until it blows over",
+          "scores": { "organiser": 0, "peacekeeper": 0, "socialite": 0, "chilled": 3 }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "What's your ideal Friday night in the house?",
+      "options": [
+        {
+          "text": "Planning next week's meals and getting ahead on tasks",
+          "scores": { "organiser": 3, "peacekeeper": 0, "socialite": 0, "chilled": 1 }
+        },
+        {
+          "text": "Cooking dinner for everyone and having a chat",
+          "scores": { "organiser": 1, "peacekeeper": 3, "socialite": 2, "chilled": 0 }
+        },
+        {
+          "text": "Pre-drinks and getting ready to go out!",
+          "scores": { "organiser": 0, "peacekeeper": 0, "socialite": 3, "chilled": 1 }
+        },
+        {
+          "text": "Netflix in my room with snacks",
+          "scores": { "organiser": 0, "peacekeeper": 1, "socialite": 0, "chilled": 3 }
+        }
+      ]
+    }
+  ],
+  "results": {
+    "organiser": {
+      "title": "The Organiser",
+      "badge": "📋",
+      "description": "You're the backbone of your house! Without you, bills would go unpaid and the bins would overflow. You love a good system and your housemates secretly (or not so secretly) rely on you.",
+      "traits": ["Detail-oriented", "Reliable", "Forward-thinking", "Natural leader"],
+      "homeiMessage": "HOMEi was basically made for you. Get the tools to organise your house like a pro."
+    },
+    "peacekeeper": {
+      "title": "The Peacekeeper",
+      "badge": "☮️",
+      "description": "You're the glue that holds your house together. When tensions rise, you're the one smoothing things over. Everyone feels comfortable coming to you with problems.",
+      "traits": ["Empathetic", "Diplomatic", "Good listener", "Conflict resolver"],
+      "homeiMessage": "HOMEi helps prevent conflicts before they start. Fair splits, clear rotas - less drama for you to manage!"
+    },
+    "socialite": {
+      "title": "The Social Butterfly",
+      "badge": "🦋",
+      "description": "You're the life of the house! You know everyone's schedule, organise the best nights out, and make sure the house is never boring. Your energy is contagious.",
+      "traits": ["Outgoing", "Fun-loving", "Great communicator", "Event planner"],
+      "homeiMessage": "With HOMEi handling the boring stuff, you'll have even more time for what you do best - bringing people together!"
+    },
+    "chilled": {
+      "title": "The Chilled One",
+      "badge": "😎",
+      "description": "Nothing phases you. You go with the flow and don't stress about the small stuff. Your relaxed attitude helps keep the house calm (even if you occasionally forget the bins).",
+      "traits": ["Laid-back", "Easy-going", "Low maintenance", "Stress-free"],
+      "homeiMessage": "HOMEi sends you gentle reminders so you can stay chilled without letting your housemates down."
+    }
+  }
+}

@@ -2209,3 +2209,685 @@ p {
 .social-link:hover img {
     opacity: 1;
 }
+
+/* ==========================================
+   16. DAY IN THE LIFE & VIDEO SECTION
+   ========================================== */
+.day-in-life {
+    padding: var(--spacing-xl) var(--spacing-md);
+    background: var(--bg-white);
+}
+
+.day-in-life-container {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+}
+
+.video-showcase {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.video-wrapper {
+    position: relative;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    background: var(--bg-dark);
+    aspect-ratio: 16/9;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 30px rgba(255, 160, 0, 0.4);
+}
+
+.video-play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 12px 40px rgba(255, 160, 0, 0.5);
+}
+
+.video-play-btn .play-icon {
+    font-size: 1.5rem;
+    color: white;
+    margin-left: 4px;
+}
+
+.video-play-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Day Timeline */
+.day-timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    background: var(--glass-white);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-time {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-orange);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.timeline-content strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-dark);
+}
+
+.timeline-content p {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .day-timeline {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .video-play-btn {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .video-play-btn .play-icon {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .day-timeline {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================
+   17. TIME SAVED CALCULATOR
+   ========================================== */
+.calculator-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+    background: linear-gradient(135deg, #fff8e8 0%, #fff4d9 100%);
+}
+
+.calculator-container {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+}
+
+.calculator-card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.calculator-inputs {
+    margin-bottom: 2rem;
+}
+
+.calc-input-group {
+    margin-bottom: 1.5rem;
+}
+
+.calc-input-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.calc-slider-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.calc-slider {
+    flex: 1;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--bg-light);
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.calc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(255, 160, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.calc-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.calc-value {
+    min-width: 40px;
+    height: 40px;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.calc-options {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.calc-option {
+    flex: 1;
+    min-width: 100px;
+    padding: 0.875rem 1.25rem;
+    background: var(--bg-light);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-md);
+    font-weight: 500;
+    color: var(--text-medium);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.calc-option:hover {
+    border-color: var(--primary-orange);
+    color: var(--primary-orange);
+}
+
+.calc-option.active {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: transparent;
+}
+
+.calculator-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.result-card {
+    background: var(--bg-light);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.result-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.result-label {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    margin-bottom: 1rem;
+}
+
+.progress-bar-container {
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: 4px;
+    transition: width 0.6s ease;
+}
+
+.progress-bar.secondary {
+    background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+}
+
+.progress-bar.tertiary {
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+}
+
+.calculator-cta {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.calculator-cta p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.calculator-cta strong {
+    color: var(--primary-orange);
+    font-size: 1.3rem;
+}
+
+@media (max-width: 768px) {
+    .calculator-card {
+        padding: 1.5rem;
+    }
+    
+    .calculator-results {
+        grid-template-columns: 1fr;
+    }
+    
+    .calc-options {
+        flex-direction: column;
+    }
+    
+    .calc-option {
+        min-width: auto;
+    }
+}
+
+/* ==========================================
+   18. HOUSEMATE QUIZ
+   ========================================== */
+.quiz-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+    background: var(--bg-light);
+}
+
+.quiz-container {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+}
+
+.quiz-card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.quiz-progress {
+    margin-bottom: 2rem;
+}
+
+.quiz-progress-bar {
+    height: 6px;
+    background: var(--gradient-primary);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+    width: 20%;
+}
+
+.quiz-progress-text {
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    margin-top: 0.5rem;
+}
+
+.quiz-question {
+    margin-bottom: 1.5rem;
+}
+
+.quiz-question h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.quiz-option {
+    padding: 1rem 1.25rem;
+    background: var(--bg-light);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-md);
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.quiz-option:hover {
+    border-color: var(--primary-orange);
+    background: #fff8e8;
+}
+
+.quiz-option.selected {
+    border-color: var(--primary-orange);
+    background: linear-gradient(135deg, rgba(255, 200, 0, 0.1), rgba(255, 160, 0, 0.15));
+}
+
+/* Quiz Results */
+.quiz-results {
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.result-badge {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounceIn 0.6s ease;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.result-title {
+    font-size: 1.75rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.result-description {
+    font-size: 1.1rem;
+    color: var(--text-medium);
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.result-traits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.trait-badge {
+    background: var(--bg-light);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    border: 1px solid var(--glass-border);
+}
+
+.result-cta {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.result-cta p {
+    margin-bottom: 1rem;
+    color: var(--text-medium);
+}
+
+.quiz-restart {
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-decoration: underline;
+}
+
+.quiz-restart:hover {
+    color: var(--primary-orange);
+}
+
+@media (max-width: 768px) {
+    .quiz-card {
+        padding: 1.5rem;
+    }
+    
+    .quiz-question h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* ==========================================
+   19. GAMIFICATION & ACHIEVEMENTS
+   ========================================== */
+.gamification-stats {
+    padding: var(--spacing-xl) var(--spacing-md);
+    background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
+}
+
+.gamification-container {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+}
+
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.achievement-card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-md);
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.achievement-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.achievement-card:hover::before {
+    opacity: 1;
+}
+
+.achievement-card.unlocked {
+    background: linear-gradient(135deg, rgba(255, 200, 0, 0.05), rgba(255, 160, 0, 0.08));
+}
+
+.achievement-card.unlocked::before {
+    opacity: 1;
+}
+
+.achievement-card.locked {
+    opacity: 0.6;
+    filter: grayscale(0.5);
+}
+
+.achievement-badge {
+    font-size: 2rem;
+    min-width: 50px;
+    text-align: center;
+}
+
+.achievement-content {
+    flex: 1;
+}
+
+.achievement-content strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 0.125rem;
+}
+
+.achievement-content span {
+    font-size: 0.85rem;
+    color: var(--text-medium);
+}
+
+.achievement-xp {
+    background: var(--gradient-primary);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+}
+
+.achievement-card.locked .achievement-xp {
+    background: var(--bg-light);
+    color: var(--text-light);
+}
+
+.gamification-cta {
+    text-align: center;
+}
+
+.gamification-cta p {
+    margin-bottom: 1rem;
+    color: var(--text-medium);
+}
+
+@media (max-width: 992px) {
+    .achievement-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .achievement-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .achievement-card {
+        padding: 1rem;
+    }
+}
+
+/* ==========================================
+   20. ENHANCED ANIMATIONS
+   ========================================== */
+/* Progress bar animation on scroll */
+.progress-bar {
+    transform-origin: left;
+    animation: progressGrow 1s ease-out forwards;
+}
+
+@keyframes progressGrow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+/* Number count up animation */
+.animate-number {
+    animation: countUp 1s ease-out forwards;
+}
+
+/* Staggered fade in */
+.stagger-fade > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: staggerFadeIn 0.5s ease forwards;
+}
+
+.stagger-fade > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-fade > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-fade > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-fade > *:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes staggerFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover lift effect for all cards */
+.lift-on-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lift-on-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}

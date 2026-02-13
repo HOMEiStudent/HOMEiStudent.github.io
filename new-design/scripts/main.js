@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initStickyCta();
     initBeforeAfterToggle();
     initFaqAccordion();
+    initVideoPlayer();
+    initTimeCalculator();
+    initHousemateQuiz();
 });
 
 // ==========================================
@@ -723,5 +726,354 @@ function initFaqAccordion() {
         firstItem.classList.add('active');
         var firstToggle = firstItem.querySelector('.faq-toggle');
         if (firstToggle) firstToggle.textContent = '−';
+    }
+}
+
+// ==========================================
+// 13. VIDEO PLAYER
+// ==========================================
+function initVideoPlayer() {
+    var video = document.getElementById('demoVideo');
+    var playBtn = document.getElementById('videoPlayBtn');
+    
+    if (!video || !playBtn) return;
+    
+    playBtn.addEventListener('click', function() {
+        if (video.paused) {
+            video.play();
+            playBtn.classList.add('hidden');
+        }
+    });
+    
+    video.addEventListener('click', function() {
+        if (video.paused) {
+            video.play();
+            playBtn.classList.add('hidden');
+        } else {
+            video.pause();
+            playBtn.classList.remove('hidden');
+        }
+    });
+    
+    video.addEventListener('ended', function() {
+        playBtn.classList.remove('hidden');
+    });
+}
+
+// ==========================================
+// 14. TIME SAVED CALCULATOR
+// ==========================================
+function initTimeCalculator() {
+    var housemateSlider = document.getElementById('housemateCount');
+    var housemateValue = document.getElementById('housemateValue');
+    var calcOptions = document.querySelectorAll('.calc-option');
+    
+    if (!housemateSlider) return;
+    
+    var settings = {
+        housemates: 4,
+        billFrequency: 4,
+        choreFrequency: 3
+    };
+    
+    // Update slider value display
+    housemateSlider.addEventListener('input', function() {
+        settings.housemates = parseInt(this.value);
+        housemateValue.textContent = this.value;
+        updateCalculatorResults();
+    });
+    
+    // Handle option buttons
+    calcOptions.forEach(function(option) {
+        option.addEventListener('click', function() {
+            var parent = this.parentElement;
+            parent.querySelectorAll('.calc-option').forEach(function(opt) {
+                opt.classList.remove('active');
+            });
+            this.classList.add('active');
+            
+            var value = parseInt(this.getAttribute('data-value'));
+            var label = this.closest('.calc-input-group').querySelector('label').textContent;
+            
+            if (label.includes('bills')) {
+                settings.billFrequency = value;
+            } else if (label.includes('chore')) {
+                settings.choreFrequency = value;
+            }
+            
+            updateCalculatorResults();
+        });
+    });
+    
+    function updateCalculatorResults() {
+        // Calculate time saved based on settings
+        var baseHours = 2; // Base hours saved per housemate
+        var hoursSaved = Math.round(baseHours * (settings.housemates - 1) + 
+                         settings.billFrequency * 0.5 + 
+                         settings.choreFrequency * 0.75);
+        
+        var argumentsAvoided = Math.round(settings.housemates * settings.choreFrequency * 0.8);
+        var studyHours = Math.round(hoursSaved * 0.7);
+        var yearlyHours = hoursSaved * 12;
+        
+        // Update display
+        animateNumber('hoursSaved', hoursSaved);
+        animateNumber('argumentsAvoided', argumentsAvoided);
+        animateNumber('studyHours', studyHours);
+        animateNumber('yearlyHours', yearlyHours);
+        
+        // Update progress bars
+        var maxHours = 20;
+        var maxArguments = 30;
+        var maxStudy = 15;
+        
+        document.getElementById('hoursProgress').style.width = 
+            Math.min(100, (hoursSaved / maxHours) * 100) + '%';
+        document.getElementById('argumentsProgress').style.width = 
+            Math.min(100, (argumentsAvoided / maxArguments) * 100) + '%';
+        document.getElementById('studyProgress').style.width = 
+            Math.min(100, (studyHours / maxStudy) * 100) + '%';
+    }
+    
+    function animateNumber(elementId, target) {
+        var element = document.getElementById(elementId);
+        if (!element) return;
+        
+        var current = parseInt(element.textContent) || 0;
+        var increment = (target - current) / 20;
+        var step = 0;
+        
+        var animation = setInterval(function() {
+            step++;
+            current += increment;
+            element.textContent = Math.round(current);
+            
+            if (step >= 20) {
+                clearInterval(animation);
+                element.textContent = target;
+            }
+        }, 25);
+    }
+    
+    // Initial calculation
+    updateCalculatorResults();
+}
+
+// ==========================================
+// 15. HOUSEMATE QUIZ
+// ==========================================
+function initHousemateQuiz() {
+    var quizCard = document.getElementById('quizCard');
+    var quizQuestions = document.getElementById('quizQuestions');
+    var quizResults = document.getElementById('quizResults');
+    var progressBar = document.getElementById('quizProgressBar');
+    var progressText = document.getElementById('quizProgressText');
+    var restartBtn = document.getElementById('quizRestart');
+    
+    if (!quizCard || !quizQuestions) return;
+    
+    var quizConfig = null;
+    var currentQuestion = 0;
+    var scores = {
+        organiser: 0,
+        peacekeeper: 0,
+        socialite: 0,
+        chilled: 0
+    };
+    
+    // Load quiz config
+    fetch('data/quiz-config.json')
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+            quizConfig = data;
+            renderQuestion();
+        })
+        .catch(function(error) {
+            console.log('Quiz config not loaded, using default');
+            quizConfig = getDefaultQuizConfig();
+            renderQuestion();
+        });
+    
+    function getDefaultQuizConfig() {
+        return {
+            questions: [
+                {
+                    id: 1,
+                    question: "It's the end of the month and bills are due. What do you do?",
+                    options: [
+                        { text: "I've already calculated everyone's share and sent reminders", scores: { organiser: 3, peacekeeper: 1, socialite: 0, chilled: 0 } },
+                        { text: "I'll sort it when someone mentions it", scores: { organiser: 0, peacekeeper: 1, socialite: 1, chilled: 3 } },
+                        { text: "I make sure everyone's happy with the split before paying", scores: { organiser: 1, peacekeeper: 3, socialite: 1, chilled: 0 } },
+                        { text: "Bills? I thought someone else was handling that!", scores: { organiser: 0, peacekeeper: 0, socialite: 2, chilled: 2 } }
+                    ]
+                },
+                {
+                    id: 2,
+                    question: "The kitchen is a mess. What's your move?",
+                    options: [
+                        { text: "Create a cleaning rota so this never happens again", scores: { organiser: 3, peacekeeper: 1, socialite: 0, chilled: 0 } },
+                        { text: "Clean it myself to avoid any drama", scores: { organiser: 1, peacekeeper: 3, socialite: 0, chilled: 1 } },
+                        { text: "Suggest we all clean together and put some music on", scores: { organiser: 0, peacekeeper: 1, socialite: 3, chilled: 1 } },
+                        { text: "Honestly? I might be part of the problem...", scores: { organiser: 0, peacekeeper: 0, socialite: 1, chilled: 3 } }
+                    ]
+                },
+                {
+                    id: 3,
+                    question: "Your housemate forgot to take the bins out (again). You...",
+                    options: [
+                        { text: "Add it to the house app and set up automatic reminders", scores: { organiser: 3, peacekeeper: 1, socialite: 0, chilled: 0 } },
+                        { text: "Just do it yourself to keep the peace", scores: { organiser: 0, peacekeeper: 3, socialite: 0, chilled: 1 } },
+                        { text: "Joke about it in the group chat", scores: { organiser: 0, peacekeeper: 1, socialite: 3, chilled: 1 } },
+                        { text: "Wait, the bins needed taking out?", scores: { organiser: 0, peacekeeper: 0, socialite: 0, chilled: 3 } }
+                    ]
+                },
+                {
+                    id: 4,
+                    question: "There's tension in the house. How do you handle it?",
+                    options: [
+                        { text: "Call a house meeting with a clear agenda", scores: { organiser: 3, peacekeeper: 2, socialite: 0, chilled: 0 } },
+                        { text: "Talk to each person privately to understand both sides", scores: { organiser: 1, peacekeeper: 3, socialite: 1, chilled: 0 } },
+                        { text: "Suggest a house night out to clear the air", scores: { organiser: 0, peacekeeper: 1, socialite: 3, chilled: 1 } },
+                        { text: "Stay in my room until it blows over", scores: { organiser: 0, peacekeeper: 0, socialite: 0, chilled: 3 } }
+                    ]
+                },
+                {
+                    id: 5,
+                    question: "What's your ideal Friday night in the house?",
+                    options: [
+                        { text: "Planning next week's meals and getting ahead on tasks", scores: { organiser: 3, peacekeeper: 0, socialite: 0, chilled: 1 } },
+                        { text: "Cooking dinner for everyone and having a chat", scores: { organiser: 1, peacekeeper: 3, socialite: 2, chilled: 0 } },
+                        { text: "Pre-drinks and getting ready to go out!", scores: { organiser: 0, peacekeeper: 0, socialite: 3, chilled: 1 } },
+                        { text: "Netflix in my room with snacks", scores: { organiser: 0, peacekeeper: 1, socialite: 0, chilled: 3 } }
+                    ]
+                }
+            ],
+            results: {
+                organiser: {
+                    title: "The Organiser",
+                    badge: "📋",
+                    description: "You're the backbone of your house! Without you, bills would go unpaid and the bins would overflow.",
+                    traits: ["Detail-oriented", "Reliable", "Forward-thinking", "Natural leader"]
+                },
+                peacekeeper: {
+                    title: "The Peacekeeper",
+                    badge: "☮️",
+                    description: "You're the glue that holds your house together. When tensions rise, you're the one smoothing things over.",
+                    traits: ["Empathetic", "Diplomatic", "Good listener", "Conflict resolver"]
+                },
+                socialite: {
+                    title: "The Social Butterfly",
+                    badge: "🦋",
+                    description: "You're the life of the house! You know everyone's schedule and organise the best nights out.",
+                    traits: ["Outgoing", "Fun-loving", "Great communicator", "Event planner"]
+                },
+                chilled: {
+                    title: "The Chilled One",
+                    badge: "😎",
+                    description: "Nothing phases you. You go with the flow and don't stress about the small stuff.",
+                    traits: ["Laid-back", "Easy-going", "Low maintenance", "Stress-free"]
+                }
+            }
+        };
+    }
+    
+    function renderQuestion() {
+        if (!quizConfig) return;
+        
+        var question = quizConfig.questions[currentQuestion];
+        var totalQuestions = quizConfig.questions.length;
+        
+        // Update progress
+        var progress = ((currentQuestion + 1) / totalQuestions) * 100;
+        progressBar.style.width = progress + '%';
+        progressText.textContent = 'Question ' + (currentQuestion + 1) + ' of ' + totalQuestions;
+        
+        // Render question
+        var html = '<div class="quiz-question">';
+        html += '<h3>' + question.question + '</h3>';
+        html += '<div class="quiz-options">';
+        
+        question.options.forEach(function(option, index) {
+            html += '<button class="quiz-option" data-index="' + index + '">' + option.text + '</button>';
+        });
+        
+        html += '</div></div>';
+        
+        quizQuestions.innerHTML = html;
+        
+        // Bind click events
+        var options = quizQuestions.querySelectorAll('.quiz-option');
+        options.forEach(function(opt) {
+            opt.addEventListener('click', function() {
+                selectOption(this, parseInt(this.getAttribute('data-index')));
+            });
+        });
+    }
+    
+    function selectOption(element, optionIndex) {
+        // Add selected class
+        element.classList.add('selected');
+        
+        // Get scores for this option
+        var question = quizConfig.questions[currentQuestion];
+        var optionScores = question.options[optionIndex].scores;
+        
+        // Add to total scores
+        Object.keys(optionScores).forEach(function(key) {
+            scores[key] += optionScores[key];
+        });
+        
+        // Move to next question or show results
+        setTimeout(function() {
+            currentQuestion++;
+            
+            if (currentQuestion >= quizConfig.questions.length) {
+                showResults();
+            } else {
+                renderQuestion();
+            }
+        }, 400);
+    }
+    
+    function showResults() {
+        quizQuestions.style.display = 'none';
+        quizResults.style.display = 'block';
+        progressBar.style.width = '100%';
+        progressText.textContent = 'Complete!';
+        
+        // Find highest score
+        var maxScore = 0;
+        var resultType = 'organiser';
+        
+        Object.keys(scores).forEach(function(key) {
+            if (scores[key] > maxScore) {
+                maxScore = scores[key];
+                resultType = key;
+            }
+        });
+        
+        // Display result
+        var result = quizConfig.results[resultType];
+        
+        document.getElementById('resultBadge').textContent = result.badge;
+        document.getElementById('resultTitle').textContent = result.title;
+        document.getElementById('resultDescription').textContent = result.description;
+        
+        var traitsHtml = '';
+        result.traits.forEach(function(trait) {
+            traitsHtml += '<span class="trait-badge">' + trait + '</span>';
+        });
+        document.getElementById('resultTraits').innerHTML = traitsHtml;
+    }
+    
+    // Restart quiz
+    if (restartBtn) {
+        restartBtn.addEventListener('click', function() {
+            currentQuestion = 0;
+            scores = { organiser: 0, peacekeeper: 0, socialite: 0, chilled: 0 };
+            quizQuestions.style.display = 'block';
+            quizResults.style.display = 'none';
+            renderQuestion();
+        });
     }
 }

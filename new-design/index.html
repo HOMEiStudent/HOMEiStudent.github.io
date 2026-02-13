@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOMEi - Student House Management App | Bills, Chores & Schedules</title>
-    <meta name="description" content="HOMEi helps students split bills, manage chores, and coordinate schedules in one free app. Focus on your studies, not house admin. Download free for iOS and Android.">
+    <meta name="description" content="HOMEi helps students split bills, manage chores, and coordinate schedules in one free app. Focus on your studies, not house admin. Free download for iOS and Android.">
     <meta name="keywords" content="student house app, bill splitting app, chore rota app, housemate app, student living, shared house management, university accommodation, student bills">
     <meta name="author" content="HOMEiStudent Ltd">
     <meta name="robots" content="index, follow">
@@ -120,7 +120,7 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="fade-up">Student House Life, Simplified</h1>
-                <p class="fade-up stagger-1">Bills. Chores. Schedules. All sorted in one free app, so you can focus on your degree and actually enjoy student living.</p>
+                <p class="fade-up stagger-1">Bills. Chores. Schedules. Lectures. Social plans. All sorted in one free app, so you can focus on your degree and actually enjoy student life.</p>
 
                 <div class="benefits">
                     <div class="benefit-item fade-up stagger-1">
@@ -273,7 +273,7 @@
                             </li>
                             <li>
                                 <span class="before-after-icon">📅</span>
-                                <span>One calendar for everything house-related</span>
+                                <span>One calendar for house stuff AND your personal schedule</span>
                             </li>
                             <li>
                                 <span class="before-after-icon">😊</span>
@@ -302,8 +302,8 @@
             <div class="features-grid">
                 <div class="feature-card fade-up stagger-1">
                     <div class="feature-icon">📅</div>
-                    <h3>House Calendar</h3>
-                    <p>Bin days, landlord visits, exams, society events. Everyone stays in the loop with one shared calendar.</p>
+                    <h3>House & Personal Calendar</h3>
+                    <p>Track house events, lecture timetables, exam dates, and social plans. Your housemates see house stuff, you see everything.</p>
                 </div>
                 <div class="feature-card fade-up stagger-2">
                     <div class="feature-icon">💰</div>
@@ -324,6 +324,136 @@
 
             <div class="text-center fade-up" style="margin-top: 3rem;">
                 <a href="features.html" class="nav-cta" style="display: inline-block; padding: 1rem 2rem;">Explore All Features</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DAY IN THE LIFE + VIDEO SECTION -->
+    <section class="day-in-life">
+        <div class="day-in-life-container">
+            <div class="section-header fade-up">
+                <h2>A Day in the Life with HOMEi</h2>
+                <p>See how students use HOMEi to stay organised</p>
+            </div>
+
+            <div class="video-showcase fade-up">
+                <div class="video-wrapper">
+                    <!-- Replace src with your video file path -->
+                    <video id="demoVideo" poster="images/video-poster.jpg" playsinline>
+                        <source src="images/homei-demo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button class="video-play-btn" id="videoPlayBtn" aria-label="Play video">
+                        <span class="play-icon">▶</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="day-timeline fade-up">
+                <div class="timeline-item">
+                    <div class="timeline-time">8:00 AM</div>
+                    <div class="timeline-icon">☀️</div>
+                    <div class="timeline-content">
+                        <strong>Morning reminder</strong>
+                        <p>HOMEi reminds you it's your turn to take the bins out</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">12:30 PM</div>
+                    <div class="timeline-icon">🛒</div>
+                    <div class="timeline-content">
+                        <strong>Quick shop</strong>
+                        <p>Check the shared list on your way home from lectures</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">6:00 PM</div>
+                    <div class="timeline-icon">💰</div>
+                    <div class="timeline-content">
+                        <strong>Bill arrives</strong>
+                        <p>Split it instantly - everyone gets notified</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">9:00 PM</div>
+                    <div class="timeline-icon">😌</div>
+                    <div class="timeline-content">
+                        <strong>Relax</strong>
+                        <p>House is sorted, time for Netflix</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIME SAVED CALCULATOR -->
+    <section class="calculator-section">
+        <div class="calculator-container">
+            <div class="section-header fade-up">
+                <h2>How Much Time Could You Save?</h2>
+                <p>Answer a few questions to see your potential time savings</p>
+            </div>
+
+            <div class="calculator-card fade-up">
+                <div class="calculator-inputs">
+                    <div class="calc-input-group">
+                        <label for="housemateCount">How many housemates do you have?</label>
+                        <div class="calc-slider-wrapper">
+                            <input type="range" id="housemateCount" min="2" max="10" value="4" class="calc-slider">
+                            <span class="calc-value" id="housemateValue">4</span>
+                        </div>
+                    </div>
+
+                    <div class="calc-input-group">
+                        <label for="billFrequency">How often do you split bills?</label>
+                        <div class="calc-options">
+                            <button class="calc-option active" data-value="4">Weekly</button>
+                            <button class="calc-option" data-value="2">Fortnightly</button>
+                            <button class="calc-option" data-value="1">Monthly</button>
+                        </div>
+                    </div>
+
+                    <div class="calc-input-group">
+                        <label for="choreFrequency">How often do chore arguments happen?</label>
+                        <div class="calc-options">
+                            <button class="calc-option" data-value="5">Daily</button>
+                            <button class="calc-option active" data-value="3">Few times a week</button>
+                            <button class="calc-option" data-value="1">Rarely</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calculator-results">
+                    <div class="result-card">
+                        <div class="result-icon">⏰</div>
+                        <div class="result-number" id="hoursSaved">8</div>
+                        <div class="result-label">Hours saved per month</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="hoursProgress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-icon">😤</div>
+                        <div class="result-number" id="argumentsAvoided">12</div>
+                        <div class="result-label">Arguments avoided</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar secondary" id="argumentsProgress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-icon">📚</div>
+                        <div class="result-number" id="studyHours">6</div>
+                        <div class="result-label">Extra study hours</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar tertiary" id="studyProgress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calculator-cta">
+                    <p>That's <strong id="yearlyHours">96</strong> hours a year you could spend on your degree!</p>
+                    <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="nav-cta" target="_blank" rel="noopener noreferrer">Start Saving Time</a>
+                </div>
             </div>
         </div>
     </section>
@@ -352,6 +482,110 @@
                     <h3>Enjoy Student Life</h3>
                     <p>Start splitting bills, assigning chores, and spending more time on what matters.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOUSEMATE QUIZ -->
+    <section class="quiz-section">
+        <div class="quiz-container">
+            <div class="section-header fade-up">
+                <h2>What Type of Housemate Are You?</h2>
+                <p>Take our quick quiz and find out!</p>
+            </div>
+
+            <div class="quiz-card fade-up" id="quizCard">
+                <!-- Quiz Progress -->
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="quizProgressBar"></div>
+                    <span class="quiz-progress-text" id="quizProgressText">Question 1 of 5</span>
+                </div>
+
+                <!-- Quiz Questions Container -->
+                <div class="quiz-questions" id="quizQuestions">
+                    <!-- Questions will be loaded from JSON -->
+                </div>
+
+                <!-- Quiz Results (hidden initially) -->
+                <div class="quiz-results" id="quizResults" style="display: none;">
+                    <div class="result-badge" id="resultBadge">🏆</div>
+                    <h3 class="result-title" id="resultTitle">The Organiser</h3>
+                    <p class="result-description" id="resultDescription">You're the one who keeps everything running smoothly.</p>
+                    <div class="result-traits" id="resultTraits">
+                        <!-- Traits will be added dynamically -->
+                    </div>
+                    <div class="result-cta">
+                        <p>HOMEi is perfect for you! Get the tools to keep your house organised.</p>
+                        <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="nav-cta" target="_blank" rel="noopener noreferrer">Download HOMEi Free</a>
+                        <button class="quiz-restart" id="quizRestart">Take Quiz Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GAMIFICATION STATS -->
+    <section class="gamification-stats">
+        <div class="gamification-container">
+            <div class="section-header fade-up">
+                <h2>Level Up Your House</h2>
+                <p>Unlock achievements as you organise your home</p>
+            </div>
+
+            <div class="achievement-grid fade-up">
+                <div class="achievement-card unlocked">
+                    <div class="achievement-badge">🏠</div>
+                    <div class="achievement-content">
+                        <strong>House Creator</strong>
+                        <span>Set up your first house</span>
+                    </div>
+                    <div class="achievement-xp">+50 XP</div>
+                </div>
+                <div class="achievement-card unlocked">
+                    <div class="achievement-badge">👥</div>
+                    <div class="achievement-content">
+                        <strong>Team Builder</strong>
+                        <span>Invite 3 housemates</span>
+                    </div>
+                    <div class="achievement-xp">+100 XP</div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-badge">💰</div>
+                    <div class="achievement-content">
+                        <strong>Bill Splitter</strong>
+                        <span>Split your first bill</span>
+                    </div>
+                    <div class="achievement-xp">+75 XP</div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-badge">🧹</div>
+                    <div class="achievement-content">
+                        <strong>Chore Champion</strong>
+                        <span>Complete 10 chores</span>
+                    </div>
+                    <div class="achievement-xp">+150 XP</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-badge">⭐</div>
+                    <div class="achievement-content">
+                        <strong>House Hero</strong>
+                        <span>30-day streak</span>
+                    </div>
+                    <div class="achievement-xp">+500 XP</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-badge">🏆</div>
+                    <div class="achievement-content">
+                        <strong>Harmony Master</strong>
+                        <span>Zero arguments for a month</span>
+                    </div>
+                    <div class="achievement-xp">+1000 XP</div>
+                </div>
+            </div>
+
+            <div class="gamification-cta fade-up">
+                <p>Start earning achievements today!</p>
+                <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="nav-cta" target="_blank" rel="noopener noreferrer">Download & Start Playing</a>
             </div>
         </div>
     </section>
@@ -413,7 +647,7 @@
     <section class="cta-section">
         <div class="cta-container">
             <h2 class="fade-up">Your House, Finally Sorted</h2>
-            <p class="fade-up stagger-1">Join thousands of students who've simplified their house life. Download free and see the difference.</p>
+            <p class="fade-up stagger-1">Join thousands of students who've simplified their house life. Download for free and see the difference.</p>
 
             <div class="cta-download fade-up stagger-2">
                 <div class="download-buttons">
