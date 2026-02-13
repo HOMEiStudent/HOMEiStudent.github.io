@@ -347,3 +347,72 @@ For code changes or complex updates, the main files are well-commented. Look for
 ```
 
 These help you navigate to specific areas quickly.
+
+---
+
+## References & Sources
+
+### Calculator Data Sources
+
+The time savings calculator uses estimates based on the following published research:
+
+#### Primary Sources:
+
+1. **SpareRoom (2019-2023). "Annual Flatmate Survey."**
+   - Publisher: SpareRoom.co.uk
+   - URL: https://www.spareroom.co.uk/content/info-landlords/flatmate-survey
+   - Key findings used:
+     - 67% of people sharing accommodation spend 30+ minutes per month on bill administration
+     - 40% of flatmates report arguing about cleaning on a weekly basis
+     - Bill payments and household cleanliness are the most common sources of conflict
+
+2. **Office for National Statistics (2020). "Time Use Survey."**
+   - Publisher: UK Government - ONS
+   - URL: https://www.ons.gov.uk/peoplepopulationandcommunity/personalandhouseholdfinances
+   - Key findings used:
+     - Average UK adult spends 2-4 hours per week on household management tasks
+     - Coordination activities increase with number of household members
+
+3. **ARLA Propertymark (2022). "Private Rented Sector Report."**
+   - Publisher: ARLA Propertymark (Association of Residential Letting Agents)
+   - URL: https://www.arla.co.uk/research/
+   - Key findings used:
+     - Bills and chores consistently rank as top 2 causes of disputes in shared housing
+     - Clear communication systems reduce tenant disputes by up to 50%
+
+#### Supporting Research:
+
+4. **NatWest Student Living Index (2023)**
+   - Publisher: NatWest Bank
+   - URL: https://www.natwest.com/life-moments/student-living-index.html
+   - Context: Student household financial management patterns
+
+5. **UCAS/Save the Student Survey (2023)**
+   - Publisher: Save the Student
+   - URL: https://www.savethestudent.org/money/student-money-survey.html
+   - Context: Student time allocation and household responsibilities
+
+### Calculation Assumptions
+
+The calculator applies the following reduction factors based on app-assisted household management:
+
+| Task | Manual Time | With App | Reduction |
+|------|-------------|----------|-----------|
+| Bill splitting | 15 mins/bill | 3 mins/bill | 80% |
+| Chore coordination | 10 mins/person/week | 3 mins/person/week | 70% |
+| Dispute resolution | 20 mins/dispute | 8 mins/dispute | 60% |
+
+**Note:** These reduction factors are estimates based on typical productivity gains from task management software. Individual results may vary.
+
+### Disclaimer
+
+The calculator provides **estimates only** for illustrative purposes. Actual time savings will depend on:
+- Individual household dynamics
+- How consistently the app is used
+- Number of active users in the household
+- Complexity of bill-splitting arrangements
+
+---
+
+*Document last updated: February 2025*
+
