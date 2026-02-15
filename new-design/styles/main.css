@@ -600,7 +600,10 @@ p {
     display: block;
     width: 100%;
     height: auto;
+    /* Force consistent aspect ratio for all screenshots (iPhone ratio ~19.5:9 = 2.17:1) */
+    aspect-ratio: 9 / 19.5;
     object-fit: cover;
+    object-position: top center;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     border-radius: 32px;
