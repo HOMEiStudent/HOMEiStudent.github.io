@@ -68,13 +68,6 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Global high-quality image rendering */
-img {
-    image-rendering: -webkit-optimize-contrast;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
     font-weight: 400;
@@ -616,12 +609,8 @@ p {
     border-radius: 32px;
     /* Prevent any gaps */
     vertical-align: middle;
-    /* High quality image rendering on all devices */
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transform: translateZ(0);
+    /* High quality rendering - let browser use best algorithm */
+    image-rendering: auto;
 }
 
 .phone-screenshot.active {
@@ -1585,11 +1574,7 @@ p {
     object-fit: contain;
     display: block;
     margin: auto;
-    /* High quality image rendering on all devices */
-    image-rendering: -webkit-optimize-contrast;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transform: translateZ(0);
+    image-rendering: auto;
 }
 
 /* Feature Screenshot Preview */
