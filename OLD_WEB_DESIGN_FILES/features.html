@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HOMEi</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="MEET HOMEi, your helpful housemate"/>
+    <meta name="author" content="James Dudson, Drew Morgan"/>
+
+    <link rel="icon" href="images/logo64.webp"/>
+    <link rel="apple-touch-icon" href="images/logo192.webp"/>
+
+    <link href="styles/materializeCustom.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link href="styles/style.css" rel="stylesheet" type="text/css"/>
+
+    <script src="scripts/gsap.min.js"></script>
+    <script src="scripts/SplitText.min.js"></script>
+    <script src="scripts/Flip.min.js"></script>
+    <script src="scripts/materializeCustom.min.js"></script>
+    <script src="scripts/Swup.umd.js"></script>
+    <script src="scripts/Preload.umd.js"></script>
+    <script src="scripts/JS.umd.js"></script>
+    <script src="scripts/ScrollToPlugin.min.js"></script>
+    <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
+    ></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+
+        gtag("js", new Date());
+
+        gtag("config", "G-W9VNT3B173");
+    </script>
+</head>
+<body class="orange white-text">
+<nav class="nav navbar white" style="height: 64px">
+    <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo left" style="left: 0.5rem !important;">
+            <img src="images/logo64.webp" alt="Company Logo" style="height: 54px;top: 5px;position: relative;">
+            <img src="images/CompanyText.webp" alt="Company Name" style="height: 34px;;position: relative;">
+        </a>
+        <a href="#" data-target="mobile-demo" class="right sidenav-trigger orange-text"><i
+                class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="about-us.html" class="orange-text">About Us</a></li>
+            <li><a href="features.html" class="orange-text">Features</a></li>
+            <li><a href="faq.html" class="orange-text">FAQs</a></li>
+        </ul>
+    </div>
+</nav>
+<ul class="right sidenav" id="mobile-demo">
+    <li><a href="about-us.html" class="orange-text">About Us</a></li>
+    <li><a href="features.html" class="orange-text">Features</a></li>
+    <li><a href="faq.html" class="orange-text">FAQs</a></li>
+</ul>
+
+<div id="swup" class="main-body" style="width: 100%; position: relative; overflow: hidden; height: 100%;">
+    <div class="row">
+        <h2 class="col s8 offset-s2 center-align" style="text-shadow: 3px 3px 20px black">
+            Features
+        </h2>
+    </div>
+
+    <section id="tidy" style="position: relative; z-index: 1;">
+        <div class="container" style="background-image: url('images/towel_tidy.webp'); background-size: cover;
+             margin: 0 !important; width: 100% !important; max-width: none !important; height: 100%;
+             position: relative;">
+            <div class="row" style="height: 100%; backdrop-filter: blur(5px)">
+                <div class="col s4" style="align-content: center; height: 100%;">
+                    <img id="tidy-image" class="left-image zoom-image" src="images/screenshot_filler.svg">
+                </div>
+                <div class="col s8 offset-s4">
+                    <div class="row">
+                        <h4 class="col s10 offset-s1 center-align white-text" style="text-shadow: 4px 4px 8px black">
+                            Never Miss a Chore
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <p class="col s10 offset-s1 center-align white-text flow-text"
+                           style="text-shadow: 4px 4px 8px black">
+                            Tired of arguing about whose turn it is to clean? Create, assign, and track household chores
+                            with a simple tap. With one in three students wishing they could change housemates due
+                            to mess, our task manager eliminates a key source of conflict, helping you build a happier,
+                            stress-free home where everyone contributes fairly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="dates" style="position: relative; z-index: 1;">
+        <div class="container" style="background-image: url('images/Calendar.webp'); background-size: cover;
+             margin: 0 !important; width: 100% !important; max-width: none !important; height: 100%;
+             position: relative;">
+            <div class="row" style="height: 100%; backdrop-filter: blur(5px)">
+                <div class="col s8">
+                    <div class="row">
+                        <h4 class="col s10 offset-s1 center-align white-text" style="text-shadow: 4px 4px 8px black">
+                            Organise Your Home
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <p class="col s10 offset-s1 center-align white-text flow-text"
+                           style="text-shadow: 4px 4px 8px black">
+                            Juggling lectures, deadlines, and social events? HOMEi's shared calendar syncs everyone’s
+                            schedules in one place. Instantly see who's free, plan house activities without the
+                            back-and-
+                            forth, and never miss a group study session or a night out again.
+                        </p>
+                    </div>
+                </div>
+                <div class="col s4 offset-s8" style="align-content: center; height: 100%;">
+                    <img id="dates-image" class="right-image zoom-image" src="images/screenshot_filler.svg">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="shopping" style="position: relative; z-index: 1;">
+        <div class="container" style="background-image: url('images/Shopping.webp'); background-size: cover;
+             margin: 0 !important; width: 100% !important; max-width: none !important; height: 100%;
+             position: relative;">
+            <div class="row" style="height: 100%; backdrop-filter: blur(5px)">
+                <div class="col s4" style="align-content: center; height: 100%;">
+                    <img id="shopping-image" class="left-image zoom-image" src="images/screenshot_filler.svg">
+                </div>
+                <div class="col s8 offset-s4">
+                    <div class="row">
+                        <h4 class="col s10 offset-s1 center-align white-text" style="text-shadow: 4px 4px 8px black">
+                            Share Shopping with Friends
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <p class="col s10 offset-s1 center-align white-text flow-text"
+                           style="text-shadow: 4px 4px 8px black">
+                            End the frustration of running out of milk or buying three of the same thing. Our
+                            live-synced
+                            shopping lists let everyone add items as they run low. Save money, reduce waste, and make
+                            sure your kitchen is always stocked with the essentials for post-lecture snacking.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="payments" style="position: relative; z-index: 1;">
+        <div class="container" style="background-image: url('images/Banking.webp'); background-size: cover;
+             margin: 0 !important; width: 100% !important; max-width: none !important; height: 100%;
+             position: relative;">
+            <div class="row" style="height: 100%; backdrop-filter: blur(5px)">
+                <div class="col s8">
+                    <div class="row">
+                        <h4 class="col s10 offset-s1 center-align white-text" style="text-shadow: 4px 4px 8px black">
+                            No More Late Payments
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <p class="col s10 offset-s1 center-align white-text flow-text"
+                           style="text-shadow: 4px 4px 8px black">
+                            Stop the awkward chase for money. With <b>43% of students struggling to split bills
+                            harmoniously</b>, our bill splitter is the ultimate solution. Easily log expenses, see who
+                            owes
+                            what, and send friendly reminders. Settle up simply and keep your friendships intact.
+                        </p>
+                    </div>
+                </div>
+                <div class="col s4 offset-s8" style="align-content: center; height: 100%;">
+                    <img id="payments-image" class="right-image zoom-image" src="images/screenshot_filler.svg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="row">
+        <h2 class="col s8 offset-s2 center-align" style="text-shadow: 3px 3px 20px black">
+            Stories
+        </h2>
+    </div>
+
+    <section id="chores" style="margin-top: 10px; position: relative; z-index: -1;">
+        <div class="height-parent" style="position: relative; width: 100%; overflow: hidden; margin-top: 10px;">
+            <img src="images/Carousel1.webp" alt="Abstract background design element"
+                 style="position: absolute; top: 50%; width: 50vw; transform: translate(-50%, -50%); z-index: 2;"/>
+
+            <div style="position: relative;">
+                <img class="height-definer" src="images/dots_circle.svg" alt="A circular pattern of dots"
+                     style="width: 60vw; float: left; shape-outside: ellipse(50% 50% at 0 50%); transform: translateX(-30vw);"/>
+
+                <p class="height-child" style="margin: 0; padding: 0; text-shadow: 4px 4px 8px black">
+                    Before HOMEi, our kitchen sink was a biohazard zone. We'd play 'chicken' with the dishes until
+                    someone cracked, usually me. Our passive-aggressive post-it notes were legendary but never worked.
+                    Now, with HOMEi's chore organiser, we've turned it into the 'Great Housemate Clean-Off.' We assign
+                    tasks with silly names like 'Toilet Tornado' or 'Fridge Facelift', and whoever completes theirs
+                    first gets bragging rights. It's actually made cleaning fun. Definitely less gross. No more moldy
+                    surprises, just friendly competition!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="calendar" style="margin-top: 10px; position: relative; z-index: -1;">
+        <div class="height-parent" style="position: relative; width: 100%; overflow: hidden; margin-top: 10px;">
+            <img src="images/Carousel2.webp" alt="Abstract background design element"
+                 style="position: absolute; top: 50%; width: 50vw; transform: translate(150%, -50%); z-index: 2;"/>
+
+            <div style="position: relative;">
+                <img class="height-definer" src="images/dots_circle.svg" alt="A circular pattern of dots"
+                     style="width: 60vw; float: right; shape-outside: ellipse(50% 50% at 100% 50%); transform: translateX(30vw);"/>
+
+                <p class="height-child" style="margin: 0; padding: 0; text-align: right; text-shadow: 4px 4px 8px black">
+                    I remember last semester when my
+                    housemate accidentally hosted a party the night before my 9 AM exam. Or the time when we
+                    all forgot about our 'house dinner' because we forgot to check the group chat. During
+                    this time our communal calendar was a mess of WhatsApp messages. Now, with HOMEi's
+                    shared calendar, we've got everything from exam dates to 'Silent Study Zones' clearly
+                    marked. But the best part? We use it for our 'do something new days.' Someone just
+                    blocks out 'Mystery Movie Night' or 'Late-Night Pizza Run', and we all get
+                    notifications. We no longer miss the good stuff, just perfectly timed chaos!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="bills" style="margin-top: 10px; position: relative; z-index: -1;">
+        <div class="height-parent" style="position: relative; width: 100%; overflow: hidden; margin-top: 10px;">
+            <img src="images/Carousel3.webp" alt="Abstract background design element"
+                 style="position: absolute; top: 50%; width: 50vw; transform: translate(-50%, -50%); z-index: 2;"/>
+
+            <div style="position: relative;">
+                <img class="height-definer" src="images/dots_circle.svg" alt="A circular pattern of dots"
+                     style="width: 60vw; float: left; shape-outside: ellipse(50% 50% at 0 50%); transform: translateX(-30vw);"/>
+
+                <p class="height-child" style="margin: 0; padding: 0; text-shadow: 4px 4px 8px black">
+                    Before HOMEi, our monthly bill
+                    collection was like a bad reality show, 'Who Owes What?' starring four confused students
+                    and a mountain of overdue notices. Trying to get everyone to chip in for electricity was
+                    like pulling teeth; we'd have 'gentle' reminders that escalated into full-blown 'who
+                    used all the hot water?!' debates. HOMEi's bill splitter has been a lifesaver. It tracks
+                    everything, sends reminders, and shows who owes what, so there's no more awkward
+                    chasing. It's so easy even our housemate who once tried to pay his share of the internet
+                    bill in Monopoly money can manage it.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop" style="margin-top: 10px; position: relative; z-index: -1;">
+        <div class="height-parent" style="position: relative; width: 100%; overflow: hidden; margin-top: 10px;">
+            <img src="images/Carousel4.webp" alt="Abstract background design element"
+                 style="position: absolute; top: 50%; width: 50vw; transform: translate(150%, -50%); z-index: 2;"/>
+
+            <div style="position: relative;">
+                <img class="height-definer" src="images/dots_circle.svg" alt="A circular pattern of dots"
+                     style="width: 60vw; float: right; shape-outside: ellipse(50% 50% at 100% 50%); transform: translateX(30vw);"/>
+
+                <p class="height-child" style="margin: 0; padding: 0; text-align: right; text-shadow: 4px 4px 8px black">
+                    Our fridge used to be a warzone.
+                    Someone would buy milk, then someone else would buy milk, and suddenly we had three open
+                    bottles going off. Or, worse, someone would 'borrow' your last bit of good cheese and
+                    never replace it. It was chaos. HOMEi's shopping lists have been a game-changer. We have
+                    a communal list for house essentials, toilet paper, cleaning supplies, milk, and
+                    individual lists we can share for bigger grocery runs. We even use it to plan our themed
+                    dinner nights. No more duplicate purchases, no more 'mystery meat' in the back of the
+                    fridge, and definitely no more passive-aggressive notes about missing snacks.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div>
+    <img style="position: relative; top: 8px" src="images/waves.svg">
+</div>
+
+<footer class="yellow lighten-1" style="text-shadow: 0 0 8px black;">
+    <div class="container">
+        <div class="row">
+            <div class="col s6">
+                <a href="about-us.html"><h6 class="white-text">About Us</h6></a>
+                <a href="faq.html"><h6 class="white-text">FAQs</h6></a>
+                <a href="contact.html"><h6 class="white-text">Contact Us</h6></a>
+            </div>
+            <div class="col s6">
+                <a href="privacy-policy.html"><h6 class="white-text">Privacy Policy</h6></a>
+                <a href="terms-and-conditions.html"><h6 class="white-text">Terms & Conditions</h6></a>
+            </div>
+        </div>
+        <div class="row" style="align-items: center; text-align: center;">
+            <div class="col s3">
+                <a href="https://apps.apple.com/gb/app/homei/id6736709087">
+                    <img style="filter: drop-shadow(1px 1px 4px black)" src="images/app-store-apple-logo.svg" alt="App Store">
+                </a>
+            </div>
+            <div class="col s3">
+                <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app&pcampaignid=web_share">
+                    <img style="filter: drop-shadow(1px 1px 4px black)" src="images/google-play-badge-logo.svg" alt="Google Play">
+                </a>
+            </div>
+            <div class="col s2">
+                <a href="https://www.facebook.com/share/F4vn5MzDTavZiyKQ/?mibextid=LQQJ4d">
+                    <img style="width: 60%; filter: drop-shadow(1px 1px 4px black)" src="images/facebook.svg" alt="Facebook logo">
+                </a>
+            </div>
+            <div class="col s2">
+                <a href="https://www.instagram.com/homeistudent?igsh=MWw2eDRoY3N3aTF6cg%3D%3D&utm_source=qr">
+                    <img style="width: 60%; filter: drop-shadow(1px 1px 4px black)" src="images/instagram.svg" alt="Instagram logo">
+                </a>
+            </div>
+            <div class="col s2">
+                <a href="https://www.tiktok.com/@homeistudent?_t=8mpq1hxbHUn&_r=1">
+                    <img style="width: 60%; filter: drop-shadow(1px 1px 4px black)" src="images/tiktok.svg" alt="TikTok logo">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row g-0" style="align-items: center;">
+            <div class="col s9">
+                <p>
+                    <span style="font-size: 24px; line-height: 32px; font-weight: 600;">1%</span>
+                    <br>
+                    of purchases contributed to
+                    <span style="color: #15be53; font-weight: 600;">Stripe Climate</span>
+                </p>
+            </div>
+            <div class="col s1"></div>
+            <div class="col s2">
+                <img style="filter: drop-shadow(1px 1px 4px black)" src="images/stripe.svg" alt="Stripe logo">
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+<script src="scripts/AllScripts.js"></script>
+</html>

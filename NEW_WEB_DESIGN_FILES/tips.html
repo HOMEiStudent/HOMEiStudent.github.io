@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips & Resources - HOMEi | Your Helpful Housemate</title>
+    <meta name="description" content="Free templates, guides, and tips for better shared living. Download our cleaning rotas, budget planners, and more.">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles/main.css?v=2.6">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <svg class="logo-icon" viewBox="0 0 200 200">
+                    <defs>
+                        <linearGradient id="navLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ffc800" />
+                            <stop offset="50%" style="stop-color:#ffa000" />
+                            <stop offset="100%" style="stop-color:#ff6a00" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="100" cy="100" r="90" fill="url(#navLogoGrad)"/>
+                    <circle cx="100" cy="100" r="75" fill="white"/>
+                    <path d="M 70 90 L 70 60 L 100 50 L 130 60 L 130 90 L 120 100 L 120 120 L 80 120 L 80 100 Z" fill="white" stroke="url(#navLogoGrad)" stroke-width="4"/>
+                    <circle cx="85" cy="75" r="6" fill="#ffa000"/>
+                    <path d="M 95 75 L 102 82" stroke="#ffa000" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M 80 88 Q 90 95 100 88" stroke="#ffa000" stroke-width="3" stroke-linecap="round" fill="none"/>
+                </svg>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="tips.html" class="active">Tips & Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="about.html">About Us</a>
+        <a href="tips.html">Tips & Resources</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <section class="hero" style="min-height: 400px; padding: var(--spacing-lg) var(--spacing-md);">
+        <div class="hero-content" style="grid-template-columns: 1fr; text-align: center;">
+            <div class="hero-text">
+                <h1>Tips & Templates for Better Living</h1>
+                <p>Practical guides and ready-to-use templates. Make HOMEi work even harder for you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEMPLATES SECTION -->
+    <section class="tips-section">
+        <div class="templates-banner">
+            <h3>🎁 Free Downloadable Templates</h3>
+            <p>Ready-to-use organization templates designed specifically for shared households. Coming soon!</p>
+
+            <div class="templates-grid">
+                <div class="template-card">
+                    <div class="template-icon">🗑️</div>
+                    <h4>Bin Rota Template</h4>
+                    <p>Never miss bin day again with our fair rotation system</p>
+                </div>
+                <div class="template-card">
+                    <div class="template-icon">🧹</div>
+                    <h4>Cleaning Schedule</h4>
+                    <p>Keep your house spotless with structured cleaning rotas</p>
+                </div>
+                <div class="template-card">
+                    <div class="template-icon">📋</div>
+                    <h4>House Rules Template</h4>
+                    <p>Set clear expectations from day one</p>
+                </div>
+                <div class="template-card">
+                    <div class="template-icon">💰</div>
+                    <h4>Budget Planner</h4>
+                    <p>Track household expenses and individual contributions</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Section -->
+        <div class="blog-section">
+            <h3>Latest Articles & Guides</h3>
+
+            <div class="carousel-container" id="blogCarouselContainer">
+                <button class="carousel-btn prev" aria-label="Previous articles">‹</button>
+
+                <div class="carousel">
+                    <div class="blog-card carousel-item">
+                        <div class="blog-image">
+                            <!-- Add image: <img src="images/blog/cleaning-rota.jpg" alt="Cleaning Rota Guide"> -->
+                            📝
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">TEMPLATES</div>
+                            <h4>The Ultimate House Cleaning Rota</h4>
+                            <p>Create a fair schedule that actually works. Clear accountability for everyone.</p>
+                            <div class="blog-meta">5 min read • Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="blog-card carousel-item">
+                        <div class="blog-image" style="background: linear-gradient(135deg, #ffa000, #ff6a00);">
+                            <!-- Add image: <img src="images/blog/bill-splitting.jpg" alt="Bill Splitting Guide"> -->
+                            💡
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">TIPS & TRICKS</div>
+                            <h4>Split Bills the Smart Way</h4>
+                            <p>Master money tracking. Keep everyone on the same page with clear records.</p>
+                            <div class="blog-meta">6 min read • Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="blog-card carousel-item">
+                        <div class="blog-image" style="background: linear-gradient(135deg, #ff6a00, #ffc800);">
+                            <!-- Add image: <img src="images/blog/conflict-prevention.jpg" alt="Conflict Prevention"> -->
+                            🏠
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">STUDENT LIFE</div>
+                            <h4>Keep Your House Running Smoothly</h4>
+                            <p>Proactive planning beats reactive fixing. Communication strategies that work.</p>
+                            <div class="blog-meta">7 min read • Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="blog-card carousel-item">
+                        <div class="blog-image">
+                            <!-- Add image: <img src="images/blog/first-year.jpg" alt="First Year Guide"> -->
+                            🎓
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">STUDENT LIFE</div>
+                            <h4>First Year Housemate Survival Guide</h4>
+                            <p>Everything you need to know before moving in with strangers.</p>
+                            <div class="blog-meta">8 min read • Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="blog-card carousel-item">
+                        <div class="blog-image" style="background: linear-gradient(135deg, #ffa000, #ff6a00);">
+                            <!-- Add image: <img src="images/blog/energy-saving.jpg" alt="Energy Saving Tips"> -->
+                            ⚡
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">MONEY SAVING</div>
+                            <h4>Cut Your Energy Bills in Half</h4>
+                            <p>Simple changes that save serious money on shared household bills.</p>
+                            <div class="blog-meta">5 min read • Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-btn next" aria-label="Next articles">›</button>
+
+                <div class="carousel-dots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK TIPS SECTION -->
+    <section class="section" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Quick Tips for Harmonious Living</h2>
+                <p>Simple strategies that make a big difference</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" style="background: white;">
+                    <div class="feature-icon">🗣️</div>
+                    <h3>Communicate Early</h3>
+                    <p>Address small things before they become big things. A quick message keeps everyone in the loop.</p>
+                </div>
+
+                <div class="feature-card" style="background: white;">
+                    <div class="feature-icon">📝</div>
+                    <h3>Write It Down</h3>
+                    <p>Verbal agreements are forgotten. Put house rules, rotas, and agreements somewhere everyone can see.</p>
+                </div>
+
+                <div class="feature-card" style="background: white;">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Rotate Fairly</h3>
+                    <p>Nobody likes doing the same chore every week. Fair rotation keeps everyone happy and engaged.</p>
+                </div>
+
+                <div class="feature-card" style="background: white;">
+                    <div class="feature-icon">💵</div>
+                    <h3>Track Everything</h3>
+                    <p>Split costs clearly and immediately. Current records keep everyone happy, so track as you go.</p>
+                </div>
+
+                <div class="feature-card" style="background: white;">
+                    <div class="feature-icon">🎉</div>
+                    <h3>Celebrate Together</h3>
+                    <p>House dinners, movie nights, or just a cuppa together build relationships that survive the tough times.</p>
+                </div>
+
+                <div class="feature-card" style="background: white;">
+                    <div class="feature-icon">🚪</div>
+                    <h3>Respect Boundaries</h3>
+                    <p>Everyone needs alone time. Respect closed doors and personal space because it's not personal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="testimonials">
+        <div class="container text-center">
+            <h2>Put These Tips Into Action</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95; color: white;">HOMEi makes it easy to implement all these strategies in one place.</p>
+            <div class="download-buttons" style="justify-content: center;">
+                <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="store-button" target="_blank" rel="noopener noreferrer">
+                    <span>📱</span>
+                    <span>App Store</span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" class="store-button" target="_blank" rel="noopener noreferrer">
+                    <span>🤖</span>
+                    <span>Google Play</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>HOMEi</h3>
+                <p>Your Helpful Housemate</p>
+                <p style="margin-top: 1rem;">Making shared living effortless for students across the UK.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="features.html">Features</a>
+                <a href="about.html">About Us</a>
+                <a href="tips.html">Tips & Resources</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Download</h3>
+                <a href="https://apps.apple.com/gb/app/homei/id6736709087" target="_blank" rel="noopener noreferrer">📱 App Store</a>
+                <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" target="_blank" rel="noopener noreferrer">🤖 Google Play</a>
+            </div>
+            <div class="footer-section">
+                <h3>Get In Touch</h3>
+                <p>Email: Support@Homeistudent.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-badges">
+                <span class="trust-badge">🔒 GDPR Compliant</span>
+                <span class="trust-badge">🛡️ Data Encrypted</span>
+            </div>
+            <p>&copy; 2026 HOMEiStudent Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js?v=2.6"></script>
+</body>
+</html>

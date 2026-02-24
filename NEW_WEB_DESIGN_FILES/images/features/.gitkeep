@@ -1,0 +1,26 @@
+# Feature Screenshots
+
+Upload feature-specific app screenshots to this folder:
+
+1. calendar-screenshot.png
+   - Shows: House calendar view from the app
+   - Recommended size: 280x500px (phone screenshot)
+   - Used in: Features page - Calendar section
+
+2. bills-screenshot.png
+   - Shows: Bill splitting interface
+   - Recommended size: 280x500px (phone screenshot)
+   - Used in: Features page - Bills section
+
+3. chores-screenshot.png
+   - Shows: Chore rota view
+   - Recommended size: 280x500px (phone screenshot)
+   - Used in: Features page - Chores section
+
+4. shopping-screenshot.png
+   - Shows: Shared shopping list
+   - Recommended size: 280x500px (phone screenshot)
+   - Used in: Features page - Shopping Lists section
+
+Note: These screenshots will appear alongside the mascot images
+to show users the actual app interface for each feature.

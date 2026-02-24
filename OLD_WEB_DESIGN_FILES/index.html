@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HOMEi</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="MEET HOMEi, your helpful housemate"/>
+    <meta name="author" content="James Dudson, Drew Morgan"/>
+    <meta name="theme-color" content="transparent">
+    <meta name="theme-color" content="rgba(255,255,255,0)">
+
+
+    <link rel="icon" href="images/logo64.webp"/>
+    <link rel="apple-touch-icon" href="images/logo192.webp"/>
+
+    <link href="styles/materializeCustom.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link href="styles/style.css" rel="stylesheet" type="text/css"/>
+
+    <script src="scripts/gsap.min.js"></script>
+    <script src="scripts/SplitText.min.js"></script>
+    <script src="scripts/Flip.min.js"></script>
+    <script src="scripts/materializeCustom.min.js"></script>
+    <script src="scripts/Swup.umd.js"></script>
+    <script src="scripts/Preload.umd.js"></script>
+    <script src="scripts/JS.umd.js"></script>
+    <script src="scripts/ScrollToPlugin.min.js"></script>
+    <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
+    ></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+
+        gtag("js", new Date());
+
+        gtag("config", "G-W9VNT3B173");
+    </script>
+</head>
+<body class="orange white-text">
+<!--    Navigation Bar    -->
+<nav class="nav navbar white" style="height: 64px">
+    <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo left" style="left: 0.5rem !important;">
+            <img src="images/logo64.webp" alt="Company Logo" style="height: 54px;top: 5px;position: relative;">
+            <img src="images/CompanyText.webp" alt="Company Name" style="height: 34px;;position: relative;">
+        </a>
+        <a href="" data-target="mobile-demo" class="right sidenav-trigger orange-text"><i
+                class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="about-us.html" class="orange-text">About Us</a></li>
+            <li><a href="features.html" class="orange-text">Features</a></li>
+            <li><a href="faq.html" class="orange-text">FAQs</a></li>
+        </ul>
+    </div>
+</nav>
+<ul class="right sidenav" id="mobile-demo">
+    <li><a href="about-us.html" class="orange-text">About Us</a></li>
+    <li><a href="features.html" class="orange-text">Features</a></li>
+    <li><a href="faq.html" class="orange-text">FAQs</a></li>
+</ul>
+
+<!--    Main Body    -->
+<div id="swup" class="main-body" style="width: 100%; position: relative; overflow: hidden; height: 100%;">
+    <!--    Title Section    -->
+    <div class="parallax-container index-body">
+        <div class="parallax" style="width: 100%;">
+            <picture>
+                <source srcset="images/happy_people_mobile.webp" media="(max-width: 1000px)">
+                <img src="images/happy_people.webp" alt="Happy People" class="overlap-image">
+            </picture>
+        </div>
+    </div>
+
+    <div id="top-text" style="text-shadow: 4px 4px 8px black">
+        <div class="row">
+            <h3 class="col s10 offset-s1 center-align">
+                Optimise your University Experience with <span style="-webkit-text-stroke: 1px white;" class="orange-text">HOMEi</span>
+            </h3>
+        </div>
+        <div class="row">
+            <h5 class="col s10 offset-s1 center-align">
+                The student household organisation app
+            </h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s4 offset-s2">
+            <a href="https://apps.apple.com/gb/app/homei/id6736709087"
+               style="height: 100%; display: grid; z-index: 10; position: relative;">
+                <img src="images/app-store-apple-logo.svg" alt="App Store">
+            </a>
+        </div>
+        <div class="col s4 offset-s6">
+            <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app&pcampaignid=web_share"
+               style="height: 100%; display: grid; z-index: 10; position: relative;">
+                <img src="images/google-play-badge-logo.svg" alt="Google Play">
+            </a>
+        </div>
+    </div>
+
+    <!--    Phone Video Section    -->
+    <div class="gradient-container" style="background: linear-gradient(transparent 15%, #ff6a00 17%)">
+        <!--    Phone outline with video    -->
+        <div class="row pt-3">
+            <div class="col s3">
+                <img src="images/squares_yellow.svg" style="width: 300%; left: -200%; top: 5%; position: relative"
+                     alt="Squares">
+            </div>
+            <div class="col s6" style="z-index: 4">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="193 81 424 837" class="phone-svg">
+                    <foreignObject x="221" y="105" height="790" width="365">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="position:fixed; width:100%; height:100%;">
+                            <video class="video-background" width="365" height="790" style="position: absolute; width: 100%; height: 100%; object-fit: cover; filter: blur(3px); z-index: -1" autoplay muted loop playsinline preload>
+                                <source src="images/phone_video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <video style="height: auto; width: 100%; top: 30px; position: relative" autoplay muted loop playsinline preload>
+                                <source src="images/phone_video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </foreignObject>
+
+                    <path d="M551 85H259c-31 0-57 26-57 57v714c0 32 26 57 57 57h292c31 0 57-25 57-57V142c0-31-26-57-57-57Zm-97 26c3 0 5 3 5 5 0 3-2 6-5 6s-5-3-5-6c0-2 2-5 5-5Zm-76 2h49c2 0 4 1 4 3s-2 4-4 4h-49c-2 0-3-2-3-4s1-3 3-3Zm209 746c0 19-15 34-34 34H257c-18 0-34-15-34-34V140c0-19 16-34 34-34h44v9c0 11 9 19 19 19h170c10 0 19-8 19-19v-9h44c19 0 34 15 34 34v719Zm0 0"
+                          style="fill:#000;stroke:#000;stroke-width:.5"/>
+                    <path d="M427 113h-49c-2 0-3 1-3 3s1 4 3 4h49c2 0 4-2 4-4s-2-3-4-3Zm0 0" style="fill:#606060"/>
+                    <path d="M454 111a5 5 0 1 0 0 11 5 5 0 0 0 0-11Zm0 0" style="fill:#606060"/>
+
+                    <path d="M194 196v26c0 2 2 4 4 4v-34c-2 0-4 1-4 4Zm0 0" style="fill:#b8b8b8;"/>
+                    <path d="M194 256v53c0 3 2 5 4 5v-62c-2 0-4 2-4 4Zm0 0" style="fill:#b8b8b8;"/>
+                    <path d="M194 332v53c0 3 2 5 4 5v-63c-2 0-4 2-4 5Zm0 0" style="fill:#b8b8b8;"/>
+                    <path d="M612 272v100c2 0 4-2 4-4v-91c0-3-2-5-4-5Zm0 0" style="fill:#b8b8b8;"/>
+
+                    <path d="M612 272V142a60 60 0 0 0-12-36 91 91 0 0 0-10-11c-11-9-24-14-39-14H259c-14 0-28 5-39 14l-4 4-6 7-3 4a64 64 0 0 0-8 20l-1 12v714c0 34 28 61 61 61h292c33 0 61-27 61-61Zm-4 0v584c0 32-26 58-57 58H259c-31 0-57-26-57-58V142c0-31 26-57 57-57h292c31 0 57 26 57 57Zm0 0"
+                          style="fill:#e9e9e9"/>
+                </svg>
+            </div>
+            <div class="col s3">
+                <img src="images/squares_circle.svg" style="width: 250%; top: 5%; position: relative" alt="Squares">
+            </div>
+        </div>
+
+        <img style="position: absolute; transform: translateY(-50%); width: 80vw; left:10vw"
+             src="images/dots_circle.svg" alt="Dots">
+
+        <!--    Below Text    -->
+        <div class="row" style="row-gap: 0">
+            <h2 class="col s10 offset-s1 center-align fave-house" style="margin: 0.83em 0 0;z-index: 2; text-shadow: 3px 3px 20px black">
+                Meet your new
+            </h2>
+            <h2 class="col s10 offset-s1 center-align fave-house" style="margin: 0 0 0.83em;z-index: 2; text-shadow: 3px 3px 20px black">
+                favourite housemate
+            </h2>
+        </div>
+        <div class="row">
+            <h5 class="col s8 offset-s2 center-align" style="z-index: 2; text-shadow: 3px 3px 20px black">
+                Students all over the country are levelling up their uni experience with HOMEi.
+            </h5>
+        </div>
+        <div class="row">
+            <h5 class="col s8 offset-s2 center-align" style="z-index: 2; text-shadow: 3px 3px 20px black">
+                Hear their stories
+            </h5>
+        </div>
+        <div class="row">
+            <a href="features.html?anchor=%23chores" class="white-text center-align col s8 offset-s2" style="z-index: 2;">
+                <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
+            </a>
+        </div>
+    </div>
+
+    <div class="row pt-3" style="position: absolute; z-index: 5; height: 0;">
+        <div class="col s2">
+            <img src="images/diagonal_squares_outline.svg"
+                 style="width: 250%; left: -150%; top: -70%; position: relative;" alt="Squares">
+        </div>
+        <div class="col s2 offset-s10">
+            <img src="images/U_squares.svg" style="width: 160%; top: -50%; position: relative;" alt="Squares">
+        </div>
+    </div>
+
+    <!--    Features Carousel Section    -->
+    <div class="carousel carousel-slider center carousel-top" style="z-index: 4;">
+
+        <div class="carousel-item" href="#one!">
+            <div class="container" style="background-image: url('images/towel_tidy.webp'); background-size: cover;
+             margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
+                <div style="backdrop-filter: blur(5px); height: 100%; text-shadow: 4px 4px 8px black">
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <h2 class="col s10 offset-s1 center-align"
+                            style="font-size: 40px">
+                            A tidier home
+                        </h2>
+                    </div>
+                    <div class="row" style="height: 50%; align-content: center;">
+                        <h5 class="col s10 offset-s1 center-align">
+                            Assign and manage household tasks with HOMEi's chore management feature
+                        </h5>
+                    </div>
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <a href="features.html?anchor=%23tidy" class="white-text center-align col s12">
+                            <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item" href="#two!">
+            <div class="container" style="background-image: url('images/Calendar.webp'); background-size: cover;
+             margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
+                <div style="backdrop-filter: blur(5px); height: 100%; text-shadow: 4px 4px 8px black">
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <h2 class="col s10 offset-s1 center-align"
+                            style="font-size: 40px">
+                            Never Miss a Deadline
+                        </h2>
+                    </div>
+                    <div class="row" style="height: 50%; align-content: center;">
+                        <h5 class="col s10 offset-s1 center-align">
+                            Keep track of important dates and deadlines with HOMEi's built-in shared calendar
+                        </h5>
+                    </div>
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <a href="features.html?anchor=%23dates" class="white-text center-align col s12">
+                            <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item" href="#three!">
+            <div class="container" style="background-image: url('images/Shopping.webp'); background-size: cover;
+             margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
+                <div style="backdrop-filter: blur(5px); height: 100%; text-shadow: 4px 4px 8px black">
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <h2 class="col s10 offset-s1 center-align"
+                            style="font-size: 40px">
+                            Share Shopping Lists
+                        </h2>
+                    </div>
+                    <div class="row" style="height: 50%; align-content: center;">
+                        <h5 class="col s10 offset-s1 center-align">
+                            Simplify the weekly shop and share shopping lists with your housemates
+                        </h5>
+                    </div>
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <a href="features.html?anchor=%23shopping" class="white-text center-align col s12">
+                            <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item" href="#four!">
+            <div class="container" style="background-image: url('images/Banking.webp'); background-size: cover;
+             margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
+                <div style="backdrop-filter: blur(5px); height: 100%; text-shadow: 4px 4px 8px black">
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <h2 class="col s10 offset-s1 center-align"
+                            style="font-size: 40px">
+                            No More Late Payments
+                        </h2>
+                    </div>
+                    <div class="row" style="height: 50%; align-content: center;">
+                        <h5 class="col s10 offset-s1 center-align">
+                            HOMEi's bill split feature makes it easy to divide bills amongst housemates
+                        </h5>
+                    </div>
+                    <div class="row" style="height: 25%; align-content: center;">
+                        <a href="features.html?anchor=%23payments" class="white-text center-align col s12">
+                            <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row pt-3" style="position: absolute; z-index: 5; height: 0;">
+        <div class="col s2">
+            <img src="images/U_squares.svg" style="width: 250%; left: -150%; top: -35%; position: relative;"
+                 alt="Squares">
+        </div>
+        <div class="col s2 offset-s10">
+            <img src="images/blobs.svg" style="width: 300%; top: -50%; left: -70%; position: relative;" alt="Blobs">
+        </div>
+    </div>
+
+    <!--    People Carousel Section    -->
+    <div class="row">
+        <h2 class="col s8 offset-s2 center-align" style="text-shadow: 3px 3px 20px black">
+            How do <span style="-webkit-text-stroke: 2px white; text-shadow: 3px 3px 20px black" class="orange-text"> you </span>
+            use HOMEi?
+        </h2>
+    </div>
+    <a class="white-text center-align carousel-left-bottom" style="z-index: 10; position: absolute;">
+        <i class="material-icons medium rotate-90">expand_circle_down</i>
+    </a>
+    <a class="white-text center-align carousel-right-bottom" style="z-index: 10; position: absolute; right: 0">
+        <i class="material-icons medium rotate-270">expand_circle_down</i>
+    </a>
+    <div class="row carousel-row">
+        <div class="carousel center col s12 carousel-bottom" style="z-index: 5; overflow: visible !important;">
+
+            <div class="carousel-item container" href="#one!" style="min-height: 0 !important;">
+                <a href="features.html?anchor=%23chores">
+                    <div class="row">
+                        <img class="col s12" src="images/Carousel1.webp"
+                             style="width: 100%; position: absolute; z-index: 2;" alt="Person 1">
+                        <img class="carousel-item-bottom col s12" style="position: relative; width: 110%; left: -10%; top: -10%"
+                             src="images/dots_circle_border.svg" alt="Dots">
+                    </div>
+                    <div>
+                        <h1 class="col s12 carousel-bottom-text white-text"
+                            style="margin: 0 !important; text-shadow: 3px 3px 20px black"
+                            data-original-font-size="100px">
+                            The Chore Conqueror
+                        </h1>
+                    </div>
+                </a>
+            </div>
+
+            <div class="carousel-item" href="#two!" style="min-height: 0 !important;">
+                <a href="features.html?anchor=%23calendar">
+                    <div class="row">
+                        <img class="col s12" src="images/Carousel2.webp"
+                             style="width: 100%; position: absolute; z-index: 2;" alt="Person 2">
+                        <img class="carousel-item-bottom col s12" style="position: relative; width: 110%; left: -10%; top: -10%"
+                             src="images/dots_circle_border.svg" alt="Dots">
+                    </div>
+                    <div>
+                        <h1 class="col s12 carousel-bottom-text white-text"
+                            style="margin: 0 !important; text-shadow: 3px 3px 20px black"
+                            data-original-font-size="100px">
+                            The Calendar Maestro
+                        </h1>
+                    </div>
+                </a>
+            </div>
+
+            <div class="carousel-item" href="#three!" style="min-height: 0 !important;">
+                <a href="features.html?anchor=%23bills">
+                    <div class="row">
+                        <img class="col s12" src="images/Carousel3.webp"
+                             style="width: 100%; position: absolute; z-index: 2;" alt="Person 2">
+                        <img class="carousel-item-bottom col s12" style="position: relative; width: 110%; left: -10%; top: -10%"
+                             src="images/dots_circle_border.svg" alt="Dots">
+                    </div>
+                    <div>
+                        <h1 class="col s12 carousel-bottom-text white-text"
+                            style="margin: 0 !important; text-shadow: 3px 3px 20px black"
+                            data-original-font-size="100px">
+                            The Bill Boss
+                        </h1>
+                    </div>
+                </a>
+            </div>
+
+            <div class="carousel-item" href="#four!" style="min-height: 0 !important;">
+                <a href="features.html?anchor=%23shop">
+                    <div class="row">
+                        <img class="col s12" src="images/Carousel4.webp"
+                             style="width: 100%; position: absolute; z-index: 2;" alt="Person 2">
+                        <img class="carousel-item-bottom col s12" style="position: relative; width: 110%; left: -10%; top: -10%"
+                             src="images/dots_circle_border.svg" alt="Dots">
+                    </div>
+                    <div>
+                        <h1 class="col s12 carousel-bottom-text white-text"
+                            style="margin: 0 !important; text-shadow: 3px 3px 20px black"
+                            data-original-font-size="100px">
+                            The Shopping Savant
+                        </h1>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!--    Footer Section    -->
+<div>
+    <img style="position: relative; top: 8px" src="images/waves.svg" alt="Waves">
+</div>
+
+<footer class="yellow lighten-1" style="text-shadow: 0 0 8px black;">
+    <div class="container">
+        <div class="row">
+            <div class="col s6">
+                <a href="about-us.html"><h6 class="white-text">About Us</h6></a>
+                <a href="faq.html"><h6 class="white-text">FAQs</h6></a>
+                <a href="contact.html"><h6 class="white-text">Contact Us</h6></a>
+            </div>
+            <div class="col s6">
+                <a href="privacy-policy.html"><h6 class="white-text">Privacy Policy</h6></a>
+                <a href="terms-and-conditions.html"><h6 class="white-text">Terms & Conditions</h6></a>
+            </div>
+        </div>
+        <div class="row" style="align-items: center; text-align: center;">
+            <div class="col s3">
+                <a href="https://apps.apple.com/gb/app/homei/id6736709087">
+                    <img style="filter: drop-shadow(1px 1px 4px black)" src="images/app-store-apple-logo.svg" alt="App Store">
+                </a>
+            </div>
+            <div class="col s3">
+                <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app&pcampaignid=web_share">
+                    <img style="filter: drop-shadow(1px 1px 4px black)" src="images/google-play-badge-logo.svg" alt="Google Play">
+                </a>
+            </div>
+            <div class="col s2">
+                <a href="https://www.facebook.com/share/F4vn5MzDTavZiyKQ/?mibextid=LQQJ4d">
+                    <img style="width: 60%; filter: drop-shadow(1px 1px 4px black)" src="images/facebook.svg" alt="Facebook logo">
+                </a>
+            </div>
+            <div class="col s2">
+                <a href="https://www.instagram.com/homeistudent?igsh=MWw2eDRoY3N3aTF6cg%3D%3D&utm_source=qr">
+                    <img style="width: 60%; filter: drop-shadow(1px 1px 4px black)" src="images/instagram.svg" alt="Instagram logo">
+                </a>
+            </div>
+            <div class="col s2">
+                <a href="https://www.tiktok.com/@homeistudent?_t=8mpq1hxbHUn&_r=1">
+                    <img style="width: 60%; filter: drop-shadow(1px 1px 4px black)" src="images/tiktok.svg" alt="TikTok logo">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row g-0" style="align-items: center;">
+            <div class="col s9">
+                <p>
+                    <span style="font-size: 24px; line-height: 32px; font-weight: 600;">1%</span>
+                    <br>
+                    of purchases contributed to
+                    <span style="color: #15be53; font-weight: 600;">Stripe Climate</span>
+                </p>
+            </div>
+            <div class="col s1"></div>
+            <div class="col s2">
+                <img style="filter: drop-shadow(1px 1px 4px black)" src="images/stripe.svg" alt="Stripe logo">
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+<script src="scripts/AllScripts.js"></script>
+
+</html>

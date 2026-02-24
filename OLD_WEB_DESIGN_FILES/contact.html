@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HOMEi</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="MEET HOMEi, your helpful housemate"/>
+    <meta name="author" content="James Dudson, Drew Morgan"/>
+
+    <link rel="icon" href="images/logo64.webp"/>
+    <link rel="apple-touch-icon" href="images/logo192.webp"/>
+
+    <link href="styles/materializeCustom.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link href="styles/style.css" rel="stylesheet" type="text/css"/>
+
+    <script src="scripts/gsap.min.js"></script>
+    <script src="scripts/SplitText.min.js"></script>
+    <script src="scripts/Flip.min.js"></script>
+    <script src="scripts/materializeCustom.min.js"></script>
+    <script src="scripts/Swup.umd.js"></script>
+    <script src="scripts/Preload.umd.js"></script>
+    <script src="scripts/JS.umd.js"></script>
+    <script src="scripts/ScrollToPlugin.min.js"></script>
+    <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
+    ></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+
+        gtag("js", new Date());
+
+        gtag("config", "G-W9VNT3B173");
+    </script>
+</head>
+<body class="orange white-text">
+<nav class="nav navbar white" style="height: 64px">
+    <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo left" style="left: 0.5rem !important;">
+            <img src="images/logo64.webp" alt="Company Logo" style="height: 54px;top: 5px;position: relative;">
+            <img src="images/CompanyText.webp" alt="Company Name" style="height: 34px;;position: relative;">
+        </a>
+        <a href="#" data-target="mobile-demo" class="right sidenav-trigger orange-text"><i
+                class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="about-us.html" class="orange-text">About Us</a></li>
+            <li><a href="features.html" class="orange-text">Features</a></li>
+            <li><a href="faq.html" class="orange-text">FAQs</a></li>
+        </ul>
+    </div>
+</nav>
+<ul class="right sidenav" id="mobile-demo">
+    <li><a href="about-us.html" class="orange-text">About Us</a></li>
+    <li><a href="features.html" class="orange-text">Features</a></li>
+    <li><a href="faq.html" class="orange-text">FAQs</a></li>
+</ul>
+
+<div id="swup" class="main-body" style="width: 100%; position: relative; overflow-x: hidden; height: 100%; overflow-y: hidden;">
+    <div class="row">
+        <h3 class="col s10 offset-s1 center-align white-text" style="text-shadow: 4px 4px 8px black">
+            Get in touch with us
+        </h3>
+    </div>
+    <div class="row">
+        <h5 class="col s10 offset-s1 center-align" style="text-shadow: 4px 4px 8px black">
+            Send us any questions, or just reach out to say hi, we are here to help.
+        </h5>
+    </div>
+
+    <img style="position: absolute; width: 80vw; left:-50vw; z-index: -1; top: 10vw;"
+         src="images/three_squares.svg" alt="Dots">
+
+    <img style="position: absolute; width: 50vw; right: -35vw; z-index: -1; top: 60vw;"
+         src="images/squares_blob.svg" alt="Dots">
+
+    <form class="row" action="https://api.web3forms.com/submit" method="POST">
+
+        <input type="hidden" name="access_key" value="08d9d522-515b-43fb-aa1e-644f377d4ab1">
+
+        <div class="s10 offset-s1 input-field outlined">
+            <input id="name" type="text" placeholder=" " maxlength="40" autocomplete="name" required>
+            <label for="name">Your Name*</label>
+        </div>
+
+        <div class="s10 offset-s1 input-field outlined">
+            <input id="email" type="email" placeholder=" " maxlength="320" autocomplete="email" required>
+            <label for="email">Your Email*</label>
+        </div>
+        <div class="input-field col s10 offset-s1 outlined">
+            <textarea id="textarea" class="materialize-textarea" placeholder=" " style="height: 40vh;"
+                      required></textarea>
+            <label for="textarea">Write your message here</label>
+        </div>
+
+        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
+        <button class="btn elevated icon-right waves-effect waves-light col s4 offset-s4 l2 offset-l5 yellow lighten-1 white-text"
+                type="submit" name="action" style="text-shadow: 3px 3px 20px black">
+            Submit<i class="material-icons right">send</i>
+        </button>
+
+    </form>
+</div>
+
+<div>
+    <img style="position: relative; top: 8px" src="images/waves.svg">
+</div>
+
+<footer class="yellow lighten-1" style="text-shadow: 0 0 8px black;">
+    <div class="container">
+        <div class="row">
+            <div class="col s6">
+                <a href="about-us.html"><h6 class="white-text">About Us</h6></a>
+                <a href="faq.html"><h6 class="white-text">FAQs</h6></a>
+                <a href="contact.html"><h6 class="white-text">Contact Us</h6></a>
+            </div>
+            <div class="col s6">
+                <a href="privacy-policy.html"><h6 class="white-text">Privacy Policy</h6></a>
+                <a href="terms-and-conditions.html"><h6 class="white-text">Terms & Conditions</h6></a>
+            </div>
+        </div>
+        <div class="row" style="align-items: center; text-align: center;">
+            <div class="col s3">
+                <a href="https://apps.apple.com/gb/app/homei/id6736709087">
+                    <img style="filter: drop-shadow(1px 1px 4px black)" src="images/app-store-apple-logo.svg" alt="App Store">
+                </a>
+            </div>
+            <div class="col s3">
+                <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app&pcampaignid=web_share">
+                    <img style="filter: drop-shadow(1px 1px 4px black)" src="images/google-play-badge-logo.svg" alt="Google Play">
+                </a>
+            </div>
+            <div class="col s2">
+                <a href="https://www.facebook.com/share/F4vn5MzDTavZiyKQ/?mibextid=LQQJ4d">
+                    <img style="width: 60%; filter: drop-shadow(1px 1px 4px black)" src="images/facebook.svg" alt="Facebook logo">
+                </a>
+            </div>
+            <div class="col s2">
+                <a href="https://www.instagram.com/homeistudent?igsh=MWw2eDRoY3N3aTF6cg%3D%3D&utm_source=qr">
+                    <img style="width: 60%; filter: drop-shadow(1px 1px 4px black)" src="images/instagram.svg" alt="Instagram logo">
+                </a>
+            </div>
+            <div class="col s2">
+                <a href="https://www.tiktok.com/@homeistudent?_t=8mpq1hxbHUn&_r=1">
+                    <img style="width: 60%; filter: drop-shadow(1px 1px 4px black)" src="images/tiktok.svg" alt="TikTok logo">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row g-0" style="align-items: center;">
+            <div class="col s9">
+                <p>
+                    <span style="font-size: 24px; line-height: 32px; font-weight: 600;">1%</span>
+                    <br>
+                    of purchases contributed to
+                    <span style="color: #15be53; font-weight: 600;">Stripe Climate</span>
+                </p>
+            </div>
+            <div class="col s1"></div>
+            <div class="col s2">
+                <img style="filter: drop-shadow(1px 1px 4px black)" src="images/stripe.svg" alt="Stripe logo">
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+<script src="scripts/AllScripts.js"></script>
+
+</html>
