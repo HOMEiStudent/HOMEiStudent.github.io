@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initVideoPlayer();
     initTimeCalculator();
     initHousemateQuiz();
+    initWaitlistForms();
 });
 
 // ==========================================
@@ -1171,4 +1172,72 @@ function initHousemateQuiz() {
             renderQuestion();
         });
     }
+}
+
+
+// ==========================================
+// LANDLORD CONNECT WAITLIST FORMS
+// ==========================================
+function initWaitlistForms() {
+    var forms = document.querySelectorAll(".waitlist-form");
+    if (!forms.length) return;
+
+    forms.forEach(function(form) {
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            var emailInput = form.querySelector("input[type=email]");
+            var button = form.querySelector("button");
+            var email = emailInput.value.trim();
+
+            if (!email) return;
+
+            var originalButtonText = button.textContent;
+            button.disabled = true;
+            button.textContent = "Joining...";
+
+            // If formspree URL is configured, submit; else show success locally
+            var action = form.getAttribute("action") || "";
+            var hasValidEndpoint = action.indexOf("formspree.io/f/your-form-id") === -1 && action.indexOf("formspree.io") !== -1;
+
+            if (hasValidEndpoint) {
+                fetch(action, {
+                    method: "POST",
+                    body: new FormData(form),
+                    headers: { "Accept": "application/json" }
+                }).then(function(response) {
+                    if (response.ok) {
+                        showWaitlistSuccess(form);
+                    } else {
+                        button.disabled = false;
+                        button.textContent = originalButtonText;
+                        alert("Something went wrong. Please try again or email us at hello@homeistudent.com");
+                    }
+                }).catch(function() {
+                    button.disabled = false;
+                    button.textContent = originalButtonText;
+                    alert("Something went wrong. Please try again or email us at hello@homeistudent.com");
+                });
+            } else {
+                // No valid endpoint - store locally and show success
+                try {
+                    var existing = JSON.parse(localStorage.getItem("homei_waitlist") || "[]");
+                    existing.push({ email: email, timestamp: new Date().toISOString() });
+                    localStorage.setItem("homei_waitlist", JSON.stringify(existing));
+                } catch (err) { /* ignore */ }
+                setTimeout(function() {
+                    showWaitlistSuccess(form);
+                }, 600);
+            }
+        });
+    });
+}
+
+function showWaitlistSuccess(form) {
+    var successHtml = "<div class=\"waitlist-success\">" +
+        "<div class=\"waitlist-success-icon\">✓</div>" +
+        "<h4>You're on the list!</h4>" +
+        "<p>We'll let you know the moment Landlord Connect goes live.</p>" +
+        "</div>";
+    form.outerHTML = successHtml;
 }
