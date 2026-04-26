@@ -1,460 +1,739 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>HOMEi</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content="MEET HOMEi, your helpful housemate"/>
-    <meta name="author" content="James Dudson, Drew Morgan"/>
-    <meta name="theme-color" content="transparent">
-    <meta name="theme-color" content="rgba(255,255,255,0)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOMEi - Student House Management App | Bills, Chores & Schedules</title>
+    <meta name="description" content="HOMEi helps students split bills, manage chores, and coordinate schedules in one free app. Focus on your studies, not house admin. Free download for iOS and Android.">
+    <meta name="keywords" content="student house app, bill splitting app, chore rota app, housemate app, student living, shared house management, university accommodation, student bills">
+    <meta name="author" content="HOMEiStudent Ltd">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://homeistudent.com/">
 
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 
-    <link rel="icon" href="images/logo64.webp"/>
-    <link rel="apple-touch-icon" href="images/logo192.webp"/>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://homeistudent.com/">
+    <meta property="og:title" content="HOMEi - Student House Management Made Easy">
+    <meta property="og:description" content="Split bills, manage chores, and coordinate schedules with your housemates. Free app for students.">
+    <meta property="og:image" content="https://homeistudent.com/images/og-image.png">
+    <meta property="og:site_name" content="HOMEi">
+    <meta property="og:locale" content="en_GB">
 
-    <link href="styles/materializeCustom.min.css" rel="stylesheet" type="text/css"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-    <link href="styles/style.css" rel="stylesheet" type="text/css"/>
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://homeistudent.com/">
+    <meta name="twitter:title" content="HOMEi - Student House Management Made Easy">
+    <meta name="twitter:description" content="Split bills, manage chores, and coordinate schedules with your housemates. Free app for students.">
+    <meta name="twitter:image" content="https://homeistudent.com/images/og-image.png">
 
-    <script src="scripts/gsap.min.js"></script>
-    <script src="scripts/SplitText.min.js"></script>
-    <script src="scripts/Flip.min.js"></script>
-    <script src="scripts/materializeCustom.min.js"></script>
-    <script src="scripts/Swup.umd.js"></script>
-    <script src="scripts/Preload.umd.js"></script>
-    <script src="scripts/JS.umd.js"></script>
-    <script src="scripts/ScrollToPlugin.min.js"></script>
-    <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-W9VNT3B173"
-    ></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo/homei-logo.png">
+    <link rel="apple-touch-icon" href="images/logo/homei-logo.png">
 
-        function gtag() {
-            dataLayer.push(arguments);
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://apps.apple.com">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles/main.css?v=2.6">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "HOMEi",
+        "description": "Student house management app for splitting bills, managing chores, and coordinating schedules",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "iOS, Android",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "GBP"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1200"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "HOMEiStudent Ltd",
+            "url": "https://homeistudent.com"
         }
-
-
-        gtag("js", new Date());
-
-        gtag("config", "G-W9VNT3B173");
+    }
     </script>
 </head>
-<body class="orange white-text">
-<!--    Navigation Bar    -->
-<nav class="nav navbar white" style="height: 64px">
-    <div class="nav-wrapper">
-        <a href="index.html" class="brand-logo left" style="left: 0.5rem !important;">
-            <img src="images/logo64.webp" alt="Company Logo" style="height: 54px;top: 5px;position: relative;">
-            <img src="images/CompanyText.webp" alt="Company Name" style="height: 34px;;position: relative;">
-        </a>
-        <a href="" data-target="mobile-demo" class="right sidenav-trigger orange-text"><i
-                class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="about-us.html" class="orange-text">About Us</a></li>
-            <li><a href="features.html" class="orange-text">Features</a></li>
-            <li><a href="faq.html" class="orange-text">FAQs</a></li>
-        </ul>
-    </div>
-</nav>
-<ul class="right sidenav" id="mobile-demo">
-    <li><a href="about-us.html" class="orange-text">About Us</a></li>
-    <li><a href="features.html" class="orange-text">Features</a></li>
-    <li><a href="faq.html" class="orange-text">FAQs</a></li>
-</ul>
-
-<!--    Main Body    -->
-<div id="swup" class="main-body" style="width: 100%; position: relative; overflow: hidden; height: 100%;">
-    <!--    Title Section    -->
-    <div class="parallax-container index-body">
-        <div class="parallax" style="width: 100%;">
-            <picture>
-                <source srcset="images/happy_people_mobile.webp" media="(max-width: 1000px)">
-                <img src="images/happy_people.webp" alt="Happy People" class="overlap-image">
-            </picture>
+<body>
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">
+            <img src="images/logo/homei-logo.png" alt="HOMEi" width="80" height="80">
+        </div>
+        <div class="loading-dots">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
         </div>
     </div>
 
-    <div id="top-text" style="text-shadow: 4px 4px 8px black">
-        <div class="row">
-            <h3 class="col s10 offset-s1 center-align">
-                Optimise your University Experience with <span style="-webkit-text-stroke: 1px white;" class="orange-text">HOMEi</span>
-            </h3>
-        </div>
-        <div class="row">
-            <h5 class="col s10 offset-s1 center-align">
-                The student household organisation app
-            </h5>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s4 offset-s2">
-            <a href="https://apps.apple.com/gb/app/homei/id6736709087"
-               style="height: 100%; display: grid; z-index: 10; position: relative;">
-                <img src="images/app-store-apple-logo.svg" alt="App Store">
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="images/logo/homei-logo.png" alt="HOMEi" class="logo-icon" width="44" height="44">
+                <span class="logo-text">HOMEi</span>
             </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="https://apps.apple.com/gb/app/homei/id6736709087" class="nav-cta" target="_blank" rel="noopener noreferrer">Get the App</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-        <div class="col s4 offset-s6">
-            <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app&pcampaignid=web_share"
-               style="height: 100%; display: grid; z-index: 10; position: relative;">
-                <img src="images/google-play-badge-logo.svg" alt="Google Play">
-            </a>
-        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="https://apps.apple.com/gb/app/homei/id6736709087" target="_blank" rel="noopener noreferrer">Get the App</a>
     </div>
 
-    <!--    Phone Video Section    -->
-    <div class="gradient-container" style="background: linear-gradient(transparent 15%, #ff6a00 17%)">
-        <!--    Phone outline with video    -->
-        <div class="row pt-3">
-            <div class="col s3">
-                <img src="images/squares_yellow.svg" style="width: 300%; left: -200%; top: 5%; position: relative"
-                     alt="Squares">
-            </div>
-            <div class="col s6" style="z-index: 4">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="193 81 424 837" class="phone-svg">
-                    <foreignObject x="221" y="105" height="790" width="365">
-                        <div xmlns="http://www.w3.org/1999/xhtml" style="position:fixed; width:100%; height:100%;">
-                            <video class="video-background" width="365" height="790" style="position: absolute; width: 100%; height: 100%; object-fit: cover; filter: blur(3px); z-index: -1" autoplay muted loop playsinline preload>
-                                <source src="images/phone_video.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <video style="height: auto; width: 100%; top: 30px; position: relative" autoplay muted loop playsinline preload>
-                                <source src="images/phone_video.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="fade-up">Student House Life, Simplified</h1>
+                <p class="fade-up stagger-1">Bills. Chores. Schedules. Lectures. Social plans. All sorted in one free app, so you can focus on your degree and actually enjoy student life.</p>
+
+                <div class="benefits">
+                    <div class="benefit-item fade-up stagger-1">
+                        <div class="benefit-icon">📚</div>
+                        <div class="benefit-content">
+                            <strong>Focus on Your Studies</strong>
+                            <span>Organised house, better grades</span>
                         </div>
-                    </foreignObject>
-
-                    <path d="M551 85H259c-31 0-57 26-57 57v714c0 32 26 57 57 57h292c31 0 57-25 57-57V142c0-31-26-57-57-57Zm-97 26c3 0 5 3 5 5 0 3-2 6-5 6s-5-3-5-6c0-2 2-5 5-5Zm-76 2h49c2 0 4 1 4 3s-2 4-4 4h-49c-2 0-3-2-3-4s1-3 3-3Zm209 746c0 19-15 34-34 34H257c-18 0-34-15-34-34V140c0-19 16-34 34-34h44v9c0 11 9 19 19 19h170c10 0 19-8 19-19v-9h44c19 0 34 15 34 34v719Zm0 0"
-                          style="fill:#000;stroke:#000;stroke-width:.5"/>
-                    <path d="M427 113h-49c-2 0-3 1-3 3s1 4 3 4h49c2 0 4-2 4-4s-2-3-4-3Zm0 0" style="fill:#606060"/>
-                    <path d="M454 111a5 5 0 1 0 0 11 5 5 0 0 0 0-11Zm0 0" style="fill:#606060"/>
-
-                    <path d="M194 196v26c0 2 2 4 4 4v-34c-2 0-4 1-4 4Zm0 0" style="fill:#b8b8b8;"/>
-                    <path d="M194 256v53c0 3 2 5 4 5v-62c-2 0-4 2-4 4Zm0 0" style="fill:#b8b8b8;"/>
-                    <path d="M194 332v53c0 3 2 5 4 5v-63c-2 0-4 2-4 5Zm0 0" style="fill:#b8b8b8;"/>
-                    <path d="M612 272v100c2 0 4-2 4-4v-91c0-3-2-5-4-5Zm0 0" style="fill:#b8b8b8;"/>
-
-                    <path d="M612 272V142a60 60 0 0 0-12-36 91 91 0 0 0-10-11c-11-9-24-14-39-14H259c-14 0-28 5-39 14l-4 4-6 7-3 4a64 64 0 0 0-8 20l-1 12v714c0 34 28 61 61 61h292c33 0 61-27 61-61Zm-4 0v584c0 32-26 58-57 58H259c-31 0-57-26-57-58V142c0-31 26-57 57-57h292c31 0 57 26 57 57Zm0 0"
-                          style="fill:#e9e9e9"/>
-                </svg>
-            </div>
-            <div class="col s3">
-                <img src="images/squares_circle.svg" style="width: 250%; top: 5%; position: relative" alt="Squares">
-            </div>
-        </div>
-
-        <img style="position: absolute; transform: translateY(-50%); width: 80vw; left:10vw"
-             src="images/dots_circle.svg" alt="Dots">
-
-        <!--    Below Text    -->
-        <div class="row" style="row-gap: 0">
-            <h2 class="col s10 offset-s1 center-align fave-house" style="margin: 0.83em 0 0;z-index: 2; text-shadow: 3px 3px 20px black">
-                Meet your new
-            </h2>
-            <h2 class="col s10 offset-s1 center-align fave-house" style="margin: 0 0 0.83em;z-index: 2; text-shadow: 3px 3px 20px black">
-                favourite housemate
-            </h2>
-        </div>
-        <div class="row">
-            <h5 class="col s8 offset-s2 center-align" style="z-index: 2; text-shadow: 3px 3px 20px black">
-                Students all over the country are levelling up their uni experience with HOMEi.
-            </h5>
-        </div>
-        <div class="row">
-            <h5 class="col s8 offset-s2 center-align" style="z-index: 2; text-shadow: 3px 3px 20px black">
-                Hear their stories
-            </h5>
-        </div>
-        <div class="row">
-            <a href="features.html?anchor=%23chores" class="white-text center-align col s8 offset-s2" style="z-index: 2;">
-                <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
-            </a>
-        </div>
-    </div>
-
-    <div class="row pt-3" style="position: absolute; z-index: 5; height: 0;">
-        <div class="col s2">
-            <img src="images/diagonal_squares_outline.svg"
-                 style="width: 250%; left: -150%; top: -70%; position: relative;" alt="Squares">
-        </div>
-        <div class="col s2 offset-s10">
-            <img src="images/U_squares.svg" style="width: 160%; top: -50%; position: relative;" alt="Squares">
-        </div>
-    </div>
-
-    <!--    Features Carousel Section    -->
-    <div class="carousel carousel-slider center carousel-top" style="z-index: 4;">
-
-        <div class="carousel-item" href="#one!">
-            <div class="container" style="background-image: url('images/towel_tidy.webp'); background-size: cover;
-             margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
-                <div style="backdrop-filter: blur(5px); height: 100%; text-shadow: 4px 4px 8px black">
-                    <div class="row" style="height: 25%; align-content: center;">
-                        <h2 class="col s10 offset-s1 center-align"
-                            style="font-size: 40px">
-                            A tidier home
-                        </h2>
                     </div>
-                    <div class="row" style="height: 50%; align-content: center;">
-                        <h5 class="col s10 offset-s1 center-align">
-                            Assign and manage household tasks with HOMEi's chore management feature
-                        </h5>
+                    <div class="benefit-item fade-up stagger-2">
+                        <div class="benefit-icon">😌</div>
+                        <div class="benefit-content">
+                            <strong>Less Stress, More Living</strong>
+                            <span>Everything handled automatically</span>
+                        </div>
                     </div>
-                    <div class="row" style="height: 25%; align-content: center;">
-                        <a href="features.html?anchor=%23tidy" class="white-text center-align col s12">
-                            <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
+                    <div class="benefit-item fade-up stagger-3">
+                        <div class="benefit-icon">🏠</div>
+                        <div class="benefit-content">
+                            <strong>A House That Runs Smoothly</strong>
+                            <span>Everyone on the same page</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="download-section fade-up stagger-4">
+                    <div class="download-buttons">
+                        <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="store-button apple" target="_blank" rel="noopener noreferrer">
+                            <img src="images/icons/app-store-icon.png" alt="App Store">
+                            <span>App Store</span>
                         </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" class="store-button google" target="_blank" rel="noopener noreferrer">
+                            <img src="images/icons/play-store-icon.png" alt="Google Play" onerror="this.style.display='none'">
+                            <span>Google Play</span>
+                        </a>
+                    </div>
+                    <div class="qr-section">
+                        <div class="qr-placeholder">
+                            <img src="images/icons/qr-code.png" alt="Scan to download" onerror="this.parentElement.innerHTML='📱'">
+                        </div>
+                        <div class="qr-text">
+                            Scan to<br>download
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phone-mockup scale-in stagger-2">
+                <div class="phone-frame">
+                    <div class="phone-screen" id="phoneScreen">
+                        <img src="images/screenshots/screenshot-1.png?v=2" alt="HOMEi Dashboard" class="phone-screenshot active">
+                        <img src="images/screenshots/screenshot-2.png?v=2" alt="HOMEi Shopping List" class="phone-screenshot" loading="lazy">
+                        <img src="images/screenshots/screenshot-3.png?v=2" alt="HOMEi Money Tracking" class="phone-screenshot" loading="lazy">
+                    </div>
+                </div>
+                <div class="screenshot-dots" id="screenshotDots">
+                    <div class="screenshot-dot active"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                </div>
+                <div class="swipe-hint">Swipe to see more</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="social-proof">
+        <div class="social-proof-container">
+            <div class="proof-item fade-up stagger-1">
+                <div class="proof-icon">⭐</div>
+                <div class="proof-content">
+                    <strong><span data-count="4.8" data-suffix=" Rating">4.8 Rating</span></strong>
+                    <span>Loved by students</span>
+                </div>
+            </div>
+            <div class="proof-item fade-up stagger-2">
+                <div class="proof-icon">🏠</div>
+                <div class="proof-content">
+                    <strong><span data-count="1200" data-suffix="+ Houses">1,200+ Houses</span></strong>
+                    <span>Running smoothly</span>
+                </div>
+            </div>
+            <div class="proof-item fade-up stagger-3">
+                <div class="proof-icon">🚀</div>
+                <div class="proof-content">
+                    <strong>All in One</strong>
+                    <span>First student house organiser</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEFORE VS AFTER - Interactive Toggle -->
+    <section class="before-after">
+        <div class="before-after-container">
+            <div class="section-header fade-up">
+                <h2>Here's What Changes</h2>
+                <p>Tap to see the difference HOMEi makes</p>
+            </div>
+
+            <!-- Toggle Tabs for Mobile Interactivity -->
+            <div class="toggle-tabs fade-up" id="beforeAfterToggle">
+                <button class="toggle-tab active" data-tab="before">Without HOMEi</button>
+                <button class="toggle-tab" data-tab="after">With HOMEi</button>
+            </div>
+
+            <!-- Toggle Content - Mobile View -->
+            <div class="toggle-content-wrapper">
+                <div class="toggle-content active" id="before-content">
+                    <div class="before-card" style="max-width: 500px; margin: 0 auto;">
+                        <ul class="before-after-list">
+                            <li>
+                                <span class="before-after-icon">😤</span>
+                                <span>"Who ate my food?" arguments every week</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">💸</span>
+                                <span>Chasing housemates for bill money</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">🗑️</span>
+                                <span>Nobody takes the bins out</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">📱</span>
+                                <span>100+ unread group chat messages</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">😰</span>
+                                <span>Awkward tension you can feel</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="toggle-content" id="after-content">
+                    <div class="after-card" style="max-width: 500px; margin: 0 auto;">
+                        <ul class="before-after-list">
+                            <li>
+                                <span class="before-after-icon">🛒</span>
+                                <span>Shared shopping lists everyone can see</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">💰</span>
+                                <span>Bills split fairly and tracked automatically</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">✅</span>
+                                <span>Fair chore rota with reminders</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">📅</span>
+                                <span>One calendar for house stuff AND your personal schedule</span>
+                            </li>
+                            <li>
+                                <span class="before-after-icon">😊</span>
+                                <span>A house that actually feels like home</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="before-after-cta fade-up">
+                <p>Make the switch today</p>
+                <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="nav-cta" style="display: inline-block; padding: 1rem 2.5rem; font-size: 1.05rem;" target="_blank" rel="noopener noreferrer">Download HOMEi Free</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features">
+        <div class="features-container">
+            <div class="section-header fade-up">
+                <h2>One App. Zero Chaos.</h2>
+                <p>Everything you need to run your house smoothly, all in one place.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-up stagger-1">
+                    <div class="feature-icon">📅</div>
+                    <h3>House & Personal Calendar</h3>
+                    <p>Track house events, lecture timetables, exam dates, and social plans. Your housemates see house stuff, you see everything.</p>
+                </div>
+                <div class="feature-card fade-up stagger-2">
+                    <div class="feature-icon">💰</div>
+                    <h3>Bill Splitting</h3>
+                    <p>Split bills fairly and automatically. See exactly who owes what, settle up with a tap.</p>
+                </div>
+                <div class="feature-card fade-up stagger-3">
+                    <div class="feature-icon">🧹</div>
+                    <h3>Chore Rotas</h3>
+                    <p>Fair rotations with automatic reminders. Everyone knows what needs doing and when.</p>
+                </div>
+                <div class="feature-card fade-up stagger-4">
+                    <div class="feature-icon">🛒</div>
+                    <h3>Shared Lists</h3>
+                    <p>Shopping lists that sync instantly. Tick off items as you shop. Everyone can add what's needed.</p>
+                </div>
+            </div>
+
+            <div class="text-center fade-up" style="margin-top: 3rem;">
+                <a href="features.html" class="nav-cta" style="display: inline-block; padding: 1rem 2rem;">Explore All Features</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DAY IN THE LIFE + VIDEO SECTION -->
+    <section class="day-in-life" style="display: none;">
+        <div class="day-in-life-container">
+            <div class="section-header fade-up">
+                <h2>A Day in the Life with HOMEi</h2>
+                <p>See how students use HOMEi to stay organised</p>
+            </div>
+
+            <div class="video-showcase fade-up">
+                <div class="video-wrapper">
+                    <!-- Replace src with your video file path -->
+                    <video id="demoVideo" poster="images/video-poster.jpg" playsinline>
+                        <source src="images/homei-demo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button class="video-play-btn" id="videoPlayBtn" aria-label="Play video">
+                        <span class="play-icon">▶</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="day-timeline fade-up">
+                <div class="timeline-item">
+                    <div class="timeline-time">8:00 AM</div>
+                    <div class="timeline-icon">☀️</div>
+                    <div class="timeline-content">
+                        <strong>Morning reminder</strong>
+                        <p>HOMEi reminds you it's your turn to take the bins out</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">12:30 PM</div>
+                    <div class="timeline-icon">🛒</div>
+                    <div class="timeline-content">
+                        <strong>Quick shop</strong>
+                        <p>Check the shared list on your way home from lectures</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">6:00 PM</div>
+                    <div class="timeline-icon">💰</div>
+                    <div class="timeline-content">
+                        <strong>Bill arrives</strong>
+                        <p>Split it instantly - everyone gets notified</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">9:00 PM</div>
+                    <div class="timeline-icon">😌</div>
+                    <div class="timeline-content">
+                        <strong>Relax</strong>
+                        <p>House is sorted, time for Netflix</p>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="carousel-item" href="#two!">
-            <div class="container" style="background-image: url('images/Calendar.webp'); background-size: cover;
-             margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
-                <div style="backdrop-filter: blur(5px); height: 100%; text-shadow: 4px 4px 8px black">
-                    <div class="row" style="height: 25%; align-content: center;">
-                        <h2 class="col s10 offset-s1 center-align"
-                            style="font-size: 40px">
-                            Never Miss a Deadline
-                        </h2>
+    <!-- TIME SAVED CALCULATOR -->
+    <section class="calculator-section">
+        <div class="calculator-container">
+            <div class="section-header fade-up">
+                <h2>How Much Time Could You Save?</h2>
+                <p>Students waste hours every month on household admin. See what you could get back.</p>
+            </div>
+
+            <div class="calculator-card fade-up">
+                <div class="calculator-inputs">
+                    <div class="calc-input-group">
+                        <label for="housemateCount">How many housemates do you have?</label>
+                        <div class="calc-slider-wrapper">
+                            <input type="range" id="housemateCount" min="2" max="10" value="4" class="calc-slider">
+                            <span class="calc-value" id="housemateValue">4</span>
+                        </div>
                     </div>
-                    <div class="row" style="height: 50%; align-content: center;">
-                        <h5 class="col s10 offset-s1 center-align">
-                            Keep track of important dates and deadlines with HOMEi's built-in shared calendar
-                        </h5>
+
+                    <div class="calc-input-group">
+                        <label for="billFrequency">How often do you split bills?</label>
+                        <div class="calc-options">
+                            <button class="calc-option active" data-value="4">Weekly</button>
+                            <button class="calc-option" data-value="2">Fortnightly</button>
+                            <button class="calc-option" data-value="1">Monthly</button>
+                        </div>
                     </div>
-                    <div class="row" style="height: 25%; align-content: center;">
-                        <a href="features.html?anchor=%23dates" class="white-text center-align col s12">
-                            <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
-                        </a>
+
+                    <div class="calc-input-group">
+                        <label for="choreFrequency">How often do chore arguments happen?</label>
+                        <div class="calc-options">
+                            <button class="calc-option" data-value="5">Daily</button>
+                            <button class="calc-option active" data-value="3">Few times a week</button>
+                            <button class="calc-option" data-value="1">Rarely</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calculator-results">
+                    <div class="result-card highlight-card">
+                        <div class="result-icon">⏰</div>
+                        <div class="result-number" id="hoursSaved">14</div>
+                        <div class="result-label">Hours saved per month</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="hoursProgress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-icon">🤝</div>
+                        <div class="result-number" id="argumentsAvoided">11</div>
+                        <div class="result-label">Arguments avoided monthly</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar secondary" id="argumentsProgress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="result-card highlight-card">
+                        <div class="result-icon">🎓</div>
+                        <div class="result-number" id="yearlyHours">168</div>
+                        <div class="result-label">Hours saved per year</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar tertiary" id="yearlyProgress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calculator-cta">
+                    <p id="yearlyComparison">That's enough time for writing <strong>8 full essays</strong> (avg 20 hrs each, HEPI 2023) or revising for <strong>7 exam modules</strong> (avg 23 hrs each, Advance HE 2022)!</p>
+                    <p class="calculator-sources">Based on data from SpareRoom, ONS Time Use Survey, NatWest Student Living Index & HEPI</p>
+                    <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="nav-cta" target="_blank" rel="noopener noreferrer">Start Saving Time</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works">
+        <div class="how-it-works-container">
+            <div class="section-header fade-up">
+                <h2>Get Started in 2 Minutes</h2>
+                <p>Setting up your house is quick and easy</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card fade-up stagger-1">
+                    <div class="step-number">1</div>
+                    <h3>Download Free</h3>
+                    <p>Get HOMEi from the App Store or Google Play.</p>
+                </div>
+                <div class="step-card fade-up stagger-2">
+                    <div class="step-number">2</div>
+                    <h3>Create Your House</h3>
+                    <p>Set up your household and invite your housemates with a simple code.</p>
+                </div>
+                <div class="step-card fade-up stagger-3">
+                    <div class="step-number">3</div>
+                    <h3>Enjoy Student Life</h3>
+                    <p>Start splitting bills, assigning chores, and spending more time on what matters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOUSEMATE QUIZ -->
+    <section class="quiz-section">
+        <div class="quiz-container">
+            <div class="section-header fade-up">
+                <h2>What Type of Housemate Are You?</h2>
+                <p>Take our quick quiz and find out!</p>
+            </div>
+
+            <div class="quiz-card fade-up" id="quizCard">
+                <!-- Quiz Progress -->
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="quizProgressBar"></div>
+                    <span class="quiz-progress-text" id="quizProgressText">Question 1 of 5</span>
+                </div>
+
+                <!-- Quiz Questions Container -->
+                <div class="quiz-questions" id="quizQuestions">
+                    <!-- Questions will be loaded from JSON -->
+                </div>
+
+                <!-- Quiz Results (hidden initially) -->
+                <div class="quiz-results" id="quizResults" style="display: none;">
+                    <div class="result-badge" id="resultBadge">🏆</div>
+                    <h3 class="result-title" id="resultTitle">The Organiser</h3>
+                    <p class="result-description" id="resultDescription">You're the one who keeps everything running smoothly.</p>
+                    <div class="result-traits" id="resultTraits">
+                        <!-- Traits will be added dynamically -->
+                    </div>
+                    <div class="result-cta">
+                        <p>HOMEi is perfect for you! Get the tools to keep your house organised.</p>
+                        <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="nav-cta" target="_blank" rel="noopener noreferrer">Download HOMEi Free</a>
+                        <button class="quiz-restart" id="quizRestart">Take Quiz Again</button>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="carousel-item" href="#three!">
-            <div class="container" style="background-image: url('images/Shopping.webp'); background-size: cover;
-             margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
-                <div style="backdrop-filter: blur(5px); height: 100%; text-shadow: 4px 4px 8px black">
-                    <div class="row" style="height: 25%; align-content: center;">
-                        <h2 class="col s10 offset-s1 center-align"
-                            style="font-size: 40px">
-                            Share Shopping Lists
-                        </h2>
+    <!-- GAMIFICATION STATS - Hidden for future use (achievements feature not yet built) -->
+    <section class="gamification-stats" style="display: none;" id="gamificationSection">
+        <div class="gamification-container">
+            <div class="section-header fade-up">
+                <h2>Level Up Your House</h2>
+                <p>Unlock achievements as you organise your home</p>
+            </div>
+
+            <div class="achievement-grid fade-up">
+                <div class="achievement-card unlocked">
+                    <div class="achievement-badge">🏠</div>
+                    <div class="achievement-content">
+                        <strong>House Creator</strong>
+                        <span>Set up your first house</span>
                     </div>
-                    <div class="row" style="height: 50%; align-content: center;">
-                        <h5 class="col s10 offset-s1 center-align">
-                            Simplify the weekly shop and share shopping lists with your housemates
-                        </h5>
+                    <div class="achievement-xp">+50 XP</div>
+                </div>
+                <div class="achievement-card unlocked">
+                    <div class="achievement-badge">👥</div>
+                    <div class="achievement-content">
+                        <strong>Team Builder</strong>
+                        <span>Invite 3 housemates</span>
                     </div>
-                    <div class="row" style="height: 25%; align-content: center;">
-                        <a href="features.html?anchor=%23shopping" class="white-text center-align col s12">
-                            <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
-                        </a>
+                    <div class="achievement-xp">+100 XP</div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-badge">💰</div>
+                    <div class="achievement-content">
+                        <strong>Bill Splitter</strong>
+                        <span>Split your first bill</span>
+                    </div>
+                    <div class="achievement-xp">+75 XP</div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-badge">🧹</div>
+                    <div class="achievement-content">
+                        <strong>Chore Champion</strong>
+                        <span>Complete 10 chores</span>
+                    </div>
+                    <div class="achievement-xp">+150 XP</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-badge">⭐</div>
+                    <div class="achievement-content">
+                        <strong>House Hero</strong>
+                        <span>30-day streak</span>
+                    </div>
+                    <div class="achievement-xp">+500 XP</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-badge">🏆</div>
+                    <div class="achievement-content">
+                        <strong>Harmony Master</strong>
+                        <span>Zero arguments for a month</span>
+                    </div>
+                    <div class="achievement-xp">+1000 XP</div>
+                </div>
+            </div>
+
+            <div class="gamification-cta fade-up">
+                <p>Start earning achievements today!</p>
+                <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="nav-cta" target="_blank" rel="noopener noreferrer">Download & Start Playing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <div class="section-header fade-up">
+                <h2>What Our Community Says</h2>
+                <p>Real reviews from real student houses</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-up stagger-1">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"No more passive-aggressive messages about the bins. Everyone knows whose turn it is. Absolute game changer."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <strong>Sarah M.</strong>
+                            <span>Sheffield University</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-up stagger-2">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Finally stopped arguing about who owes what. The bill splitting is so clear. Should've had this in first year."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">T</div>
+                        <div class="author-info">
+                            <strong>Tom R.</strong>
+                            <span>Leeds University</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-up stagger-3">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Our house actually runs smoothly now. Less stress means I can actually focus on my degree."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">E</div>
+                        <div class="author-info">
+                            <strong>Emma L.</strong>
+                            <span>Manchester University</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel dots for mobile -->
+            <div class="testimonials-dots" id="testimonialDots">
+                <div class="testimonial-dot active"></div>
+                <div class="testimonial-dot"></div>
+                <div class="testimonial-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2 class="fade-up">Your House, Finally Sorted</h2>
+            <p class="fade-up stagger-1">Join thousands of students who've simplified their house life. Download for free and see the difference.</p>
+
+            <div class="cta-download fade-up stagger-2">
+                <div class="download-buttons">
+                    <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="store-button" target="_blank" rel="noopener noreferrer">
+                        <img src="images/icons/app-store-icon.png" alt="App Store">
+                        <span>App Store</span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" class="store-button" target="_blank" rel="noopener noreferrer">
+                        <img src="images/icons/play-store-icon.png" alt="Google Play" onerror="this.style.display='none'">
+                        <span>Google Play</span>
+                    </a>
+                </div>
+                <div class="qr-section cta-qr">
+                    <div class="qr-placeholder">
+                        <img src="images/icons/qr-code.png" alt="Scan to download" onerror="this.parentElement.innerHTML='📱'">
+                    </div>
+                    <div class="qr-text">
+                        Scan to<br>download
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="carousel-item" href="#four!">
-            <div class="container" style="background-image: url('images/Banking.webp'); background-size: cover;
-             margin: 0 !important; width: 100% !important; z-index: 2; max-width: none !important; height: 100%">
-                <div style="backdrop-filter: blur(5px); height: 100%; text-shadow: 4px 4px 8px black">
-                    <div class="row" style="height: 25%; align-content: center;">
-                        <h2 class="col s10 offset-s1 center-align"
-                            style="font-size: 40px">
-                            No More Late Payments
-                        </h2>
-                    </div>
-                    <div class="row" style="height: 50%; align-content: center;">
-                        <h5 class="col s10 offset-s1 center-align">
-                            HOMEi's bill split feature makes it easy to divide bills amongst housemates
-                        </h5>
-                    </div>
-                    <div class="row" style="height: 25%; align-content: center;">
-                        <a href="features.html?anchor=%23payments" class="white-text center-align col s12">
-                            <i class="material-symbols-outlined medium rotate-270">expand_circle_down</i>
-                        </a>
-                    </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo-container">
+                    <img src="images/logo/homei-logo.png" alt="HOMEi" class="logo-icon" width="44" height="44">
+                    <span class="logo-text" style="color: white;">HOMEi</span>
+                </div>
+                <p>Your all-in-one app for managing bills, chores, and schedules. Built by students, for students.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/homeistudent" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@homeistudent" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/homeiapp" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/homeiapp" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
                 </div>
             </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <a href="features.html">Features</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="https://apps.apple.com/gb/app/homei/id6736709087" target="_blank" rel="noopener noreferrer">Download</a>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
         </div>
+        <div class="footer-bottom">
+            <div class="footer-badges">
+                <span class="trust-badge">🔒 GDPR Compliant</span>
+                <span class="trust-badge">🛡️ Data Encrypted</span>
+            </div>
+            <p>&copy; 2026 HOMEiStudent Ltd. Made with &#10084;&#65039; in Sheffield.</p>
+        </div>
+    </footer>
 
+    <!-- STICKY DOWNLOAD CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <span class="sticky-cta-text">Ready to optimise your house?</span>
+        <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="sticky-cta-button" target="_blank" rel="noopener noreferrer">
+            Download Free
+        </a>
+        <button class="sticky-cta-close" id="stickyCtaClose" aria-label="Close">&times;</button>
     </div>
 
-    <div class="row pt-3" style="position: absolute; z-index: 5; height: 0;">
-        <div class="col s2">
-            <img src="images/U_squares.svg" style="width: 250%; left: -150%; top: -35%; position: relative;"
-                 alt="Squares">
-        </div>
-        <div class="col s2 offset-s10">
-            <img src="images/blobs.svg" style="width: 300%; top: -50%; left: -70%; position: relative;" alt="Blobs">
-        </div>
-    </div>
-
-    <!--    People Carousel Section    -->
-    <div class="row">
-        <h2 class="col s8 offset-s2 center-align" style="text-shadow: 3px 3px 20px black">
-            How do <span style="-webkit-text-stroke: 2px white; text-shadow: 3px 3px 20px black" class="orange-text"> you </span>
-            use HOMEi?
-        </h2>
-    </div>
-    <a class="white-text center-align carousel-left-bottom" style="z-index: 10; position: absolute;">
-        <i class="material-icons medium rotate-90">expand_circle_down</i>
-    </a>
-    <a class="white-text center-align carousel-right-bottom" style="z-index: 10; position: absolute; right: 0">
-        <i class="material-icons medium rotate-270">expand_circle_down</i>
-    </a>
-    <div class="row carousel-row">
-        <div class="carousel center col s12 carousel-bottom" style="z-index: 5; overflow: visible !important;">
-
-            <div class="carousel-item container" href="#one!" style="min-height: 0 !important;">
-                <a href="features.html?anchor=%23chores">
-                    <div class="row">
-                        <img class="col s12" src="images/Carousel1.webp"
-                             style="width: 100%; position: absolute; z-index: 2;" alt="Person 1">
-                        <img class="carousel-item-bottom col s12" style="position: relative; width: 110%; left: -10%; top: -10%"
-                             src="images/dots_circle_border.svg" alt="Dots">
-                    </div>
-                    <div>
-                        <h1 class="col s12 carousel-bottom-text white-text"
-                            style="margin: 0 !important; text-shadow: 3px 3px 20px black"
-                            data-original-font-size="100px">
-                            The Chore Conqueror
-                        </h1>
-                    </div>
-                </a>
-            </div>
-
-            <div class="carousel-item" href="#two!" style="min-height: 0 !important;">
-                <a href="features.html?anchor=%23calendar">
-                    <div class="row">
-                        <img class="col s12" src="images/Carousel2.webp"
-                             style="width: 100%; position: absolute; z-index: 2;" alt="Person 2">
-                        <img class="carousel-item-bottom col s12" style="position: relative; width: 110%; left: -10%; top: -10%"
-                             src="images/dots_circle_border.svg" alt="Dots">
-                    </div>
-                    <div>
-                        <h1 class="col s12 carousel-bottom-text white-text"
-                            style="margin: 0 !important; text-shadow: 3px 3px 20px black"
-                            data-original-font-size="100px">
-                            The Calendar Maestro
-                        </h1>
-                    </div>
-                </a>
-            </div>
-
-            <div class="carousel-item" href="#three!" style="min-height: 0 !important;">
-                <a href="features.html?anchor=%23bills">
-                    <div class="row">
-                        <img class="col s12" src="images/Carousel3.webp"
-                             style="width: 100%; position: absolute; z-index: 2;" alt="Person 2">
-                        <img class="carousel-item-bottom col s12" style="position: relative; width: 110%; left: -10%; top: -10%"
-                             src="images/dots_circle_border.svg" alt="Dots">
-                    </div>
-                    <div>
-                        <h1 class="col s12 carousel-bottom-text white-text"
-                            style="margin: 0 !important; text-shadow: 3px 3px 20px black"
-                            data-original-font-size="100px">
-                            The Bill Boss
-                        </h1>
-                    </div>
-                </a>
-            </div>
-
-            <div class="carousel-item" href="#four!" style="min-height: 0 !important;">
-                <a href="features.html?anchor=%23shop">
-                    <div class="row">
-                        <img class="col s12" src="images/Carousel4.webp"
-                             style="width: 100%; position: absolute; z-index: 2;" alt="Person 2">
-                        <img class="carousel-item-bottom col s12" style="position: relative; width: 110%; left: -10%; top: -10%"
-                             src="images/dots_circle_border.svg" alt="Dots">
-                    </div>
-                    <div>
-                        <h1 class="col s12 carousel-bottom-text white-text"
-                            style="margin: 0 !important; text-shadow: 3px 3px 20px black"
-                            data-original-font-size="100px">
-                            The Shopping Savant
-                        </h1>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-    </div>
-
-</div>
-
-<!--    Footer Section    -->
-<div>
-    <img style="position: relative; top: 8px" src="images/waves.svg" alt="Waves">
-</div>
-
-<footer class="yellow lighten-1" style="text-shadow: 0 0 8px black;">
-    <div class="container">
-        <div class="row">
-            <div class="col s6">
-                <a href="about-us.html"><h6 class="white-text">About Us</h6></a>
-                <a href="faq.html"><h6 class="white-text">FAQs</h6></a>
-                <a href="contact.html"><h6 class="white-text">Contact Us</h6></a>
-            </div>
-            <div class="col s6">
-                <a href="privacy-policy.html"><h6 class="white-text">Privacy Policy</h6></a>
-                <a href="terms-and-conditions.html"><h6 class="white-text">Terms & Conditions</h6></a>
-            </div>
-        </div>
-        <div class="row" style="align-items: center; text-align: center;">
-            <div class="col s3">
-                <a href="https://apps.apple.com/gb/app/homei/id6736709087">
-                    <img style="filter: drop-shadow(1px 1px 4px black)" src="images/app-store-apple-logo.svg" alt="App Store">
-                </a>
-            </div>
-            <div class="col s3">
-                <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app&pcampaignid=web_share">
-                    <img style="filter: drop-shadow(1px 1px 4px black)" src="images/google-play-badge-logo.svg" alt="Google Play">
-                </a>
-            </div>
-            <div class="col s2">
-                <a href="https://www.facebook.com/share/F4vn5MzDTavZiyKQ/?mibextid=LQQJ4d">
-                    <img style="width: 60%; filter: drop-shadow(1px 1px 4px black)" src="images/facebook.svg" alt="Facebook logo">
-                </a>
-            </div>
-            <div class="col s2">
-                <a href="https://www.instagram.com/homeistudent?igsh=MWw2eDRoY3N3aTF6cg%3D%3D&utm_source=qr">
-                    <img style="width: 60%; filter: drop-shadow(1px 1px 4px black)" src="images/instagram.svg" alt="Instagram logo">
-                </a>
-            </div>
-            <div class="col s2">
-                <a href="https://www.tiktok.com/@homeistudent?_t=8mpq1hxbHUn&_r=1">
-                    <img style="width: 60%; filter: drop-shadow(1px 1px 4px black)" src="images/tiktok.svg" alt="TikTok logo">
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row g-0" style="align-items: center;">
-            <div class="col s9">
-                <p>
-                    <span style="font-size: 24px; line-height: 32px; font-weight: 600;">1%</span>
-                    <br>
-                    of purchases contributed to
-                    <span style="color: #15be53; font-weight: 600;">Stripe Climate</span>
-                </p>
-            </div>
-            <div class="col s1"></div>
-            <div class="col s2">
-                <img style="filter: drop-shadow(1px 1px 4px black)" src="images/stripe.svg" alt="Stripe logo">
-            </div>
-        </div>
-    </div>
-</footer>
+    <!-- Scripts -->
+    <script src="scripts/main.js?v=2.6"></script>
 </body>
-
-<script src="scripts/AllScripts.js"></script>
-
 </html>

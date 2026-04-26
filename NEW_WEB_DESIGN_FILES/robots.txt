@@ -1,0 +1,14 @@
+# HOMEi Student - robots.txt
+# https://homeistudent.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://homeistudent.com/new-design/sitemap.xml
+
+# Disallow admin/private areas (none currently)
+# Disallow: /admin/
+
+# Crawl-delay for politeness (optional)
+Crawl-delay: 1
