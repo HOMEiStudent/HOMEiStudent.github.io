@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initVideoPlayer();
     initTimeCalculator();
     initHousemateQuiz();
+    initShareButton();
+    initEmailCapture();
 });
 
 // ==========================================
@@ -597,9 +599,8 @@ function animateCounter(element) {
 // ==========================================
 function initStickyCta() {
     var stickyCta = document.getElementById('stickyCta');
+    var stickyCtaMobile = document.getElementById('stickyCtaMobile');
     var closeBtn = document.getElementById('stickyCtaClose');
-
-    if (!stickyCta) return;
 
     var dismissed = false;
     var heroSection = document.querySelector('.hero');
@@ -611,17 +612,19 @@ function initStickyCta() {
         var heroBottom = heroSection ? heroSection.offsetTop + heroSection.offsetHeight : 600;
 
         if (window.scrollY > heroBottom) {
-            stickyCta.classList.add('visible');
+            if (stickyCta) stickyCta.classList.add('visible');
+            if (stickyCtaMobile) stickyCtaMobile.classList.add('visible');
         } else {
-            stickyCta.classList.remove('visible');
+            if (stickyCta) stickyCta.classList.remove('visible');
+            if (stickyCtaMobile) stickyCtaMobile.classList.remove('visible');
         }
     }, { passive: true });
 
-    // Dismiss CTA when close button is clicked
+    // Dismiss CTA when close button is clicked (desktop only)
     if (closeBtn) {
         closeBtn.addEventListener('click', function() {
             dismissed = true;
-            stickyCta.classList.remove('visible');
+            if (stickyCta) stickyCta.classList.remove('visible');
         });
     }
 }
@@ -691,30 +694,30 @@ function initBeforeAfterToggle() {
 // 12. FAQ ACCORDION
 // ==========================================
 function initFaqAccordion() {
-    var accordion = document.getElementById('faqAccordion');
-    if (!accordion) return;
+    var faqSection = document.querySelector('.faq-section');
+    if (!faqSection) return;
 
-    var faqItems = accordion.querySelectorAll('.faq-item');
+    var faqItems = faqSection.querySelectorAll('.faq-item');
 
     faqItems.forEach(function(item) {
         var question = item.querySelector('.faq-question');
-        var toggle = item.querySelector('.faq-toggle');
 
         if (question) {
             question.addEventListener('click', function() {
                 var isActive = item.classList.contains('active');
+                var expanded = question.getAttribute('aria-expanded') === 'true';
 
                 // Close all other items
                 faqItems.forEach(function(otherItem) {
                     otherItem.classList.remove('active');
-                    var otherToggle = otherItem.querySelector('.faq-toggle');
-                    if (otherToggle) otherToggle.textContent = '+';
+                    var otherQuestion = otherItem.querySelector('.faq-question');
+                    if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
                 });
 
                 // Toggle current item
                 if (!isActive) {
                     item.classList.add('active');
-                    if (toggle) toggle.textContent = '−';
+                    question.setAttribute('aria-expanded', 'true');
                 }
             });
         }
@@ -724,9 +727,79 @@ function initFaqAccordion() {
     if (faqItems.length > 0) {
         var firstItem = faqItems[0];
         firstItem.classList.add('active');
-        var firstToggle = firstItem.querySelector('.faq-toggle');
-        if (firstToggle) firstToggle.textContent = '−';
+        var firstQuestion = firstItem.querySelector('.faq-question');
+        if (firstQuestion) firstQuestion.setAttribute('aria-expanded', 'true');
     }
+}
+
+// ==========================================
+// 12B. SHARE TO HOUSEMATES
+// ==========================================
+function initShareButton() {
+    var shareBtn = document.getElementById('shareButton');
+    if (!shareBtn) return;
+
+    shareBtn.addEventListener('click', function() {
+        var shareData = {
+            title: 'HOMEi - Sort Your Student House',
+            text: 'Lads we need this — sorts the bills and chores. Free:',
+            url: 'https://homeistudent.com'
+        };
+
+        if (navigator.share) {
+            navigator.share(shareData).catch(function(err) {
+                console.log('Share cancelled or failed');
+            });
+        } else {
+            // Fallback: copy to clipboard
+            var shareText = shareData.text + ' ' + shareData.url;
+            navigator.clipboard.writeText(shareText).then(function() {
+                shareBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Link copied!';
+                setTimeout(function() {
+                    shareBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg> Share with your housemates';
+                }, 2000);
+            });
+        }
+    });
+}
+
+// ==========================================
+// 12C. EMAIL CAPTURE
+// ==========================================
+function initEmailCapture() {
+    var form = document.getElementById('emailCaptureForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var emailInput = form.querySelector('.email-input');
+        var submitBtn = form.querySelector('.email-submit');
+        var email = emailInput.value;
+
+        if (!email) return;
+
+        // Store email locally (replace with actual API call)
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        // Simulate API call - replace with actual Formspree or backend
+        setTimeout(function() {
+            // Store in localStorage as fallback
+            var emails = JSON.parse(localStorage.getItem('homei_reminder_emails') || '[]');
+            emails.push({ email: email, date: new Date().toISOString() });
+            localStorage.setItem('homei_reminder_emails', JSON.stringify(emails));
+
+            submitBtn.textContent = '✓ We\'ll remind you!';
+            submitBtn.style.background = '#22c55e';
+            emailInput.value = '';
+
+            setTimeout(function() {
+                submitBtn.textContent = 'Remind Me';
+                submitBtn.style.background = '';
+                submitBtn.disabled = false;
+            }, 3000);
+        }, 800);
+    });
 }
 
 // ==========================================
@@ -883,6 +956,10 @@ function initTimeCalculator() {
         animateNumber('argumentsAvoided', argumentsAvoided);
         animateNumber('yearlyHours', yearlyHours);
 
+        // Update CTA with dynamic hours
+        var ctaHoursEl = document.getElementById('ctaHoursValue');
+        if (ctaHoursEl) ctaHoursEl.textContent = yearlyHours;
+
         // Update the yearly comparison text
         updateYearlyComparison(yearlyHours);
 
@@ -900,33 +977,12 @@ function initTimeCalculator() {
         var comparisonEl = document.getElementById('yearlyComparison');
         if (!comparisonEl) return;
 
-        /*
-         * Real-world comparisons based on research:
-         * - 2,000-word essay: ~20 hours (HEPI Student Academic Experience Survey 2023)
-         * - Exam revision per module: ~23 hours (Advance HE, 2022)
-         * - Reading a 300-page textbook: ~15 hours (avg 20 pages/hour, Brysbaert 2019)
-         * - Part-time work shift: ~6 hours (typical student shift)
-         * - Season of a TV series: ~10 hours
-         */
-        var comparisons = [];
-
         if (yearlyHours >= 120) {
-            var essays = Math.floor(yearlyHours / 20);
-            comparisons.push("writing <strong>" + essays + " full essays</strong> (avg 20 hrs each, HEPI 2023)");
-        }
-        if (yearlyHours >= 90) {
-            var modules = Math.floor(yearlyHours / 23);
-            comparisons.push("revising for <strong>" + modules + " exam modules</strong> (avg 23 hrs each, Advance HE 2022)");
-        }
-        if (yearlyHours >= 60) {
-            var textbooks = Math.floor(yearlyHours / 15);
-            comparisons.push("reading <strong>" + textbooks + " textbooks</strong> cover to cover");
-        }
-
-        if (comparisons.length > 0) {
-            comparisonEl.innerHTML = "That's enough time for " + comparisons[0] + " or " + comparisons[1] + "!";
+            comparisonEl.innerHTML = "That's roughly <strong>" + Math.floor(yearlyHours / 40) + " full working weeks</strong> you could spend on your degree, social life, or just chilling.";
+        } else if (yearlyHours >= 60) {
+            comparisonEl.innerHTML = "That's <strong>" + yearlyHours + " hours a year</strong> back for what actually matters.";
         } else {
-            comparisonEl.innerHTML = "That's <strong>" + yearlyHours + " hours a year</strong> back for your degree!";
+            comparisonEl.innerHTML = "That's <strong>" + yearlyHours + " hours a year</strong> you'd otherwise lose to house admin.";
         }
     }
     
