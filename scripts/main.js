@@ -956,6 +956,10 @@ function initTimeCalculator() {
         animateNumber('argumentsAvoided', argumentsAvoided);
         animateNumber('yearlyHours', yearlyHours);
 
+        // Update CTA with dynamic hours
+        var ctaHoursEl = document.getElementById('ctaHoursValue');
+        if (ctaHoursEl) ctaHoursEl.textContent = yearlyHours;
+
         // Update the yearly comparison text
         updateYearlyComparison(yearlyHours);
 
@@ -973,33 +977,12 @@ function initTimeCalculator() {
         var comparisonEl = document.getElementById('yearlyComparison');
         if (!comparisonEl) return;
 
-        /*
-         * Real-world comparisons based on research:
-         * - 2,000-word essay: ~20 hours (HEPI Student Academic Experience Survey 2023)
-         * - Exam revision per module: ~23 hours (Advance HE, 2022)
-         * - Reading a 300-page textbook: ~15 hours (avg 20 pages/hour, Brysbaert 2019)
-         * - Part-time work shift: ~6 hours (typical student shift)
-         * - Season of a TV series: ~10 hours
-         */
-        var comparisons = [];
-
         if (yearlyHours >= 120) {
-            var essays = Math.floor(yearlyHours / 20);
-            comparisons.push("writing <strong>" + essays + " full essays</strong> (avg 20 hrs each, HEPI 2023)");
-        }
-        if (yearlyHours >= 90) {
-            var modules = Math.floor(yearlyHours / 23);
-            comparisons.push("revising for <strong>" + modules + " exam modules</strong> (avg 23 hrs each, Advance HE 2022)");
-        }
-        if (yearlyHours >= 60) {
-            var textbooks = Math.floor(yearlyHours / 15);
-            comparisons.push("reading <strong>" + textbooks + " textbooks</strong> cover to cover");
-        }
-
-        if (comparisons.length > 0) {
-            comparisonEl.innerHTML = "That's enough time for " + comparisons[0] + " or " + comparisons[1] + "!";
+            comparisonEl.innerHTML = "That's roughly <strong>" + Math.floor(yearlyHours / 40) + " full working weeks</strong> you could spend on your degree, social life, or just chilling.";
+        } else if (yearlyHours >= 60) {
+            comparisonEl.innerHTML = "That's <strong>" + yearlyHours + " hours a year</strong> back for what actually matters.";
         } else {
-            comparisonEl.innerHTML = "That's <strong>" + yearlyHours + " hours a year</strong> back for your degree!";
+            comparisonEl.innerHTML = "That's <strong>" + yearlyHours + " hours a year</strong> you'd otherwise lose to house admin.";
         }
     }
     

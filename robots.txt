@@ -5,10 +5,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://homeistudent.com/new-design/sitemap.xml
-
-# Disallow admin/private areas (none currently)
-# Disallow: /admin/
+Sitemap: https://homeistudent.com/sitemap.xml
 
 # Crawl-delay for politeness (optional)
 Crawl-delay: 1

@@ -240,24 +240,28 @@
 
                 <div class="download-section fade-up stagger-4">
                     <div class="download-buttons">
-                        <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="store-button apple" target="_blank" rel="noopener noreferrer">
-                            <img src="images/icons/app-store-icon.png" alt="App Store">
+                        <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="store-button apple" target="_blank" rel="noopener noreferrer" aria-label="Download HOMEi on the App Store">
+                            <img src="images/icons/app-store-icon.png" alt="App Store" loading="lazy">
                             <span>App Store</span>
                         </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" class="store-button google" target="_blank" rel="noopener noreferrer">
-                            <img src="images/icons/play-store-icon.png" alt="Google Play" onerror="this.style.display='none'">
+                        <a href="https://play.google.com/store/apps/details?id=com.homeistudent.app" class="store-button google" target="_blank" rel="noopener noreferrer" aria-label="Download HOMEi on Google Play">
+                            <img src="images/icons/play-store-icon.png" alt="Google Play" loading="lazy" onerror="this.style.display='none'">
                             <span>Google Play</span>
                         </a>
                     </div>
                     <div class="qr-section">
                         <div class="qr-placeholder">
-                            <img src="images/icons/qr-code.png" alt="Scan to download" onerror="this.parentElement.innerHTML='📱'">
+                            <img src="images/icons/qr-code.png" alt="QR code to download HOMEi app" loading="lazy" onerror="this.parentElement.innerHTML='📱'">
                         </div>
                         <div class="qr-text">
                             Scan to<br>download
                         </div>
                     </div>
                 </div>
+                <p class="hero-trust-signal fade-up stagger-4" style="font-size: 0.9rem; color: var(--text-medium); margin-top: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1.2rem;">📲</span>
+                    <span><strong>1,200+ downloads</strong> in our first two weeks</span>
+                </p>
             </div>
 
             <div class="phone-mockup scale-in stagger-2">
@@ -297,6 +301,13 @@
             </div>
             <div class="proof-item fade-up stagger-3">
                 <div class="proof-icon">🎓</div>
+                <div class="proof-content">
+                    <strong>8 UK Universities</strong>
+                    <span>Tested with students</span>
+                </div>
+            </div>
+            <div class="proof-item fade-up stagger-4">
+                <div class="proof-icon">🚀</div>
                 <div class="proof-content">
                     <strong>Sheffield Born</strong>
                     <span>Backed by Emerge incubator</span>
@@ -545,7 +556,7 @@
                 <div class="calculator-cta">
                     <p id="yearlyComparison">That's roughly <strong>a week of full-time work</strong> you could spend on your degree, social life, or just chilling.</p>
                     <p class="calculator-disclaimer" style="font-size: 0.85rem; color: var(--text-light); margin-top: 0.5rem;">Estimates based on typical student household admin time. Your savings will vary.</p>
-                    <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="nav-cta" target="_blank" rel="noopener noreferrer">Get Your Time Back</a>
+                    <a href="https://apps.apple.com/gb/app/homei/id6736709087" class="nav-cta" target="_blank" rel="noopener noreferrer" id="calculatorCta">Get Your <span id="ctaHoursValue">168</span> Hours Back</a>
                 </div>
             </div>
         </div>
