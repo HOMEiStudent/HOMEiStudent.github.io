@@ -229,6 +229,13 @@ p {
     color: var(--text-dark);
 }
 
+.logo-text-image {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
 .nav-links {
     display: flex;
     gap: 2rem;
