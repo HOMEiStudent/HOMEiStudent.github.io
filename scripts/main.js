@@ -348,7 +348,7 @@ function initScreenshotCarousel() {
 
     if (!phoneScreen || !dotsContainer) return;
 
-    const screenshots = phoneScreen.querySelectorAll('.phone-screenshot, .screenshot-placeholder');
+    const screenshots = phoneScreen.querySelectorAll('.phone-screenshot, .phone-video, .screenshot-placeholder');
     const dots = dotsContainer.querySelectorAll('.screenshot-dot');
 
     if (screenshots.length === 0) return;
@@ -358,7 +358,22 @@ function initScreenshotCarousel() {
     let autoPlayInterval = null;
 
     function updateScreenshot() {
-        screenshots.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
+        screenshots.forEach((s, i) => {
+            const isActive = i === currentIndex;
+            s.classList.toggle('active', isActive);
+            // If it's a video, pause/play and rewind inactive ones
+            if (s.tagName === 'VIDEO') {
+                if (isActive) {
+                    const playPromise = s.play();
+                    if (playPromise && typeof playPromise.catch === 'function') {
+                        playPromise.catch(() => {});
+                    }
+                } else {
+                    s.pause();
+                    try { s.currentTime = 0; } catch (e) {}
+                }
+            }
+        });
         dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
     }
 
@@ -374,7 +389,7 @@ function initScreenshotCarousel() {
 
     function startAutoPlay() {
         stopAutoPlay();
-        autoPlayInterval = setInterval(nextScreenshot, 4000);
+        autoPlayInterval = setInterval(nextScreenshot, 6000);
     }
 
     function stopAutoPlay() {
