@@ -597,46 +597,15 @@ p {
 .phone-frame {
     position: relative;
     width: 280px;
-    background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 50%, #0d0d0d 100%);
-    padding: 10px;
-    border-radius: 42px;
-    overflow: visible;
+    background: transparent;
+    padding: 0;
+    border-radius: 32px;
+    overflow: hidden;
     /* Layered shadows for realistic depth */
     box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.1),
-        0 4px 6px -1px rgba(0, 0, 0, 0.3),
-        0 25px 50px -12px rgba(0, 0, 0, 0.5),
-        0 50px 100px -20px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    /* Subtle metallic edge highlight */
-    border: 1px solid rgba(60, 60, 60, 0.8);
-}
-
-.phone-frame::before {
-    content: '';
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 24px;
-    background: #000;
-    border-radius: 12px;
-    z-index: 10;
-}
-
-.phone-frame::after {
-    content: '';
-    position: absolute;
-    top: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 10px;
-    height: 10px;
-    background: radial-gradient(circle, #1a1a2e 30%, #0a0a0a 70%);
-    border-radius: 50%;
-    z-index: 11;
-    border: 1px solid rgba(30, 30, 40, 0.8);
+        0 4px 6px -1px rgba(0, 0, 0, 0.15),
+        0 25px 50px -12px rgba(0, 0, 0, 0.4),
+        0 50px 100px -20px rgba(0, 0, 0, 0.25);
 }
 
 .phone-screen {
@@ -1228,20 +1197,6 @@ p {
 
     .phone-frame {
         width: 240px;
-        padding: 8px;
-        border-radius: 38px;
-    }
-
-    .phone-frame::before {
-        width: 70px;
-        height: 20px;
-        top: 6px;
-    }
-
-    .phone-frame::after {
-        top: 11px;
-        width: 8px;
-        height: 8px;
     }
 
     .download-section {
@@ -1345,21 +1300,6 @@ p {
 
     .phone-frame {
         width: 200px;
-        padding: 6px;
-        border-radius: 34px;
-    }
-
-    .phone-frame::before {
-        width: 60px;
-        height: 18px;
-        top: 5px;
-        border-radius: 10px;
-    }
-
-    .phone-frame::after {
-        top: 9px;
-        width: 7px;
-        height: 7px;
     }
 }
 
